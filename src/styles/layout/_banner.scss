@@ -27,7 +27,8 @@
   }
 
   .banner__content-inner {
-    max-width: 400px;
+    padding-left: 10px;
+    max-width: 500px;
     margin-top: 100px;
     text-align: start;
     .cta {
@@ -40,7 +41,7 @@
     }
 
     h5 {
-      color: var(--primary-color);
+      color: #ff6600 !important;
     }
 
     .single {
@@ -51,6 +52,13 @@
       }
     }
   }
+  @media (max-width: 575.98px) {
+  .banner__content-inner {
+    padding-left: 0px;
+    font-size: 12px !important;
+  }
+}
+
 
   .banner-one-thumb {
     position: absolute;

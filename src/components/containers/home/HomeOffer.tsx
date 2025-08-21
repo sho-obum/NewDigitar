@@ -41,20 +41,19 @@ const HomeOffer = () => {
                 <i className="fa-solid fa-arrow-right"></i>
               </span>
               <h2 className="title title-anim">
-                Giving Your Business Some Great Ideas
+                Driving Your Business Growth With 360° Marketing
               </h2>
               <div className="paragraph">
                 <p>
-                  Bring to the table win-win survival strategies to ensure
-                  proactive domination. At the end of the day, going forward, a
-                  new normal that has evolved from generation on the runway
-                  heading towards a streamlined cloud solution going forward
-                  porttitor dictum sapien.
+                  We are a performance-driven digital agency delivering
+                  measurable results. From precise ad campaigns to social
+                  storytelling, impactful branding, and influencer partnerships,
+                  we help brands grow faster, stronger, and smarter.
                 </p>
               </div>
               <div className="section__content-cta">
-                <Link href="our-services" className="btn btn--secondary">
-                  view all services
+                <Link href="#" className="btn btn--secondary">
+                  EXPLORE OUR SERVICES
                 </Link>
               </div>
             </div>
@@ -67,13 +66,13 @@ const HomeOffer = () => {
                   <i className="fa-solid fa-arrow-right"></i>
                 </span>
                 <h2>
-                  <Link href="service-single">
-                    uI / uX experience
+                  <Link href="">
+                    Performance Marketing
                     <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                   </Link>
                 </h2>
                 <div className="offer-thumb-hover d-none d-md-block">
-                  <Image src={blogthumb} alt="Image" />
+                  <Image src="https://media-public.canva.com/gqfLk/MAGDwsgqfLk/1/tl.png" width={100} height={100} alt="Image" />
                 </div>
               </div>
               <div className="offer__cta-single fade-top">
@@ -82,13 +81,13 @@ const HomeOffer = () => {
                   <i className="fa-solid fa-arrow-right"></i>
                 </span>
                 <h2>
-                  <Link href="service-single">
-                    web development
+                  <Link href="">
+                    Social Media Marketing
                     <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                   </Link>
                 </h2>
                 <div className="offer-thumb-hover d-none d-md-block">
-                  <Image src={two} alt="Image" />
+                  <Image src="https://media-public.canva.com/PcbAg/MAFO4_PcbAg/1/tl.png" width={100} height={0} alt="Image" />
                 </div>
               </div>
               <div className="offer__cta-single fade-top">
@@ -97,13 +96,13 @@ const HomeOffer = () => {
                   <i className="fa-solid fa-arrow-right"></i>
                 </span>
                 <h2>
-                  <Link href="service-single">
-                    digital marketing
+                  <Link href="">
+                    Branding & Creative
                     <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                   </Link>
                 </h2>
                 <div className="offer-thumb-hover d-none d-md-block">
-                  <Image src={three} alt="Image" />
+                  <Image src="https://media-public.canva.com/W04as/MAGMeZW04as/1/tl.png" height={100} width={100} alt="Image" />
                 </div>
               </div>
               <div className="offer__cta-single fade-top">
@@ -112,20 +111,20 @@ const HomeOffer = () => {
                   <i className="fa-solid fa-arrow-right"></i>
                 </span>
                 <h2>
-                  <Link href="service-single">
-                    product design
+                  <Link href="">
+                   Influencer Marketing
                     <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                   </Link>
                 </h2>
                 <div className="offer-thumb-hover d-none d-md-block">
-                  <Image src={blogthumb} alt="Image" />
+                  <Image src="https://media-public.canva.com/uzt7o/MAGMeQuzt7o/1/tl.png" height={100} width={100} alt="Image" />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Image src={star} alt="Image" className="star" />
+        {/* <Image src="https://media-public.canva.com/MADGv-Z47yI/7/thumbnail_large.jpg" alt="Image" className="star"  width={100} height={100}/> */}
       <div className="lines d-none d-lg-flex">
         <div className="line"></div>
         <div className="line"></div>

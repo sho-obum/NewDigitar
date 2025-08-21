@@ -316,6 +316,13 @@
         }
       }
     }
+    .navLogo{
+      width: 100px;
+
+    }
+    .logo img{
+      width: 200px !important;
+    }
 
     .navbar__item--has-children {
       .navbar__dropdown-label {
@@ -527,12 +534,27 @@
     gap: 120px;
   }
 
+  .navbar__logo__img{
+    width: 10px !important;
+
+  }
+
   .open-offcanvas-nav {
     font-size: 30px;
     &:hover {
       color: var(--primary-color);
     }
   }
+}
+
+.logo-wrapper {
+  position: relative;
+  width: 120px;   /* Adjust width */
+  height: 60px;   /* Consistent height for all logos */
+}
+
+.sponsor__slider-item img {
+  object-fit: contain !important;
 }
 
 /* ==== 

@@ -3,12 +3,15 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/swiper-bundle.css";
-import one from "public/images/sponsor/one.png";
-import two from "public/images/sponsor/two.png";
-import three from "public/images/sponsor/three.png";
-import four from "public/images/sponsor/four.png";
-import five from "public/images/sponsor/five.png";
-import six from "public/images/sponsor/six.png";
+
+// Logos
+import casino from "public/images/logos/888casino.svg";
+import acko from "public/images/logos/acko.svg";
+import ali from "public/images/logos/aliexpress.svg";
+import alliance from "public/images/logos/alliancebank.svg";
+import amazon from "public/images/logos/bbva.svg";
+import banzo from "public/images/logos/banzo_azteca.svg";
+import bbva from "public/images/logos/amazon_music.svg";
 
 const HomeSponsor = () => {
   return (
@@ -48,101 +51,24 @@ const HomeSponsor = () => {
                 }}
                 className="sponsor__slider"
               >
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={one} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={two} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={three} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={four} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={five} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={six} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={one} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={two} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={one} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={two} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={three} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={four} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={five} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={six} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={three} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={four} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={five} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={six} alt="Image" />
-                  </div>
-                </SwiperSlide>
+                {[casino, acko, ali, alliance, amazon, banzo, bbva].map(
+                  (logo, i) => (
+                    <SwiperSlide key={i}>
+                      <div className="sponsor__slider-item flex items-center justify-center">
+                        <div className="logo-wrapper">
+                          <Image src={logo} alt="logo" fill className="object-contain" />
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  )
+                )}
               </Swiper>
             </div>
           </div>
         </div>
       </div>
+
+      {/* background decorative lines */}
       <div className="lines d-none d-lg-flex">
         <div className="line"></div>
         <div className="line"></div>

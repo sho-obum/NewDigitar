@@ -1,3 +1,4 @@
+"use client"
 import React, { Suspense } from "react";
 import type { AppProps } from "next/app";
 
@@ -11,7 +12,9 @@ import "public/icons/font-awesome/css/all.css";
 import "public/icons/glyphter/css/xpovio.css";
 
 // main scss
+
 import "@/styles/main.scss";
+// import "@/styles/global.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

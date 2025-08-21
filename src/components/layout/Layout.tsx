@@ -1,3 +1,5 @@
+"use client";
+
 import React, { Fragment, useState, useEffect } from "react";
 import Head from "next/head";
 import gsap from "gsap";
@@ -36,7 +38,6 @@ const Layout = ({
   handleMouseLeaveTitle,
   video,
 }: LayoutProps) => {
-
   // tilt effect
   useEffect(() => {
     const tiltElements = document.querySelectorAll(".topy-tilt");
@@ -175,12 +176,12 @@ const Layout = ({
       <Head>
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
+        {/* <link
           rel="shortcut icon"
           href="/images/favicon.png"
           type="image/x-icon"
-        />
-        <title>Xpovio | Digital Agency Creative Portfolio Template</title>
+        /> */}
+        <title>Digitar Media | 360 Performance Digital Marketing</title>
         <meta name="keywords" content="creative, agency, portfolio" />
         <meta
           name="description"
@@ -195,41 +196,10 @@ const Layout = ({
             setOpenNav={setOpenNav}
           />
         )}
-        {header === 2 && (
-          <HeaderTwo
-            openNav={openNav}
-            handleNav={handleNav}
-            setOpenNav={setOpenNav}
-          />
-        )}
-        {header === 3 && (
-          <HeaderThree
-            openNav={openNav}
-            handleNav={handleNav}
-            setOpenNav={setOpenNav}
-          />
-        )}
-        {header === 4 && (
-          <HeaderFour
-            openNav={openNav}
-            handleNav={handleNav}
-            setOpenNav={setOpenNav}
-          />
-        )}
-        {header === 5 && (
-          <HeaderFive
-            openNav={openNav}
-            handleNav={handleNav}
-            setOpenNav={setOpenNav}
-          />
-        )}
+
         <main>{children}</main>
         {footer === 1 && <Footer />}
-        {footer === 2 && <FooterTwo />}
-        {footer === 3 && <FooterThree />}
-        {footer === 4 && <FooterFour />}
-        {footer === 5 && <FooterFive />}
-        {video ? <VideoModal /> : null}
+
         <ScrollProgressBtn />
         <CustomCursor
           onTitleMouseEnter={handleMouseEnterTitle}

@@ -608,8 +608,8 @@
     }
 
     .offer-thumb-hover {
-      width: 200px;
-      height: 270px;
+      width: 300px;
+      height: auto;
       position: absolute;
       top: 50%;
       transform: translateY(-50%) rotate(45deg);
@@ -1362,6 +1362,7 @@
     background-position: center center;
   }
 
+  
   .footer__single-form {
     max-width: 650px;
     margin-left: auto;

@@ -13,10 +13,10 @@ const Home = () => {
   return (
     <Layout header={1} footer={1} video={true}>
       <HomeOneBanner />
-      <Agency />
-      <PortfolioText />
       <HomeOffer />
-      <HomeTestimonial />
+      {/* <Agency /> */}
+      <PortfolioText />
+      {/* <HomeTestimonial /> */}
       <HomeBlog />
       <HomeSponsor />
       <NextPage />

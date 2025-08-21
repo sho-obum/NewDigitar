@@ -98,43 +98,25 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                   </button>
                   <ul className={`navbar__sub-menu ${isSubMenuOpen("home")}`}>
                     <li>
-                      <Link href="/">Creative Agency</Link>
+                      <Link href="/">Item</Link>
                     </li>
                     <li>
-                      <Link href="index-light">Creative Agency Light</Link>
+                      <Link href="/">Item</Link>
                     </li>
                     <li>
-                      <Link href="index-two">Digital Agency</Link>
+                      <Link href="/">Item</Link>
                     </li>
                     <li>
-                      <Link href="index-two-light">Digital Agency Light</Link>
+                      <Link href="/">Item</Link>
                     </li>
                     <li>
-                      <Link href="index-three">It Solution</Link>
+                      <Link href="/">Item</Link>
                     </li>
-                    <li>
-                      <Link href="index-three-light">It Solution Light</Link>
-                    </li>
-                    <li>
-                      <Link href="index-four">Personal Portfolio</Link>
-                    </li>
-                    <li>
-                      <Link href="index-four-light">
-                        Personal Portfolio Light
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="index-five">Interactive Portfolio</Link>
-                    </li>
-                    <li>
-                      <Link href="index-five-light">
-                        Interactive Portfolio Light
-                      </Link>
-                    </li>
+               
                   </ul>
                 </li>
                 <li className="navbar__item nav-fade">
-                  <Link href="about-us">About Us</Link>
+                  <Link href="/">About Us</Link>
                 </li>
                 <li className="navbar__item navbar__item--has-children nav-fade">
                   <button
@@ -150,10 +132,10 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                     className={`navbar__sub-menu ${isSubMenuOpen("services")}`}
                   >
                     <li>
-                      <Link href="our-services">Our Services</Link>
+                      <Link href="/">Our Services</Link>
                     </li>
                     <li>
-                      <Link href="service-single">Service Details</Link>
+                      <Link href="/">Service Details</Link>
                     </li>
                   </ul>
                 </li>
@@ -171,10 +153,10 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                     className={`navbar__sub-menu ${isSubMenuOpen("projects")}`}
                   >
                     <li>
-                      <Link href="our-projects">Our Projects</Link>
+                      <Link href="/">Our Projects</Link>
                     </li>
                     <li>
-                      <Link href="project-single">Project Details</Link>
+                      <Link href="/">Project Details</Link>
                     </li>
                   </ul>
                 </li>
@@ -190,16 +172,16 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                   </button>
                   <ul className={`navbar__sub-menu ${isSubMenuOpen("pages")}`}>
                     <li>
-                      <Link href="faq">FAQ</Link>
+                      <Link href="/">FAQ</Link>
                     </li>
                     <li>
-                      <Link href="404">Error</Link>
+                      <Link href="/">Error</Link>
                     </li>
                     <li>
-                      <Link href="our-story">Our Story</Link>
+                      <Link href="/">Our Story</Link>
                     </li>
                     <li>
-                      <Link href="portfolio">Portfolio</Link>
+                      <Link href="/">Portfolio</Link>
                     </li>
                     <li className="navbar__item navbar__item--has-children">
                       <button
@@ -217,18 +199,18 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                         )}`}
                       >
                         <li>
-                          <Link href="our-teams">Our Teams</Link>
+                          <Link href="/">Our Teams</Link>
                         </li>
                         <li>
-                          <Link href="team-single">Team Details</Link>
+                          <Link href="/">Team Details</Link>
                         </li>
                       </ul>
                     </li>
                     <li>
-                      <Link href="client-feedback">Testimonials</Link>
+                      <Link href="/">Testimonials</Link>
                     </li>
                     <li>
-                      <Link href="contact-us">Contact Us</Link>
+                      <Link href="/">Contact Us</Link>
                     </li>
                   </ul>
                 </li>
@@ -244,10 +226,10 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                   </button>
                   <ul className={`navbar__sub-menu ${isSubMenuOpen("blog")}`}>
                     <li>
-                      <Link href="blog">Blog</Link>
+                      <Link href="/">Blog</Link>
                     </li>
                     <li>
-                      <Link href="blog-single">Blog Details</Link>
+                      <Link href="/">Blog Details</Link>
                     </li>
                   </ul>
                 </li>
@@ -256,7 +238,7 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
           </div>
           <div className="offcanvas-menu__options nav-fade">
             <div className="offcanvas__mobile-options d-flex">
-              <Link href="contact-us" className="btn btn--secondary">
+              <Link href="/" className="btn btn--secondary">
                 Let&apos;s Talk
               </Link>
             </div>
