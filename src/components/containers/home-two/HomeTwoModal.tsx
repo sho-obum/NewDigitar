@@ -55,7 +55,7 @@ const HomeTwoModal = () => {
             className="video-container"
             onClick={(e: any) => e.stopPropagation()}
           >
-            {videoActive && <YoutubeEmbed embedId="fSv6UgCkuTU" />}
+            {videoActive && <YoutubeEmbed embedId="6UgCkuTU" />}
             <button
               aria-label="close video popup"
               className="close-video-popup"

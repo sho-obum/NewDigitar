@@ -53,12 +53,11 @@
     }
   }
   @media (max-width: 575.98px) {
-  .banner__content-inner {
-    padding-left: 0px;
-    font-size: 12px !important;
+    .banner__content-inner {
+      padding-left: 0px;
+      font-size: 12px !important;
+    }
   }
-}
-
 
   .banner-one-thumb {
     position: absolute;
@@ -425,7 +424,8 @@
     @keyframes fir {
       0% {
         width: 0%;
-      } 100% {
+      }
+      100% {
         width: 100%;
       }
     }
@@ -668,7 +668,7 @@
 
 //  breadcurmb styles
 .cmn-banner {
-  padding: 210px 0px 130px;
+  padding: 50px 0px 130px;
   background-color: var(--black);
 
   .title {
@@ -731,6 +731,108 @@
     font-weight: 600;
   }
 }
+
+/* Ensure Swiper slides don't force odd heights */
+.service-t__slider .swiper-slide {
+  height: auto;
+}
+
+/* Card base */
+.service-t-single-wrapper .service-t__slider-single {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  // border-radius: 16px;
+  padding: 20px;
+  background: transparent; /* keep your theme bg; change if needed */
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.service-t-single-wrapper .service-t__slider-single:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 122, 0, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading */
+.service-t-single-wrapper .service-t__slider-single h4 {
+  margin: 0 0 8px 0;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-size: clamp(18px, 2.2vw, 22px);
+}
+
+/* Two-line inner description */
+.service-card__desc {
+  margin-bottom: 14px;
+}
+
+.service-card__desc p {
+  margin: 0 0 6px 0;
+  font-size: 14px;
+  line-height: 1.55;
+  opacity: 0.85; /* soften */
+}
+
+/* Metrics grid: 2 columns, 4 items */
+.service-card__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px; /* row x column */
+  margin-top: 6px;
+}
+
+.service-card__metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* left align */
+}
+
+/* Big number */
+.service-card__metric .value {
+  font-size: clamp(20px, 4.5vw, 28px);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #ff7a00; /* brand orange; change if you need different per card */
+  letter-spacing: -0.01em;
+}
+
+/* Small label under number */
+.service-card__metric .label {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.2;
+  opacity: 0.7;
+}
+
+/* CTA spacing */
+.service-t-single-wrapper .service-t__slider-single .cta {
+  margin-top: 14px;
+}
+
+/* Optional: adjust spacing on larger screens */
+@media (min-width: 992px) {
+  .service-t-single-wrapper .service-t__slider-single {
+    padding: 24px;
+  }
+
+  .service-card__metrics {
+    gap: 18px 28px;
+  }
+}
+
+/* Optional: if you want different accent colors per card by index */
+.service-t-single-wrapper:nth-child(1) .service-card__metric .value {
+  color: #ff7a00;
+} /* social marketing */
+.service-t-single-wrapper:nth-child(2) .service-card__metric .value {
+  color: #4caf50;
+} /* performance */
+.service-t-single-wrapper:nth-child(3) .service-card__metric .value {
+  color: #9c27b0;
+} /* branding */
+.service-t-single-wrapper:nth-child(4) .service-card__metric .value {
+  color: #03a9f4;
+} /* influencer */
 
 /* ==== 
  --------- (4.02) banner styles end ---------

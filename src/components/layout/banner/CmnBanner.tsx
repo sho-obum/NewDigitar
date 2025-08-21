@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "public/images/logo.png"; // 👈 make sure this exists in your public/images
 
 interface BannerProps {
   title?: any;
@@ -13,11 +15,26 @@ const CmnBanner = ({ title, navigation, parent, parentLink }: BannerProps) => {
     <>
       <section
         className="cmn-banner bg-img"
-        style={{ backgroundImage: "url('/images/banner/cmn-banner-bg.png')" }}
+        style={{
+          backgroundImage: "url('/images/banner/cmn-banner-bg.png')",
+          height: "400px",
+        }}
       >
-        <div className="container">
-          <div className="row gaper align-items-center">
+        <div className="container position-relative h-100">
+          {/* Logo Top Right */}
+            <Image
+              src={logo}
+              alt="Logo"
+              className="img-fluid service_logo"
+              width={220}
+              height={40}
+              priority
+
+            />
+
+          <div className="row gaper align-items-center h-100">
             <div className="col-12 col-lg-5 col-xl-7">
+              
               <div className="text-center text-lg-start">
                 <h2 className="title title-anim">{title}</h2>
                 <nav aria-label="breadcrumb">
@@ -43,9 +60,7 @@ const CmnBanner = ({ title, navigation, parent, parentLink }: BannerProps) => {
             <div className="col-12 col-lg-7 col-xl-5">
               <div className="text-center text-lg-start">
                 <p className="primary-text">
-                  We&apos;re an UK-based top-notch design agency committed to
-                  partnering with good companies and hiring the right people for
-                  the right roles.
+                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos magni consequuntur ipsa, pariatur illo saepe suscipit? Nemo numquam fuga corrupti blanditiis quaerat odit.
                 </p>
               </div>
             </div>

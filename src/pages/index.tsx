@@ -14,12 +14,12 @@ const Home = () => {
     <Layout header={1} footer={1} video={true}>
       <HomeOneBanner />
       <HomeOffer />
-      {/* <Agency /> */}
-      <PortfolioText />
-      {/* <HomeTestimonial /> */}
       <HomeBlog />
+      <PortfolioText />
       <HomeSponsor />
-      <NextPage />
+      <Agency />  
+      {/* <NextPage /> */}
+      {/* <HomeTestimonial /> */}
     </Layout>
   );
 };

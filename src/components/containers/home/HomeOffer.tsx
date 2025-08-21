@@ -52,7 +52,7 @@ const HomeOffer = () => {
                 </p>
               </div>
               <div className="section__content-cta">
-                <Link href="#" className="btn btn--secondary">
+                <Link href="/our-services" className="btn btn--secondary">
                   EXPLORE OUR SERVICES
                 </Link>
               </div>
@@ -66,65 +66,88 @@ const HomeOffer = () => {
                   <i className="fa-solid fa-arrow-right"></i>
                 </span>
                 <h2>
-                  <Link href="">
+                  <Link href="/services/performance">
                     Performance Marketing
                     <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                   </Link>
                 </h2>
                 <div className="offer-thumb-hover d-none d-md-block">
-                  <Image src="https://media-public.canva.com/gqfLk/MAGDwsgqfLk/1/tl.png" width={100} height={100} alt="Image" />
+                  <Image
+                    src="https://media-public.canva.com/gqfLk/MAGDwsgqfLk/1/tl.png"
+                    width={100}
+                    height={100}
+                    alt="Performance Marketing"
+                  />
                 </div>
               </div>
+
               <div className="offer__cta-single fade-top">
                 <span className="sub-title">
                   02
                   <i className="fa-solid fa-arrow-right"></i>
                 </span>
                 <h2>
-                  <Link href="">
+                  <Link href="/services/social">
                     Social Media Marketing
                     <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                   </Link>
                 </h2>
                 <div className="offer-thumb-hover d-none d-md-block">
-                  <Image src="https://media-public.canva.com/PcbAg/MAFO4_PcbAg/1/tl.png" width={100} height={0} alt="Image" />
+                  <Image
+                    src="https://media-public.canva.com/PcbAg/MAFO4_PcbAg/1/tl.png"
+                    width={100}
+                    height={100}
+                    alt="Social Media Marketing"
+                  />
                 </div>
               </div>
+
               <div className="offer__cta-single fade-top">
                 <span className="sub-title">
                   03
                   <i className="fa-solid fa-arrow-right"></i>
                 </span>
                 <h2>
-                  <Link href="">
+                  <Link href="/services/branding">
                     Branding & Creative
                     <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                   </Link>
                 </h2>
                 <div className="offer-thumb-hover d-none d-md-block">
-                  <Image src="https://media-public.canva.com/W04as/MAGMeZW04as/1/tl.png" height={100} width={100} alt="Image" />
+                  <Image
+                    src="https://media-public.canva.com/W04as/MAGMeZW04as/1/tl.png"
+                    width={100}
+                    height={100}
+                    alt="Branding & Creative"
+                  />
                 </div>
               </div>
+
               <div className="offer__cta-single fade-top">
                 <span className="sub-title">
                   04
                   <i className="fa-solid fa-arrow-right"></i>
                 </span>
                 <h2>
-                  <Link href="">
-                   Influencer Marketing
+                  <Link href="/services/influencer">
+                    Influencer Marketing
                     <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                   </Link>
                 </h2>
                 <div className="offer-thumb-hover d-none d-md-block">
-                  <Image src="https://media-public.canva.com/uzt7o/MAGMeQuzt7o/1/tl.png" height={100} width={100} alt="Image" />
+                  <Image
+                    src="https://media-public.canva.com/uzt7o/MAGMeQuzt7o/1/tl.png"
+                    width={100}
+                    height={100}
+                    alt="Influencer Marketing"
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-        {/* <Image src="https://media-public.canva.com/MADGv-Z47yI/7/thumbnail_large.jpg" alt="Image" className="star"  width={100} height={100}/> */}
+      <Image src={star} alt="Image" className="star" width={100} height={100} />
       <div className="lines d-none d-lg-flex">
         <div className="line"></div>
         <div className="line"></div>

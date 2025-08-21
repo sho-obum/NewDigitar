@@ -220,7 +220,7 @@ const HomeOneBanner = () => {
             className="video-container"
             onClick={(e: any) => e.stopPropagation()}
           >
-            {videoActive && <YoutubeEmbed embedId="fSCkuTU" />}
+            {videoActive && <YoutubeEmbed embedId="fSv6UgCkuTU" />}
             <button
               aria-label="close video popup"
               className="close-video-popup"
