@@ -4,151 +4,179 @@ import Link from "next/link";
 import phone from "public/images/phone.png";
 import mail from "public/images/mail.png";
 import location from "public/images/location.png";
-import time from "public/images/time.png";
 
 const ContactMain = () => {
   return (
     <section className="section contact-m fade-wrapper">
       <div className="container">
         <div className="row gaper">
-          <div className="col-12 col-sm-6 col-xl-3">
-            <div className="contact-m__single topy-tilt fade-top">
-              <div className="thumb">
-                <Image src={phone} alt="Image" />
-              </div>
-              <div className="content">
-                <h4>Phone & Fax</h4>
-                <p>
-                  <Link href="tel:197-90-56-780">Mobile : +197-90-56-780</Link>
-                </p>
-                <p>
-                  <Link href="tel:197-90-56-780">Fax : +44-208-1234567</Link>
-                </p>
-              </div>
+          {/* LEFT: Map */}
+          <div className="col-12 col-lg-6 order-1 order-lg-1">
+            <div className="contact__map fade-top h-100">
+              {/* India first by default (you can swap the src below to USA if needed) */}
+              <iframe
+                title="DigitAR Media - India Office Map"
+                src={
+                  "https://www.google.com/maps?q=1st%20Floor,%20C-87-88,%20Ramesh%20Nagar,%20Delhi%20110015,%20India&output=embed"
+                }
+                width="100%"
+                height="600"
+                style={{ border: "0" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
-          <div className="col-12 col-sm-6 col-xl-3">
-            <div className="contact-m__single topy-tilt fade-top">
-              <div className="thumb">
-                <Image src={mail} alt="Image" />
+
+          {/* RIGHT: Four boxes (mobile-first; India-first info) */}
+          <div className="col-12 col-lg-6 order-2 order-lg-2">
+            <div className="row gaper">
+              {/* Box 1: India Office */}
+              <div className="col-12 col-sm-6">
+                <div className="contact-m__single topy-tilt fade-top h-100">
+                  <div className="thumb">
+                    <Image src={location} alt="India Office" />
+                  </div>
+                  <div className="content">
+                    <h4>India Office</h4>
+                    <p>
+                      1st Floor, C-87-88
+                      <br />
+                      Ramesh Nagar, Delhi-110015, India
+                    </p>
+                    <p className="mb-1">
+                      <Image
+                        src={mail}
+                        alt=""
+                        width={18}
+                        height={18}
+                        aria-hidden
+                      />{" "}
+                      <Link href="mailto:info@digitarmedia.com">
+                        info@digitarmedia.com
+                      </Link>
+                    </p>
+                    <p className="mb-0">
+                      <Image
+                        src={phone}
+                        alt=""
+                        width={18}
+                        height={18}
+                        aria-hidden
+                      />{" "}
+                      <Link href="tel:+919811457480">+91 9811 457 480</Link>
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="content">
-                <h4>Mail Address</h4>
-                <p>
-                  <Link href="mailto:info.company@gmail.com">
-                    Info.company@gmail.com
-                  </Link>
-                </p>
-                <p>
-                  <Link href="mailto:info.company@gmail.com">
-                    Info.company@yahoo.com
-                  </Link>
-                </p>
+
+              {/* Box 2: USA Office */}
+              <div className="col-12 col-sm-6">
+                <div className="contact-m__single topy-tilt fade-top h-100">
+                  <div className="thumb">
+                    <Image src={location} alt="USA Office" />
+                  </div>
+                  <div className="content">
+                    <h4>USA Office</h4>
+                    <p>
+                      30 N Gould St Ste R
+                      <br />
+                      Sheridan, Wyoming 82801, USA
+                    </p>
+                    <p className="mb-1">
+                      <Image
+                        src={mail}
+                        alt=""
+                        width={18}
+                        height={18}
+                        aria-hidden
+                      />{" "}
+                      <Link href="mailto:media@digitarmedia.com">
+                        media@digitarmedia.com
+                      </Link>
+                    </p>
+                    <p className="mb-0">
+                      <Image
+                        src={phone}
+                        alt=""
+                        width={18}
+                        height={18}
+                        aria-hidden
+                      />{" "}
+                      <Link href="tel:+17632605221">+1 763 260 5221</Link>
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="col-12 col-sm-6 col-xl-3">
-            <div className="contact-m__single topy-tilt fade-top">
-              <div className="thumb">
-                <Image src={location} alt="Image" />
+
+              {/* Box 3: Mail Addresses (as requested) */}
+              <div className="col-12 col-sm-6">
+                <div className="contact-m__single topy-tilt fade-top h-100">
+                  <div className="thumb">
+                    <Image src={mail} alt="Mail Address" />
+                  </div>
+                  <div className="content">
+                    <h4>Mail Address</h4>
+                    <p className="mb-1">
+                      <Link href="mailto:info@digitarmedia.com">
+                        info@digitarmedia.com
+                      </Link>
+                    </p>
+                    <p className="mb-0">
+                      <Link href="mailto:support@digitarmedia.com">
+                        support@digitarmedia.com
+                      </Link>
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="content">
-                <h4>Our Location</h4>
-                <p>
-                  <Link
-                    href="https://www.google.com/maps/d/viewer?mid=1UZ57Drfs3SGrTgh6mrYjQktu6uY&hl=en_US&ll=18.672105000000013%2C105.68673800000003&z=17"
-                    target="_blank"
-                  >
-                    85 Ketch Harbour RoadBensalem, PA 19020
-                  </Link>
-                </p>
+
+              {/* Box 4: Call Us (India first on mobile, then US) */}
+              <div className="col-12 col-sm-6">
+                <div className="contact-m__single topy-tilt fade-top h-100">
+                  <div className="thumb">
+                    <Image src={phone} alt="Phone" />
+                  </div>
+                  <div className="content">
+                    <h4>Call Us</h4>
+                    <p className="mb-1">
+                      India:{" "}
+                      <Link href="tel:+919811457480">+91 9811 457 480</Link>
+                    </p>
+                    <p className="mb-0">
+                      USA: <Link href="tel:+17632605221">+1 763 260 5221</Link>
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="col-12 col-sm-6 col-xl-3">
-            <div className="contact-m__single topy-tilt fade-top">
-              <div className="thumb">
-                <Image src={time} alt="Image" />
-              </div>
-              <div className="content">
-                <h4>Office Hour</h4>
-                <p>Sun - Thu 09 am - 06pm</p>
-                <p>Fri - Sat 4 pm - 10pm</p>
-              </div>
+              {/* End 4 boxes */}
             </div>
           </div>
         </div>
-        <div className="row">
+
+        {/* OPTIONAL: Second map block for USA (commented). 
+            If you want a second map below, uncomment below: */}
+        {/*
+        <div className="row gaper mt-4">
           <div className="col-12">
-            <div className="map-wrapper">
-              <div className="row gaper">
-                <div className="col-12 col-lg-6">
-                  <div className="contact__map fade-top">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20342.411046372905!2d-74.16638039276373!3d40.719832743885284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1649562691355!5m2!1sen!2sbd"
-                      width="100"
-                      height="800"
-                      style={{ border: "0px" }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="contact-main__form  fade-top">
-                    <h3>Leave A Message</h3>
-                    <form
-                      action="#"
-                      method="post"
-                      className="section__content-cta"
-                    >
-                      <div className="group-wrapper">
-                        <div className="group-input ">
-                          <input
-                            type="text"
-                            name="contact-name"
-                            id="contactName"
-                            placeholder="Name"
-                          />
-                        </div>
-                        <div className="group-input ">
-                          <input
-                            type="email"
-                            name="contact-email"
-                            id="contactEmail"
-                            placeholder="Email"
-                          />
-                        </div>
-                      </div>
-                      <div className="group-input drt">
-                        <select className="subject">
-                          <option data-display="Subject">Subject</option>
-                          <option value="1">Account</option>
-                          <option value="2">Service</option>
-                          <option value="3">Pricing</option>
-                          <option value="4">Support</option>
-                        </select>
-                      </div>
-                      <div className="group-input ">
-                        <textarea
-                          name="contact-message"
-                          id="contactMessage"
-                          placeholder="Message"
-                        ></textarea>
-                      </div>
-                      <div className="form-cta justify-content-start">
-                        <button type="submit" className="btn btn--primary">
-                          Send Message
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
+            <div className="contact__map fade-top">
+              <iframe
+                title="DigitAR Media - USA Office Map"
+                src={
+                  "https://www.google.com/maps?q=30%20N%20Gould%20St%20Ste%20R,%20Sheridan,%20Wyoming%2082801,%20USA&output=embed"
+                }
+                width="100%"
+                height="450"
+                style={{ border: "0" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>
+        */}
       </div>
     </section>
   );
