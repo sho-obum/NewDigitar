@@ -117,7 +117,7 @@ const HomeSponsorMarquee: React.FC<Props> = ({
           className="section__content-cta text-center"
           style={{ marginTop: 28 }}
         >
-          <Link href="/partners" className="btn btn--secondary">
+          <Link href="" className="btn btn--secondary">
             BECOME A PARTNER
           </Link>
         </div>
