@@ -3,35 +3,35 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/swiper-bundle.css";
-import { services, ServiceItem } from "@/data/service"; // 👈 NEW
+import { servicesIndex, type ServiceItem, type KPI } from "@/data/services";
 
 const Card = ({ item }: { item: ServiceItem }) => (
   <div className="service-t-single-wrapper">
     <div className="service-t__slider-single">
       <div className="intro">
         <h4>
-          {/* 👇 changed */}
           <Link href={`/services/${item.id}`}>{item.title}</Link>
         </h4>
       </div>
 
       <div className="service-card__desc">
-        {item.desc.map((d, i) => (
+        {item.desc.map((d: string, i: number) => (
           <p key={i}>{d}</p>
         ))}
       </div>
 
-      <div className="service-card__metrics">
-        {item.metrics.map((m, i) => (
-          <div key={i} className="service-card__metric">
-            <span className="value">{m.value}</span>
-            <span className="label">{m.label}</span>
-          </div>
-        ))}
-      </div>
+      {item.metrics?.length ? (
+        <div className="service-card__metrics">
+          {item.metrics.map((m: KPI, i: number) => (
+            <div key={i} className="service-card__metric">
+              <span className="value">{m.value}</span>
+              <span className="label">{m.label}</span>
+            </div>
+          ))}
+        </div>
+      ) : null}
 
       <div className="cta">
-        {/* 👇 changed */}
         <Link href={`/services/${item.id}`}>
           <i className="icon-arrow-top-right"></i>
           <span>service details</span>
@@ -42,10 +42,11 @@ const Card = ({ item }: { item: ServiceItem }) => (
 );
 
 const ServiceMain = () => {
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesktop, setIsDesktop] = useState<boolean>(false);
 
   useEffect(() => {
-    const check = () => setIsDesktop(typeof window !== "undefined" && window.innerWidth >= 1200);
+    const check = () =>
+      setIsDesktop(typeof window !== "undefined" && window.innerWidth >= 1200);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -58,7 +59,7 @@ const ServiceMain = () => {
           <div className="col-12">
             {isDesktop ? (
               <div className="row g-4">
-                {services.map((item) => (
+                {servicesIndex.map((item: ServiceItem) => (
                   <div className="col-12 col-md-6 col-xl-3" key={item.id}>
                     <Card item={item} />
                   </div>
@@ -71,7 +72,7 @@ const ServiceMain = () => {
                   spaceBetween={30}
                   slidesPerGroup={1}
                   speed={800}
-                  loop={true}
+                  loop
                   centeredSlides={false}
                   modules={[Autoplay, Navigation]}
                   autoplay={{
@@ -88,11 +89,13 @@ const ServiceMain = () => {
                     768: { slidesPerView: 2 },
                   }}
                 >
-                  {services.concat(services).map((item, idx) => (
-                    <SwiperSlide key={`${item.id}-${idx}`}>
-                      <Card item={item} />
-                    </SwiperSlide>
-                  ))}
+                  {[...servicesIndex, ...servicesIndex].map(
+                    (item: ServiceItem, idx: number) => (
+                      <SwiperSlide key={`${item.id}-${idx}`}>
+                        <Card item={item} />
+                      </SwiperSlide>
+                    )
+                  )}
                 </Swiper>
               </div>
             )}
