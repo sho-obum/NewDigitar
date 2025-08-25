@@ -105,6 +105,9 @@ const HomeSponsorMarquee: React.FC<Props> = ({
                     alt={logo.alt}
                     fill
                     className="logo-img"
+                    style={{
+                      objectFit:"contain"
+                    }}
                   />
                 </div>
               </li>

@@ -94,7 +94,6 @@ export const servicesIndex: ServiceItem[] = [
   },
 ];
 
-// ---------- Per-service configs (extend as you go) ----------
 export const servicePages: Record<string, ServiceConfig> = {
   performance: {
     id: "performance",

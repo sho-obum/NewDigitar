@@ -22,12 +22,12 @@ i {
   margin-top: -16px;
   width: 32px;
   height: 32px;
-  border: 1px solid white;
+  border: 1px solid orange;
   box-sizing: border-box;
   z-index: 10000000;
   opacity: 1;
   transition: all 0.2s ease-out;
-  mix-blend-mode: difference;
+  // mix-blend-mode: difference;
 
   &.cursor-hover {
     opacity: 0;
@@ -57,14 +57,14 @@ i {
   width: 10px;
   height: 10px;
   z-index: 50;
-  background-color: white;
+  background-color: orange;
   opacity: 1;
   transition: width 0.3s ease-in-out, height 0.3s ease-in-out,
     margin 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  mix-blend-mode: difference;
+  // mix-blend-mode: difference;
 
   span {
-    color: white;
+    color: orange;
     line-height: 60px;
     opacity: 0;
     text-transform: uppercase;
@@ -73,22 +73,20 @@ i {
   }
 
   &.cursor-hover {
-    margin-left: -15px;
-    margin-top: -15px;
+    
     width: 30px;
     height: 30px;
-    background-color: white;
+    background-color: orange;
     opacity: 0;
   }
 
   &.cursor-big {
-    width: 160px;
-    height: 160px;
-    margin-left: -80px;
-    margin-top: -80px;
-    opacity: 1;
+    width: 40px;
+    height: 40px;
+    opacity: .6;
   }
 }
+
 
 .unset {
   max-width: unset;

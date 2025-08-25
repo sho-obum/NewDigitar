@@ -7,7 +7,7 @@ import banneronethumb from "public/images/banner/banner-one-thumb.png";
 import star from "public/images/star.png";
 import videoframe from "public/images/video-frame.png";
 import YoutubeEmbed from "@/components/youtube/YoutubeEmbed";
-
+import hexagon from "public/images/Digitar_Media_logo_White_Hexagon.png"
 gsap.registerPlugin(ScrollTrigger);
 
 const HomeOneBanner = () => {
@@ -89,10 +89,10 @@ const HomeOneBanner = () => {
             <div className="col-12">
               <div className="banner__content">
                 <h1 className="text-uppercase text-start fw-9 mb-0 title-anim">
-                  We think
-                  <span className="text-stroke"> 360</span>
+                  We are
+                  <span className="text-stroke"> creative </span>
                   <span className="interval">
-                    <i className="icon-arrow-top-right"></i> We build 360
+                    <i className="icon-arrow-top-right"></i> {" "}Digital Agency
                   </span>
                 </h1>
 
@@ -159,7 +159,7 @@ const HomeOneBanner = () => {
         </div>
 
         <Image
-          src={banneronethumb}
+          src={hexagon}
           alt="Image"
           className="banner-one-thumb d-none d-sm-block g-ban-one"
         />
