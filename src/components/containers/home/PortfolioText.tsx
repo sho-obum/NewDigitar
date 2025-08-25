@@ -11,100 +11,99 @@ const PortfolioText = () => {
     <section className="section portfolio pb-0 fade-wrapper position-relative">
       <div className="portfolio__text-slider-w">
         <Swiper
-  slidesPerView="auto"
-  spaceBetween={40}
-  speed={5000}
-  loop={true}
-  centeredSlides={true}
-  modules={[Autoplay]}
-  autoplay={{
-    delay: 1,
-    disableOnInteraction: false,
-    pauseOnMouseEnter: true,
-    reverseDirection: false,
-  }}
-  className="portfolio__text-slider"
->
-  <SwiperSlide>
-    <div className="portfolio__text-slider-single">
-      <h2 className="h1">
-        <Link href="/services/seo">
-          Clicks that Stick
-          <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-        </Link>
-      </h2>
-    </div>
-  </SwiperSlide>
+          slidesPerView="auto"
+          spaceBetween={40}
+          speed={10000}
+          loop={true}
+          centeredSlides={true}
+          modules={[Autoplay]}
+          autoplay={{
+            delay: 1,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+            reverseDirection: false,
+          }}
+          className="portfolio__text-slider"
+        >
+          <SwiperSlide>
+            <div className="portfolio__text-slider-single">
+              <h2 className="h1">
+                <Link href="/services/seo">
+                  Clicks that Stick
+                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
+                </Link>
+              </h2>
+            </div>
+          </SwiperSlide>
 
-  <SwiperSlide>
-    <div className="portfolio__text-slider-single">
-      <h2 className="h1 str">
-        <Link href="/services/performance-marketing">
-          Ad-dicted to ROI
-          <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-        </Link>
-      </h2>
-    </div>
-  </SwiperSlide>
+          <SwiperSlide>
+            <div className="portfolio__text-slider-single">
+              <h2 className="h1 str">
+                <Link href="/services/performance-marketing">
+                  Ad-dicted to ROI
+                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
+                </Link>
+              </h2>
+            </div>
+          </SwiperSlide>
 
-  <SwiperSlide>
-    <div className="portfolio__text-slider-single">
-      <h2 className="h1">
-        <Link href="/services/social-media">
-          Post. Engage. Repeat.
-          <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-        </Link>
-      </h2>
-    </div>
-  </SwiperSlide>
+          <SwiperSlide>
+            <div className="portfolio__text-slider-single">
+              <h2 className="h1">
+                <Link href="/services/social-media">
+                  Post. Engage. Repeat.
+                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
+                </Link>
+              </h2>
+            </div>
+          </SwiperSlide>
 
-  <SwiperSlide>
-    <div className="portfolio__text-slider-single">
-      <h2 className="h1 str">
-        <Link href="/services/branding">
-          Brands Without the Bland
-          <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-        </Link>
-      </h2>
-    </div>
-  </SwiperSlide>
+          <SwiperSlide>
+            <div className="portfolio__text-slider-single">
+              <h2 className="h1 str">
+                <Link href="/services/branding">
+                  Brands Without the Bland
+                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
+                </Link>
+              </h2>
+            </div>
+          </SwiperSlide>
 
-  <SwiperSlide>
-    <div className="portfolio__text-slider-single">
-      <h2 className="h1">
-        <Link href="/services/content-marketing">
-          Content That Converts
-          <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-        </Link>
-      </h2>
-    </div>
-  </SwiperSlide>
+          <SwiperSlide>
+            <div className="portfolio__text-slider-single">
+              <h2 className="h1">
+                <Link href="/services/content-marketing">
+                  Content That Converts
+                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
+                </Link>
+              </h2>
+            </div>
+          </SwiperSlide>
 
-  <SwiperSlide>
-    <div className="portfolio__text-slider-single">
-      <h2 className="h1 str">
-        <Link href="/services/design-dev">
-          Pixel Perfect. Profit Driven.
-          <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-        </Link>
-      </h2>
-    </div>
-  </SwiperSlide>
+          <SwiperSlide>
+            <div className="portfolio__text-slider-single">
+              <h2 className="h1 str">
+                <Link href="/services/design-dev">
+                  Pixel Perfect. Profit Driven.
+                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
+                </Link>
+              </h2>
+            </div>
+          </SwiperSlide>
 
-  <SwiperSlide>
-    <div className="portfolio__text-slider-single">
-      <h2 className="h1">
-        <Link href="/portfolio">
-          Growth You Can Scroll
-          <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-        </Link>
-      </h2>
-    </div>
-  </SwiperSlide>
-</Swiper>
-
+          <SwiperSlide>
+            <div className="portfolio__text-slider-single">
+              <h2 className="h1">
+                <Link href="/portfolio">
+                  Growth You Can Scroll
+                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
+                </Link>
+              </h2>
+            </div>
+          </SwiperSlide>
+        </Swiper>
       </div>
-      
+
       <div className="lines d-none d-lg-flex">
         <div className="line"></div>
         <div className="line"></div>

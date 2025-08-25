@@ -6,11 +6,23 @@ import star from "public/images/offer/star.png";
 
 type Key = "performance" | "social" | "branding" | "influencer" | null;
 
-type Metrics = Array<{ label: string; value: string; sub?: string; progress?: number }>;
+type Metrics = Array<{
+  label: string;
+  value: string;
+  sub?: string;
+  progress?: number;
+}>;
 
 const previews: Record<
   Exclude<Key, null>,
-  { title: string; href: string; badges: string[]; level: string; tagline: string; metrics: Metrics }
+  {
+    title: string;
+    href: string;
+    badges: string[];
+    level: string;
+    tagline: string;
+    metrics: Metrics;
+  }
 > = {
   performance: {
     title: "Performance Marketing",
@@ -19,10 +31,15 @@ const previews: Record<
     level: "Lvl 8 Optimizer",
     tagline: "Scale spend with profitable efficiency.",
     metrics: [
-      { label: "ROAS", value: "4.7×", sub: "Last 30d", progress: 82 },
-      { label: "CPO", value: "₹142", sub: "↓ 26%", progress: 74 },
-      { label: "CTR", value: "3.9%", sub: "+0.8pp", progress: 68 },
-      { label: "CVR", value: "6.1%", sub: "+1.4pp", progress: 71 },
+      {
+        label: "Monthly Conversion",
+        value: "4.7×",
+        sub: "Last 30d",
+        progress: 82,
+      },
+      { label: "LTV Users", value: "₹142", sub: "↓ 26%", progress: 74 },
+      { label: "Revenue Growth", value: "6.1%", sub: "+1.4pp", progress: 71 },
+      { label: "Conversion Rate", value: "3.9%", sub: "+0.8pp", progress: 68 },
     ],
   },
   social: {
@@ -32,10 +49,10 @@ const previews: Record<
     level: "Lvl 7 Storyteller",
     tagline: "Turn scrolls into saves and shares.",
     metrics: [
-      { label: "Followers", value: "1.2M", sub: "+18k/mo", progress: 76 },
-      { label: "Engagement", value: "7.4%", sub: "Median", progress: 63 },
-      { label: "Saves", value: "28k", sub: "30d", progress: 58 },
-      { label: "Reach", value: "24.5M", sub: "30d", progress: 81 },
+      { label: "Enagegment Rate", value: "1.2M", sub: "+18k/mo", progress: 76 },
+      { label: "CTR", value: "7.4%", sub: "Median", progress: 63 },
+      { label: "CPE", value: "28k", sub: "30d", progress: 58 },
+      { label: "ROAS", value: "24.5M", sub: "30d", progress: 81 },
     ],
   },
   branding: {
@@ -47,8 +64,8 @@ const previews: Record<
     metrics: [
       { label: "Brand Lift", value: "+23%", sub: "Aided", progress: 72 },
       { label: "Recall", value: "41%", sub: "Campaign", progress: 67 },
-      { label: "Concepts", value: "36", sub: "This Qtr", progress: 54 },
-      { label: "Asset Kit", value: "120+", sub: "Deliverables", progress: 88 },
+      { label: "Average Sesstion", value: "36", sub: "Duration", progress: 54 },
+      { label: "Ads Viewability", value: "120+", sub: "Deliverables", progress: 88 },
     ],
   },
   influencer: {
@@ -59,9 +76,9 @@ const previews: Record<
     tagline: "Creators at scale, content that converts.",
     metrics: [
       { label: "Creators", value: "380", sub: "Managed", progress: 79 },
-      { label: "EMV", value: "₹3.8Cr", sub: "30d", progress: 61 },
-      { label: "CPA", value: "₹118", sub: "↓ 19%", progress: 73 },
-      { label: "Reuse", value: "64%", sub: "Whitelisted", progress: 69 },
+      { label: "ROIS", value: "₹3.8Cr", sub: "3x", progress: 61 },
+      { label: "Followers Growth", value: "8%", sub: "↓ 19%", progress: 73 },
+      { label: "Average Watch Time", value: "15s", sub: "Whitelisted", progress: 69 },
     ],
   },
 };
@@ -88,13 +105,19 @@ const HomeOffer = () => {
 
   useEffect(() => {
     const onTouch = () => setIsTouch(true);
-    window.addEventListener("touchstart", onTouch, { once: true, passive: true });
+    window.addEventListener("touchstart", onTouch, {
+      once: true,
+      passive: true,
+    });
     return () => window.removeEventListener("touchstart", onTouch);
   }, []);
 
   const scheduleHide = (delay = 220) => {
     if (hideTimer.current) window.clearTimeout(hideTimer.current);
-    hideTimer.current = window.setTimeout(() => setActiveKey(null), delay) as unknown as number;
+    hideTimer.current = window.setTimeout(
+      () => setActiveKey(null),
+      delay
+    ) as unknown as number;
   };
   const cancelHide = () => {
     if (hideTimer.current) window.clearTimeout(hideTimer.current);
@@ -113,7 +136,8 @@ const HomeOffer = () => {
     onBlur: (e: React.FocusEvent<HTMLDivElement>) => {
       if (!e.currentTarget.contains(e.relatedTarget as Node)) scheduleHide(220);
     },
-    onClick: () => isTouch && (activeKey === key ? setActiveKey(null) : showCard(key)),
+    onClick: () =>
+      isTouch && (activeKey === key ? setActiveKey(null) : showCard(key)),
     tabIndex: 0,
     role: "listitem" as const,
     "aria-controls": "offer-pop",
@@ -133,12 +157,16 @@ const HomeOffer = () => {
                     <span className="sub-title">
                       WHAT WE OFFER <i className="fa-solid fa-arrow-right"></i>
                     </span>
-                    <h2 className="title title-anim">Driving Your Business Growth With 360° Marketing</h2>
+                    <h2 className="title title-anim">
+                      Driving Your Business Growth With 360° Marketing
+                    </h2>
                     <div className="paragraph">
                       <p>
-                        We are a performance-driven digital agency delivering measurable results. From precise ad
-                        campaigns to social storytelling, impactful branding, and influencer partnerships, we help
-                        brands grow faster, stronger, and smarter.
+                        We are a performance-driven digital agency delivering
+                        measurable results. From precise ad campaigns to social
+                        storytelling, impactful branding, and influencer
+                        partnerships, we help brands grow faster, stronger, and
+                        smarter.
                       </p>
                     </div>
                     <div className="section__content-cta">
@@ -148,7 +176,12 @@ const HomeOffer = () => {
                     </div>
                   </div>
 
-                  <div className={`offer__left-overlay ${activeKey ? "is-visible" : ""}`} aria-hidden="true" />
+                  <div
+                    className={`offer__left-overlay ${
+                      activeKey ? "is-visible" : ""
+                    }`}
+                    aria-hidden="true"
+                  />
 
                   {/* FRAMER-MOTION POP CARD (fixed position) */}
                   <AnimatePresence>
@@ -165,9 +198,19 @@ const HomeOffer = () => {
                         exit="exit"
                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                       >
-                        <motion.div variants={innerStagger} initial="initial" animate="animate" exit="exit">
-                          <motion.div className="offer__pop-toprow" variants={itemFade}>
-                            <div className="chip chip--level">{previews[activeKey].level}</div>
+                        <motion.div
+                          variants={innerStagger}
+                          initial="initial"
+                          animate="animate"
+                          exit="exit"
+                        >
+                          <motion.div
+                            className="offer__pop-toprow"
+                            variants={itemFade}
+                          >
+                            <div className="chip chip--level">
+                              {previews[activeKey].level}
+                            </div>
                             <div className="chiprow">
                               {previews[activeKey].badges.map((b) => (
                                 <span key={b} className="chip chip--badge">
@@ -184,19 +227,30 @@ const HomeOffer = () => {
                             {previews[activeKey].tagline}
                           </motion.p>
 
-                          <motion.div className="pop-metrics" variants={innerStagger}>
+                          <motion.div
+                            className="pop-metrics"
+                            variants={innerStagger}
+                          >
                             {previews[activeKey].metrics.map((m, i) => (
-                              <motion.div className="metric" key={i} variants={itemFade} 
-                              style={{
-                                lineHeight:"normal"
-                              }}
+                              <motion.div
+                                className="metric"
+                                key={i}
+                                variants={itemFade}
+                                style={{
+                                  lineHeight: "normal",
+                                }}
                               >
                                 <div className="metric-value">{m.value}</div>
                                 <div className="metric-label">{m.label}</div>
-                                {m.sub && <div className="metric-sub">{m.sub}</div>}
+                                {m.sub && (
+                                  <div className="metric-sub">{m.sub}</div>
+                                )}
                                 {typeof m.progress === "number" && (
                                   <div className="meter">
-                                    <div className="meter-fill" style={{ width: `${m.progress}%` }} />
+                                    <div
+                                      className="meter-fill"
+                                      style={{ width: `${m.progress}%` }}
+                                    />
                                   </div>
                                 )}
                               </motion.div>
@@ -223,38 +277,62 @@ const HomeOffer = () => {
                   onMouseLeave={() => !isTouch && scheduleHide()}
                   onMouseEnter={() => cancelHide()}
                 >
-                  <div className="offer__cta-single fade-top" {...attach("performance")}>
-                   
+                  <div
+                    className="offer__cta-single fade-top"
+                    {...attach("performance")}
+                  >
                     <h2>
-                      <Link href="/services/performance">
-                        Performance Marketing <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
+                      <Link href="/services/performance" className="offer__cta-link">
+                        Performance Marketing{" "}
+                        <span className="offer__cta-iconwrap">
+                          <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
+                          <span className="hover-hint">Click </span>
+                        </span>
                       </Link>
                     </h2>
                   </div>
 
-                  <div className="offer__cta-single fade-top" {...attach("social")}>
-                  
+                  <div
+                    className="offer__cta-single fade-top"
+                    {...attach("social")}
+                  >
                     <h2>
-                      <Link href="/services/social">
-                        Social Media Marketing <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
+                      <Link href="/services/social" className="offer__cta-link">
+                        Social Media Marketing{" "}
+                        <span className="offer__cta-iconwrap">
+                          <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
+                          <span className="hover-hint">Click</span>
+                        </span>
                       </Link>
                     </h2>
                   </div>
 
-                  <div className="offer__cta-single fade-top" {...attach("branding")}>
-                 
+                  <div
+                    className="offer__cta-single fade-top"
+                    {...attach("branding")}
+                  >
                     <h2>
-                      <Link href="/services/branding">
-                        Branding &amp; Creative <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
+                      <Link href="/services/branding" className="offer__cta-link">
+                        Branding &amp; Creative{" "}
+                        <span className="offer__cta-iconwrap">
+                          <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
+                          <span className="hover-hint">Click</span>
+                        </span>
                       </Link>
                     </h2>
                   </div>
 
-                  <div className="offer__cta-single fade-top" {...attach("influencer")}>
-                 
+                  <div
+                    className="offer__cta-single fade-top"
+                    {...attach("influencer")}
+                  >
                     <h2>
-                      <Link href="/services/influencer">
-                        Influencer Marketing <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
+                      <Link href="/services/influencer" className="offer__cta-link">
+                        Influencer Marketing{" "}
+                        <span className="offer__cta-iconwrap">
+                          <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
+                          <span className="hover-hint">Click</span>
+                        </span>
                       </Link>
                     </h2>
                   </div>
@@ -263,81 +341,234 @@ const HomeOffer = () => {
             </div>
           </div>
 
-          <Image src={star} alt="Image" className="star" width={100} height={100} />
+          <Image
+            src={star}
+            alt="Image"
+            className="star"
+            width={100}
+            height={100}
+          />
           <div className="lines d-none d-lg-flex">
-            <div className="line"></div><div className="line"></div><div className="line"></div><div className="line"></div><div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
           </div>
         </div>
       </section>
 
       <style jsx global>{`
-        .position-relative { position: relative; }
+        .position-relative {
+          position: relative;
+        }
 
-        .offer__left { position: relative; min-height: 480px; }
-        .offer__left .offer__content { transition: filter 160ms ease, opacity 160ms ease; }
-        .offer__left.is-dimmed .offer__content { filter: blur(2.8px); opacity: 0.6; }
+        .offer__left {
+          position: relative;
+          min-height: 480px;
+        }
+        .offer__left .offer__content {
+          transition: filter 160ms ease, opacity 160ms ease;
+        }
+        .offer__left.is-dimmed .offer__content {
+          filter: blur(2.8px);
+          opacity: 0.6;
+        }
 
         .offer__left-overlay {
-          position: absolute; inset: 0;
-          background: radial-gradient(120% 120% at 20% 10%, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.25) 85%);
-          opacity: 0; pointer-events: none; border-radius: 14px;
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(
+            120% 120% at 20% 10%,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.25) 85%
+          );
+          opacity: 0;
+          pointer-events: none;
+          border-radius: 14px;
           transition: opacity 200ms ease-in-out;
         }
-        .offer__left-overlay.is-visible { opacity: 1; }
+        .offer__left-overlay.is-visible {
+          opacity: 1;
+        }
 
         /* fixed-position card (Framer handles animation) */
         .offer__pop {
           position: absolute;
           top: 40px;
-          left: 0; right: 0;
+          left: 0;
+          right: 0;
           padding: 20px 22px;
           background: #0a0a0a;
           color: #fff;
           border: 2px solid #ff7a00;
           border-radius: 18px;
-          box-shadow:
-            0 0 0 2px rgba(255,122,0,0.35) inset,
-            0 22px 46px rgba(0,0,0,0.5),
-            0 0 36px rgba(255,122,0,0.6);
+          box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.35) inset,
+            0 22px 46px rgba(0, 0, 0, 0.5), 0 0 36px rgba(255, 122, 0, 0.6);
           max-height: 460px;
           overflow: auto;
           z-index: 4;
         }
 
-        .pop-title { margin: 10px 0 6px; font-size: 1.25rem; letter-spacing: 0.2px; font-weight: 700; }
-        .pop-tagline { margin: 0 0 12px; opacity: 0.9; font-size: 0.95rem; }
+        .pop-title {
+          margin: 10px 0 6px;
+          font-size: 1.25rem;
+          letter-spacing: 0.2px;
+          font-weight: 700;
+        }
+        .pop-tagline {
+          margin: 0 0 12px;
+          opacity: 0.9;
+          font-size: 0.95rem;
+        }
 
         .pop-metrics {
-          display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
-          gap: 14px 16px; margin-top: 10px;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 14px 16px;
+          margin-top: 10px;
         }
         .metric {
-          background: linear-gradient(180deg, rgba(255,122,0,0.08), rgba(255,122,0,0.03));
-          border: 1px solid rgba(255,122,0,0.25);
-          border-radius: 14px; padding: 12px 12px 10px;
+          background: linear-gradient(
+            180deg,
+            rgba(255, 122, 0, 0.08),
+            rgba(255, 122, 0, 0.03)
+          );
+          border: 1px solid rgba(255, 122, 0, 0.25);
+          border-radius: 14px;
+          padding: 12px 12px 10px;
         }
-        .metric-value { font-size: 1.8rem; line-height: 1.1; font-weight: 800; letter-spacing: 0.2px; }
-        .metric-label { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; opacity: 0.9; margin-top: 2px; }
-        .metric-sub { font-size: 0.8rem; opacity: 0.75; }
-        .meter { margin-top: 8px; height: 6px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
-        .meter-fill { height: 100%; background: linear-gradient(90deg, #ff7a00, #ffb066); border-radius: 999px; transform: translateZ(0); }
+        .metric-value {
+          font-size: 1.8rem;
+          line-height: 1.1;
+          font-weight: 800;
+          letter-spacing: 0.2px;
+        }
+        .metric-label {
+          font-size: 0.82rem;
+       
+          letter-spacing: 0.8px;
+          opacity: 0.9;
+          margin-top: 2px;
+        }
+        .metric-sub {
+          font-size: 0.8rem;
+          opacity: 0.75;
+        }
+        .meter {
+          margin-top: 8px;
+          height: 6px;
+          background: rgba(255, 255, 255, 0.08);
+          border-radius: 999px;
+          overflow: hidden;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .meter-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #ff7a00, #ffb066);
+          border-radius: 999px;
+          transform: translateZ(0);
+        }
 
-        .chiprow { display: flex; gap: 8px; flex-wrap: wrap; }
-        .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; font-size: 0.78rem; line-height: 1; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); }
-        .chip--badge { border-color: rgba(255,122,0,0.35); background: rgba(255,122,0,0.12); color: #ffd7b0; }
-        .chip--level { background: linear-gradient(90deg, rgba(255,122,0,0.18), rgba(255,122,0,0.05)); border-color: rgba(255,122,0,0.45); color: #ffd7b0; }
-        .offer__pop-toprow { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+        .chiprow {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+        .chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 10px;
+          border-radius: 999px;
+          font-size: 0.78rem;
+          line-height: 1;
+          border: 1px solid rgba(255, 255, 255, 0.16);
+          background: rgba(255, 255, 255, 0.06);
+        }
+        .chip--badge {
+          border-color: rgba(255, 122, 0, 0.35);
+          background: rgba(255, 122, 0, 0.12);
+          color: #ffd7b0;
+        }
+        .chip--level {
+          background: linear-gradient(
+            90deg,
+            rgba(255, 122, 0, 0.18),
+            rgba(255, 122, 0, 0.05)
+          );
+          border-color: rgba(255, 122, 0, 0.45);
+          color: #ffd7b0;
+        }
+        .offer__pop-toprow {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+        }
 
-        .btn--thin { padding: 10px 14px; }
+        .btn--thin {
+          padding: 10px 14px;
+        }
 
-        .offer__cta-single { transition: transform 160ms ease, opacity 160ms ease; cursor: pointer; }
-        .offer__cta-single:hover, .offer__cta-single:focus { transform: translateX(2px); }
+        .offer__cta-single {
+          transition: transform 160ms ease, opacity 160ms ease;
+          cursor: pointer;
+        }
+        .offer__cta-single:hover,
+        .offer__cta-single:focus {
+          transform: translateX(2px);
+        }
+
+        /* right list link + hover hint */
+        .offer__cta-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          position: relative;
+          text-decoration: none;
+        }
+        .offer__cta-iconwrap {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 4px;
+        }
+        .offer__cta-link .hover-hint {
+          display: block;
+          font-size: 0.85rem;
+          line-height: 1.2;
+          color: #ff7a00;
+          opacity: 0;
+          transform: translateY(-6px);
+          transition: opacity 220ms ease, transform 220ms ease;
+          margin-top: 0;
+          letter-spacing: 0.3px;
+        }
+        .offer__cta-single:hover .hover-hint,
+        .offer__cta-single:focus-within .hover-hint {
+          opacity: 1;
+          transform: translateY(0);
+        }
 
         @media (max-width: 991.98px) {
-          .offer__pop { position: relative; top: auto; left: auto; right: auto; margin-top: 12px; max-height: none; }
-          .offer__left.is-dimmed .offer__content { filter: blur(1.5px); }
-          .pop-metrics { grid-template-columns: 1fr 1fr; }
-          .metric-value { font-size: 1.6rem; }
+          .offer__pop {
+            position: relative;
+            top: auto;
+            left: auto;
+            right: auto;
+            margin-top: 12px;
+            max-height: none;
+          }
+          .offer__left.is-dimmed .offer__content {
+            filter: blur(1.5px);
+          }
+          .pop-metrics {
+            grid-template-columns: 1fr 1fr;
+          }
+          .metric-value {
+            font-size: 1.6rem;
+          }
         }
       `}</style>
     </div>
