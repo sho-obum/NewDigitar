@@ -9,17 +9,14 @@ import CtaTwo from "@/components/containers/service-details/CtaTwo";
 import { motion } from "framer-motion";
 
 // Recharts can require window -> load client-side only
-const ResponsiveContainer = dynamic(
-  () => import("recharts").then(m => m.ResponsiveContainer),
-  { ssr: false }
-);
-const BarChart = dynamic(() => import("recharts").then(m => m.BarChart), { ssr: false });
-const Bar = dynamic(() => import("recharts").then(m => m.Bar), { ssr: false });
-const XAxis = dynamic(() => import("recharts").then(m => m.XAxis), { ssr: false });
-const YAxis = dynamic(() => import("recharts").then(m => m.YAxis), { ssr: false });
-const CartesianGrid = dynamic(() => import("recharts").then(m => m.CartesianGrid), { ssr: false });
-const Tooltip = dynamic(() => import("recharts").then(m => m.Tooltip), { ssr: false });
-const Legend = dynamic(() => import("recharts").then(m => m.Legend), { ssr: false });
+const ResponsiveContainer = dynamic(() => import("@/components/charts/RechartsClient").then(m => m.ResponsiveContainer), { ssr: false });
+const BarChart = dynamic(() => import("@/components/charts/RechartsClient").then(m => m.BarChart), { ssr: false });
+const Bar = dynamic(() => import("@/components/charts/RechartsClient").then(m => m.Bar), { ssr: false });
+const XAxis = dynamic(() => import("@/components/charts/RechartsClient").then(m => m.XAxis), { ssr: false });
+const YAxis = dynamic(() => import("@/components/charts/RechartsClient").then(m => m.YAxis), { ssr: false });
+const CartesianGrid = dynamic(() => import("@/components/charts/RechartsClient").then(m => m.CartesianGrid), { ssr: false });
+const Tooltip = dynamic(() => import("@/components/charts/RechartsClient").then(m => m.Tooltip), { ssr: false });
+const Legend = dynamic(() => import("@/components/charts/RechartsClient").then(m => m.Legend), { ssr: false });
 
 const kpis = [
   { value: "3x", label: "Engagement Growth in 60 Days" },

@@ -117,7 +117,7 @@ const HomeOffer = () => {
     tabIndex: 0,
     role: "listitem" as const,
     "aria-controls": "offer-pop",
-    "aria-expanded": activeKey === key ? "true" : "false",
+    "aria-expanded": activeKey === key,
   });
 
   return (
