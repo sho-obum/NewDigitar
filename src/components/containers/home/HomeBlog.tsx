@@ -473,6 +473,33 @@ const HomeProducts = () => {
           position: relative;
           overflow: visible;
         }
+        
+        /* Static fade effect for background lines */
+        .lines {
+          opacity: 0.1;
+          transition: opacity 0.3s ease;
+        }
+        
+        .lines .line {
+          opacity: 0.1;
+          transition: opacity 0.3s ease;
+        }
+        
+        /* When section is in view, lines become fully opaque */
+        .section.fade-wrapper:in-view {
+          --lines-opacity: 1;
+        }
+        
+        .section.fade-wrapper:in-view ~ .lines,
+        .section.fade-wrapper:in-view + .lines {
+          opacity: 1;
+        }
+        
+        .section.fade-wrapper:in-view ~ .lines .line,
+        .section.fade-wrapper:in-view + .lines .line {
+          opacity: 1;
+        }
+        
         .gp-card {
           position: relative;
           display: block;

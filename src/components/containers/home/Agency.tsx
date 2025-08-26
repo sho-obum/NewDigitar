@@ -19,12 +19,12 @@ const Agency = () => {
             playsInline
           />
         </div>
-        {/* <div className="badges" aria-hidden="true">
+        <div className="badges" aria-hidden="true">
           <div className="badge pos-tl">Social Marketing</div>
           <div className="badge pos-tr">Performance Marketing</div>
           <div className="badge pos-bl">Influencer</div>
           <div className="badge pos-br">Branding</div>
-        </div> */}
+        </div>
       </div>
       <style jsx>{`
         .agency-video-section {

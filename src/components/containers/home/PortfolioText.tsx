@@ -8,7 +8,12 @@ import "swiper/swiper-bundle.css";
 const PortfolioText = () => {
   const [hover, setHover] = useState(0);
   return (
-    <section className="section portfolio pb-0 fade-wrapper position-relative">
+    <section
+      className="section portfolio pb-0 fade-wrapper position-relative bg-black "
+      style={{
+        padding: "20px",
+      }}
+    >
       <div className="portfolio__text-slider-w">
         <Swiper
           slidesPerView="auto"
@@ -103,7 +108,6 @@ const PortfolioText = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-
     </section>
   );
 };

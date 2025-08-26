@@ -18,6 +18,23 @@ const HomeProductsStacked = () => {
       willChange: "transform, box-shadow, border-color, opacity",
     });
 
+    // Fade in the whole section when it first enters viewport
+    gsap.fromTo(
+      sectionRef.current,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 0.8,
+        ease: "power1.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none",
+          once: true,
+        },
+      }
+    );
+
     // Stacked scroll animation:
     // - pin the section briefly
     // - slide card2 upward, increase elevation
@@ -53,11 +70,15 @@ const HomeProductsStacked = () => {
     <section
       ref={sectionRef}
       className="section"
-      style={{ paddingTop: 64, paddingBottom: 64 }}
+      style={{ paddingTop: 4, paddingBottom: 4 }}
     >
       <div className="container">
         {/* Header */}
-        <div className="row justify-content-center">
+        <div className="row justify-content-center "
+        style={{
+          paddingTop:"-100px"
+        }}
+        >
           <div className="col-12 col-lg-8">
             <div className="text-center">
               <span
