@@ -7,7 +7,7 @@ import banneronethumb from "public/images/banner/banner-one-thumb.png";
 import star from "public/images/star.png";
 import videoframe from "public/images/video-frame.png";
 import YoutubeEmbed from "@/components/youtube/YoutubeEmbed";
-import hexagon from "public/images/Digitar_Media_logo_White_Hexagon.png"
+import hexagon from "public/images/Digitar_Media_logo_White_Hexagon.png";
 gsap.registerPlugin(ScrollTrigger);
 
 const HomeOneBanner = () => {
@@ -83,29 +83,28 @@ const HomeOneBanner = () => {
 
   return (
     <>
-      <section className="banner">
+      <section className="banner" style={{ position: "relative" }}>
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <div className="banner__content">
+              <div className="banner__content" style={{ position: "relative", zIndex: 2 }}>
                 <h1 className="text-uppercase text-start fw-9 mb-0 title-anim">
                   We are
                   <span className="text-stroke"> creative </span>
                   <span className="interval">
-                    <i className="icon-arrow-top-right"></i> {" "}Digital Agency
+                    <i className="icon-arrow-top-right"></i> Digital Agency
                   </span>
                 </h1>
 
-                <div className="banner__content-inner"
-                style={
-                  {
-                    // width:"1000px"
+                <div
+                  className="banner__content-inner"
+                  style={
+                    {
+                      // width:"1000px"
+                    }
                   }
-                }
                 >
-                  <p
-                  
-                  >
+                  <p>
                     We’re a digital growth engine driving ROI with performance
                     marketing, sparking engagement through social media,
                     building trust via branding, and amplifying reach through
@@ -162,6 +161,7 @@ const HomeOneBanner = () => {
           src={hexagon}
           alt="Image"
           className="banner-one-thumb d-none d-sm-block g-ban-one"
+          style={{ zIndex: 1, pointerEvents: "none" }}
         />
         <Image src={star} alt="Image" className="star" />
 
@@ -202,7 +202,7 @@ const HomeOneBanner = () => {
           <i className="fa-sharp fa-solid fa-play"></i>
         </button>
 
-        <div className="lines d-none d-lg-flex">
+        <div className="lines d-none d-lg-flex" style={{ zIndex: 0 }}>
           <div className="line"></div>
           <div className="line"></div>
           <div className="line"></div>

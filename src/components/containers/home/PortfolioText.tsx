@@ -11,7 +11,7 @@ const PortfolioText = () => {
     <section
       className="section portfolio pb-0 fade-wrapper position-relative bg-black "
       style={{
-        padding: "20px",
+        padding: "0px",
       }}
     >
       <div className="portfolio__text-slider-w">

@@ -14,9 +14,10 @@ const Agency = () => {
         <div className="video-frame">
           <video
             className="video"
-            src="/videos/sample.mp4"
+            src="https://dzw12ymyjpbqd.cloudfront.net/videos/digitarmedia-video1.mp4"
             controls
             playsInline
+            autoPlay
           />
         </div>
         <div className="badges" aria-hidden="true">
@@ -40,12 +41,14 @@ const Agency = () => {
         }
 
         .hero-heading {
+        
           position: absolute;
+
 
           top: 10%;
           left: 50%;
           transform: translate(-50%, -30%);
-          z-index: 0;
+          z-index: 5;
           margin: 0;
           text-align: center;
           font-size: clamp(42px, 6vw, 72px);

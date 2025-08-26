@@ -14,8 +14,18 @@
   inset: 0;
   background: black;
   z-index: -1;
-}fdgf
+}
 
+hr.creativeLine {
+  border: 0;
+  height: 0; /* Firefox fix */
+  box-shadow: 0 0 10px 1px black;
+}
+
+hr.creativeLine:after {
+  /* pseudo-element */
+  content: "\00a0"; /* Prevent margin collapse */
+}
 .agency {
   background-color: var(--tertiary-color);
   z-index: 2;
@@ -26,18 +36,18 @@
     opacity: 0.1;
     transition: opacity 0.3s ease;
   }
-  
+
   .lines .line {
     opacity: 0.1;
     transition: opacity 0.3s ease;
   }
-  
+
   /* When agency section is in view, lines become fully opaque */
   &:hover .lines,
   &:focus-within .lines {
     opacity: 1;
   }
-  
+
   &:hover .lines .line,
   &:focus-within .lines .line {
     opacity: 1;
@@ -189,24 +199,24 @@
 // 5.03 portfolio styles
 .portfolio {
   overflow-x: clip;
-  
+
   /* Static fade effect for background lines */
   .lines {
     opacity: 0.1;
     transition: opacity 0.3s ease;
   }
-  
+
   .lines .line {
     opacity: 0.1;
     transition: opacity 0.3s ease;
   }
-  
+
   /* When portfolio section is in view, lines become fully opaque */
   &:hover .lines,
   &:focus-within .lines {
     opacity: 1;
   }
-  
+
   &:hover .lines .line,
   &:focus-within .lines .line {
     opacity: 1;
@@ -1420,7 +1430,6 @@
     background-position: center center;
   }
 
-  
   .footer__single-form {
     max-width: 650px;
     margin-left: auto;

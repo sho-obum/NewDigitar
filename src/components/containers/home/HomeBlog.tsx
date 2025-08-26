@@ -101,8 +101,14 @@ const HomeProducts = () => {
   return (
     <section
       className="section fade-wrapper"
-      style={{ paddingTop: 64, paddingBottom: 64 }}
+      style={{ paddingTop: 14, paddingBottom: 14 }}
     >
+        <hr
+        style={{
+          position:"relative",
+          bottom:"93px"
+        }}
+        />
       <div className="container">
         {/* Header */}
         <div className="row justify-content-center">

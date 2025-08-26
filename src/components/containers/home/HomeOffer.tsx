@@ -65,7 +65,12 @@ const previews: Record<
       { label: "Brand Lift", value: "+23%", sub: "Aided", progress: 72 },
       { label: "Recall", value: "41%", sub: "Campaign", progress: 67 },
       { label: "Average Sesstion", value: "36", sub: "Duration", progress: 54 },
-      { label: "Ads Viewability", value: "120+", sub: "Deliverables", progress: 88 },
+      {
+        label: "Ads Viewability",
+        value: "120+",
+        sub: "Deliverables",
+        progress: 88,
+      },
     ],
   },
   influencer: {
@@ -78,7 +83,12 @@ const previews: Record<
       { label: "Creators", value: "380", sub: "Managed", progress: 79 },
       { label: "ROIS", value: "₹3.8Cr", sub: "3x", progress: 61 },
       { label: "Followers Growth", value: "8%", sub: "↓ 19%", progress: 73 },
-      { label: "Average Watch Time", value: "15s", sub: "Whitelisted", progress: 69 },
+      {
+        label: "Average Watch Time",
+        value: "15s",
+        sub: "Whitelisted",
+        progress: 69,
+      },
     ],
   },
 };
@@ -282,7 +292,10 @@ const HomeOffer = () => {
                     {...attach("performance")}
                   >
                     <h2>
-                      <Link href="/services/performance" className="offer__cta-link">
+                      <Link
+                        href="/services/performance"
+                        className="offer__cta-link"
+                      >
                         Performance Marketing{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
@@ -312,7 +325,10 @@ const HomeOffer = () => {
                     {...attach("branding")}
                   >
                     <h2>
-                      <Link href="/services/branding" className="offer__cta-link">
+                      <Link
+                        href="/services/branding"
+                        className="offer__cta-link"
+                      >
                         Branding &amp; Creative{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
@@ -327,7 +343,10 @@ const HomeOffer = () => {
                     {...attach("influencer")}
                   >
                     <h2>
-                      <Link href="/services/influencer" className="offer__cta-link">
+                      <Link
+                        href="/services/influencer"
+                        className="offer__cta-link"
+                      >
                         Influencer Marketing{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
@@ -354,6 +373,15 @@ const HomeOffer = () => {
             <div className="line"></div>
             <div className="line"></div>
             <div className="line"></div>
+          </div>
+          <div
+            style={{
+              position:"relative",
+              top:"130px"
+              
+            }}
+          >
+           <hr className="creativeLine" />
           </div>
         </div>
       </section>
@@ -446,7 +474,7 @@ const HomeOffer = () => {
         }
         .metric-label {
           font-size: 0.82rem;
-       
+
           letter-spacing: 0.8px;
           opacity: 0.9;
           margin-top: 2px;

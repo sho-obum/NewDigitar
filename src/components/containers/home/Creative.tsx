@@ -1,7 +1,7 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 
 interface CardItem {
   src: string;
@@ -61,11 +61,12 @@ function LogoCol({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      
       <motion.div
         initial={{ y: reverse ? "-50%" : 0 }}
         animate={isHovered ? { y: "current" } : { y: reverse ? "0%" : "-50%" }}
         transition={{
-          duration: 60,
+          duration: 20, 
           repeat: Infinity,
           ease: "linear",
         }}
@@ -196,22 +197,22 @@ function ImageModal({ isOpen, onClose, item }: {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Orange Glowing Border Background */}
-            <div
-              style={{
-                position: "absolute",
-                top: "-20px",
-                left: "-20px",
-                right: "-20px",
-                bottom: "-20px",
-                background: "linear-gradient(45deg, #fe6601, #ff8533, #fe6601)",
-                borderRadius: "25px",
-                filter: "blur(15px)",
-                opacity: 0.6,
-                zIndex: -1,
-                animation: "glow 2s ease-in-out infinite alternate",
-              }}
-            />
+                         {/* Orange Glowing Border Background */}
+             <div
+               style={{
+                 position: "absolute",
+                 top: "-15px",
+                 left: "-15px",
+                 right: "-15px",
+                 bottom: "-15px",
+                 background: "linear-gradient(45deg, #fe6601, #ff8533, #fe6601)",
+                 borderRadius: "20px",
+                 filter: "blur(8px)",
+                 opacity: 0.4,
+                 zIndex: -1,
+                 animation: "glow 2s ease-in-out infinite alternate",
+               }}
+             />
             
             {/* Modal Content */}
             <div
@@ -220,7 +221,7 @@ function ImageModal({ isOpen, onClose, item }: {
                 border: "2px solid #fe6601",
                 borderRadius: "20px",
                 padding: "30px",
-                boxShadow: "0 0 50px rgba(254, 102, 1, 0.5)",
+                                 boxShadow: "0 0 25px rgba(254, 102, 1, 0.3)",
                 position: "relative",
                 zIndex: 1,
               }}
@@ -311,6 +312,19 @@ function ImageModal({ isOpen, onClose, item }: {
 export default function OrangeTicker() {
   const [selectedItem, setSelectedItem] = useState<CardItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [scrollDir, setScrollDir] = useState<"up" | "down">("down");
+  const prevYRef = useRef(0);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const prev = prevYRef.current;
+    if (latest > prev) {
+      setScrollDir("down");
+    } else if (latest < prev) {
+      setScrollDir("up");
+    }
+    prevYRef.current = latest;
+  });
 
   const handleTileClick = (item: CardItem) => {
     setSelectedItem(item);
@@ -339,6 +353,7 @@ export default function OrangeTicker() {
         style={{
           background: "black",
           padding: "20px 20px",
+          position: "relative",
         }}
       >
         <div
@@ -353,7 +368,15 @@ export default function OrangeTicker() {
           }}
         >
           {/* Left content */}
-          <div>
+          <motion.div
+            style={{
+              position: "relative",
+              zIndex: 1,
+            }}
+            initial={{ y: 80 }}
+            animate={{ y: scrollDir === "down" ? 0 : 80 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
             <p
               style={{
                 border: "2px solid #fe6601",
@@ -423,7 +446,7 @@ export default function OrangeTicker() {
                 ></i>
               </span>
             </h2>
-          </div>
+          </motion.div>
 
           {/* Right animated columns */}
           <div
@@ -432,6 +455,8 @@ export default function OrangeTicker() {
               gridTemplateColumns: "1fr 1fr",
               gap: "20px",
               overflow: "hidden",
+              position: "relative",
+              zIndex: 2,
             }}
           >
             <LogoCol integration={leftColumnItems} onTileClick={handleTileClick} />
@@ -440,6 +465,15 @@ export default function OrangeTicker() {
         </div>
       
       </div>
+
+      <div className="lines d-none d-lg-flex" style={{ zIndex: 0 }}>
+        <div className="line"></div>
+        <div className="line"></div>
+        <div className="line"></div>
+        <div className="line"></div>
+        <div className="line"></div>
+      </div>
+      <hr />
 
       {/* Modal */}
       <ImageModal 
@@ -452,10 +486,10 @@ export default function OrangeTicker() {
       <style jsx>{`
         @keyframes glow {
           from {
-            filter: blur(15px) brightness(1);
+            filter: blur(8px) brightness(1);
           }
           to {
-            filter: blur(20px) brightness(1.2);
+            filter: blur(12px) brightness(1.1);
           }
         }
       `}</style>
