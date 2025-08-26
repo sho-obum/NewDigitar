@@ -1,208 +1,474 @@
+// components/Footer.tsx
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import logo from "public/images/logo.png";
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
+const Footer: React.FC = () => {
+  const year = new Date().getFullYear();
 
   return (
     <footer
-      className="footer section pb-0"
+      className="footer"
       role="contentinfo"
-      style={{ backgroundImage: "url('/images/footer/footer-bg.png')" }}
+      style={{
+        backgroundColor: "black",
+      }}
     >
+      <hr
+        style={{
+          paddingBottom: "30px",
+        }}
+      />
+      <div className="bg-word" aria-hidden="true">
+        Digitar
+      </div>
+
       <div className="container">
-        <div className="row gy-5">
-          {/* Col 1 — Brand + blurb + CTA + Quick Links */}
-          <div className="col-12 col-lg-4">
-            <div className="d-flex flex-column gap-3">
-              <Link href="/" aria-label="Go to home" className="d-inline-block">
-                <Image
-                  src={logo}
-                  alt="DigitAR Media"
-                  className="img-fluid"
-                  style={{ width: "clamp(120px, 12vw, 200px)", height: "auto" }}
-                />
-              </Link>
+        {/* === Top Section === */}
+        <div className="top">
+          {/* Brand + Intro + Socials */}
+          <div className="brand">
+            <Link href="/" aria-label="Go to home" className="logo">
+              <Image src={logo} alt="Digitar Media" width={160} height={40} />
+            </Link>
 
-              <p className="mb-0">
-                We help brands grow with strategy, design, development and
-                performance marketing that actually moves the needle.
-              </p>
+            <p className="intro">
+              Digitar empowers brands and marketers to connect with their
+              audiences through advanced targeting, data intelligence, and
+              seamless experiences. Join us as we shape the future of digital
+              growth.
+            </p>
 
-              <div>
-                <Link href="#" className="btn btn--secondary">
-                  book a call now
-                </Link>
-              </div>
-
-              {/* Quick Links */}
-              <div className="row mt-4">
-                <div className="col-6">
-                  <ul className="list-unstyled" style={{ lineHeight: 1.9 }}>
-                    <li>
-                      <Link href="/services" className="footer-link">
-                        Services
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/work" className="footer-link">
-                        Work
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/pricing" className="footer-link">
-                        Pricing
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-6">
-                  <ul className="list-unstyled" style={{ lineHeight: 1.9 }}>
-                    <li>
-                      <Link href="/about" className="footer-link">
-                        About
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/careers" className="footer-link">
-                        Careers
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/contact-us" className="footer-link">
-                        Contact
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Col 2 — India Office */}
-          <div className="col-12 col-lg-4">
-            <div>
-              <h5 className="mb-3">India Office</h5>
-              <address className="mb-2 "
-              style={{
-                lineHeight:"normal"
-              }}
-              >
-                1st Floor, C-87-88<br />
-                Ramesh Nagar, Delhi-110015, India
-              </address>
-              <div className="d-flex flex-column gap-1">
-                <a href="mailto:info@digitarmedia.com" className="text-decoration-none">
-                  <i className="fa-sharp fa-solid fa-envelope me-2" aria-hidden="true"></i>
-                  info@digitarmedia.com
-                </a>
-                <a href="tel:+919811457480" className="text-decoration-none">
-                  <i className="fa-sharp fa-solid fa-phone-volume me-2" aria-hidden="true"></i>
-                  +91 9811 457 480
-                </a>
+            <ul className="socials" aria-label="Social media">
+              <li>
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=1st%20Floor%2C%20C-87-88%2C%20Ramesh%20Nagar%2C%20Delhi-110015%2C%20India"
+                  href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-decoration-none"
+                  aria-label="Facebook"
                 >
-                  <i className="fa-sharp fa-solid fa-location-dot me-2" aria-hidden="true"></i>
-                  Open in Google Maps
+                  <i className="fa-brands fa-facebook-f" aria-hidden="true" />
                 </a>
-              </div>
-            </div>
-          </div>
+              </li>
 
-          {/* Col 3 — USA Office (+ Newsletter retained) */}
-          <div className="col-12 col-lg-4">
-            <div className="d-flex flex-column gap-4">
-              <div>
-                <h5 className="mb-3">USA Office</h5>
-                <address
-                  className="mb-2"
-                  style={{ lineHeight: "normal" }}
+              <li>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
                 >
-                  30 N Gould St Ste R<br />
-                  Sheridan, Wyoming 82801, USA
-                </address>
-                <div className="d-flex flex-column gap-1">
-                  <a href="mailto:media@digitarmedia.com" className="text-decoration-none">
-                    <i className="fa-sharp fa-solid fa-envelope me-2" aria-hidden="true"></i>
-                    media@digitarmedia.com
-                  </a>
-                  <a href="tel:+17632605221" className="text-decoration-none">
-                    <i className="fa-sharp fa-solid fa-phone-volume me-2" aria-hidden="true"></i>
-                    +1 763 260 5221
-                  </a>
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=30%20N%20Gould%20St%20Ste%20R%2C%20Sheridan%2C%20Wyoming%2082801%2C%20USA"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-decoration-none"
-                  >
-                    <i className="fa-sharp fa-solid fa-location-dot me-2" aria-hidden="true"></i>
-                    Open in Google Maps
-                  </a>
-                </div>
-              </div>
-
-              {/* Newsletter (kept) */}
-              <div>
-                <h5 className="mb-3">Subscribe to our newsletter</h5>
-                <p className="mb-3">Join our list for insights, tips, and updates from the team.</p>
-                <form action="#" method="post" className="d-flex align-items-stretch">
-                  <input
-                    type="email"
-                    name="subscribe-news"
-                    id="subscribeNews"
-                    className="form-control"
-                    placeholder="Enter your email"
-                    autoComplete="email"
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="btn btn--secondary ms-2"
-                    aria-label="Subscribe"
-                    title="Subscribe"
-                  >
-                    <i className="fa-sharp fa-solid fa-paper-plane" aria-hidden="true"></i>
-                  </button>
-                </form>
-              </div>
-            </div>
+                  <i className="fa-brands fa-instagram" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <i className="fa-brands fa-linkedin-in" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                >
+                  <i className="fa-brands fa-youtube" aria-hidden="true" />
+                </a>
+              </li>
+            </ul>
+            <ul>
+              <Link
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gp-btn"
+                style={{
+                  color: "white",
+                  borderColor: "red",
+                  backgroundColor:"#ff6600",
+                  padding:"10px 20px",
+                  borderRadius:"10px"
+                }}
+              >
+                Contact Us <i className="fa-solid fa-arrow-right-long" />
+              </Link>
+            </ul>
           </div>
+
+          {/* Link Columns */}
+          <nav className="cols" aria-label="Footer"
+          style={{
+            marginLeft:"-70px"
+          }}
+          >
+            <div
+              className="col"
+              style={{
+                opacity: 0,
+              }}
+            >
+              <h6 className="heading">Resources</h6>
+              <ul>
+                <li>
+                  <Link href="/case-studies">Case Studies</Link>
+                </li>
+                <li>
+                  <Link href="/blog">Blogs &amp; Insights</Link>
+                </li>
+                <li>
+                  <Link href="/events">Events</Link>
+                </li>
+              
+              </ul>
+            </div>
+            <div className="col">
+              <h6 className="heading" 
+              style={{
+                color:"#ff6600"
+              }}
+              >Company</h6>
+              <ul>
+                <li>
+                  <Link href="">About Us </Link>
+                </li>
+                <li>
+                  <Link href="">Life @ Digitar </Link>
+                </li>
+                <li>
+                  <Link href="">Career</Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="col">
+              <h6 className="heading">Products</h6>
+              <ul>
+                <li>
+                  <Link href="/services/programmatic">
+                    Adxity - DSP <span className="ext">↗</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/branding">
+                    Adpocket <span className="ext">↗</span>{" "}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/storytelling">
+                    Yogza <span className="ext">↗</span>{" "}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/performance">
+                    Lending Leaf <span className="ext">↗</span>{" "}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="col">
+              <h6 className="heading">Services</h6>
+              <ul>
+                <li>
+                  <Link href="/about">Performance </Link>
+                </li>
+                <li>
+                  <Link href="/culture">Social</Link>
+                </li>
+                <li>
+                  <Link href="/creative-hub">Branding</Link>
+                </li>
+                <li>
+                  <Link href="/careers">Influencer</Link>
+                </li>
+                <li>
+                  <Link href="/careers">Creative</Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
         </div>
 
-        {/* Copyright + Social */}
-        <div className="row mt-5 pt-4 border-top">
-          <div className="col-12 col-lg-8">
-            <div className="text-center text-lg-start">
-              <p className="mb-0">
-                Copyright &copy; <span>{currentYear}</span> DigitAR Media. All rights reserved.
-              </p>
-            </div>
-          </div>
-          <div className="col-12 col-lg-4">
-            <div className="d-flex gap-3 justify-content-center justify-content-lg-end">
-              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-decoration-none">
-                <i className="fa-brands fa-facebook-f" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-decoration-none">
-                <i className="fa-brands fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-decoration-none">
-                <i className="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-decoration-none">
-                <i className="fa-brands fa-instagram" aria-hidden="true"></i>
-              </a>
-            </div>
+        {/* === (Optional) Associations strip — replace src with your logos or remove === */}
+
+        {/* === Bottom Bar === */}
+        <div
+          className="bottom"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <p className="copy">© {year} Digitar Media. All Rights Reserved.</p>
           </div>
         </div>
       </div>
+
+      {/* ===== CSS (plain, in-file) ===== */}
+      <style jsx>{`
+        /* Theme */
+        :root {
+          --bg: #0b0c14; /* deep night */
+          --bg-2: #111224; /* subtle panel tint */
+          --text: #d5d7df; /* main text */
+          --muted: #9aa0a6; /* secondary text */
+          --orange: #ff7a1a; /* accent */
+          --link: #e6e8ef;
+        }
+
+        .footer {
+          position: relative;
+          overflow: hidden;
+          background: radial-gradient(
+              1200px 600px at 20% -10%,
+              #1a1b2a 0%,
+              transparent 60%
+            ),
+            var(--bg);
+          color: var(--text);
+          padding: 64px 0 32px;
+        }
+
+        .bg-word {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          font-weight: 800;
+          letter-spacing: -0.04em;
+          font-size: 38vw;
+          line-height: 1;
+          text-transform: lowercase;
+          color: transparent;
+          background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(0, 0, 0, 0.05)
+          );
+          -webkit-background-clip: text;
+          background-clip: text;
+          opacity: 0.14;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          user-select: none;
+        }
+
+        .container {
+          max-width: 1240px;
+          margin: 0 auto;
+          padding: 0 24px;
+          position: relative;
+          z-index: 1;
+        }
+
+        .top {
+          display: grid;
+          grid-template-columns: 1.1fr 2fr;
+          gap: 48px;
+        }
+        @media (max-width: 1024px) {
+          .top {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .gp-btn {
+          padding: 10px 14px;
+          border-radius: 12px;
+          border: 1px solid;
+          font-weight: 800;
+          display: inline-flex;
+          gap: 8px;
+          align-items: center;
+          background: linear-gradient(
+            90deg,
+            rgba(255, 122, 0, 0.18),
+            rgba(255, 176, 102, 0.28),
+            rgba(255, 122, 0, 0.18)
+          );
+          background-size: 200% 100%;
+          color: #ffd7b0;
+          transition: background-position 400ms ease, transform 160ms ease;
+        }
+        .gp-btn:hover {
+          background-position: 100% 0;
+        }
+        .gp-btn:hover i {
+          transform: translateX(6px);
+        }
+        .gp-btn i {
+          transition: transform 200ms ease;
+        }
+        .gp-btn__label {
+          font-weight: 900;
+        }
+
+        /* Brand */
+        .logo {
+          display: inline-flex;
+          align-items: center;
+        }
+        .intro {
+          margin: 16px 0 20px;
+          color: var(--muted);
+          max-width: 520px;
+        }
+        .socials {
+          display: flex;
+          gap: 16px;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .socials a {
+          color: var(--muted);
+          font-size: 18px;
+          transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .socials a:hover {
+          color: var(--orange);
+          transform: translateY(-1px);
+        }
+        .socials a:focus-visible {
+          outline: 2px solid var(--orange);
+          outline-offset: 3px;
+          border-radius: 8px;
+        }
+
+        /* Columns */
+        .cols {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 32px 48px;
+        }
+        @media (max-width: 900px) {
+          .cols {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (max-width: 560px) {
+          .cols {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .heading {
+          color: #ff6600 !important;
+          font-weight: 700;
+          margin: 0 0 14px;
+          letter-spacing: 0.2px;
+        }
+        .col ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .col li + li {
+          margin-top: 10px;
+        }
+        .col a {
+          color: var(--text);
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+        .col a:hover {
+          color: var(--orange);
+        }
+        .col a:focus-visible {
+          outline: 2px solid var(--orange);
+          outline-offset: 2px;
+          border-radius: 6px;
+        }
+        .ext {
+          font-size: 0.85em;
+          margin-left: 6px;
+          color: var(--muted);
+        }
+
+        /* Associations */
+        .assoc {
+          display: grid;
+          grid-template-columns: 220px 1fr;
+          gap: 16px;
+          align-items: center;
+          margin-top: 56px;
+        }
+        .assoc p {
+          margin: 0;
+          color: var(--muted);
+        }
+        .badges {
+          display: flex;
+          gap: 28px;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+        .badges img {
+          height: 34px;
+          opacity: 0.9;
+          filter: grayscale(100%);
+        }
+        .badges img:hover {
+          opacity: 1;
+          filter: none;
+        }
+        @media (max-width: 640px) {
+          .assoc {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        /* Bottom bar */
+        .bottom {
+          display: flex;
+          gap: 12px;
+          align-items: center;
+          justify-content: space-between;
+          border-top: 1px solid rgba(255, 255, 255, 0.06);
+          margin-top: 28px;
+          padding-top: 18px;
+          color: var(--muted);
+          flex-wrap: wrap;
+        }
+
+        .legal {
+          display: flex;
+          gap: 18px;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .legal a {
+          color: var(--muted);
+        }
+        .legal a:hover {
+          color: var(--orange);
+        }
+        .legal a:focus-visible {
+          outline: 2px solid var(--orange);
+          outline-offset: 3px;
+          border-radius: 6px;
+        }
+
+        .copy {
+          margin: 0;
+          white-space: nowrap;
+        }
+        @media (max-width: 560px) {
+          .copy {
+            white-space: normal;
+          }
+        }
+      `}</style>
     </footer>
   );
 };

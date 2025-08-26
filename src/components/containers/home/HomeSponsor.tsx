@@ -106,7 +106,7 @@ const HomeSponsorMarquee: React.FC<Props> = ({
                     fill
                     className="logo-img"
                     style={{
-                      objectFit:"contain"
+                      objectFit: "contain",
                     }}
                   />
                 </div>
@@ -116,11 +116,12 @@ const HomeSponsorMarquee: React.FC<Props> = ({
         </div>
 
         {/* CTA (not “Explore our services”) */}
-        <div
-          className="section__content-cta text-center"
-          style={{ marginTop: 28 }}
-        >
-          <Link href="" className="btn btn--secondary">
+        <div className="section__content-cta text-center">
+          <Link
+            href=""
+            className="btn btn--secondary"
+            style={{ marginTop: "58px" }}
+          >
             BECOME A PARTNER
           </Link>
         </div>
@@ -199,7 +200,6 @@ const HomeSponsorMarquee: React.FC<Props> = ({
         }
 
         /* contain: never crop; scale down within box */
-        
 
         /* pause on hover */
         .marquee:hover .track {
