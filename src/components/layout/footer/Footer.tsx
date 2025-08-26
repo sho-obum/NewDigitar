@@ -13,6 +13,7 @@ const Footer: React.FC = () => {
       role="contentinfo"
       style={{
         backgroundColor: "black",
+        padding:"0px"
       }}
     >
       <hr
@@ -152,22 +153,22 @@ const Footer: React.FC = () => {
               <ul>
                 <li>
                   <Link href="/services/programmatic">
-                    Adxity - DSP <span className="ext">↗</span>
+                    Adxity - DSP 
                   </Link>
                 </li>
                 <li>
                   <Link href="/services/branding">
-                    Adpocket <span className="ext">↗</span>{" "}
+                    Adpocket {" "}
                   </Link>
                 </li>
                 <li>
                   <Link href="/services/storytelling">
-                    Yogza <span className="ext">↗</span>{" "}
+                    Yogza {" "}
                   </Link>
                 </li>
                 <li>
                   <Link href="/services/performance">
-                    Lending Leaf <span className="ext">↗</span>{" "}
+                    Lending Leaf {" "}
                   </Link>
                 </li>
               </ul>
