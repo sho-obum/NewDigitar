@@ -1,30 +1,165 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Agency = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["40%", "-185%"]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
+  const subY = useTransform(scrollYProgress, [0, 1], ["20%", "-140%"]);
+  const subOpacity = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+
   return (
-    <section className="agency-video-section">
-      <h2 className="hero-heading">
-        <span className="small">
+    <section className="agency-video-section" ref={sectionRef}>
+    
+
+      <motion.h2
+        className="hero-heading"
+        style={{ y, opacity, display: "flex" }}
+      >
+        <span
+          style={{
+            textAlign: "center",
+            fontWeight: "700",
+          }}
+        >
           We build high‑impact
           <br />
           digital experiences
         </span>
-      </h2>
-      <div className="glass">
+      </motion.h2>
+      <div className="glass"
+        style={{
+          maxWidth:"1000px"
+        }}>
         <div className="video-frame">
           <video
             className="video"
             src="https://dzw12ymyjpbqd.cloudfront.net/videos/digitarmedia-video1.mp4"
-            controls
-            playsInline
             autoPlay
+            muted
+            playsInline
+            loop
           />
         </div>
-        <div className="badges" aria-hidden="true">
-          <div className="badge pos-tl">Social Marketing</div>
-          <div className="badge pos-tr">Performance Marketing</div>
-          <div className="badge pos-bl">Influencer</div>
-          <div className="badge pos-br">Branding</div>
+        <div
+          className="badges"
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+          }}
+        >
+          {/* Top-Left */}
+          <div
+            className="badge pos-tl"
+            style={{
+              position: "absolute",
+              top: "56px",
+              left: "-50px",
+              fontSize: "18px",
+              fontWeight: 600,
+              letterSpacing: "0.04em",
+              color: "#ffffff",
+              textTransform: "none",
+              textShadow: "0 6px 22px rgba(0,0,0,0.45)",
+              padding: "10px 14px",
+              borderRadius: "7px",
+              background: "linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
+              border: "1px solid rgba(255,255,255,0.22)",
+              boxShadow: "0 10px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.25)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+            }}
+          >
+            Social
+            <br />
+             Marketing
+          </div>
+
+          {/* Top-Right */}
+          <div
+            className="badge pos-tr"
+            style={{
+              position: "absolute",
+              top: "106px",
+              right: "-48px",
+              fontSize: "18px",
+              fontWeight: 600,
+              letterSpacing: "0.04em",
+              color: "#ffffff",
+              textTransform: "none",
+              textShadow: "0 6px 22px rgba(0,0,0,0.45)",
+              padding: "10px 14px",
+              borderRadius: "7px",
+              background: "linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
+              border: "1px solid rgba(255,255,255,0.22)",
+              boxShadow: "0 10px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.25)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+            }}
+          >
+            Performance 
+            <br />
+            Marketing
+          </div>
+
+          {/* Bottom-Left */}
+          <div
+            className="badge pos-bl"
+            style={{
+              position: "absolute",
+              bottom: "-20px",
+              left: "78px",
+              fontSize: "18px",
+              fontWeight: 600,
+              letterSpacing: "0.04em",
+              color: "#ffffff",
+              textTransform: "none",
+              textShadow: "0 6px 22px rgba(0,0,0,0.45)",
+              padding: "10px 14px",
+              borderRadius: "7px",
+              background: "linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
+              border: "1px solid rgba(255,255,255,0.22)",
+              boxShadow: "0 10px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.25)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+            }}
+          >
+            Influencer
+            <br />
+            Marketing
+          </div>
+
+          {/* Bottom-Right */}
+          <div
+            className="badge pos-br"
+            style={{
+              position: "absolute",
+              bottom: "6px",
+              right: "-8px",
+              fontSize: "18px",
+              fontWeight: 600,
+              letterSpacing: "0.04em",
+              color: "#ffffff",
+              textTransform: "none",
+              textShadow: "0 6px 22px rgba(0,0,0,0.45)",
+              padding: "10px 14px",
+              borderRadius: "7px",
+              background: "linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
+              border: "1px solid rgba(255,255,255,0.22)",
+              boxShadow: "0 10px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.25)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+            }}
+          >
+            Branding
+          </div>
         </div>
       </div>
       <style jsx>{`
@@ -41,27 +176,30 @@ const Agency = () => {
         }
 
         .hero-heading {
-        
           position: absolute;
-
-
           top: 10%;
           left: 50%;
-          transform: translate(-50%, -30%);
-          z-index: 5;
+          transform: translateX(-50%);
+          z-index: 0;
           margin: 0;
           text-align: center;
-          font-size: clamp(42px, 6vw, 72px);
+          font-size: clamp(22px, 6vw, 72px);
           line-height: 1.05;
           font-weight: 800;
           letter-spacing: 0.3px;
           color: rgba(255, 255, 255, 0.8);
           text-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
-          filter: blur(2px);
-          opacity: 0.85;
           pointer-events: none;
           white-space: nowrap;
-          animation: riseBehind 1.4s ease-out 0.2s forwards;
+        }
+
+        .sub-title {
+          position: absolute;
+          top: 2.5%;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 0;
+          pointer-events: none;
         }
 
         .hero-heading .small {
@@ -214,18 +352,7 @@ const Agency = () => {
           }
         }
 
-        @keyframes riseBehind {
-          0% {
-            transform: translate(-50%, -30%);
-            filter: blur(2px);
-            opacity: 0.85;
-          }
-          100% {
-            transform: translate(-50%, -165%);
-            filter: blur(0);
-            opacity: 1;
-          }
-        }
+        /* Scroll-based animation handled by Framer Motion */
       `}</style>
     </section>
   );

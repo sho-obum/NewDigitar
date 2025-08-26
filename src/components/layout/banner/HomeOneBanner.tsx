@@ -199,7 +199,7 @@ const HomeOneBanner = () => {
           onClick={() => setVideoActive(true)}
         >
           <Image src={videoframe} alt="Image" priority />
-          <i className="fa-sharp fa-solid fa-play"></i>
+          {/* <i className="fa-sharp fa-solid fa-play"></i> */}
         </button>
 
         <div className="lines d-none d-lg-flex" style={{ zIndex: 0 }}>

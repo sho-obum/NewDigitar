@@ -67,7 +67,7 @@ const HomeSponsorMarquee: React.FC<Props> = ({
           className="title title-anim"
           style={{ marginTop: 16, fontWeight: 800, letterSpacing: "-0.02em" }}
         >
-          Trusted by Teams Worldwide
+          Trusted by Clients Worldwide
         </h2>
 
         <p

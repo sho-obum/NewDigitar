@@ -47,7 +47,6 @@ function LogoCol({
   onTileClick: (item: CardItem) => void;
 }) {
   const [isHovered, setIsHovered] = useState(false);
-
   return (
     <div
       style={{
@@ -63,17 +62,17 @@ function LogoCol({
     >
       
       <motion.div
-        initial={{ y: reverse ? "-50%" : 0 }}
-        animate={isHovered ? { y: "current" } : { y: reverse ? "0%" : "-50%" }}
-        transition={{
-          duration: 20, 
-          repeat: Infinity,
-          ease: "linear",
-        }}
         style={{
           display: "flex",
           flexDirection: "column",
           gap: "20px",
+          willChange: "transform",
+          animationName: "scrollY",
+          animationDuration: "40s",
+          animationTimingFunction: "linear",
+          animationIterationCount: "infinite",
+          animationDirection: reverse ? "reverse" : "normal",
+          animationPlayState: isHovered ? "paused" : "running",
         }}
       >
         {Array.from({ length: 2 }).map((_, i) => (
@@ -491,6 +490,13 @@ export default function OrangeTicker() {
           to {
             filter: blur(12px) brightness(1.1);
           }
+        }
+      `}</style>
+      {/* Global keyframes for vertical scroll animation */}
+      <style jsx global>{`
+        @keyframes scrollY {
+          0% { transform: translateY(0%); }
+          100% { transform: translateY(-50%); }
         }
       `}</style>
     </>

@@ -106,12 +106,17 @@ const HomeProducts = () => {
         <hr
         style={{
           position:"relative",
-          bottom:"93px"
+          bottom:"34px"
         }}
         />
       <div className="container">
         {/* Header */}
-        <div className="row justify-content-center">
+        <div className="row justify-content-center"
+        style={{
+          position:"relative",
+          zIndex:10
+        }}
+        >
           <div className="col-12 col-lg-8">
             <div className="text-center">
               <span
@@ -131,9 +136,9 @@ const HomeProducts = () => {
                 Our Products <i className="fa-solid fa-arrow-right"></i>
               </span>
               <h2
-                className="title title-anim"
+                className="titl"
                 style={{
-                  marginTop: 16,
+                  marginTop: 15,
                   fontWeight: 800,
                   letterSpacing: "-0.02em",
                 }}
@@ -475,6 +480,14 @@ const HomeProducts = () => {
 
       {/* Inline CSS */}
       <style jsx>{`
+        .title.title-anim {
+          transition: transform 200ms ease;
+          will-change: transform;
+          display: inline-block;
+        }
+        .title.title-anim:hover {
+          transform: scale(1.05);
+        }
         .gp-wrap {
           position: relative;
           overflow: visible;
@@ -518,7 +531,9 @@ const HomeProducts = () => {
           box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.32) inset,
             0 0 36px rgba(255, 122, 0, 0.45);
           overflow: hidden; /* clip inner content only */
-          transition: box-shadow 220ms ease, border-color 220ms ease;
+          transition: box-shadow 220ms ease, border-color 220ms ease, transform 200ms ease;
+          will-change: transform;
+          transform-origin: center;
           z-index: 2; /* above halo */
         }
         .gp-card::before {
@@ -563,6 +578,7 @@ const HomeProducts = () => {
           box-shadow: 0 0 42px rgba(255, 122, 0, 0.6),
             0 0 88px rgba(255, 176, 102, 0.35);
           outline: none;
+          transform: scale(1.05);
         }
         /* Removed rotating halo */
 

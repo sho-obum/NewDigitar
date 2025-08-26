@@ -11,10 +11,15 @@ const PortfolioText = () => {
     <section
       className="section portfolio pb-0 fade-wrapper position-relative bg-black "
       style={{
-        padding: "0px",
+        padding: "20px",
       }}
     >
-      <div className="portfolio__text-slider-w">
+      <div className="portfolio__text-slider-w "
+      style={{
+        paddingBottom:"0px",
+        marginBottom:"20px"
+      }}
+      >
         <Swiper
           slidesPerView="auto"
           spaceBetween={40}
