@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import Layout from "@/components/layout/Layout";
 import CmnBanner from "@/components/layout/banner/CmnBanner";
-import HomeTestimonialThree from "@/components/containers/home-three/HomeTestimonialThree";
 import CtaTwo from "@/components/containers/service-details/CtaTwo";
 import { motion } from "framer-motion";
 
@@ -135,7 +134,6 @@ export default function SocialPage() {
       </section>
 
       {/* Social proof + CTA (reuse your components) */}
-      <HomeTestimonialThree />
       <CtaTwo />
 
       {/* SCOPED / HIGH-PRIORITY CSS */}

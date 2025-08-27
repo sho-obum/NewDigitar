@@ -1,6 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import CmnBanner from "@/components/layout/banner/CmnBanner";
-import HomeTestimonialThree from "@/components/containers/home-three/HomeTestimonialThree";
+import CmnBanner from "@/components/layout/banner/CmnBanner"
 import CtaTwo from "@/components/containers/service-details/CtaTwo";
 
 export default function InfluencerPage() {
@@ -50,8 +49,6 @@ export default function InfluencerPage() {
           <li>Measure — UTMs, tracking & insights</li>
         </ol>
       </section>
-
-      <HomeTestimonialThree />
       <CtaTwo />
     </Layout>
   );

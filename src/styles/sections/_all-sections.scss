@@ -65,7 +65,7 @@ hr.creativeLine:after {
       right: 10%;
       width: 40px;
       height: 40px;
-      background-image: url("../../../public/images/agency/dot.png");
+      background-image: url("/images/star.png");
       background-size: cover;
       z-index: -1;
     }
@@ -76,7 +76,7 @@ hr.creativeLine:after {
       left: 0px;
       width: 40px;
       height: 40px;
-      background-image: url("../../../public/images/agency/dot.png");
+      background-image: url("/images/star.png");
       background-size: cover;
       z-index: -1;
     }
@@ -947,7 +947,7 @@ hr.creativeLine:after {
 
 // 5.10 testimonial two styles
 .testimonial-two {
-  background: url("../../../public/images/testimonial/line.png"),
+  background: url("/images/banner/line.png"),
     var(--tertiary-color);
   background-repeat: no-repeat;
   background-size: contain;

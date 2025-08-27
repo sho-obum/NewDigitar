@@ -1,6 +1,5 @@
 import Layout from "@/components/layout/Layout";
 import CmnBanner from "@/components/layout/banner/CmnBanner";
-import HomeTestimonialThree from "@/components/containers/home-three/HomeTestimonialThree";
 import CtaTwo from "@/components/containers/service-details/CtaTwo";
 
 export default function BrandingPage() {
@@ -51,7 +50,7 @@ export default function BrandingPage() {
         </ol>
       </section>
 
-      <HomeTestimonialThree />
+   
       <CtaTwo />
     </Layout>
   );
