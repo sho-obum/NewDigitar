@@ -59,6 +59,7 @@ function MobileLogoCol({
   onTileClick: (item: CardItem) => void;
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const repeatedItems = [...integration, ...integration];
   return (
     <div
       style={{
@@ -87,9 +88,9 @@ function MobileLogoCol({
           animationPlayState: isHovered ? "paused" : "running",
         }}
       >
-        {integration.map((item) => (
+        {repeatedItems.map((item, idx) => (
           <div
-            key={item.alt}
+            key={`${item.alt}-${idx}`}
             style={{
               background: "rgba(255, 165, 0, 0.15)",
               backdropFilter: "blur(10px)",
@@ -227,6 +228,7 @@ function DesktopLogoCol({
         display: "flex",
         flexDirection: "column",
         gap: "20px",
+        alignItems: "center",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -262,6 +264,7 @@ function DesktopLogoCol({
                   position: "relative",
                   cursor: "pointer",
                   transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                  width: "360px",
                 }}
                 onClick={() => onTileClick(item)}
                 onMouseEnter={(e) => {
