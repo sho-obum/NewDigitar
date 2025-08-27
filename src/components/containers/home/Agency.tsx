@@ -1,9 +1,12 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const Agency = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -38,13 +41,52 @@ const Agency = () => {
         }}>
         <div className="video-frame">
           <video
+            ref={videoRef}
             className="video"
             src="https://dzw12ymyjpbqd.cloudfront.net/videos/digitarmedia-video1.mp4"
             autoPlay
-            muted
+            muted={isMuted}
             playsInline
             loop
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
           />
+          <div className="controls-overlay">
+            <div className="controls">
+              <button
+                type="button"
+                className="control-btn"
+                aria-label={isPlaying ? "Pause video" : "Play video"}
+                onClick={() => {
+                  const el = videoRef.current;
+                  if (!el) return;
+                  if (el.paused) {
+                    el.play().catch(() => {});
+                    setIsPlaying(true);
+                  } else {
+                    el.pause();
+                    setIsPlaying(false);
+                  }
+                }}
+              >
+                {isPlaying ? "⏸" : "▶"}
+              </button>
+              <button
+                type="button"
+                className="control-btn"
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
+                onClick={() => {
+                  const el = videoRef.current;
+                  if (!el) return;
+                  const next = !el.muted;
+                  el.muted = next;
+                  setIsMuted(next);
+                }}
+              >
+                {isMuted ? "🔇" : "🔊"}
+              </button>
+            </div>
+          </div>
         </div>
         <div
           className="badges"
@@ -309,6 +351,7 @@ const Agency = () => {
           --radius: 18px;
           --borderSize: 8px;
           --glow: rgba(255, 140, 0, 0.35);
+          position: relative;
           border: var(--borderSize) solid transparent;
           border-radius: var(--radius);
           background: linear-gradient(#0b0e14, #0b0e14) padding-box,
@@ -350,6 +393,57 @@ const Agency = () => {
           to {
             --angle: 360deg;
           }
+        }
+
+        .controls-overlay {
+          position: absolute;
+          inset: 0;
+          display: grid;
+          align-items: end;
+          justify-items: end;
+          padding: 10px;
+          pointer-events: none;
+        }
+
+        .controls {
+          display: flex;
+          gap: 8px;
+          background: rgba(0, 0, 0, 0.45);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          border-radius: 999px;
+          padding: 6px 8px;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+          pointer-events: auto;
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+        }
+
+        .control-btn {
+          appearance: none;
+          border: none;
+          background: linear-gradient(
+              145deg,
+              rgba(255, 255, 255, 0.14),
+              rgba(255, 255, 255, 0.06)
+            );
+          color: #fff;
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+          cursor: pointer;
+          font-size: 16px;
+          line-height: 1;
+          transition: transform 0.15s ease, background 0.2s ease;
+        }
+
+        .control-btn:hover {
+          transform: translateY(-1px);
+        }
+
+        .control-btn:active {
+          transform: translateY(0);
         }
 
         /* Scroll-based animation handled by Framer Motion */

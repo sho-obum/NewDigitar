@@ -61,12 +61,13 @@ export default function ShoeAdCard({
     []
   );
 
-  const items = variants && variants.length >= 4 ? variants.slice(0, 4) : fallbackVariants;
+  const items =
+    variants && variants.length >= 4 ? variants.slice(0, 4) : fallbackVariants;
 
   const [index, setIndex] = useState(0);
   const [animKey, setAnimKey] = useState(0); // used to retrigger fade animation
   const [selectedSize, setSelectedSize] = useState<number>(8);
-  const availableSizes: number[] = [ 7, 8, 9, 10];
+  const availableSizes: number[] = [7, 8, 9, 10];
 
   const active = items[index];
 
@@ -83,7 +84,8 @@ export default function ShoeAdCard({
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") setIndex((i) => (i + 1) % items.length);
-      if (e.key === "ArrowLeft") setIndex((i) => (i - 1 + items.length) % items.length);
+      if (e.key === "ArrowLeft")
+        setIndex((i) => (i - 1 + items.length) % items.length);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -91,18 +93,24 @@ export default function ShoeAdCard({
 
   const originalPrice = active.price;
   const discountedPrice = originalPrice * 0.6; // 40% off
-  
-  const formatPrice = (price: number) => new Intl.NumberFormat(undefined, {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 2,
-  }).format(price);
-  
+
+  const formatPrice = (price: number) =>
+    new Intl.NumberFormat(undefined, {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 2,
+    }).format(price);
+
   const formattedOriginal = formatPrice(originalPrice);
   const formattedDiscounted = formatPrice(discountedPrice);
 
   return (
-    <div className="shoe-ad-card" role="region" aria-label="Shoe customizer ad" style={{ width: "100%", height: "100%" }}>
+    <div
+      className="shoe-ad-card"
+      role="region"
+      aria-label="Shoe customizer ad"
+      style={{ width: "100%", height: "100%" }}
+    >
       <style>{`
         .shoe-ad-card{
           position:relative; 
@@ -149,11 +157,11 @@ export default function ShoeAdCard({
         }
         .sub{opacity:.7; font-size:14px; margin:0; color:#666;}
         .hero{
-        margin-top: -50px;
+        
           position:relative; 
           border-radius:16px; 
           background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-          min-height:280px; 
+          // min-height:280px; 
           display:grid; 
           place-items:center; 
           overflow:hidden;
@@ -285,21 +293,27 @@ export default function ShoeAdCard({
         .size-btn[aria-pressed="true"]{border-color:#111; background:#111; color:#fff; box-shadow: 0 4px 12px rgba(0,0,0,.15)}
         @media (max-width:420px){ 
           .headline{font-size:24px} 
-          .hero{min-height:220px} 
+          .hero{} 
           .foot{flex-direction: column; align-items: flex-start; gap: 12px;}
           .controls{flex-direction: column; align-items: flex-start; gap: 8px;}
         }
       `}</style>
 
-      <div className="header">
-      
-      </div>
-
       <div className="hero" aria-live="polite">
-        {logoUrl && <img className="brand-mark" src={logoUrl} alt="" aria-hidden />}
+        {logoUrl && (
+          <img className="brand-mark" src={logoUrl} alt="" aria-hidden />
+        )}
         {/* using key to re-trigger fade on change */}
-        <div className="shoe-wrap" style={{ ['--shoe-scale' as any]: shoeScale } as any}>
-          <img key={animKey} className="shoe fade" src={active.imgUrl} alt={`${active.name} shoe`} />
+        <div
+          className="shoe-wrap"
+          style={{ ["--shoe-scale" as any]: shoeScale } as any}
+        >
+          <img
+            key={animKey}
+            className="shoe fade"
+            src={active.imgUrl}
+            alt={`${active.name} shoe`}
+          />
         </div>
       </div>
 
@@ -337,9 +351,20 @@ export default function ShoeAdCard({
           <div className="price-section">
             <div className="discount-badge">40% OFF</div>
             <div className="original-price">{formattedOriginal}</div>
-            <div className="price" aria-live="polite">{formattedDiscounted}</div>
+            <div className="price" aria-live="polite">
+              {formattedDiscounted}
+            </div>
           </div>
-          <button className="cta" onClick={() => alert(`Added ${active.name} (Size ${selectedSize}) to cart for ${formattedDiscounted}`)}>{ctaText}</button>
+          <button
+            className="cta"
+            onClick={() =>
+              alert(
+                `Added ${active.name} (Size ${selectedSize}) to cart for ${formattedDiscounted}`
+              )
+            }
+          >
+            {ctaText}
+          </button>
         </div>
       </div>
     </div>

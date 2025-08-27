@@ -8,6 +8,7 @@ import {
 import Image from "next/image";
 import { Fragment, useRef, useState, useEffect } from "react";
 import PepsiChallengeAd from "../../ads/Pepsigame";
+import Nikegame from "../../ads/Nikegame";
 
 interface CardItem {
   src: string;
@@ -18,28 +19,34 @@ interface CardItem {
 
 const items: CardItem[] = [
   {
-    src: "/sprite.png",
-    alt: "Sprite",
-    description: "Refreshing lemon-lime soda.",
-    tag: "Native Ad",
+    src: "/coke.png",
+    alt: "Entertainment",
+    description: "Brand engagement and interactive experiences.",
+    tag: "Entertainment",
   },
   {
-    src: "/cheetos.png",
-    alt: "Cheetos",
-    description: "Crunchy Flamin' Hot snack.",
-    tag: "Interactive",
+    src: "/sprite.png",
+    alt: "Ecommerce (shoes)",
+    description: "Shoppable experience for footwear.",
+    tag: "Ecommerce (shoes)",
   },
   {
     src: "/fanta.png",
-    alt: "Fanta",
-    description: "Orange fruity delight.",
-    tag: "Hover Ad",
+    alt: "Crypto",
+    description: "Crypto-focused interactive ad.",
+    tag: "Crypto",
+  },
+  {
+    src: "/cheetos.png",
+    alt: "Finance",
+    description: "Finance tools and calculators.",
+    tag: "Finance",
   },
   {
     src: "/coke.png",
-    alt: "Coca-Cola",
-    description: "Classic taste of Coke.",
-    tag: "Native Ad",
+    alt: "Dating",
+    description: "Swipe, match, and engage.",
+    tag: "Dating",
   },
 ];
 
@@ -181,7 +188,7 @@ function MobileLogoCol({
               }}
             >
               <Image
-                src="	https://panel.digitarmedia.com/admin/uploads/pepsi1756281599.png"
+                src={item.src}
                 alt={item.alt}
                 width={80}
                 height={80}
@@ -308,7 +315,7 @@ function DesktopLogoCol({
                   }}
                 >
                   <Image
-                    src="	https://panel.digitarmedia.com/admin/uploads/Pepsi_white1756281944.png"
+                    src="/logo-placeholder.png"
                     alt="Brand Logo"
                     width={100}
                     height={100}
@@ -341,7 +348,7 @@ function DesktopLogoCol({
                   }}
                 >
                   <Image
-                    src=""
+                    src={item.src}
                     alt={item.alt}
                     width={120}
                     height={120}
@@ -471,13 +478,37 @@ function ImageModal({
                 ×
               </button>
 
-              {/* Pepsigame Component */}
-              <div style={{
-                width: "100%",
-                height: "450px",
-                marginTop: "20px"
-              }}>
-                <PepsiChallengeAd />
+              {/* Conditional Ad Rendering */}
+              <div
+                style={{
+                  width: "100%",
+                  height: "450px",
+                  marginTop: "20px",
+                }}
+              >
+                {item?.tag === "Entertainment" ? (
+                  <PepsiChallengeAd />
+                ) : item?.tag === "Ecommerce (shoes)" ? (
+                  <Nikegame />
+                ) : (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "100%",
+                      height: "100%",
+                      color: "#fe6601",
+                      fontWeight: 800,
+                      fontSize: "1.25rem",
+                      border: "1px dashed rgba(254, 102, 1, 0.4)",
+                      borderRadius: "12px",
+                      background: "rgba(254, 102, 1, 0.04)",
+                    }}
+                  >
+                    {item?.tag} ad coming soon
+                  </div>
+                )}
               </div>
             </div>
           </motion.div>
@@ -605,29 +636,9 @@ function DesktopCreative({
     prevYRef.current = latest;
   });
 
-  const leftColumnItems = items.map((item, index) => ({
-    ...item,
-    tag: [
-      "E-Commerce",
-      "Fianance",
-      "Crypto",
-      "Entertainment",
-      "Sports",
-      "Dating",
-    ][index % 6],
-  }));
+  const leftColumnItems = items.filter((_, index) => index % 2 === 0);
 
-  const rightColumnItems = items.map((item, index) => ({
-    ...item,
-    tag: [
-      "Entertainment",
-      "Sports",
-      "Dating",
-      "E-Commerce",
-      "Fianance",
-      "Crypto",
-    ][(index + 1) % 6],
-  }));
+  const rightColumnItems = items.filter((_, index) => index % 2 !== 0);
 
   return (
     <div
