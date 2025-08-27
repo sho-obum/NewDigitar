@@ -111,15 +111,28 @@ const itemFade = {
 const HomeOffer = () => {
   const [activeKey, setActiveKey] = useState<Key>(null);
   const [isTouch, setIsTouch] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const hideTimer = useRef<number | null>(null);
 
   useEffect(() => {
     const onTouch = () => setIsTouch(true);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 991.98);
+    };
+
+    // Initial check
+    checkMobile();
+
     window.addEventListener("touchstart", onTouch, {
       once: true,
       passive: true,
     });
-    return () => window.removeEventListener("touchstart", onTouch);
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      window.removeEventListener("touchstart", onTouch);
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
 
   const scheduleHide = (delay = 220) => {
@@ -140,14 +153,18 @@ const HomeOffer = () => {
   };
 
   const attach = (key: Exclude<Key, null>) => ({
-    onMouseEnter: () => !isTouch && showCard(key),
-    onMouseLeave: () => !isTouch && scheduleHide(),
-    onFocus: () => showCard(key),
+    onMouseEnter: () => !isMobile && !isTouch && showCard(key),
+    onMouseLeave: () => !isMobile && !isTouch && scheduleHide(),
+    onFocus: () => !isMobile && showCard(key),
     onBlur: (e: React.FocusEvent<HTMLDivElement>) => {
-      if (!e.currentTarget.contains(e.relatedTarget as Node)) scheduleHide(220);
+      if (!isMobile && !e.currentTarget.contains(e.relatedTarget as Node))
+        scheduleHide(220);
     },
-    onClick: () =>
-      isTouch && (activeKey === key ? setActiveKey(null) : showCard(key)),
+    onClick: () => {
+      if (isMobile || isTouch) {
+        activeKey === key ? setActiveKey(null) : showCard(key);
+      }
+    },
     tabIndex: 0,
     role: "listitem" as const,
     "aria-controls": "offer-pop",
@@ -180,9 +197,12 @@ const HomeOffer = () => {
                       </p>
                     </div>
                     <div className="section__content-cta">
-                      <Link href="/our-services" className="btn btn--secondary">
+                      {/* <Link href="/our-services" className="btn btn--secondary">
                         EXPLORE OUR SERVICES
-                      </Link>
+                      </Link> */}
+                      <button className="btn btn--secondary" onClick={() => {}}>
+                        EXPLORE OUR SERVICES
+                      </button>
                     </div>
                   </div>
 
@@ -214,6 +234,18 @@ const HomeOffer = () => {
                           animate="animate"
                           exit="exit"
                         >
+                          {/* Mobile Close Button */}
+                          {(isTouch || isMobile) && (
+                            <button
+                              className="offer__pop-close"
+                              aria-label="Close"
+                              onClick={() => setActiveKey(null)}
+                            >
+                              ×
+                            </button>
+                          )}
+                          {/* Tags */}
+                          {/* 
                           <motion.div
                             className="offer__pop-toprow"
                             variants={itemFade}
@@ -228,7 +260,7 @@ const HomeOffer = () => {
                                 </span>
                               ))}
                             </div>
-                          </motion.div>
+                          </motion.div> */}
 
                           <motion.h3 className="pop-title" variants={itemFade}>
                             {previews[activeKey].title}
@@ -284,24 +316,26 @@ const HomeOffer = () => {
                 <div
                   className="offer__cta"
                   role="list"
-                  onMouseLeave={() => !isTouch && scheduleHide()}
-                  onMouseEnter={() => cancelHide()}
+                  onMouseLeave={() => !isMobile && !isTouch && scheduleHide()}
+                  onMouseEnter={() => !isMobile && cancelHide()}
                 >
                   <div
                     className="offer__cta-single fade-top"
                     {...attach("performance")}
                   >
                     <h2>
-                      <Link
+                      {/* <Link
                         href="/services/performance"
                         className="offer__cta-link"
-                      >
+                      > */}
+                      <span className="offer__cta-link">
                         Performance Marketing{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                           <span className="hover-hint">Click </span>
                         </span>
-                      </Link>
+                      </span>
+                      {/* </Link> */}
                     </h2>
                   </div>
 
@@ -310,13 +344,15 @@ const HomeOffer = () => {
                     {...attach("social")}
                   >
                     <h2>
-                      <Link href="/services/social" className="offer__cta-link">
+                      {/* <Link href="/services/social" className="offer__cta-link"> */}
+                      <span className="offer__cta-link">
                         Social Media Marketing{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                           <span className="hover-hint">Click</span>
                         </span>
-                      </Link>
+                      </span>
+                      {/* </Link> */}
                     </h2>
                   </div>
 
@@ -325,16 +361,18 @@ const HomeOffer = () => {
                     {...attach("branding")}
                   >
                     <h2>
-                      <Link
+                      {/* <Link
                         href="/services/branding"
                         className="offer__cta-link"
-                      >
+                      > */}
+                      <span className="offer__cta-link">
                         Branding &amp; Creative{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                           <span className="hover-hint">Click</span>
                         </span>
-                      </Link>
+                      </span>
+                      {/* </Link> */}
                     </h2>
                   </div>
 
@@ -343,16 +381,18 @@ const HomeOffer = () => {
                     {...attach("influencer")}
                   >
                     <h2>
-                      <Link
+                      {/* <Link
                         href="/services/influencer"
                         className="offer__cta-link"
-                      >
+                      > */}
+                      <span className="offer__cta-link">
                         Influencer Marketing{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                           <span className="hover-hint">Click</span>
                         </span>
-                      </Link>
+                      </span>
+                      {/* </Link> */}
                     </h2>
                   </div>
                 </div>
@@ -376,17 +416,36 @@ const HomeOffer = () => {
           </div>
           <div
             style={{
-              position:"relative",
-              top:"130px"
-              
+              position: "relative",
+              top: "130px",
             }}
           >
-           <hr className="creativeLine" />
+            <hr className="creativeLine" />
           </div>
         </div>
       </section>
 
       <style jsx global>{`
+        .offer__pop-close {
+          position: absolute;
+          top: 10px;
+          right: 12px;
+          background: none;
+          border: none;
+          font-size: 1.6rem;
+          font-weight: bold;
+          color: #fff;
+          cursor: pointer;
+          z-index: 5;
+          line-height: 1;
+        }
+
+        @media (hover: hover) and (pointer: fine) and (min-width: 992px) {
+          .offer__pop-close {
+            display: none; /* hide on desktop */
+          }
+        }
+
         .position-relative {
           position: relative;
         }
@@ -440,14 +499,19 @@ const HomeOffer = () => {
 
         .pop-title {
           margin: 10px 0 6px;
-          font-size: 1.25rem;
+          font-size: 2rem;
           letter-spacing: 0.2px;
           font-weight: 700;
+          text-align: center;
         }
         .pop-tagline {
           margin: 0 0 12px;
           opacity: 0.9;
           font-size: 0.95rem;
+          text-align: center;
+          color: gray !important;
+          margin-bottom: 20px;
+          margin-top: -15px;
         }
 
         .pop-metrics {
@@ -538,14 +602,22 @@ const HomeOffer = () => {
         .btn--thin {
           padding: 10px 14px;
         }
+        @media (hover: hover) and (pointer: fine) and (min-width: 992px) {
+          .offer__cta-single:hover,
+          .offer__cta-single:focus {
+            transform: translateX(2px);
+          }
+
+          .offer__cta-single:hover .hover-hint,
+          .offer__cta-single:focus-within .hover-hint {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
         .offer__cta-single {
           transition: transform 160ms ease, opacity 160ms ease;
           cursor: pointer;
-        }
-        .offer__cta-single:hover,
-        .offer__cta-single:focus {
-          transform: translateX(2px);
         }
 
         /* right list link + hover hint */
@@ -555,6 +627,14 @@ const HomeOffer = () => {
           gap: 8px;
           position: relative;
           text-decoration: none;
+          color: gray !important;
+        }
+        @media (max-width: 991.98px) {
+          .offer .offer__cta .offer__cta-single {
+            position: relative;
+            margin-bottom: 25px;
+          }
+            
         }
         .offer__cta-iconwrap {
           display: inline-flex;
@@ -573,10 +653,11 @@ const HomeOffer = () => {
           margin-top: 0;
           letter-spacing: 0.3px;
         }
-        .offer__cta-single:hover .hover-hint,
-        .offer__cta-single:focus-within .hover-hint {
-          opacity: 1;
-          transform: translateY(0);
+        /* Mobile: hide hover hints */
+        @media (max-width: 991.98px) {
+          .hover-hint {
+            display: none;
+          }
         }
 
         @media (max-width: 991.98px) {

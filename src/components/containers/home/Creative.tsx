@@ -1,7 +1,13 @@
 "use client";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import Image from "next/image";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useRef, useState, useEffect } from "react";
+import PepsiChallengeAd from "../../ads/Pepsigame";
 
 interface CardItem {
   src: string;
@@ -15,29 +21,187 @@ const items: CardItem[] = [
     src: "/sprite.png",
     alt: "Sprite",
     description: "Refreshing lemon-lime soda.",
-    tag: "Native Ad"
+    tag: "Native Ad",
   },
   {
     src: "/cheetos.png",
     alt: "Cheetos",
     description: "Crunchy Flamin' Hot snack.",
-    tag: "Interactive"
+    tag: "Interactive",
   },
   {
     src: "/fanta.png",
     alt: "Fanta",
     description: "Orange fruity delight.",
-    tag: "Hover Ad"
+    tag: "Hover Ad",
   },
   {
     src: "/coke.png",
     alt: "Coca-Cola",
     description: "Classic taste of Coke.",
-    tag: "Native Ad"
+    tag: "Native Ad",
   },
 ];
 
-function LogoCol({
+// Mobile Logo Column Component
+function MobileLogoCol({
+  integration,
+  onTileClick,
+}: {
+  integration: CardItem[];
+  onTileClick: (item: CardItem) => void;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  return (
+    <div
+      style={{
+        position: "relative",
+        height: "400px",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <motion.div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px",
+          willChange: "transform",
+          animationName: "scrollY",
+          animationDuration: "30s",
+          animationTimingFunction: "linear",
+          animationIterationCount: "infinite",
+          animationPlayState: isHovered ? "paused" : "running",
+        }}
+      >
+        {integration.map((item) => (
+          <div
+            key={item.alt}
+            style={{
+              background: "rgba(255, 165, 0, 0.15)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(255,255,255,0.2)",
+              borderRadius: "16px",
+              padding: "16px",
+              boxShadow: "0 8px 25px rgba(0,0,0,0.5)",
+              color: "white",
+              textAlign: "center",
+              position: "relative",
+              cursor: "pointer",
+              transition: "transform 0.2s ease, box-shadow 0.2s ease",
+              width: "180px",
+              height: "160px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+            onClick={() => onTileClick(item)}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+              e.currentTarget.style.boxShadow = "0 12px 35px rgba(0,0,0,0.7)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.boxShadow = "0 8px 25px rgba(0,0,0,0.5)";
+            }}
+          >
+            {/* Neon Tag */}
+            <div
+              style={{
+                position: "absolute",
+                top: "8px",
+                left: "8px",
+                zIndex: 10,
+              }}
+            >
+              <span
+                style={{
+                  background: "rgba(0, 0, 0, 0.8)",
+                  color: "#fe6601",
+                  padding: "4px 6px",
+                  borderRadius: "6px",
+                  fontSize: "9px",
+                  fontWeight: "600",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.5px",
+                  border: "1px solid #fe6601",
+                  boxShadow:
+                    "0 0 5px #fe6601, 0 0 10px #fe6601, 0 0 15px #fe6601",
+                  textShadow: "0 0 3px #fe6601",
+                  backdropFilter: "blur(5px)",
+                }}
+              >
+                {item.tag}
+              </span>
+            </div>
+
+            {/* Logo in top right */}
+            <div
+              style={{
+                position: "absolute",
+                top: "8px",
+                right: "8px",
+                zIndex: 10,
+              }}
+            >
+              <Image
+                src="/logo-placeholder.png"
+                alt="Brand Logo"
+                width={20}
+                height={20}
+                style={{
+                  width: "20px",
+                  height: "20px",
+                  objectFit: "contain",
+                  opacity: 0.8,
+                }}
+              />
+            </div>
+
+            <div
+              style={{
+                position: "relative",
+                flex: 1,
+                height: "100px",
+                margin: "8px",
+                borderRadius: "12px",
+                background: "rgba(255, 255, 255, 0.1)",
+                backdropFilter: "blur(10px)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                overflow: "hidden",
+              }}
+            >
+              <Image
+                src="	https://panel.digitarmedia.com/admin/uploads/pepsi1756281599.png"
+                alt={item.alt}
+                width={80}
+                height={80}
+                style={{
+                  width: "80px",
+                  height: "80px",
+                  objectFit: "contain",
+                  filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.3))",
+                }}
+              />
+            </div>
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+// Desktop Logo Column Component (Original Design)
+function DesktopLogoCol({
   integration,
   reverse,
   onTileClick,
@@ -60,7 +224,6 @@ function LogoCol({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      
       <motion.div
         style={{
           display: "flex",
@@ -81,7 +244,7 @@ function LogoCol({
               <div
                 key={`${item.alt}-${i}`}
                 style={{
-                  background: "rgba(255, 165, 0, 0.15)", // orange glass effect
+                  background: "rgba(255, 165, 0, 0.15)",
                   backdropFilter: "blur(10px)",
                   border: "1px solid rgba(255,255,255,0.2)",
                   borderRadius: "20px",
@@ -96,11 +259,13 @@ function LogoCol({
                 onClick={() => onTileClick(item)}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "scale(1.02)";
-                  e.currentTarget.style.boxShadow = "0 12px 35px rgba(0,0,0,0.7)";
+                  e.currentTarget.style.boxShadow =
+                    "0 12px 35px rgba(0,0,0,0.7)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.boxShadow = "0 8px 25px rgba(0,0,0,0.5)";
+                  e.currentTarget.style.boxShadow =
+                    "0 8px 25px rgba(0,0,0,0.5)";
                 }}
               >
                 {/* Neon Tag */}
@@ -123,27 +288,69 @@ function LogoCol({
                       textTransform: "uppercase",
                       letterSpacing: "0.5px",
                       border: "1px solid #fe6601",
-                      boxShadow: "0 0 10px #fe6601, 0 0 20px #fe6601, 0 0 30px #fe6601",
-                      textShadow: "0 0 5px #fe6601",
+                      boxShadow:
+                        "0 0 5px #fe6601, 0 0 10px #fe6601, 0 0 15px #fe6601",
+                      textShadow: "0 0 3px #fe6601",
                       backdropFilter: "blur(5px)",
                     }}
                   >
                     {item.tag}
                   </span>
                 </div>
-                
+
+                {/* Logo in top right */}
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    height: "400px",
+                    position: "absolute",
+                    top: "15px",
+                    right: "15px",
+                    zIndex: 10,
                   }}
                 >
                   <Image
-                    src={item.src}
-                    alt={item.alt}
+                    src="	https://panel.digitarmedia.com/admin/uploads/Pepsi_white1756281944.png"
+                    alt="Brand Logo"
                     width={100}
                     height={100}
+                    style={{
+                      width: "100px",
+                      height: "auto",
+                      objectFit: "contain",
+                      opacity: 1,
+                      position: "relative",
+                      bottom: "3px",
+                      left:"-20px"
+                    }}
+                  />
+                </div>
+
+                <div
+                  style={{
+                    position: "relative",
+                    height: "400px",
+                    margin: "15px",
+                    borderRadius: "16px",
+                    background: "rgba(255, 255, 255, 0.1)",
+                    backdropFilter: "blur(15px)",
+                    border: "1px solid rgba(255, 255, 255, 0.2)",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    overflow: "hidden",
+                    boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                  }}
+                >
+                  <Image
+                    src=""
+                    alt={item.alt}
+                    width={120}
+                    height={120}
+                    style={{
+                      width: "120px",
+                      height: "120px",
+                      objectFit: "contain",
+                      filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.4))",
+                    }}
                   />
                 </div>
               </div>
@@ -156,9 +363,13 @@ function LogoCol({
 }
 
 // Modal Component
-function ImageModal({ isOpen, onClose, item }: { 
-  isOpen: boolean; 
-  onClose: () => void; 
+function ImageModal({
+  isOpen,
+  onClose,
+  item,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
   item: CardItem | null;
 }) {
   return (
@@ -191,38 +402,40 @@ function ImageModal({ isOpen, onClose, item }: {
             transition={{ duration: 0.4, ease: "easeOut" }}
             style={{
               position: "relative",
-              maxWidth: "90vw",
+              width: "clamp(300px, 90vw, 500px)",
               maxHeight: "90vh",
+              margin: "clamp(1rem, 5vw, 2rem)",
             }}
             onClick={(e) => e.stopPropagation()}
           >
-                         {/* Orange Glowing Border Background */}
-             <div
-               style={{
-                 position: "absolute",
-                 top: "-15px",
-                 left: "-15px",
-                 right: "-15px",
-                 bottom: "-15px",
-                 background: "linear-gradient(45deg, #fe6601, #ff8533, #fe6601)",
-                 borderRadius: "20px",
-                 filter: "blur(8px)",
-                 opacity: 0.4,
-                 zIndex: -1,
-                 animation: "glow 2s ease-in-out infinite alternate",
-               }}
-             />
-            
+            {/* Orange Glowing Border Background */}
+            <div
+              style={{
+                position: "absolute",
+                top: "-15px",
+                left: "-15px",
+                right: "-15px",
+                bottom: "-15px",
+                background: "linear-gradient(45deg, #fe6601, #ff8533, #fe6601)",
+                borderRadius: "20px",
+                filter: "blur(8px)",
+                opacity: 0.4,
+                zIndex: -1,
+                animation: "glow 2s ease-in-out infinite alternate",
+              }}
+            />
+
             {/* Modal Content */}
             <div
               style={{
                 background: "rgba(0, 0, 0, 0.95)",
                 border: "2px solid #fe6601",
-                borderRadius: "20px",
-                padding: "30px",
-                                 boxShadow: "0 0 25px rgba(254, 102, 1, 0.3)",
+                borderRadius: "clamp(12px, 3vw, 20px)",
+                padding: "clamp(1rem, 5vw, 1.875rem)",
+                boxShadow: "0 0 25px rgba(254, 102, 1, 0.3)",
                 position: "relative",
                 zIndex: 1,
+                minHeight: "500px",
               }}
             >
               {/* Close Button */}
@@ -230,16 +443,16 @@ function ImageModal({ isOpen, onClose, item }: {
                 onClick={onClose}
                 style={{
                   position: "absolute",
-                  top: "15px",
-                  right: "20px",
+                  top: "clamp(0.75rem, 3vw, 0.9375rem)",
+                  right: "clamp(1rem, 4vw, 1.25rem)",
                   background: "none",
                   border: "none",
                   color: "#fe6601",
-                  fontSize: "24px",
+                  fontSize: "clamp(1.25rem, 4vw, 1.5rem)",
                   cursor: "pointer",
-                  zIndex: 2,
-                  width: "40px",
-                  height: "40px",
+                  zIndex: 10,
+                  width: "clamp(2rem, 6vw, 2.5rem)",
+                  height: "clamp(2rem, 6vw, 2.5rem)",
                   borderRadius: "50%",
                   display: "flex",
                   alignItems: "center",
@@ -257,48 +470,14 @@ function ImageModal({ isOpen, onClose, item }: {
               >
                 ×
               </button>
-              
-              {/* Image Container */}
-              <div
-                style={{
-                  width: "400px",
-                  height: "300px",
-                  background: "rgba(255, 255, 255, 0.1)",
-                  borderRadius: "15px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  border: "1px solid rgba(254, 102, 1, 0.3)",
-                  marginBottom: "20px",
-                }}
-              >
-                <span style={{ color: "rgba(255, 255, 255, 0.5)", fontSize: "16px" }}>
-                  Image Placeholder (Future GIF)
-                </span>
-              </div>
-              
-              {/* Content Info */}
-              <div style={{ textAlign: "center" }}>
-                <h3 style={{ color: "#fe6601", fontSize: "24px", marginBottom: "10px" }}>
-                  {item?.alt}
-                </h3>
-                <p style={{ color: "white", fontSize: "16px", marginBottom: "15px" }}>
-                  {item?.description}
-                </p>
-                <span
-                  style={{
-                    background: "rgba(254, 102, 1, 0.2)",
-                    color: "#fe6601",
-                    padding: "6px 12px",
-                    borderRadius: "8px",
-                    fontSize: "12px",
-                    fontWeight: "600",
-                    textTransform: "uppercase",
-                    border: "1px solid #fe6601",
-                  }}
-                >
-                  {item?.tag}
-                </span>
+
+              {/* Pepsigame Component */}
+              <div style={{
+                width: "100%",
+                height: "450px",
+                marginTop: "20px"
+              }}>
+                <PepsiChallengeAd />
               </div>
             </div>
           </motion.div>
@@ -308,9 +487,110 @@ function ImageModal({ isOpen, onClose, item }: {
   );
 }
 
-export default function OrangeTicker() {
-  const [selectedItem, setSelectedItem] = useState<CardItem | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+// Mobile Component
+function MobileCreative({
+  onTileClick,
+}: {
+  onTileClick: (item: CardItem) => void;
+}) {
+  return (
+    <div
+      style={{
+        background: "black",
+        padding: "2rem 1rem",
+        position: "relative",
+        minHeight: "100vh",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "400px",
+          margin: "0 auto",
+          textAlign: "center",
+        }}
+      >
+        {/* Content Section */}
+        <div style={{ marginBottom: "2rem" }}>
+          <p
+            style={{
+              border: "2px solid #fe6601",
+              color: "orange",
+              width: "fit-content",
+              padding: "0.5rem 1rem",
+              borderRadius: "12px",
+              fontWeight: 600,
+              fontSize: "0.9rem",
+              margin: "0 auto 1rem auto",
+            }}
+          >
+            <span style={{ fontWeight: 900 }}>Big</span> Badge
+          </p>
+          <h2
+            style={{
+              fontSize: "2.5rem",
+              fontWeight: 800,
+              color: "white",
+              textTransform: "uppercase",
+              lineHeight: "1.1",
+              marginBottom: "1rem",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "1.2rem",
+                fontWeight: "300",
+                textTransform: "lowercase",
+                display: "block",
+                marginBottom: "0.5rem",
+              }}
+            >
+              rich media creatives that
+            </span>
+            <span
+              style={{
+                color: "#FE6601",
+                display: "block",
+                marginBottom: "0.5rem",
+              }}
+            >
+              Stand Out
+            </span>
+            <span
+              style={{
+                color: "#FE6601",
+                fontSize: "3rem",
+                display: "block",
+                position: "relative",
+              }}
+            >
+              big!
+              <i
+                className="fa-sharp fa-solid fa-arrow-up-right"
+                style={{
+                  fontSize: "2rem",
+                  marginLeft: "0.5rem",
+                  verticalAlign: "middle",
+                }}
+              />
+            </span>
+          </h2>
+        </div>
+
+        {/* Single Column */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <MobileLogoCol integration={items} onTileClick={onTileClick} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Desktop Component (Original Design)
+function DesktopCreative({
+  onTileClick,
+}: {
+  onTileClick: (item: CardItem) => void;
+}) {
   const [scrollDir, setScrollDir] = useState<"up" | "down">("down");
   const prevYRef = useRef(0);
   const { scrollY } = useScroll();
@@ -325,6 +605,180 @@ export default function OrangeTicker() {
     prevYRef.current = latest;
   });
 
+  const leftColumnItems = items.map((item, index) => ({
+    ...item,
+    tag: [
+      "E-Commerce",
+      "Fianance",
+      "Crypto",
+      "Entertainment",
+      "Sports",
+      "Dating",
+    ][index % 6],
+  }));
+
+  const rightColumnItems = items.map((item, index) => ({
+    ...item,
+    tag: [
+      "Entertainment",
+      "Sports",
+      "Dating",
+      "E-Commerce",
+      "Fianance",
+      "Crypto",
+    ][(index + 1) % 6],
+  }));
+
+  return (
+    <div
+      style={{
+        background: "black",
+        padding: "20px 20px",
+        position: "relative",
+      }}
+    >
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "30px",
+          maxWidth: "1400px",
+          margin: "0 auto",
+          alignItems: "center",
+        }}
+      >
+        {/* Left content */}
+        <motion.div
+          style={{
+            position: "relative",
+            zIndex: 1,
+          }}
+          initial={{ y: 80 }}
+          animate={{ y: scrollDir === "down" ? 0 : 80 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        >
+          <p
+            style={{
+              border: "2px solid #fe6601",
+              color: "orange",
+              width: "fit-content",
+              padding: "6px 12px",
+              borderRadius: "12px",
+              fontWeight: 600,
+            }}
+          >
+            <span style={{ fontWeight: 900 }}>Big</span> Badge
+          </p>
+          <h2
+            style={{
+              fontSize: "68px",
+              fontWeight: 800,
+              marginTop: "20px",
+              color: "white",
+              textTransform: "uppercase",
+              lineHeight: 0.8,
+            }}
+          >
+            <span
+              style={{
+                fontSize: "32px",
+                fontWeight: "300",
+                textTransform: "lowercase",
+              }}
+            >
+              {" "}
+              rich media creatives that <br />{" "}
+            </span>
+
+            <span
+              style={{ color: "#FE6601", position: "relative", bottom: "20px" }}
+            >
+              Stand Out
+            </span>
+
+            {""}
+            <span
+              style={{
+                color: "#261900",
+                fontSize: "100px",
+                position: "relative",
+                bottom: "-60px",
+                right: "430px",
+              }}
+            >
+              {" "}
+              big!
+            </span>
+            <span
+              style={{
+                position: "relative",
+                bottom: "150px",
+                left: "340px",
+                fontSize: "80px",
+              }}
+            >
+              <i
+                className="fa-sharp fa-solid fa-arrow-up-right"
+                style={{
+                  position: "relative",
+                  bottom: "30px",
+                  left: "30px",
+                }}
+              ></i>
+            </span>
+          </h2>
+        </motion.div>
+
+        {/* Right animated columns */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "20px",
+            overflow: "hidden",
+            position: "relative",
+            zIndex: 2,
+          }}
+        >
+          <DesktopLogoCol
+            integration={leftColumnItems}
+            onTileClick={onTileClick}
+          />
+          <DesktopLogoCol
+            integration={rightColumnItems}
+            reverse
+            onTileClick={onTileClick}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Hook for viewport detection
+function useViewport() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkViewport = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkViewport();
+    window.addEventListener("resize", checkViewport);
+
+    return () => window.removeEventListener("resize", checkViewport);
+  }, []);
+
+  return { isMobile };
+}
+
+// Main Component
+export default function OrangeTicker() {
+  const [selectedItem, setSelectedItem] = useState<CardItem | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isMobile } = useViewport();
+
   const handleTileClick = (item: CardItem) => {
     setSelectedItem(item);
     setIsModalOpen(true);
@@ -335,135 +789,13 @@ export default function OrangeTicker() {
     setSelectedItem(null);
   };
 
-  // Create two arrays with different tags to ensure no duplicates between rows
-  const leftColumnItems = items.map((item, index) => ({
-    ...item,
-    tag: ["Native Ad", "Interactive", "Hover Ad"][index % 3]
-  }));
-  
-  const rightColumnItems = items.map((item, index) => ({
-    ...item,
-    tag: ["Interactive", "Hover Ad", "Native Ad"][(index + 1) % 3]
-  }));
-
   return (
     <>
-      <div
-        style={{
-          background: "black",
-          padding: "20px 20px",
-          position: "relative",
-        }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "30px",
-            maxWidth: "1400px",
-            margin: "0 auto",
-            alignItems: "center",
-        
-          }}
-        >
-          {/* Left content */}
-          <motion.div
-            style={{
-              position: "relative",
-              zIndex: 1,
-            }}
-            initial={{ y: 80 }}
-            animate={{ y: scrollDir === "down" ? 0 : 80 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
-            <p
-              style={{
-                border: "2px solid #fe6601",
-                color: "orange",
-                width: "fit-content",
-                padding: "6px 12px",
-                borderRadius: "12px",
-                fontWeight: 600,
-              }}
-            >
-              <span style={{ fontWeight: 900 }}>Big</span> Badge
-            </p>
-            <h2
-              style={{
-                fontSize: "68px",
-                fontWeight: 800,
-                marginTop: "20px",
-                color: "white",
-                textTransform: "uppercase",
-                lineHeight: 0.8,
-              }}
-            >
-              <span
-                style={{
-                  fontSize: "32px",
-                  fontWeight: "300",
-                  textTransform: "lowercase",
-                }}
-              >
-                {" "}
-                rich media creatives that <br />{" "}
-              </span>
-
-              <span
-                style={{ color: "#FE6601", position: "relative", bottom: "20px" }}
-              >
-                Stand Out
-              </span>
-
-              {""}
-              <span
-                style={{
-                  color: "#261900",
-                  fontSize: "120px",
-                  position: "relative",
-                  bottom: "20px",
-                  right: "20px",
-                }}
-              >
-                {" "}
-                big!
-              </span>
-              <span
-                style={{
-                  position: "relative",
-                  bottom: "150px",
-                  left: "340px",
-                  fontSize: "80px",
-                }}
-              >
-                <i className="fa-sharp fa-solid fa-arrow-up-right"
-                style={{
-                  position:"relative",
-                  bottom:"30px",
-                  left:"30px"
-                }}
-                ></i>
-              </span>
-            </h2>
-          </motion.div>
-
-          {/* Right animated columns */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "20px",
-              overflow: "hidden",
-              position: "relative",
-              zIndex: 2,
-            }}
-          >
-            <LogoCol integration={leftColumnItems} onTileClick={handleTileClick} />
-            <LogoCol integration={rightColumnItems} reverse onTileClick={handleTileClick} />
-          </div>
-        </div>
-      
-      </div>
+      {isMobile ? (
+        <MobileCreative onTileClick={handleTileClick} />
+      ) : (
+        <DesktopCreative onTileClick={handleTileClick} />
+      )}
 
       <div className="lines d-none d-lg-flex" style={{ zIndex: 0 }}>
         <div className="line"></div>
@@ -475,10 +807,10 @@ export default function OrangeTicker() {
       <hr />
 
       {/* Modal */}
-      <ImageModal 
-        isOpen={isModalOpen} 
-        onClose={closeModal} 
-        item={selectedItem} 
+      <ImageModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        item={selectedItem}
       />
 
       {/* CSS for glow animation */}
@@ -495,8 +827,12 @@ export default function OrangeTicker() {
       {/* Global keyframes for vertical scroll animation */}
       <style jsx global>{`
         @keyframes scrollY {
-          0% { transform: translateY(0%); }
-          100% { transform: translateY(-50%); }
+          0% {
+            transform: translateY(0%);
+          }
+          100% {
+            transform: translateY(-50%);
+          }
         }
       `}</style>
     </>
