@@ -33,13 +33,13 @@ const previews: Record<
     metrics: [
       {
         label: "Monthly Conversion",
-        value: "4.7×",
-        sub: "Last 30d",
+        value: "250K+",
+        sub: "",
         progress: 82,
       },
       { label: "LTV Users", value: "₹142", sub: "↓ 26%", progress: 74 },
-      { label: "Revenue Growth", value: "6.1%", sub: "+1.4pp", progress: 71 },
-      { label: "Conversion Rate", value: "3.9%", sub: "+0.8pp", progress: 68 },
+      { label: "Revenue Growth", value: "35%", sub: "+1.4pp", progress: 71 },
+      { label: "Conversion Rate", value: "8%", sub: "+0.8pp", progress: 68 },
     ],
   },
   social: {
@@ -49,10 +49,10 @@ const previews: Record<
     level: "Lvl 7 Storyteller",
     tagline: "Turn scrolls into saves and shares.",
     metrics: [
-      { label: "Enagegment Rate", value: "1.2M", sub: "+18k/mo", progress: 76 },
-      { label: "CTR", value: "7.4%", sub: "Median", progress: 63 },
-      { label: "CPE", value: "28k", sub: "30d", progress: 58 },
-      { label: "ROAS", value: "24.5M", sub: "30d", progress: 81 },
+      { label: "Enagegment Rate", value: "4%", sub: " ", progress: 76 },
+      { label: "CTR", value: "1.5%", sub: "", progress: 63 },
+      { label: "CPE", value: "$0.20", sub: "", progress: 58 },
+      { label: "ROAS", value: "2X", sub: "", progress: 81 },
     ],
   },
   branding: {
@@ -332,7 +332,6 @@ const HomeOffer = () => {
                         Performance Marketing{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
-                          <span className="hover-hint">Click </span>
                         </span>
                       </span>
                       {/* </Link> */}
@@ -349,7 +348,6 @@ const HomeOffer = () => {
                         Social Media Marketing{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
-                          <span className="hover-hint">Click</span>
                         </span>
                       </span>
                       {/* </Link> */}
@@ -369,7 +367,6 @@ const HomeOffer = () => {
                         Branding &amp; Creative{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
-                          <span className="hover-hint">Click</span>
                         </span>
                       </span>
                       {/* </Link> */}
@@ -389,7 +386,6 @@ const HomeOffer = () => {
                         Influencer Marketing{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
-                          <span className="hover-hint">Click</span>
                         </span>
                       </span>
                       {/* </Link> */}
@@ -608,6 +604,11 @@ const HomeOffer = () => {
             transform: translateX(2px);
           }
 
+          .offer__cta-single:hover .offer__cta-link,
+          .offer__cta-single:focus .offer__cta-link {
+            color: #ff7a00 !important;
+          }
+
           .offer__cta-single:hover .hover-hint,
           .offer__cta-single:focus-within .hover-hint {
             opacity: 1;
@@ -622,12 +623,14 @@ const HomeOffer = () => {
 
         /* right list link + hover hint */
         .offer__cta-link {
-          display: inline-flex;
+          display: flex;
           align-items: center;
-          gap: 8px;
+          justify-content: space-between;
+          gap: 12px;
           position: relative;
           text-decoration: none;
           color: gray !important;
+          width: 100%;
         }
         @media (max-width: 991.98px) {
           .offer .offer__cta .offer__cta-single {

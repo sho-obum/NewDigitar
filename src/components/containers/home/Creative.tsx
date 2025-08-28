@@ -9,6 +9,7 @@ import Image from "next/image";
 import { Fragment, useRef, useState, useEffect } from "react";
 import PepsiChallengeAd from "../../ads/Pepsigame";
 import Nikegame from "../../ads/Nikegame";
+import TinderMiniGameAd from "@/components/ads/Tindergame";
 
 interface CardItem {
   src: string;
@@ -19,34 +20,41 @@ interface CardItem {
 
 const items: CardItem[] = [
   {
-    src: "/coke.png",
-    alt: "Entertainment",
-    description: "Brand engagement and interactive experiences.",
-    tag: "Entertainment",
+    src: "https://panel.digitarmedia.com/admin/uploads/21756358948.png",
+    alt: "Ecommerce",
+    description: "Shoppable experiences for products.",
+    tag: "Ecommerce",
   },
   {
-    src: "/sprite.png",
-    alt: "Ecommerce (shoes)",
-    description: "Shoppable experience for footwear.",
-    tag: "Ecommerce (shoes)",
+    src: "https://panel.digitarmedia.com/admin/uploads/11756358943.png",
+    alt: "Beverages",
+    description: "Interactive beverage brand experience.",
+    tag: "Beverages",
   },
   {
-    src: "/fanta.png",
-    alt: "Crypto",
-    description: "Crypto-focused interactive ad.",
-    tag: "Crypto",
-  },
-  {
-    src: "/cheetos.png",
-    alt: "Finance",
-    description: "Finance tools and calculators.",
-    tag: "Finance",
-  },
-  {
-    src: "/coke.png",
+    src: "https://panel.digitarmedia.com/admin/uploads/31756360830.png",
     alt: "Dating",
-    description: "Swipe, match, and engage.",
+    description: "Interactive beverage brand experience.",
     tag: "Dating",
+  },
+
+  {
+    src: "https://panel.digitarmedia.com/admin/uploads/21756358948.png",
+    alt: "Ecommerce",
+    description: "Shoppable experiences for products.",
+    tag: "Ecommerce",
+  },
+  {
+    src: "https://panel.digitarmedia.com/admin/uploads/31756360830.png",
+    alt: "Dating",
+    description: "Interactive beverage brand experience.",
+    tag: "Dating",
+  },
+  {
+    src: "https://panel.digitarmedia.com/admin/uploads/11756358943.png",
+    alt: "Beverages",
+    description: "Interactive beverage brand experience.",
+    tag: "Beverages",
   },
 ];
 
@@ -59,6 +67,9 @@ function MobileLogoCol({
   onTileClick: (item: CardItem) => void;
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [imageAspectRatios, setImageAspectRatios] = useState<
+    Record<string, number>
+  >({});
   const repeatedItems = [...integration, ...integration];
   return (
     <div
@@ -104,7 +115,6 @@ function MobileLogoCol({
               cursor: "pointer",
               transition: "transform 0.2s ease, box-shadow 0.2s ease",
               width: "180px",
-              height: "160px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
@@ -158,7 +168,7 @@ function MobileLogoCol({
                 zIndex: 10,
               }}
             >
-              <Image
+              {/* <Image
                 src="/logo-placeholder.png"
                 alt="Brand Logo"
                 width={20}
@@ -169,14 +179,19 @@ function MobileLogoCol({
                   objectFit: "contain",
                   opacity: 0.8,
                 }}
-              />
+              /> */}
             </div>
 
             <div
               style={{
                 position: "relative",
                 flex: 1,
-                height: "100px",
+                width: "100%",
+                aspectRatio:
+                  imageAspectRatios[item.src] &&
+                  isFinite(imageAspectRatios[item.src])
+                    ? String(imageAspectRatios[item.src])
+                    : "1 / 1",
                 margin: "8px",
                 borderRadius: "12px",
                 background: "rgba(255, 255, 255, 0.1)",
@@ -191,13 +206,20 @@ function MobileLogoCol({
               <Image
                 src={item.src}
                 alt={item.alt}
-                width={80}
-                height={80}
+                fill
+                sizes="(max-width: 768px) 180px, 300px"
                 style={{
-                  width: "80px",
-                  height: "80px",
                   objectFit: "contain",
                   filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.3))",
+                }}
+                onLoadingComplete={(img) => {
+                  const ratio = img.naturalWidth / img.naturalHeight;
+                  if (isFinite(ratio) && ratio > 0) {
+                    setImageAspectRatios((prev) => ({
+                      ...prev,
+                      [item.src]: ratio,
+                    }));
+                  }
                 }}
               />
             </div>
@@ -219,6 +241,9 @@ function DesktopLogoCol({
   onTileClick: (item: CardItem) => void;
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [imageAspectRatios, setImageAspectRatios] = useState<
+    Record<string, number>
+  >({});
   return (
     <div
       style={{
@@ -249,7 +274,7 @@ function DesktopLogoCol({
       >
         {Array.from({ length: 2 }).map((_, i) => (
           <Fragment key={i}>
-            {integration.map((item) => (
+            {(reverse ? [...integration].reverse() : integration).map((item) => (
               <div
                 key={`${item.alt}-${i}`}
                 style={{
@@ -264,7 +289,7 @@ function DesktopLogoCol({
                   position: "relative",
                   cursor: "pointer",
                   transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                  width: "360px",
+                  width: "300px",
                 }}
                 onClick={() => onTileClick(item)}
                 onMouseEnter={(e) => {
@@ -317,7 +342,7 @@ function DesktopLogoCol({
                     zIndex: 10,
                   }}
                 >
-                  <Image
+                  {/* <Image
                     src="/logo-placeholder.png"
                     alt="Brand Logo"
                     width={100}
@@ -329,16 +354,20 @@ function DesktopLogoCol({
                       opacity: 1,
                       position: "relative",
                       bottom: "3px",
-                      left:"-20px"
+                      left: "-20px",
                     }}
-                  />
+                  /> */}
                 </div>
 
                 <div
                   style={{
                     position: "relative",
-                    height: "400px",
-                    margin: "15px",
+                    width: "100%",
+                    aspectRatio:
+                      imageAspectRatios[item.src] &&
+                      isFinite(imageAspectRatios[item.src])
+                        ? String(imageAspectRatios[item.src])
+                        : "1 / 1",
                     borderRadius: "16px",
                     background: "rgba(255, 255, 255, 0.1)",
                     backdropFilter: "blur(15px)",
@@ -353,13 +382,20 @@ function DesktopLogoCol({
                   <Image
                     src={item.src}
                     alt={item.alt}
-                    width={120}
-                    height={120}
+                    fill
+                    sizes="(max-width: 1024px) 300px, 360px"
                     style={{
-                      width: "120px",
-                      height: "120px",
                       objectFit: "contain",
                       filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.4))",
+                    }}
+                    onLoadingComplete={(img) => {
+                      const ratio = img.naturalWidth / img.naturalHeight;
+                      if (isFinite(ratio) && ratio > 0) {
+                        setImageAspectRatios((prev) => ({
+                          ...prev,
+                          [item.src]: ratio,
+                        }));
+                      }
                     }}
                   />
                 </div>
@@ -489,10 +525,12 @@ function ImageModal({
                   marginTop: "20px",
                 }}
               >
-                {item?.tag === "Entertainment" ? (
+                {item?.tag === "Beverages" ? (
                   <PepsiChallengeAd />
-                ) : item?.tag === "Ecommerce (shoes)" ? (
+                ) : item?.tag === "Ecommerce" ? (
                   <Nikegame />
+                ) : item?.tag === "Dating" ? (
+                  <TinderMiniGameAd />
                 ) : (
                   <div
                     style={{
@@ -557,7 +595,7 @@ function MobileCreative({
               margin: "0 auto 1rem auto",
             }}
           >
-            <span style={{ fontWeight: 900 }}>Big</span> Badge
+            <span style={{ fontWeight: 900 }}>Interactive</span> Ads
           </p>
           <h2
             style={{
@@ -639,9 +677,9 @@ function DesktopCreative({
     prevYRef.current = latest;
   });
 
-  const leftColumnItems = items.filter((_, index) => index % 2 === 0);
+  const leftColumnItems = items;
 
-  const rightColumnItems = items.filter((_, index) => index % 2 !== 0);
+  const rightColumnItems = items;
 
   return (
     <div
@@ -681,7 +719,7 @@ function DesktopCreative({
               fontWeight: 600,
             }}
           >
-            <span style={{ fontWeight: 900 }}>Big</span> Badge
+            <span style={{ fontWeight: 900 }}>Interactive</span> Ads
           </p>
           <h2
             style={{

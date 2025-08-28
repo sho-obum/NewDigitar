@@ -25,9 +25,7 @@ const products: Product[] = [
     domain: "adxity.com",
     href: "https://adxity.com",
     points: [
-      "Performance-first media buying across programmatic & social.",
-      "Real-time optimization with transparent, actionable reporting.",
-      "Audience, creative, and LTV insights to unlock scale.",
+      "Precision Targeting at Enterprise Scale. Access premium inventory, leverage advanced audience insights, and execute data-driven campaigns that deliver measurable business outcomes",
     ],
     chipBg: "rgba(255,122,0,0.12)",
     chipFg: "#ff7a00",
@@ -40,9 +38,7 @@ const products: Product[] = [
     domain: "adpocket.ai",
     href: "https://adpocket.ai",
     points: [
-      "Plug-and-play SDK for premium, non-intrusive ad formats.",
-      "High eCPMs via smart mediation and fill optimization.",
-      "Lightweight, privacy-safe, and developer‑friendly.",
+      "Quality Traffic That Converts. Connect with engaged users across our trusted partner network while maintaining full transparency and control over your acquisition costs",
     ],
     chipBg: "rgba(76,175,80,0.15)",
     chipFg: "#9be89f",
@@ -103,19 +99,20 @@ const HomeProducts = () => {
       className="section fade-wrapper"
       style={{ paddingTop: 14, paddingBottom: 14 }}
     >
-        <hr
+      <hr
         style={{
-          position:"relative",
-          bottom:"34px"
+          position: "relative",
+          bottom: "34px",
         }}
-        />
+      />
       <div className="container">
         {/* Header */}
-        <div className="row justify-content-center"
-        style={{
-          position:"relative",
-          zIndex:10
-        }}
+        <div
+          className="row justify-content-center"
+          style={{
+            position: "relative",
+            zIndex: 10,
+          }}
         >
           <div className="col-12 col-lg-8">
             <div className="text-center">
@@ -143,7 +140,7 @@ const HomeProducts = () => {
                   letterSpacing: "-0.02em",
                 }}
               >
-                Ideas, Built For Impact
+                Accelerate Your Advertising Success
               </h2>
               <p
                 style={{
@@ -153,8 +150,9 @@ const HomeProducts = () => {
                   marginInline: "auto",
                 }}
               >
-                Engineered to scale across channels — privacy‑safe, measurable,
-                and fast to integrate.
+                Unlock the full potential of programmatic advertising and mobile
+                app growth with solutions designed for performance,
+                transparency, and scale.
               </p>
             </div>
           </div>
@@ -328,8 +326,8 @@ const HomeProducts = () => {
                           className="gp-metric"
                           style={{ flex: 1, lineHeight: "normal" }}
                         >
-                          <div className="gp-metric__value">₹142</div>
-                          <div className="gp-metric__label">CPO</div>
+                          <div className="gp-metric__value">$2.0</div>
+                          <div className="gp-metric__label">Average CPM</div>
                           <div className="gp-meter">
                             <div
                               className="gp-meter__fill"
@@ -341,8 +339,8 @@ const HomeProducts = () => {
                           className="gp-metric"
                           style={{ flex: 1, lineHeight: "normal" }}
                         >
-                          <div className="gp-metric__value">3.9%</div>
-                          <div className="gp-metric__label">CTR</div>
+                          <div className="gp-metric__value">85%</div>
+                          <div className="gp-metric__label">Fill Rate</div>
                           <div className="gp-meter">
                             <div
                               className="gp-meter__fill"
@@ -427,8 +425,8 @@ const HomeProducts = () => {
                           className="gp-metric"
                           style={{ flex: 1, lineHeight: "normal" }}
                         >
-                          <div className="gp-metric__value">42ms</div>
-                          <div className="gp-metric__label">Latency p95</div>
+                          <div className="gp-metric__value">10K+</div>
+                          <div className="gp-metric__label">Integrated Apps</div>
                           <div className="gp-meter">
                             <div
                               className="gp-meter__fill"
@@ -440,8 +438,8 @@ const HomeProducts = () => {
                           className="gp-metric"
                           style={{ flex: 1, lineHeight: "normal" }}
                         >
-                          <div className="gp-metric__value">38k/s</div>
-                          <div className="gp-metric__label">Throughput</div>
+                          <div className="gp-metric__value">25%</div>
+                          <div className="gp-metric__label">Retention Rate</div>
                           <div className="gp-meter">
                             <div
                               className="gp-meter__fill"
@@ -492,33 +490,33 @@ const HomeProducts = () => {
           position: relative;
           overflow: visible;
         }
-        
+
         /* Static fade effect for background lines */
         .lines {
           opacity: 0.1;
           transition: opacity 0.3s ease;
         }
-        
+
         .lines .line {
           opacity: 0.1;
           transition: opacity 0.3s ease;
         }
-        
+
         /* When section is in view, lines become fully opaque */
         .section.fade-wrapper:in-view {
           --lines-opacity: 1;
         }
-        
+
         .section.fade-wrapper:in-view ~ .lines,
         .section.fade-wrapper:in-view + .lines {
           opacity: 1;
         }
-        
+
         .section.fade-wrapper:in-view ~ .lines .line,
         .section.fade-wrapper:in-view + .lines .line {
           opacity: 1;
         }
-        
+
         .gp-card {
           position: relative;
           display: block;
@@ -531,7 +529,8 @@ const HomeProducts = () => {
           box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.32) inset,
             0 0 36px rgba(255, 122, 0, 0.45);
           overflow: hidden; /* clip inner content only */
-          transition: box-shadow 220ms ease, border-color 220ms ease, transform 200ms ease;
+          transition: box-shadow 220ms ease, border-color 220ms ease,
+            transform 200ms ease;
           will-change: transform;
           transform-origin: center;
           z-index: 2; /* above halo */
