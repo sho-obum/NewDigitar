@@ -75,6 +75,16 @@
     }
   }
 }
+@media screen and (max-width: 1325px) {
+  .arrowIcon{
+    left: -170px !important;
+    bottom: 10px !important; 
+  }
+  .bigtextclass{
+    right: 5px !important;
+    bottom: 20px !important;
+  }
+}
 
 @media only screen and (max-width: 1399.98px) {
   // typography
@@ -183,6 +193,7 @@
       }
     }
   }
+
 
   .ux-process {
     .service-f-single {
@@ -848,7 +859,7 @@
 
     .banner-one-thumb {
       top: 240px;
-      left: 60%;
+      right: 0%;
       max-width: 200px;
     }
 

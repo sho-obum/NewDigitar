@@ -18,8 +18,6 @@ const Agency = () => {
 
   return (
     <section className="agency-video-section" ref={sectionRef}>
-    
-
       <motion.h2
         className="hero-heading"
         style={{ y, opacity, display: "flex" }}
@@ -30,15 +28,17 @@ const Agency = () => {
             fontWeight: "700",
           }}
         >
-          We build high‑impact
+          Shaping Tomorrow’s
           <br />
-          digital experiences
+          Digital Success Stories
         </span>
       </motion.h2>
-      <div className="glass"
+      <div
+        className="glass"
         style={{
-          maxWidth:"1000px"
-        }}>
+          maxWidth: "1000px",
+        }}
+      >
         <div className="video-frame">
           <video
             ref={videoRef}
@@ -112,16 +112,18 @@ const Agency = () => {
               textShadow: "0 6px 22px rgba(0,0,0,0.45)",
               padding: "10px 14px",
               borderRadius: "7px",
-              background: "linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
+              background:
+                "linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
               border: "1px solid rgba(255,255,255,0.22)",
-              boxShadow: "0 10px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.25)",
+              boxShadow:
+                "0 10px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.25)",
               backdropFilter: "blur(10px)",
               WebkitBackdropFilter: "blur(10px)",
             }}
           >
             Social
             <br />
-             Marketing
+            Marketing
           </div>
 
           {/* Top-Right */}
@@ -139,14 +141,16 @@ const Agency = () => {
               textShadow: "0 6px 22px rgba(0,0,0,0.45)",
               padding: "10px 14px",
               borderRadius: "7px",
-              background: "linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
+              background:
+                "linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
               border: "1px solid rgba(255,255,255,0.22)",
-              boxShadow: "0 10px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.25)",
+              boxShadow:
+                "0 10px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.25)",
               backdropFilter: "blur(10px)",
               WebkitBackdropFilter: "blur(10px)",
             }}
           >
-            Performance 
+            Performance
             <br />
             Marketing
           </div>
@@ -166,9 +170,11 @@ const Agency = () => {
               textShadow: "0 6px 22px rgba(0,0,0,0.45)",
               padding: "10px 14px",
               borderRadius: "7px",
-              background: "linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
+              background:
+                "linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
               border: "1px solid rgba(255,255,255,0.22)",
-              boxShadow: "0 10px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.25)",
+              boxShadow:
+                "0 10px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.25)",
               backdropFilter: "blur(10px)",
               WebkitBackdropFilter: "blur(10px)",
             }}
@@ -193,9 +199,11 @@ const Agency = () => {
               textShadow: "0 6px 22px rgba(0,0,0,0.45)",
               padding: "10px 14px",
               borderRadius: "7px",
-              background: "linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
+              background:
+                "linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
               border: "1px solid rgba(255,255,255,0.22)",
-              boxShadow: "0 10px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.25)",
+              boxShadow:
+                "0 10px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.25)",
               backdropFilter: "blur(10px)",
               WebkitBackdropFilter: "blur(10px)",
             }}
@@ -422,10 +430,10 @@ const Agency = () => {
           appearance: none;
           border: none;
           background: linear-gradient(
-              145deg,
-              rgba(255, 255, 255, 0.14),
-              rgba(255, 255, 255, 0.06)
-            );
+            145deg,
+            rgba(255, 255, 255, 0.14),
+            rgba(255, 255, 255, 0.06)
+          );
           color: #fff;
           width: 36px;
           height: 36px;

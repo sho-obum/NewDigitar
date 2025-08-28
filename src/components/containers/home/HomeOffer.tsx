@@ -37,9 +37,9 @@ const previews: Record<
         sub: "",
         progress: 82,
       },
-      { label: "LTV Users", value: "₹142", sub: "↓ 26%", progress: 74 },
-      { label: "Revenue Growth", value: "35%", sub: "+1.4pp", progress: 71 },
-      { label: "Conversion Rate", value: "8%", sub: "+0.8pp", progress: 68 },
+      { label: "LTV Users", value: "₹142", sub: "", progress: 74 },
+      { label: "Revenue Growth", value: "35%", sub: "", progress: 71 },
+      { label: "Conversion Rate", value: "8%", sub: "", progress: 68 },
     ],
   },
   social: {
@@ -62,13 +62,13 @@ const previews: Record<
     level: "Lvl 6 Creator",
     tagline: "Distinctive assets that drive recall.",
     metrics: [
-      { label: "Brand Lift", value: "+23%", sub: "Aided", progress: 72 },
-      { label: "Recall", value: "41%", sub: "Campaign", progress: 67 },
-      { label: "Average Sesstion", value: "36", sub: "Duration", progress: 54 },
+      { label: "Brand Lift", value: "+23%", sub: "", progress: 72 },
+      { label: "Recall", value: "41%", sub: "", progress: 67 },
+      { label: "Average Sesstion", value: "36", sub: "", progress: 54 },
       {
         label: "Ads Viewability",
         value: "120+",
-        sub: "Deliverables",
+        sub: "",
         progress: 88,
       },
     ],
@@ -80,13 +80,13 @@ const previews: Record<
     level: "Lvl 9 Connector",
     tagline: "Creators at scale, content that converts.",
     metrics: [
-      { label: "Creators", value: "380", sub: "Managed", progress: 79 },
-      { label: "ROIS", value: "₹3.8Cr", sub: "3x", progress: 61 },
-      { label: "Followers Growth", value: "8%", sub: "↓ 19%", progress: 73 },
+      { label: "Creators", value: "380", sub: "", progress: 79 },
+      { label: "ROIS", value: "₹3.8Cr", sub: "", progress: 61 },
+      { label: "Followers Growth", value: "8%", sub: "", progress: 73 },
       {
         label: "Average Watch Time",
         value: "15s",
-        sub: "Whitelisted",
+        sub: "",
         progress: 69,
       },
     ],
@@ -189,11 +189,10 @@ const HomeOffer = () => {
                     </h2>
                     <div className="paragraph">
                       <p>
-                        We are a performance-driven digital agency delivering
-                        measurable results. From precise ad campaigns to social
-                        storytelling, impactful branding, and influencer
-                        partnerships, we help brands grow faster, stronger, and
-                        smarter.
+                        Beyond clicks and likes, we create impact. From
+                        performance ads to meaningful stories, unforgettable
+                        branding, and influencer voices, we help brands grow
+                        with purpose.
                       </p>
                     </div>
                     <div className="section__content-cta">
@@ -637,7 +636,6 @@ const HomeOffer = () => {
             position: relative;
             margin-bottom: 25px;
           }
-            
         }
         .offer__cta-iconwrap {
           display: inline-flex;

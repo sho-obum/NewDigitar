@@ -36,11 +36,12 @@ const HomeOneBanner = () => {
           },
         });
 
-        tl.set(".g-ban-one", { y: "-10%" });
+        tl.set(".g-ban-one", { y: "-10%", x: "0%" });
         tl.to(".g-ban-one", {
           opacity: 0,
           scale: 2,
           y: "100%",
+          x: "0%",
           zIndex: -1,
           duration: 2,
         });
@@ -77,7 +78,7 @@ const HomeOneBanner = () => {
       };
 
       animateNumber(yearsRef.current, 12, "+"); // 0 -> 12+
-      animateNumber(projectsRef.current, 25, "k"); // 0 -> 25k
+      animateNumber(projectsRef.current, 25, "k+"); // 0 -> 25k
     }
   }, []);
 
@@ -87,12 +88,16 @@ const HomeOneBanner = () => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <div className="banner__content" style={{ position: "relative", zIndex: 2 }}>
+              <div
+                className="banner__content"
+                style={{ position: "relative", zIndex: 2 }}
+              >
                 <h1 className="text-uppercase text-start fw-9 mb-0 title-anim">
-                  We are
-                  <span className="text-stroke"> creative </span>
+                  Powering
+                  <span className="text-stroke"> Brands </span>
                   <span className="interval">
-                    <i className="icon-arrow-top-right"></i> Digital Agency
+                    <i className="icon-arrow-top-right"></i> in{" "}
+                    <span className="text-stroke"> digitar </span> era
                   </span>
                 </h1>
 
@@ -145,7 +150,7 @@ const HomeOneBanner = () => {
                           <span ref={projectsRef}>0k</span>
                         </h5>
                         <p style={{ margin: 0, fontSize: "14px" }}>
-                          Completed Projects
+                          Global Campaigns Delivered
                         </p>
                       </div>
                     </div>
@@ -157,17 +162,27 @@ const HomeOneBanner = () => {
           </div>
         </div>
 
-        <Image
-          src={hexagon}
-          alt="Image"
-          className="banner-one-thumb d-none d-sm-block g-ban-one"
-          style={{ zIndex: 1, pointerEvents: "none" }}
-        />
+        <div
+       
+        >
+          <Image
+            src={star}
+            alt="Image"
+            className="banner-one-thumb d-none d-sm-block g-ban-one"
+            style={{
+              zIndex: 1,
+              pointerEvents: "none",
+              width: "100px",
+              position: "absolute",
+            }}
+          />
+        </div>
         <Image src={star} alt="Image" className="star" />
 
         <div className="banner-left-text banner-social-text d-none d-md-flex">
           <Link href="mailto:info@digitar.com">mail : info@digitar.com</Link>
-          <Link href="tel:99-2158-003-6980">Call : +99 2158 003 6980</Link>
+          <Link href="tel:99-2158-003-6980">Call : + 1 917 9671694
+  </Link>
         </div>
 
         <div className="banner-right-text banner-social-text d-none d-md-flex">
@@ -179,14 +194,14 @@ const HomeOneBanner = () => {
             instagram
           </Link>
           <Link
-            href="https://www.pinterest.com/"
+            href="https://www.linkedin.com/company/digitarmedia"
             target="_blank"
             rel="noopener noreferrer"
           >
             Linkedin
           </Link>
           <Link
-            href="https://www.facebook.com/"
+            href="https://www.facebook.com/digitarmedia/"
             target="_blank"
             rel="noopener noreferrer"
           >

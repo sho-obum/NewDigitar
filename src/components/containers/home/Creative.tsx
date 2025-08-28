@@ -634,6 +634,7 @@ function MobileCreative({
                 display: "block",
                 position: "relative",
               }}
+             
             >
               big!
               <i
@@ -757,6 +758,7 @@ function DesktopCreative({
                 bottom: "-60px",
                 right: "430px",
               }}
+               className="bigtextclass"
             >
               {" "}
               big!
@@ -770,7 +772,7 @@ function DesktopCreative({
               }}
             >
               <i
-                className="fa-sharp fa-solid fa-arrow-up-right"
+                className="fa-sharp fa-solid fa-arrow-up-right arrowIcon"
                 style={{
                   position: "relative",
                   bottom: "30px",

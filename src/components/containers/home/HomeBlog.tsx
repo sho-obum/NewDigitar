@@ -11,6 +11,7 @@ type Product = {
   title: string;
   domain: string;
   href: string;
+  src: string;
   points: string[];
   chipBg: string;
   chipFg: string;
@@ -24,14 +25,15 @@ const products: Product[] = [
     title: "Adxity — Demand-Side Platform",
     domain: "adxity.com",
     href: "https://adxity.com",
+    src: "https://panel.digitarmedia.com/admin/uploads/adxitu1756375027.png",
     points: [
-      "Performance-first media buying across programmatic & social.",
-      "Real-time optimization with transparent, actionable reporting.",
-      "Audience, creative, and LTV insights to unlock scale.",
+      "Access premium inventory for wider reach.",
+      "Unlock audience insights to target smarter.",
+      "Redefining brand success with premium CTV reach",
     ],
-    chipBg: "rgba(255,122,0,0.12)",
-    chipFg: "#ff7a00",
-    accent: "rgba(255,122,0,0.35)",
+    chipBg: "rgba(59,130,246,0.15)",
+    chipFg: "#3b82f6",
+    accent: "rgba(59,130,246,0.35)",
   },
   {
     tag: "SDK",
@@ -39,14 +41,15 @@ const products: Product[] = [
     title: "Adpocket — In-App Monetization SDK",
     domain: "adpocket.ai",
     href: "https://adpocket.ai",
+    src: "	https://panel.digitarmedia.com/admin/uploads/adpocket1756375023.png",
     points: [
-      "Plug-and-play SDK for premium, non-intrusive ad formats.",
-      "High eCPMs via smart mediation and fill optimization.",
-      "Lightweight, privacy-safe, and developer‑friendly.",
+      "Partner with thousands of seamlessly integrated apps.",
+      "Maintain transparency and control over acquisition costs.",
+      "Deliver quality traffic that drives real conversions.",
     ],
-    chipBg: "rgba(76,175,80,0.15)",
-    chipFg: "#9be89f",
-    accent: "rgba(76,175,80,0.35)",
+    chipBg: "rgba(147,51,234,0.15)",
+    chipFg: "#9333ea",
+    accent: "rgba(147,51,234,0.35)",
   },
 ];
 
@@ -136,14 +139,14 @@ const HomeProducts = () => {
                 Our Products <i className="fa-solid fa-arrow-right"></i>
               </span>
               <h2
-                className="titl"
+                className="title"
                 style={{
                   marginTop: 15,
                   fontWeight: 800,
                   letterSpacing: "-0.02em",
                 }}
               >
-               Accelerate Your Advertising Success
+               Supercharge Your Advertising Performance
               </h2>
               <p
                 style={{
@@ -153,8 +156,7 @@ const HomeProducts = () => {
                   marginInline: "auto",
                 }}
               >
-                Engineered to scale across channels — privacy‑safe, measurable,
-                and fast to integrate.
+                Maximize ROI with powerful programmatic solutions and mobile app monetization tools built for precision, scale, and transparency.
               </p>
             </div>
           </div>
@@ -188,6 +190,22 @@ const HomeProducts = () => {
                 >
                   {products[0].domain}
                 </a>
+              </div>
+              <div className="gp-logo-container">
+                <div
+                  className="gp-logo"
+                  style={{
+                    background: `rgba(59,130,246,0.1)`,
+                    border: `1px solid rgba(59,130,246,0.3)`,
+                    boxShadow: `0 8px 32px rgba(59,130,246,0.1)`,
+                  }}
+                >
+                  <img
+                    src={products[0].src}
+                    alt={`${products[0].title} logo`}
+                    className="gp-logo-img"
+                  />
+                </div>
               </div>
               <h3
                 ref={card1TitleRef}
@@ -244,6 +262,22 @@ const HomeProducts = () => {
                 >
                   {products[1].domain}
                 </a>
+              </div>
+              <div className="gp-logo-container">
+                <div
+                  className="gp-logo"
+                  style={{
+                    background: `rgba(147,51,234,0.1)`,
+                    border: `1px solid rgba(147,51,234,0.3)`,
+                    boxShadow: `0 8px 32px rgba(147,51,234,0.1)`,
+                  }}
+                >
+                  <img
+                    src={products[1].src}
+                    alt={`${products[1].title} logo`}
+                    className="gp-logo-img"
+                  />
+                </div>
               </div>
               <h3 className="gp-title gp-title--center">Adpocket</h3>
               <div className="gp-subtitle gp-subtitle--center">
@@ -302,6 +336,23 @@ const HomeProducts = () => {
                     </a>
                   </div>
 
+                  <div className="gp-logo-container">
+                    <div
+                      className="gp-logo"
+                      style={{
+                        background: `rgba(59,130,246,0.1)`,
+                        border: `1px solid rgba(59,130,246,0.3)`,
+                        boxShadow: `0 8px 32px rgba(59,130,246,0.1)`,
+                      }}
+                    >
+                      <img
+                        src={products[0].src}
+                        alt={`${products[0].title} logo`}
+                        className="gp-logo-img"
+                      />
+                    </div>
+                  </div>
+
                   <h3 className="gp-title gp-title--center">Adxity</h3>
                   <div className="gp-subtitle gp-subtitle--center">
                     Demand‑Side Platform
@@ -328,8 +379,8 @@ const HomeProducts = () => {
                           className="gp-metric"
                           style={{ flex: 1, lineHeight: "normal" }}
                         >
-                          <div className="gp-metric__value">₹142</div>
-                          <div className="gp-metric__label">CPO</div>
+                          <div className="gp-metric__value">$2.0</div>
+                          <div className="gp-metric__label">Competitive Average CPM</div>
                           <div className="gp-meter">
                             <div
                               className="gp-meter__fill"
@@ -341,8 +392,8 @@ const HomeProducts = () => {
                           className="gp-metric"
                           style={{ flex: 1, lineHeight: "normal" }}
                         >
-                          <div className="gp-metric__value">3.9%</div>
-                          <div className="gp-metric__label">CTR</div>
+                          <div className="gp-metric__value">85%</div>
+                          <div className="gp-metric__label">High Fill Rate</div>
                           <div className="gp-meter">
                             <div
                               className="gp-meter__fill"
@@ -401,6 +452,23 @@ const HomeProducts = () => {
                     </a>
                   </div>
 
+                  <div className="gp-logo-container">
+                    <div
+                      className="gp-logo"
+                      style={{
+                        background: `rgba(147,51,234,0.1)`,
+                        border: `1px solid rgba(147,51,234,0.3)`,
+                        boxShadow: `0 8px 32px rgba(147,51,234,0.1)`,
+                      }}
+                    >
+                      <img
+                        src={products[1].src}
+                        alt={`${products[1].title} logo`}
+                        className="gp-logo-img"
+                      />
+                    </div>
+                  </div>
+
                   <h3 className="gp-title gp-title--center">Adpocket</h3>
                   <div className="gp-subtitle gp-subtitle--center">
                     In‑App Monetization SDK
@@ -427,8 +495,8 @@ const HomeProducts = () => {
                           className="gp-metric"
                           style={{ flex: 1, lineHeight: "normal" }}
                         >
-                          <div className="gp-metric__value">42ms</div>
-                          <div className="gp-metric__label">Latency p95</div>
+                          <div className="gp-metric__value">10K+</div>
+                          <div className="gp-metric__label">Integrated Apps</div>
                           <div className="gp-meter">
                             <div
                               className="gp-meter__fill"
@@ -623,6 +691,38 @@ const HomeProducts = () => {
           font-weight: 800;
           text-decoration: underline;
           text-underline-offset: 2px;
+        }
+        .gp-logo-container {
+          display: flex;
+          justify-content: center;
+          margin: 16px 0;
+        }
+        .gp-logo {
+          width: 80px;
+          height: 80px;
+          border-radius: 16px;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          overflow: hidden;
+        }
+        .gp-logo::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+          border-radius: inherit;
+        }
+        .gp-logo-img {
+          width: 50px;
+          height: 50px;
+          object-fit: contain;
+          position: relative;
+          z-index: 1;
+          filter: brightness(1.1) contrast(1.1);
         }
         .gp-title--center {
           text-align: center;

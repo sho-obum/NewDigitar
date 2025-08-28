@@ -201,26 +201,34 @@
 
   .open-offcanvas-nav {
     @include box(80px);
-    border: 1px solid #414141;
     position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+
+    // Three horizontal lines created with ::before
     &::before {
       content: "";
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 14px;
-      height: 14px;
-      background-color: #ffffff;
-      border-radius: 50%;
+      width: 30px;
+      height: 3px;
+      background-color: var(--primary-color);
+      border-radius: 2px;
       transition: var(--transition);
-     
+
+      // Create additional lines using box-shadow
+      box-shadow:
+        0 -8px 0 0 var(--primary-color),
+        0 8px 0 0 var(--primary-color);
     }
-    &:hover {
-      border: 1px solid var(--primary-color);
-      &::before {
-        background-color: var(--primary-color);
-      }
+
+    &:hover::before {
+      background-color: #ffffff;
+      box-shadow:
+        0 -8px 0 0 #ffffff,
+        0 8px 0 0 #ffffff;
     }
   }
 }
