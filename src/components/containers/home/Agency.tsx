@@ -317,33 +317,12 @@ const Agency = () => {
           right: 12px;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+          .badges {
+            display: none !important;
+          }
           .badge {
-            font-size: 12px;
-            padding: 8px 10px;
-          }
-          .pos-tl,
-          .pos-tr,
-          .pos-bl,
-          .pos-br {
-            top: auto;
-            bottom: auto;
-          }
-          .pos-tl {
-            top: -12px;
-            left: 8px;
-          }
-          .pos-tr {
-            top: -12px;
-            right: 8px;
-          }
-          .pos-bl {
-            bottom: -12px;
-            left: 8px;
-          }
-          .pos-br {
-            bottom: -12px;
-            right: 8px;
+            display: none !important;
           }
         }
 

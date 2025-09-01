@@ -616,7 +616,7 @@ function MobileCreative({
                 marginBottom: "0.5rem",
               }}
             >
-              rich media creatives that
+              Rich Media creatives that
             </span>
             <span
               style={{
