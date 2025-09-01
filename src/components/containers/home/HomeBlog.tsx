@@ -44,7 +44,7 @@ const products: Product[] = [
     src: "	https://panel.digitarmedia.com/admin/uploads/adpocket1756375023.png",
     points: [
       "Partner with thousands of seamlessly integrated apps.",
-      "Maintain transparency and control over acquisition costs.",
+      "Maintain cost transparency and control.",
       "Deliver quality traffic that drives real conversions.",
     ],
     chipBg: "rgba(147,51,234,0.15)",
@@ -112,7 +112,14 @@ const HomeProducts = () => {
           bottom:"34px"
         }}
         />
-      <div className="container">
+      <div 
+        className="container" 
+        style={{
+          maxWidth: '75vw',
+          width: '100%',
+          margin: '0 auto'
+        }}
+      >
         {/* Header */}
         <div className="row justify-content-center"
         style={{
@@ -370,17 +377,17 @@ const HomeProducts = () => {
                         className="col-12 col-md-6 d-flex"
                         style={{
                           gap: 12,
-                          minWidth: 500,
                           margin: "0 auto",
                           justifyContent: "center",
+                          width:"fit-content"
                         }}
                       >
                         <div
                           className="gp-metric"
                           style={{ flex: 1, lineHeight: "normal" }}
                         >
-                          <div className="gp-metric__value">$2.0</div>
-                          <div className="gp-metric__label">Competitive Average CPM</div>
+                          <div className="gp-metric__value">1.2B+</div>
+                          <div className="gp-metric__label">Monthly Active Users</div>
                           <div className="gp-meter">
                             <div
                               className="gp-meter__fill"
@@ -486,9 +493,9 @@ const HomeProducts = () => {
                         className="col-12 col-md-6 d-flex"
                         style={{
                           gap: 12,
-                          minWidth: 500,
                           margin: "0 auto",
                           justifyContent: "center",
+                          width:"fit-content"
                         }}
                       >
                         <div
@@ -548,6 +555,20 @@ const HomeProducts = () => {
 
       {/* Inline CSS */}
       <style jsx>{`
+        /* Responsive container width */
+        .container {
+          max-width: 75vw !important;
+          width: 100% !important;
+          margin: 0 auto !important;
+        }
+        
+        /* Cap width at 1200px on very large screens */
+        @media (min-width: 1600px) {
+          .container {
+            max-width: 1200px !important;
+          }
+        }
+        
         .title.title-anim {
           transition: transform 200ms ease;
           will-change: transform;
@@ -858,6 +879,36 @@ const HomeProducts = () => {
           }
           .gp-metric__value {
             font-size: 2rem;
+          }
+        }
+        
+        /* Responsive metric boxes for small screens */
+        @media (max-width: 767px) {
+          .gp-metric {
+            min-width: 120px;
+            flex: 1 1 0;
+            width: 100%;
+          }
+          .gp-metric__value {
+            font-size: 1.2rem;
+          }
+          .gp-metric__label {
+            font-size: 0.65rem;
+            line-height: 1.2;
+          }
+        }
+        
+        /* Extra small screens */
+        @media (max-width: 480px) {
+          .gp-metric {
+            min-width: 100px;
+            padding: 8px 8px 6px;
+          }
+          .gp-metric__value {
+            font-size: 1rem;
+          }
+          .gp-metric__label {
+            font-size: 0.6rem;
           }
         }
       `}</style>
