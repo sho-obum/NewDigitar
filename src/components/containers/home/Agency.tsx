@@ -212,6 +212,7 @@ const Agency = () => {
           </div>
         </div>
       </div>
+
       <style jsx>{`
         .agency-video-section {
           position: relative;
@@ -456,6 +457,7 @@ const Agency = () => {
 
         /* Scroll-based animation handled by Framer Motion */
       `}</style>
+      
     </section>
   );
 };

@@ -42,6 +42,9 @@ const HomeSponsorMarquee: React.FC<Props> = ({
       className="section sponsor"
       style={{ paddingTop: 64, paddingBottom: 64 }}
     >
+      <hr style={{ position: "relative", zIndex: 10,
+        top: "-64px",
+       }} />
       {/* Header (mirrors HomeProducts style) */}
       <div className="container text-center">
         <span
@@ -53,7 +56,9 @@ const HomeSponsorMarquee: React.FC<Props> = ({
             padding: "6px 12px",
             borderRadius: 999,
             background: "rgba(255,255,255,0.08)",
-            color: "#aaa",
+            border: "1px solid #ff6b35",
+            boxShadow: "0 0 20px rgba(255, 107, 53, 0.4), 0 0 40px rgba(255, 107, 53, 0.2)",
+            color: "#ff6b35",
             fontWeight: 700,
             letterSpacing: "0.02em",
             textTransform: "uppercase",
@@ -78,7 +83,7 @@ const HomeSponsorMarquee: React.FC<Props> = ({
             marginInline: "auto",
           }}
         >
-          From fintech to ecommerce and media—brands partner with us to scale
+          From fintech to ecommerce and media brands partner with us to scale
           with confidence.
         </p>
       </div>
@@ -128,18 +133,20 @@ const HomeSponsorMarquee: React.FC<Props> = ({
       </div>
 
       {/* Optional decorative lines if you use them elsewhere */}
-      <div className="lines d-none d-lg-flex" aria-hidden="true">
+      {/* <div className="lines d-none d-lg-flex" aria-hidden="true">
         <div className="line" />
         <div className="line" />
         <div className="line" />
         <div className="line" />
         <div className="line" />
-      </div>
+      </div> */}
 
       <style jsx>{`
         /* spacing below section */
         .sponsor {
-          margin-bottom: 8rem;
+          position: relative;
+          z-index: 10;
+          background-color: #000;
         }
 
         .marquee {
