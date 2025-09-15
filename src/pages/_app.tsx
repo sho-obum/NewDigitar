@@ -1,22 +1,53 @@
 "use client"
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import type { AppProps } from "next/app";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Lenis from "@studio-freight/lenis";
 
 // bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-
 // font awesome 6
 import "public/icons/font-awesome/css/all.css";
-
 // custom icons
 import "public/icons/glyphter/css/xpovio.css";
-
 // main scss
-
 import "@/styles/main.scss";
-// import "@/styles/global.css";
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: false,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    // GSAP ScrollTrigger integration
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    return () => {
+      lenis.destroy();
+      gsap.ticker.remove(() => {});
+    };
+  }, []);
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Component {...pageProps} />

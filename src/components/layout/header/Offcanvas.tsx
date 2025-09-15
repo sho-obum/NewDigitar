@@ -71,7 +71,7 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
         <nav className="offcanvas-menu__wrapper" data-lenis-prevent>
           <div className="offcanvas-menu__header nav-fade">
             <div className="logo">
-              <Link href="/">
+              <Link href="#">
                 <Image src={logo} alt="Image" title="Image" priority />
               </Link>
             </div>
@@ -87,7 +87,7 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
             <div className="navbar__menu">
               <ul>
                 <li className="navbar__item nav-fade">
-                  <Link href="/">Home</Link>
+                  <Link href="#">Home</Link>
                 </li>
                 <li className="navbar__item navbar__item--has-children nav-fade">
                   <button
@@ -101,13 +101,13 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                   </button>
                   <ul className={`navbar__sub-menu ${isSubMenuOpen("company")}`}>
                     <li>
-                      <Link href="/about">About Us</Link>
+                      <Link href="#">About Us</Link>
                     </li>
                     <li>
-                      <Link href="/life-at-digitar">Life @ Digitar</Link>
+                      <Link href="#">Life @ Digitar</Link>
                     </li>
                     <li>
-                      <Link href="/career">Career</Link>
+                      <Link href="#">Career</Link>
                     </li>
                   </ul>
                 </li>
@@ -123,16 +123,16 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                   </button>
                   <ul className={`navbar__sub-menu ${isSubMenuOpen("products")}`}>
                     <li>
-                      <Link href="/services/programmatic">Adxity - DSP</Link>
+                      <Link href="#">Adxity - DSP</Link>
                     </li>
                     <li>
-                      <Link href="/services/branding">Adpocket</Link>
+                      <Link href="#">Adpocket</Link>
                     </li>
                     <li>
-                      <Link href="/services/storytelling">Yogza</Link>
+                      <Link href="#">Yogza</Link>
                     </li>
                     <li>
-                      <Link href="/services/performance">Lending Leaf</Link>
+                      <Link href="#">Lending Leaf</Link>
                     </li>
                   </ul>
                 </li>
@@ -150,60 +150,56 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                     className={`navbar__sub-menu ${isSubMenuOpen("services")}`}
                   >
                     <li>
-                      <Link href="/services/performance">Performance</Link>
+                      <Link href="#">Performance</Link>
                     </li>
                     <li>
-                      <Link href="/services/social">Social</Link>
+                      <Link href="#">Social</Link>
                     </li>
                     <li>
-                      <Link href="/services/branding">Branding</Link>
+                      <Link href="#">Branding</Link>
                     </li>
                     <li>
-                      <Link href="/services/influencer">Influencer</Link>
+                      <Link href="#">Influencer</Link>
                     </li>
                     <li>
-                      <Link href="/services/creative">Creative</Link>
+                      <Link href="#">Creative</Link>
                     </li>
                   </ul>
                 </li>
                 <li className="navbar__item nav-fade">
-                  <Link href="/contact">Contact Us</Link>
+                  <Link href="#">Contact Us</Link>
                 </li>
               </ul>
             </div>
           </div>
           <div className="offcanvas-menu__options nav-fade">
             <div className="offcanvas__mobile-options d-flex">
-              <Link href="/" className="btn btn--secondary">
+              <Link href="#" className="btn btn--secondary">
                 Let&apos;s Talk
               </Link>
             </div>
           </div>
           <div className="offcanvas-menu__social social nav-fade">
             <Link
-              href="https://www.facebook.com/"
-              target="_blank"
+              href="#"
               aria-label="share us on facebook"
             >
               <i className="fa-brands fa-facebook-f"></i>
             </Link>
             <Link
-              href="https://www.twitter.com/"
-              target="_blank"
+              href="#"
               aria-label="share us on twitter"
             >
               <i className="fa-brands fa-twitter"></i>
             </Link>
             <Link
-              href="https://www.pinterest.com/"
-              target="_blank"
-              aria-label="share us on pinterest"
+              href="#"
+              aria-label="share us on linkedin"
             >
               <i className="fa-brands fa-linkedin-in"></i>
             </Link>
             <Link
-              href="https://www.instagram.com/"
-              target="_blank"
+              href="#"
               aria-label="share us on instagram"
             >
               <i className="fa-brands fa-instagram"></i>

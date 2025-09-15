@@ -99,6 +99,29 @@ const cardVariants = {
   exit: { opacity: 0, x: -60, y: -40, scale: 0.9 },
 };
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { 
+    opacity: 1, 
+    y: 0
+  },
+  transition: {
+    duration: 0.5,
+    ease: [0.43, 0.13, 0.23, 0.96] // Custom easing curve
+  }
+};
+
 const innerStagger = {
   animate: { transition: { staggerChildren: 0.06, delayChildren: 0.12 } },
 };
@@ -113,6 +136,7 @@ const HomeOffer = () => {
   const [isTouch, setIsTouch] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const hideTimer = useRef<number | null>(null);
+  const [allActive, setAllActive] = useState(false);
 
   useEffect(() => {
     const onTouch = () => setIsTouch(true);
@@ -312,85 +336,76 @@ const HomeOffer = () => {
 
               {/* RIGHT */}
               <div className="col-12 col-lg-7 col-xl-6 offset-xl-1">
-                <div
+                <motion.div
                   className="offer__cta"
                   role="list"
+                  variants={containerVariants}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
                   onMouseLeave={() => !isMobile && !isTouch && scheduleHide()}
                   onMouseEnter={() => !isMobile && cancelHide()}
                 >
-                  <div
-                    className="offer__cta-single fade-top"
+                  <motion.div
+                    className="offer__cta-single"
+                    variants={itemVariants}
                     {...attach("performance")}
                   >
                     <h2>
-                      {/* <Link
-                        href="/services/performance"
-                        className="offer__cta-link"
-                      > */}
                       <span className="offer__cta-link">
                         Performance Marketing{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                         </span>
                       </span>
-                      {/* </Link> */}
                     </h2>
-                  </div>
+                  </motion.div>
 
-                  <div
-                    className="offer__cta-single fade-top"
+                  <motion.div
+                    className="offer__cta-single"
+                    variants={itemVariants}
                     {...attach("social")}
                   >
                     <h2>
-                      {/* <Link href="/services/social" className="offer__cta-link"> */}
                       <span className="offer__cta-link">
                         Social Media Marketing{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                         </span>
                       </span>
-                      {/* </Link> */}
                     </h2>
-                  </div>
+                  </motion.div>
 
-                  <div
-                    className="offer__cta-single fade-top"
+                  <motion.div
+                    className="offer__cta-single"
+                    variants={itemVariants}
                     {...attach("branding")}
                   >
                     <h2>
-                      {/* <Link
-                        href="/services/branding"
-                        className="offer__cta-link"
-                      > */}
                       <span className="offer__cta-link">
                         Branding &amp; Creative{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                         </span>
                       </span>
-                      {/* </Link> */}
                     </h2>
-                  </div>
+                  </motion.div>
 
-                  <div
-                    className="offer__cta-single fade-top"
+                  <motion.div
+                    className="offer__cta-single"
+                    variants={itemVariants}
                     {...attach("influencer")}
                   >
                     <h2>
-                      {/* <Link
-                        href="/services/influencer"
-                        className="offer__cta-link"
-                      > */}
                       <span className="offer__cta-link">
                         Influencer Marketing{" "}
                         <span className="offer__cta-iconwrap">
                           <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                         </span>
                       </span>
-                      {/* </Link> */}
                     </h2>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               </div>
             </div>
           </div>

@@ -4,7 +4,7 @@
 
 //  banner one
 .banner {
-  padding: 300px 0px 130px;
+  padding: 200px 0px 130px;
   background-color: var(--black);
   position: relative;
   z-index: 1;
@@ -15,10 +15,10 @@
   }
 
   .interval {
-    display: flex;
+    display: inline-block;
     align-items: center;
     gap: 60px;
-    margin-left: 60px;
+    // margin-left: 60px;
 
     i {
       -webkit-text-fill-color: transparent;

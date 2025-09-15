@@ -26,11 +26,21 @@ const Agency = () => {
           style={{
             textAlign: "center",
             fontWeight: "700",
+            fontSize: "1.5em",
+            marginTop: "-0.8em",
+            marginBottom: "0.4em",
           }}
         >
           Shaping Tomorrow’s
           <br />
-          Digital Success Stories
+          <span
+            style={{
+              color: "#f60",
+            }}
+          >
+            Digitar {" "}
+          </span>
+          Success Stories
         </span>
       </motion.h2>
       <div
@@ -88,7 +98,7 @@ const Agency = () => {
             </div>
           </div>
         </div>
-        <div
+        {/* <div
           className="badges"
           aria-hidden="true"
           style={{
@@ -97,7 +107,7 @@ const Agency = () => {
             pointerEvents: "none",
           }}
         >
-          {/* Top-Left */}
+          
           <div
             className="badge pos-tl"
             style={{
@@ -126,7 +136,7 @@ const Agency = () => {
             Marketing
           </div>
 
-          {/* Top-Right */}
+       
           <div
             className="badge pos-tr"
             style={{
@@ -155,7 +165,7 @@ const Agency = () => {
             Marketing
           </div>
 
-          {/* Bottom-Left */}
+
           <div
             className="badge pos-bl"
             style={{
@@ -184,7 +194,7 @@ const Agency = () => {
             Marketing
           </div>
 
-          {/* Bottom-Right */}
+         
           <div
             className="badge pos-br"
             style={{
@@ -210,7 +220,7 @@ const Agency = () => {
           >
             Branding
           </div>
-        </div>
+        </div> */}
       </div>
 
       <style jsx>{`
@@ -436,7 +446,6 @@ const Agency = () => {
 
         /* Scroll-based animation handled by Framer Motion */
       `}</style>
-      
     </section>
   );
 };

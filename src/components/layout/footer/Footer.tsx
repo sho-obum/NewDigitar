@@ -120,13 +120,13 @@ const Footer: React.FC = () => {
               <h6 className="heading">Resources</h6>
               <ul>
                 <li>
-                  <Link href="/case-studies">Case Studies</Link>
+                  <Link href="">Case Studies</Link>
                 </li>
                 <li>
-                  <Link href="/blog">Blogs &amp; Insights</Link>
+                  <Link href="">Blogs &amp; Insights</Link>
                 </li>
                 <li>
-                  <Link href="/events">Events</Link>
+                  <Link href="">Events</Link>
                 </li>
               
               </ul>
@@ -180,19 +180,19 @@ const Footer: React.FC = () => {
               <h6 className="heading">Services</h6>
               <ul>
                 <li>
-                  <Link href="/about">Performance </Link>
+                  <Link href="">Performance </Link>
                 </li>
                 <li>
-                  <Link href="/culture">Social</Link>
+                  <Link href="">Social</Link>
                 </li>
                 <li>
-                  <Link href="/creative-hub">Branding</Link>
+                  <Link href="">Branding</Link>
                 </li>
                 <li>
-                  <Link href="/careers">Influencer</Link>
+                  <Link href="">Influencer</Link>
                 </li>
                 <li>
-                  <Link href="/careers">Creative</Link>
+                  <Link href="">Creative</Link>
                 </li>
               </ul>
             </div>

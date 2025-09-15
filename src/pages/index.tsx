@@ -10,6 +10,7 @@ import HomeSponsor from "@/components/containers/home/HomeSponsor";
 import NextPage from "@/components/containers/home/NextPage";
 import Creative from "@/components/containers/home/Creative";
 
+
 const Home = () => {
   return (
     <Layout header={1} footer={1} video={true}>

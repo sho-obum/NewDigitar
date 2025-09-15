@@ -92,6 +92,46 @@ const HomeOneBanner = () => {
                 className="banner__content"
                 style={{ position: "relative", zIndex: 2 }}
               >
+                <style jsx global>{`
+                  .banner-social-text {
+                    position: fixed;
+                    z-index: 999;
+                    display: flex;
+                    align-items: center;
+                    gap: 30px;
+                  }
+                  
+                  .banner-left-text {
+                    left: 30px;
+                    bottom: 50%;
+                    transform: rotate(-90deg) translateX(50%);
+                    transform-origin: left;
+                  }
+                  
+                  .banner-right-text {
+                    right: 30px;
+                    bottom: 50%;
+                    transform: rotate(90deg) translateX(-50%);
+                    transform-origin: right;
+                  }
+
+                  .banner-social-text a {
+                    color: gray;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    transition: color 0.3s ease;
+                  }
+
+                  .banner-social-text a:hover {
+                    color: #ff7a00;
+                  }
+
+                  @media (max-width: 768px) {
+                    .banner-social-text {
+                      display: none !important;
+                    }
+                  }
+                `}</style>
                 <h1 className="text-uppercase text-start fw-9 mb-0 title-anim">
                   Powering
                   <span className="text-stroke"> Brands </span>
@@ -162,9 +202,7 @@ const HomeOneBanner = () => {
           </div>
         </div>
 
-        <div
-       
-        >
+        <div>
           <Image
             src={star}
             alt="Image"
@@ -177,12 +215,19 @@ const HomeOneBanner = () => {
             }}
           />
         </div>
-        <Image src={star} alt="Image" className="star" />
+        <Image
+          src={star}
+          alt="Image"
+          className="star"
+          style={{
+           
+            zIndex: 20,
+          }}
+        />
 
         <div className="banner-left-text banner-social-text d-none d-md-flex">
           <Link href="mailto:info@digitar.com">mail : info@digitar.com</Link>
-          <Link href="tel:99-2158-003-6980">Call : + 1 917 9671694
-  </Link>
+          <Link href="tel:+1 888 2176397">Call :+1 888 2176397</Link> 
         </div>
 
         <div className="banner-right-text banner-social-text d-none d-md-flex">
@@ -213,7 +258,15 @@ const HomeOneBanner = () => {
           className="video-frame video-btn"
           onClick={() => setVideoActive(true)}
         >
-          <Image src={videoframe} alt="Image" priority />
+          <Image
+            src={videoframe}
+            alt="Image"
+            priority
+            style={{
+              position: "relative",
+              zIndex: 20,
+            }}
+          />
           {/* <i className="fa-sharp fa-solid fa-play"></i> */}
         </button>
 

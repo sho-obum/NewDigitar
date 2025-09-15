@@ -14,11 +14,12 @@ const PortfolioText = () => {
         padding: "20px",
       }}
     >
-      <div className="portfolio__text-slider-w "
-      style={{
-        paddingBottom:"0px",
-        marginBottom:"20px"
-      }}
+      <div
+        className="portfolio__text-slider-w "
+        style={{
+          paddingBottom: "0px",
+          marginBottom: "20px",
+        }}
       >
         <Swiper
           slidesPerView="auto"
@@ -38,10 +39,8 @@ const PortfolioText = () => {
           <SwiperSlide>
             <div className="portfolio__text-slider-single">
               <h2 className="h1">
-                <Link href="/services/seo">
-                  Clicks that Stick
-                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-                </Link>
+                Clicks that Stick
+                <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
               </h2>
             </div>
           </SwiperSlide>
@@ -49,10 +48,8 @@ const PortfolioText = () => {
           <SwiperSlide>
             <div className="portfolio__text-slider-single">
               <h2 className="h1 str">
-                <Link href="/services/performance-marketing">
-                  Ad-dicted to ROI
-                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-                </Link>
+                Ad-dicted to ROI
+                <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
               </h2>
             </div>
           </SwiperSlide>
@@ -60,10 +57,8 @@ const PortfolioText = () => {
           <SwiperSlide>
             <div className="portfolio__text-slider-single">
               <h2 className="h1">
-                <Link href="/services/social-media">
-                  Post. Engage. Repeat.
-                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-                </Link>
+                Post. Engage. Repeat.
+                <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
               </h2>
             </div>
           </SwiperSlide>
@@ -71,10 +66,8 @@ const PortfolioText = () => {
           <SwiperSlide>
             <div className="portfolio__text-slider-single">
               <h2 className="h1 str">
-                <Link href="/services/branding">
-                  Brands Without the Bland
-                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-                </Link>
+                Brands Without the Bland
+                <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
               </h2>
             </div>
           </SwiperSlide>
@@ -82,10 +75,8 @@ const PortfolioText = () => {
           <SwiperSlide>
             <div className="portfolio__text-slider-single">
               <h2 className="h1">
-                <Link href="/services/content-marketing">
-                  Content That Converts
-                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-                </Link>
+                Content That Converts
+                <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
               </h2>
             </div>
           </SwiperSlide>
@@ -93,10 +84,8 @@ const PortfolioText = () => {
           <SwiperSlide>
             <div className="portfolio__text-slider-single">
               <h2 className="h1 str">
-                <Link href="/services/design-dev">
-                  Pixel Perfect. Profit Driven.
-                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-                </Link>
+                Pixel Perfect. Profit Driven.
+                <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
               </h2>
             </div>
           </SwiperSlide>
@@ -104,10 +93,8 @@ const PortfolioText = () => {
           <SwiperSlide>
             <div className="portfolio__text-slider-single">
               <h2 className="h1">
-                <Link href="/portfolio">
-                  Growth You Can Scroll
-                  <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
-                </Link>
+                Growth You Can Scroll
+                <i className="fa-sharp fa-solid fa-arrow-down-right"></i>
               </h2>
             </div>
           </SwiperSlide>
