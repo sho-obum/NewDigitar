@@ -76,11 +76,10 @@
   }
 }
 @media screen and (max-width: 1325px) {
-  .arrowIcon{
+  .arrowIcon {
     left: -170px !important;
-    bottom: 10px !important; 
+    bottom: 10px !important;
   }
- 
 }
 
 @media only screen and (max-width: 1399.98px) {
@@ -106,7 +105,7 @@
     font-size: 24px;
     line-height: 34px;
   }
-   .bigtextclass{
+  .bigtextclass {
     right: 5px !important;
     bottom: 20px !important;
   }
@@ -194,7 +193,6 @@
       }
     }
   }
-
 
   .ux-process {
     .service-f-single {
@@ -444,7 +442,7 @@
     .agency__content {
       padding-left: 0px;
     }
-    .title{
+    .title {
       text-align: center !important;
     }
   }
@@ -638,7 +636,7 @@
       margin-top: -8px;
     }
   }
-  .service_logo{
+  .service_logo {
     width: 10px !important;
   }
 
@@ -785,7 +783,14 @@
       }
     }
   }
+  .portfolio .portfolio__text-slider {
+    padding-bottom: 0px !important;
+  }
 
+  .portfolio .portfolio__text-slider-single h2 {
+   
+    gap: 10px;
+  }
   .faq {
     .faq__thumb {
       padding-right: 0px;
@@ -1108,7 +1113,7 @@
   .banner {
     padding: 180px 0px 10px;
     margin-bottom: -110px;
-    .video-frame img{
+    .video-frame img {
       display: none;
     }
     h1 {
