@@ -179,7 +179,13 @@ const HomeOffer = () => {
                         </p>
                         <div className="pop-metrics">
                           {previews[activeKey].metrics.map((m, i) => (
-                            <div className="metric" key={i}>
+                            <div
+                              className="metric"
+                              key={i}
+                              style={{
+                                lineHeight: "normal",
+                              }}
+                            >
                               <div className="metric-value">{m.value}</div>
                               <div className="metric-label">{m.label}</div>
                               {m.sub && (
@@ -355,8 +361,14 @@ const HomeOffer = () => {
 
         .offer__left {
           position: relative;
-          min-height: 480px;
         }
+        
+        @media (min-width: 992px) {
+          .offer__left {
+            min-height: 480px;
+          }
+        }
+        
         .offer__left .offer__content {
           transition: filter 160ms ease, opacity 160ms ease;
         }
@@ -432,6 +444,7 @@ const HomeOffer = () => {
           border: 1px solid rgba(255, 122, 0, 0.25);
           border-radius: 14px;
           padding: 12px 12px 10px;
+          line-height: normal !important;
         }
         .metric-value {
           font-size: 1.8rem;
@@ -571,7 +584,7 @@ const HomeOffer = () => {
         @media (max-width: 991.98px) {
           .offer__pop {
             position: relative;
-            top: auto;
+            top: -120px;
             left: auto;
             right: auto;
             margin-top: 12px;
