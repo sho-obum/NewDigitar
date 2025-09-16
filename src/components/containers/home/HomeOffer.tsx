@@ -37,7 +37,7 @@ const previews = {
     tagline: "Turn scrolls into saves and shares.",
     metrics: [
       { label: "Engagement ", value: "6%", sub: "Rate ", progress: 76 },
-      { label: "Audience Growth Rate", value: "12%", sub: "MOM", progress: 63 },
+      { label: "Audience Growth Rate", value: "12%", sub: "", progress: 63 },
       { label: "Clients", value: "120+", progress: 58, sub: "" },
       { label: "ROAS", value: "2X", progress: 81, sub: "" },
     ],

@@ -38,9 +38,9 @@ const Agency = () => {
               color: "#f60",
             }}
           >
-            Digitar {" "}
+            Digital Success {" "}
           </span>
-          Success Stories
+           Stories
         </span>
       </motion.h2>
       <div

@@ -1,14 +1,5 @@
 import React, { useCallback, useMemo, useRef, useState } from "react";
 
-/**
- * TinderMiniGameAdModal.tsx
- * - Fills parent: width:100%; height:100%
- * - 3 swipeable cards (left/right)
- * - Card images passed as bgImage (background-image), with overlay & foreground text
- * - After 3 swipes: shows headline + CTA
- * - Inline CSS only, no external libs
- */
-
 type CardData = {
   id: string;
   title: string;
@@ -94,7 +85,7 @@ export default function TinderMiniGameAdModal({
     currentYRef.current = dy;
 
     const el = e.currentTarget as HTMLElement;
-    const rotate = (dx * 0.03) * (dy / 80);
+    const rotate = dx * 0.03 * (dy / 80);
     el.style.transform = `translate(${dx}px, ${dy}px) rotate(${rotate}deg)`;
 
     const container = el.closest(".tinder-modal");
@@ -138,7 +129,7 @@ export default function TinderMiniGameAdModal({
     const moveOutWidth = (el.ownerDocument?.body?.clientWidth || 800) * 1.2;
     const toX = dx > 0 ? moveOutWidth : -moveOutWidth;
     const toY = dy + Math.abs(vx) * moveOutWidth * 0.5 * (dy > 0 ? 1 : -1);
-    const rotate = (dx * 0.03) * (dy / 80);
+    const rotate = dx * 0.03 * (dy / 80);
     el.style.transform = `translate(${toX}px, ${toY}px) rotate(${rotate}deg)`;
 
     window.setTimeout(() => {
@@ -152,7 +143,9 @@ export default function TinderMiniGameAdModal({
   }, []);
 
   const clickNope = () => {
-    const el = document.querySelector<HTMLElement>(".tinder-card[data-top='true']");
+    const el = document.querySelector<HTMLElement>(
+      ".tinder-card[data-top='true']"
+    );
     if (!el) return;
     el.style.transform = `translate(${-800}px, -100px) rotate(30deg)`;
     window.setTimeout(() => {
@@ -165,7 +158,9 @@ export default function TinderMiniGameAdModal({
   };
 
   const clickLove = () => {
-    const el = document.querySelector<HTMLElement>(".tinder-card[data-top='true']");
+    const el = document.querySelector<HTMLElement>(
+      ".tinder-card[data-top='true']"
+    );
     if (!el) return;
     el.style.transform = `translate(${800}px, -100px) rotate(-30deg)`;
     window.setTimeout(() => {
@@ -185,8 +180,8 @@ export default function TinderMiniGameAdModal({
           width:100%; height:100%;
           position:relative; box-sizing:border-box;
           border-radius:16px; overflow:hidden;
-          background: linear-gradient(180deg,#0f1221 0%, #181b2f 60%, #0e1227 100%);
-          color:#fff;
+          background: #fff; /* ✅ Light mode background */
+          color: #111; /* ✅ Dark text */
           display:flex; flex-direction:column; padding:14px;
         }
 
@@ -204,23 +199,26 @@ export default function TinderMiniGameAdModal({
           text-align:center; pointer-events:none; z-index:6;
         }
         .status .icon{ position:absolute; left:50%; margin-left:-50px; width:100px; font-size:88px; line-height:1; opacity:0; transform:scale(.4); transition:all .18s ease; }
+        .status .heart{ color: #ff4458; }
+        .status .nope{ color: #888; }
         .tinder_love .status .heart{ opacity:.85; transform:scale(1); }
         .tinder_nope .status .nope{ opacity:.85; transform:scale(1); }
 
         .stack{
-          position:relative; flex:1 1 auto; min-height:0;
-          display:flex; align-items:flex-end; justify-content:center;
+          position:relative; flex:1 1 auto; min-height:80%;
+          display:flex; align-items:flex-start; justify-content:center;
           padding:6px 0 10px;
         }
 
         .tinder-card{
           position:absolute; width:min(92%, 460px);
-          height: min(84%, 640px);
+          height: min(76%, 480px); /* Reduced height */
           border-radius:16px; overflow:hidden; will-change:transform;
           transition:transform .25s ease;
-          box-shadow: 0 18px 40px rgba(0,0,0,.35);
+          background: #fff;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+          border: 1px solid rgba(0, 0, 0, 0.08);
           cursor: grab; display:flex; flex-direction:column;
-          background: #0b0f1f;
           width: 70%;
         }
         .tinder-card.moving{ transition:none; cursor:grabbing; }
@@ -228,14 +226,20 @@ export default function TinderMiniGameAdModal({
         /* Background image layer */
         .card-bg{
           position:absolute; inset:0;
-          background-size:cover; background-position:center;
+          background-size:cover; 
+          background-position:top center; /* Changed to top center */
           filter: saturate(1.05) contrast(1.03);
           transform: scale(1.02);
         }
         /* Gradient overlay for text legibility */
         .card-shade{
           position:absolute; inset:0;
-          background: linear-gradient(180deg, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.7) 100%);
+          background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0) 25%,
+            rgba(255, 255, 255, 0.6) 70%,
+            rgba(255, 255, 255, 0.8) 100%
+          ); /* ✅ White overlay instead of dark */
         }
 
         /* Foreground meta panel */
@@ -245,8 +249,16 @@ export default function TinderMiniGameAdModal({
           display:flex; flex-direction:column; gap:4px;
           line-height: normal;
         }
-        .title{ font-weight:900; font-size:20px; letter-spacing:.2px; }
-        .subtitle{ opacity:.9; font-size:13px; }
+        .title{ 
+          font-weight:900; 
+          font-size:20px; 
+          letter-spacing:.2px;
+          color: #111;
+        }
+        .subtitle{ 
+          font-size:13px;
+          color: #555;
+        }
 
         /* depth for lower cards */
         .shadow-1{ transform: scale(.985) translateY(-12px); opacity:.9; }
@@ -272,7 +284,9 @@ export default function TinderMiniGameAdModal({
         .done h3{ font-size:22px; margin:6px 0 6px; }
         .done p{ opacity:.9; font-size:13px; margin:0 0 14px; }
         .install{
-          border:0; border-radius:12px; padding:10px 14px; font-weight:800; cursor:pointer; color:#0f1221; background:#fff;
+          border:0; border-radius:12px; padding:10px 14px; font-weight:800; cursor:pointer;
+          background: linear-gradient(90deg, #ff4458, #ff7758);
+          color: #fff;
           box-shadow: 0 12px 26px rgba(0,0,0,.28);
         }
 
@@ -306,7 +320,8 @@ export default function TinderMiniGameAdModal({
             {activeCards.slice(0, 3).map((card, i) => {
               const isTop = i === 0;
               const cls =
-                "tinder-card " + (isTop ? "" : i === 1 ? "shadow-1" : "shadow-2");
+                "tinder-card " +
+                (isTop ? "" : i === 1 ? "shadow-1" : "shadow-2");
               return (
                 <div
                   key={card.id}
@@ -342,7 +357,10 @@ export default function TinderMiniGameAdModal({
       ) : (
         <div className="done">
           <div>
-            <div className="logo" style={{ justifyContent: "center", marginBottom: 6 }}>
+            <div
+              className="logo"
+              style={{ justifyContent: "center", marginBottom: 6 }}
+            >
               <svg className="flame" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M12.7 2.3c.5 3.2-1 4.6-2.7 6.5-1.6 1.9-3.3 4-.3 6.6 0-2.3 1.8-3.2 3.2-4.5 1.4-1.3 2.2-3 1.7-5.7 2.8 2.2 5.1 5.2 5.1 8.9 0 4.4-3.6 8-8 8s-8-3.6-8-8c0-5.1 4-8.2 8-11.8z"
@@ -351,8 +369,8 @@ export default function TinderMiniGameAdModal({
               </svg>
               <b>Tinder</b>
             </div>
-            <h3>{finalHeadline}</h3>
-            <p>{finalSubcopy}</p>
+            <h3 className="text-black">{finalHeadline}</h3>
+            <p className="text-black">{finalSubcopy}</p>
             <a href={ctaHref} target="_blank" rel="noreferrer">
               <button className="install">{ctaText}</button>
             </a>

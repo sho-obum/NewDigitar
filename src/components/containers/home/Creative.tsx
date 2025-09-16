@@ -58,7 +58,8 @@ const items: CardItem[] = [
   },
 ];
 
-// Mobile Logo Column Component
+
+//  New MobileLogoCol with Horizontal Scroll + Snap
 function MobileLogoCol({
   integration,
   onTileClick,
@@ -70,18 +71,19 @@ function MobileLogoCol({
   const [imageAspectRatios, setImageAspectRatios] = useState<
     Record<string, number>
   >({});
+
+  // Repeat items twice so they loop seamlessly
   const repeatedItems = [...integration, ...integration];
+
   return (
     <div
       style={{
         position: "relative",
-        height: "400px",
-        overflow: "hidden",
+        width: "100%",
+        overflow: "hidden", // hides scrollbars
         display: "flex",
-        flexDirection: "column",
-        gap: "16px",
-        justifyContent: "center",
         alignItems: "center",
+        height: "280px",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -89,14 +91,11 @@ function MobileLogoCol({
       <motion.div
         style={{
           display: "flex",
-          flexDirection: "column",
+          flexDirection: "row",
           gap: "16px",
-          willChange: "transform",
-          animationName: "scrollY",
-          animationDuration: "30s",
-          animationTimingFunction: "linear",
-          animationIterationCount: "infinite",
+          animation: "scrollX 30s linear infinite",
           animationPlayState: isHovered ? "paused" : "running",
+          willChange: "transform",
         }}
       >
         {repeatedItems.map((item, idx) => (
@@ -111,13 +110,11 @@ function MobileLogoCol({
               boxShadow: "0 8px 25px rgba(0,0,0,0.5)",
               color: "white",
               textAlign: "center",
-              position: "relative",
               cursor: "pointer",
               transition: "transform 0.2s ease, box-shadow 0.2s ease",
-              width: "180px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
+              width: "200px",
+              minWidth: "200px",
+              flexShrink: 0,
             }}
             onClick={() => onTileClick(item)}
             onMouseEnter={(e) => {
@@ -159,29 +156,7 @@ function MobileLogoCol({
               </span>
             </div>
 
-            {/* Logo in top right */}
-            <div
-              style={{
-                position: "absolute",
-                top: "8px",
-                right: "8px",
-                zIndex: 10,
-              }}
-            >
-              {/* <Image
-                src="/logo-placeholder.png"
-                alt="Brand Logo"
-                width={20}
-                height={20}
-                style={{
-                  width: "20px",
-                  height: "20px",
-                  objectFit: "contain",
-                  opacity: 0.8,
-                }}
-              /> */}
-            </div>
-
+            {/* Image */}
             <div
               style={{
                 position: "relative",
@@ -207,7 +182,7 @@ function MobileLogoCol({
                 src={item.src}
                 alt={item.alt}
                 fill
-                sizes="(max-width: 768px) 180px, 300px"
+                sizes="(max-width: 768px) 200px, 300px"
                 style={{
                   objectFit: "contain",
                   filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.3))",
@@ -226,9 +201,28 @@ function MobileLogoCol({
           </div>
         ))}
       </motion.div>
+
+      {/* Keyframes for smooth horizontal scroll */}
+      <style jsx global>{`
+        @keyframes scrollX {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        /* Hide scrollbar (works for most browsers) */
+        div::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 }
+
+
 
 // Desktop Logo Column Component (Original Design)
 function DesktopLogoCol({
