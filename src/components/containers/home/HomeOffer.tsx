@@ -6,24 +6,16 @@ import star from "public/images/offer/star.png";
 
 type Key = "performance" | "social" | "branding" | "influencer" | null;
 
-type Metrics = Array<{
+type Metric = {
   label: string;
   value: string;
-  sub?: string;
-  progress?: number;
-}>;
+  sub: string;
+  progress: number;
+};
 
-const previews: Record<
-  Exclude<Key, null>,
-  {
-    title: string;
-    href: string;
-    badges: string[];
-    level: string;
-    tagline: string;
-    metrics: Metrics;
-  }
-> = {
+type Metrics = Array<Metric>;
+
+const previews = {
   performance: {
     title: "Performance Marketing",
     href: "/services/performance",
@@ -31,15 +23,10 @@ const previews: Record<
     level: "Lvl 8 Optimizer",
     tagline: "Scale spend with profitable efficiency.",
     metrics: [
-      {
-        label: "Monthly Conversion",
-        value: "250K+",
-        sub: "",
-        progress: 82,
-      },
-      { label: "LTV Users", value: "28%", sub: "", progress: 74 },
-      { label: "Revenue Growth", value: "35%", sub: "", progress: 71 },
-      { label: "Conversion Rate", value: "8%", sub: "", progress: 68 },
+      { label: "Monthly Conversion", value: "250K+", progress: 82, sub: "" },
+      { label: "LTV Users", value: "28%", progress: 74, sub: "" },
+      { label: "Revenue Growth", value: "35%", progress: 71, sub: "" },
+      { label: "Conversion Rate", value: "8%", progress: 68, sub: "" },
     ],
   },
   social: {
@@ -49,10 +36,10 @@ const previews: Record<
     level: "Lvl 7 Storyteller",
     tagline: "Turn scrolls into saves and shares.",
     metrics: [
-      { label: "Enagegment ", value: "6%", sub: "Rate ", progress: 76 },
+      { label: "Engagement ", value: "6%", sub: "Rate ", progress: 76 },
       { label: "Audience Growth Rate", value: "12%", sub: "MOM", progress: 63 },
-      { label: "Clients", value: "120+", sub: "", progress: 58 },
-      { label: "ROAS", value: "2X", sub: "", progress: 81 },
+      { label: "Clients", value: "120+", progress: 58, sub: "" },
+      { label: "ROAS", value: "2X", progress: 81, sub: "" },
     ],
   },
   branding: {
@@ -62,15 +49,10 @@ const previews: Record<
     level: "Lvl 6 Creator",
     tagline: "Distinctive assets that drive recall.",
     metrics: [
-      { label: "Brand Lift", value: "23%", sub: "", progress: 72 },
-      { label: "Brand Recall", value: "32%", sub: "", progress: 67 },
-      { label: "Average Session", value: "1 min+", sub: "", progress: 54 },
-      {
-        label: "Ads Viewability",
-        value: "88%",
-        sub: "",
-        progress: 88,
-      },
+      { label: "Brand Lift", value: "23%", progress: 72, sub: "" },
+      { label: "Brand Recall", value: "32%", progress: 67, sub: "" },
+      { label: "Average Session", value: "1 min+", progress: 54, sub: "" },
+      { label: "Ads Viewability", value: "88%", progress: 88, sub: "" },
     ],
   },
   influencer: {
@@ -80,15 +62,10 @@ const previews: Record<
     level: "Lvl 9 Connector",
     tagline: "Creators at scale, content that converts.",
     metrics: [
-      { label: "Creators", value: "2.5K+", sub: "", progress: 79 },
-      { label: "Avg Engagement Rate", value: "22%", sub: "", progress: 61 },
-      { label: "Followers Growth", value: "8%", sub: "", progress: 73 },
-      {
-        label: "Follower Retention",
-        value: "78%",
-        sub: "",
-        progress: 69,
-      },
+      { label: "Creators", value: "2.5K+", progress: 79, sub: "" },
+      { label: "Avg Engagement Rate", value: "22%", progress: 61, sub: "" },
+      { label: "Followers Growth", value: "8%", progress: 73, sub: "" },
+      { label: "Follower Retention", value: "78%", progress: 69, sub: "" },
     ],
   },
 };
@@ -103,90 +80,42 @@ const containerVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    }
-  }
+    transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+  },
 };
-
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  show: { 
-    opacity: 1, 
-    y: 0
-  },
-  transition: {
-    duration: 0.5,
-    ease: [0.43, 0.13, 0.23, 0.96] // Custom easing curve
-  }
-};
-
-const innerStagger = {
-  animate: { transition: { staggerChildren: 0.06, delayChildren: 0.12 } },
-};
-const itemFade = {
-  initial: { opacity: 0, y: 6 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: 6 },
+  show: { opacity: 1, y: 0 },
 };
 
 const HomeOffer = () => {
   const [activeKey, setActiveKey] = useState<Key>(null);
   const [isTouch, setIsTouch] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const hideTimer = useRef<number | null>(null);
-  const [allActive, setAllActive] = useState(false);
 
   useEffect(() => {
     const onTouch = () => setIsTouch(true);
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 991.98);
-    };
-
-    // Initial check
+    const checkMobile = () => setIsMobile(window.innerWidth <= 991.98);
     checkMobile();
-
     window.addEventListener("touchstart", onTouch, {
       once: true,
       passive: true,
     });
     window.addEventListener("resize", checkMobile);
-
     return () => {
       window.removeEventListener("touchstart", onTouch);
       window.removeEventListener("resize", checkMobile);
     };
   }, []);
 
-  const scheduleHide = (delay = 220) => {
-    if (hideTimer.current) window.clearTimeout(hideTimer.current);
-    hideTimer.current = window.setTimeout(
-      () => setActiveKey(null),
-      delay
-    ) as unknown as number;
-  };
-  const cancelHide = () => {
-    if (hideTimer.current) window.clearTimeout(hideTimer.current);
-    hideTimer.current = null;
-  };
-
-  const showCard = (key: Exclude<Key, null>) => {
-    cancelHide();
-    setActiveKey(key);
-  };
+  const showCard = (key: Exclude<Key, null>) => setActiveKey(key);
 
   const attach = (key: Exclude<Key, null>) => ({
     onMouseEnter: () => !isMobile && !isTouch && showCard(key),
-    onMouseLeave: () => !isMobile && !isTouch && scheduleHide(),
-    onFocus: () => !isMobile && showCard(key),
-    onBlur: (e: React.FocusEvent<HTMLDivElement>) => {
-      if (!isMobile && !e.currentTarget.contains(e.relatedTarget as Node))
-        scheduleHide(220);
-    },
+    onMouseLeave: () => {}, // no timer on desktop — keep open until mouse leaves popup too
     onClick: () => {
       if (isMobile || isTouch) {
-        activeKey === key ? setActiveKey(null) : showCard(key);
+        setActiveKey(activeKey === key ? null : key);
       }
     },
     tabIndex: 0,
@@ -198,45 +127,34 @@ const HomeOffer = () => {
   return (
     <div className="agency">
       <section className="section offer fade-wrapper agency">
-        <div className="agency">
-          <div className="container agency">
-            <div className="row gaper">
-              {/* LEFT */}
-              <div className="col-12 col-lg-5 position-relative">
-                <div className={`offer__left ${activeKey ? "is-dimmed" : ""}`}>
-                  <div className="offer__content section__content">
-                    <span className="sub-title">
-                      WHAT WE OFFER <i className="fa-solid fa-arrow-right"></i>
-                    </span>
-                    <h2 className="title title-anim">
-                      Driving Your Business Growth With 360° Marketing
-                    </h2>
-                    <div className="paragraph">
-                      <p>
-                        Beyond clicks and likes, we create impact. From
-                        performance ads to meaningful stories, unforgettable
-                        branding, and influencer voices, we help brands grow
-                        with purpose.
-                      </p>
-                    </div>
-                    <div className="section__content-cta">
-                      {/* <Link href="/our-services" className="btn btn--secondary">
-                        EXPLORE OUR SERVICES
-                      </Link> */}
-                      <button className="btn btn--secondary" onClick={() => {}}>
-                        EXPLORE OUR SERVICES
-                      </button>
-                    </div>
+        <div className="container agency">
+          <div className="row gaper">
+            {/* LEFT for desktop */}
+            <div className="col-12 col-lg-5 position-relative">
+              <div
+                className={`offer__left ${
+                  !isMobile && activeKey ? "is-dimmed" : ""
+                }`}
+              >
+                <div className="offer__content section__content">
+                  <span className="sub-title">
+                    WHAT WE OFFER <i className="fa-solid fa-arrow-right"></i>
+                  </span>
+                  <h2 className="title title-anim">
+                    Driving Your Business Growth With 360° Marketing
+                  </h2>
+                  <div className="paragraph">
+                    <p>
+                      Beyond clicks and likes, we create impact. From
+                      performance ads to meaningful stories, unforgettable
+                      branding, and influencer voices, we help brands grow with
+                      purpose.
+                    </p>
                   </div>
+                </div>
 
-                  <div
-                    className={`offer__left-overlay ${
-                      activeKey ? "is-visible" : ""
-                    }`}
-                    aria-hidden="true"
-                  />
-
-                  {/* FRAMER-MOTION POP CARD (fixed position) */}
+                {/* Desktop card stays open as long as hover is active */}
+                {!isMobile && (
                   <AnimatePresence>
                     {activeKey && (
                       <motion.div
@@ -250,92 +168,48 @@ const HomeOffer = () => {
                         animate="animate"
                         exit="exit"
                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                        onMouseEnter={() => {}} // keep open
+                        onMouseLeave={() => setActiveKey(null)} // close only when leaving popup
                       >
-                        <motion.div
-                          variants={innerStagger}
-                          initial="initial"
-                          animate="animate"
-                          exit="exit"
-                        >
-                          {/* Mobile Close Button */}
-                          {(isTouch || isMobile) && (
-                            <button
-                              className="offer__pop-close"
-                              aria-label="Close"
-                              onClick={() => setActiveKey(null)}
-                            >
-                              ×
-                            </button>
-                          )}
-                          {/* Tags */}
-                          {/* 
-                          <motion.div
-                            className="offer__pop-toprow"
-                            variants={itemFade}
-                          >
-                            <div className="chip chip--level">
-                              {previews[activeKey].level}
+                        <h3 className="pop-title">
+                          {previews[activeKey].title}
+                        </h3>
+                        <p className="pop-tagline">
+                          {previews[activeKey].tagline}
+                        </p>
+                        <div className="pop-metrics">
+                          {previews[activeKey].metrics.map((m, i) => (
+                            <div className="metric" key={i}>
+                              <div className="metric-value">{m.value}</div>
+                              <div className="metric-label">{m.label}</div>
+                              {m.sub && (
+                                <div className="metric-sub">{m.sub}</div>
+                              )}
+                              {typeof m.progress === "number" && (
+                                <div className="meter">
+                                  <div
+                                    className="meter-fill"
+                                    style={{ width: `${m.progress}%` }}
+                                  />
+                                </div>
+                              )}
                             </div>
-                            <div className="chiprow">
-                              {previews[activeKey].badges.map((b) => (
-                                <span key={b} className="chip chip--badge">
-                                  {b}
-                                </span>
-                              ))}
-                            </div>
-                          </motion.div> */}
-
-                          <motion.h3 className="pop-title" variants={itemFade}>
-                            {previews[activeKey].title}
-                          </motion.h3>
-                          <motion.p className="pop-tagline" variants={itemFade}>
-                            {previews[activeKey].tagline}
-                          </motion.p>
-
-                          <motion.div
-                            className="pop-metrics"
-                            variants={innerStagger}
-                          >
-                            {previews[activeKey].metrics.map((m, i) => (
-                              <motion.div
-                                className="metric"
-                                key={i}
-                                variants={itemFade}
-                                style={{
-                                  lineHeight: "normal",
-                                }}
-                              >
-                                <div className="metric-value">{m.value}</div>
-                                <div className="metric-label">{m.label}</div>
-                                {m.sub && (
-                                  <div className="metric-sub">{m.sub}</div>
-                                )}
-                                {typeof m.progress === "number" && (
-                                  <div className="meter">
-                                    <div
-                                      className="meter-fill"
-                                      style={{ width: `${m.progress}%` }}
-                                    />
-                                  </div>
-                                )}
-                              </motion.div>
-                            ))}
-                          </motion.div>
-
-                          {/* <motion.div className="pop-cta" variants={itemFade}>
-                            <Link href={previews[activeKey].href} className="btn btn--primary btn--thin">
-                              Enter Mission <i className="fa-sharp fa-solid fa-arrow-up-right" />
-                            </Link>
-                          </motion.div> */}
-                        </motion.div>
+                          ))}
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </div>
+                )}
               </div>
+            </div>
 
-              {/* RIGHT */}
-              <div className="col-12 col-lg-7 col-xl-6 offset-xl-1">
+            {/* RIGHT container (mobile overlay approach) */}
+            <div className="col-12 col-lg-7 col-xl-6 offset-xl-1 position-relative">
+              <div
+                className={`item-container ${
+                  isMobile && activeKey ? "is-blurred" : ""
+                }`}
+              >
                 <motion.div
                   className="offer__cta"
                   role="list"
@@ -343,8 +217,6 @@ const HomeOffer = () => {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true }}
-                  onMouseLeave={() => !isMobile && !isTouch && scheduleHide()}
-                  onMouseEnter={() => !isMobile && cancelHide()}
                 >
                   <motion.div
                     className="offer__cta-single"
@@ -354,13 +226,10 @@ const HomeOffer = () => {
                     <h2>
                       <span className="offer__cta-link">
                         Performance Marketing{" "}
-                        <span className="offer__cta-iconwrap">
-                          <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
-                        </span>
+                        <i className="fa-sharp fa-solid fa-arrow-up-right" />
                       </span>
                     </h2>
                   </motion.div>
-
                   <motion.div
                     className="offer__cta-single"
                     variants={itemVariants}
@@ -369,13 +238,10 @@ const HomeOffer = () => {
                     <h2>
                       <span className="offer__cta-link">
                         Social Media Marketing{" "}
-                        <span className="offer__cta-iconwrap">
-                          <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
-                        </span>
+                        <i className="fa-sharp fa-solid fa-arrow-up-right" />
                       </span>
                     </h2>
                   </motion.div>
-
                   <motion.div
                     className="offer__cta-single"
                     variants={itemVariants}
@@ -383,14 +249,11 @@ const HomeOffer = () => {
                   >
                     <h2>
                       <span className="offer__cta-link">
-                        Branding &amp; Creative{" "}
-                        <span className="offer__cta-iconwrap">
-                          <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
-                        </span>
+                        Branding & Creative{" "}
+                        <i className="fa-sharp fa-solid fa-arrow-up-right" />
                       </span>
                     </h2>
                   </motion.div>
-
                   <motion.div
                     className="offer__cta-single"
                     variants={itemVariants}
@@ -399,40 +262,70 @@ const HomeOffer = () => {
                     <h2>
                       <span className="offer__cta-link">
                         Influencer Marketing{" "}
-                        <span className="offer__cta-iconwrap">
-                          <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
-                        </span>
+                        <i className="fa-sharp fa-solid fa-arrow-up-right" />
                       </span>
                     </h2>
                   </motion.div>
                 </motion.div>
               </div>
+
+              {isMobile && (
+                <AnimatePresence>
+                  {activeKey && (
+                    <div className="card-overlay">
+                      <motion.div
+                        className="offer__pop"
+                        variants={cardVariants}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                      >
+                        <button
+                          className="offer__pop-close"
+                          onClick={() => setActiveKey(null)}
+                        >
+                          ×
+                        </button>
+                        <h3 className="pop-title">
+                          {previews[activeKey].title}
+                        </h3>
+                        <p className="pop-tagline">
+                          {previews[activeKey].tagline}
+                        </p>
+                        <div className="pop-metrics">
+                          {previews[activeKey].metrics.map((m, i) => (
+                            <div className="metric" key={i}>
+                              <div className="metric-value">{m.value}</div>
+                              <div className="metric-label">{m.label}</div>
+                              {m.sub && (
+                                <div className="metric-sub">{m.sub}</div>
+                              )}
+                              {typeof m.progress === "number" && (
+                                <div className="meter">
+                                  <div
+                                    className="meter-fill"
+                                    style={{ width: `${m.progress}%` }}
+                                  />
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    </div>
+                  )}
+                </AnimatePresence>
+              )}
             </div>
           </div>
-
-          <Image
-            src={star}
-            alt="Image"
-            className="star"
-            width={100}
-            height={100}
-          />
-          <div className="lines d-none d-lg-flex">
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
-          </div>
-          <div
-            style={{
-              position: "relative",
-              top: "130px",
-            }}
-          >
-            <hr className="creativeLine" />
-          </div>
         </div>
+        <Image
+          src={star}
+          alt="Image"
+          className="star"
+          width={100}
+          height={100}
+        />
       </section>
 
       <style jsx global>{`
@@ -548,7 +441,6 @@ const HomeOffer = () => {
         }
         .metric-label {
           font-size: 0.82rem;
-
           letter-spacing: 0.8px;
           opacity: 0.9;
           margin-top: 2px;
@@ -694,6 +586,19 @@ const HomeOffer = () => {
           .metric-value {
             font-size: 1.6rem;
           }
+        }
+
+        /* Added for new mobile overlay behavior */
+        .item-container.is-blurred {
+          filter: blur(3px);
+          pointer-events: none;
+        }
+        .card-overlay {
+          position: absolute;
+          top: 20px;
+          left: 0;
+          right: 0;
+          z-index: 10;
         }
       `}</style>
     </div>

@@ -440,8 +440,12 @@
   }
 
   .agency {
+    text-align: center;
     .agency__content {
       padding-left: 0px;
+    }
+    .title{
+      text-align: center !important;
     }
   }
 
@@ -1102,8 +1106,13 @@
 
   // banner
   .banner {
-    padding: 180px 0px 100px;
+    padding: 180px 0px 10px;
+    margin-bottom: -110px;
+    .video-frame img{
+      display: none;
+    }
     h1 {
+      font-size: 1.7rem;
       letter-spacing: 1px;
 
       .text-stroke {
