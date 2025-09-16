@@ -115,13 +115,20 @@ export default function TinderMiniGameAdModal({
     const elapsed = Math.max(1, Date.now() - startTimeRef.current);
     const vx = dx / elapsed;
 
-    const SWIPE_DISTANCE = 110;
-    const SWIPE_VELOCITY = 0.25;
+    const isMobile = window.innerWidth < 768;
+    const SWIPE_DISTANCE = isMobile ? 40 : 110;
+    const SWIPE_VELOCITY = 0.15;
 
-    const shouldKeep =
-      Math.abs(dx) < SWIPE_DISTANCE && Math.abs(vx) < SWIPE_VELOCITY;
+    const shouldSwipe =
+      Math.abs(dx) > SWIPE_DISTANCE || Math.abs(vx) > SWIPE_VELOCITY;
 
-    if (shouldKeep) {
+    if (!shouldSwipe) {
+     
+      el.style.transition = "transform 0.2s ease";
+      el.style.transform = "translate(0px, 0px) rotate(0deg)";
+      setTimeout(() => {
+        el.style.transition = ""; 
+      }, 200);
       resetTopCardTransform(el);
       return;
     }

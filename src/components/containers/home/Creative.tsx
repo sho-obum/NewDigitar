@@ -565,8 +565,10 @@ function MobileCreative({
         background: "black",
         padding: "2rem 1rem",
         position: "relative",
-        minHeight: "100vh",
+      
       }}
+
+  
     >
       <div
         style={{
