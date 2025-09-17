@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { MobileProductCard } from "./MobileProductCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,7 +23,7 @@ const products: Product[] = [
   {
     tag: "DSP",
     number: "01",
-    title: "Adxity — Demand-Side Platform",
+    title: "Adxity",
     domain: "adxity.com",
     href: "https://adxity.com",
     src: "https://panel.digitarmedia.com/admin/uploads/adxitu1756375027.png",
@@ -38,7 +39,7 @@ const products: Product[] = [
   {
     tag: "SDK",
     number: "02",
-    title: "Adpocket — In-App Monetization SDK",
+    title: "Adpocket",
     domain: "adpocket.ai",
     href: "https://adpocket.ai",
     src: "	https://panel.digitarmedia.com/admin/uploads/adpocket1756375023.png",
@@ -57,6 +58,15 @@ const HomeProducts = () => {
   // MOBILE refs (only used on mobile)
   const mobileWrapRef = useRef<HTMLDivElement | null>(null);
   const card2Ref = useRef<HTMLDivElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // ✅ Detect mobile viewport
+  useEffect(() => {
+    const checkViewport = () => setIsMobile(window.innerWidth < 768);
+    checkViewport(); // run once on mount
+    window.addEventListener("resize", checkViewport);
+    return () => window.removeEventListener("resize", checkViewport);
+  }, []);
   const card1TitleRef = useRef<HTMLHeadingElement | null>(null);
 
   useEffect(() => {
@@ -106,26 +116,27 @@ const HomeProducts = () => {
       className="section fade-wrapper"
       style={{ paddingTop: 14, paddingBottom: 14 }}
     >
-        <hr
+      <hr
         style={{
-          position:"relative",
-          bottom:"34px"
+          position: "relative",
+          bottom: "34px",
         }}
-        />
-      <div 
-        className="container" 
+      />
+      <div
+        className="container"
         style={{
-          maxWidth: '75vw',
-          width: '100%',
-          margin: '0 auto'
+          maxWidth: "75vw",
+          width: "100%",
+          margin: "0 auto",
         }}
       >
         {/* Header */}
-        <div className="row justify-content-center"
-        style={{
-          position:"relative",
-          zIndex:10
-        }}
+        <div
+          className="row justify-content-center"
+          style={{
+            position: "relative",
+            zIndex: 10,
+          }}
         >
           <div className="col-12 col-lg-8">
             <div className="text-center">
@@ -153,7 +164,7 @@ const HomeProducts = () => {
                   letterSpacing: "-0.02em",
                 }}
               >
-               Supercharge Your Advertising Performance
+                Supercharge Your Advertising Performance
               </h2>
               <p
                 style={{
@@ -163,157 +174,21 @@ const HomeProducts = () => {
                   marginInline: "auto",
                 }}
               >
-                Maximize ROI with powerful programmatic solutions and mobile app monetization tools built for precision, scale, and transparency.
+                Maximize ROI with powerful programmatic solutions and mobile app
+                monetization tools built for precision, scale, and transparency.
               </p>
             </div>
           </div>
         </div>
 
-        {/* MOBILE (stacked, keeps your GSAP parallax for card 2) */}
-        <div
-          className="d-block d-md-none"
-          ref={mobileWrapRef}
-          style={{ marginTop: 32 }}
-        >
-          {/* Card 1 (mobile) */}
-          <div className="gp-wrap">
-            <div className="gp-card gp-mobile">
-              <div className="gp-top">
-                <span
-                  className="gp-chip"
-                  style={{
-                    background: products[0].chipBg,
-                    color: products[0].chipFg,
-                    borderColor: products[0].accent,
-                  }}
-                >
-                  {products[0].tag}
-                </span>
-                <a
-                  href={products[0].href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="gp-link"
-                >
-                  {products[0].domain}
-                </a>
-              </div>
-              <div className="gp-logo-container">
-                <div
-                  className="gp-logo"
-                  style={{
-                    background: `rgba(59,130,246,0.1)`,
-                    border: `1px solid rgba(59,130,246,0.3)`,
-                    boxShadow: `0 8px 32px rgba(59,130,246,0.1)`,
-                  }}
-                >
-                  <img
-                    src={products[0].src}
-                    alt={`${products[0].title} logo`}
-                    className="gp-logo-img"
-                  />
-                </div>
-              </div>
-              <h3
-                ref={card1TitleRef}
-                className="gp-title gp-title--center gp-sticky"
-              >
-                Adxity
-              </h3>
-              <div className="gp-subtitle gp-subtitle--center">
-                Demand‑Side Platform
-              </div>
-
-              <ul className="gp-points">
-                {products[0].points.map((pt) => (
-                  <li key={pt}>{pt}</li>
-                ))}
-              </ul>
-              <div className="gp-cta-row">
-                <span className="gp-dim">Drive measurable ROI</span>
-                <Link
-                  href={products[0].href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="gp-btn"
-                  style={{
-                    color: products[0].chipFg,
-                    borderColor: products[0].accent,
-                  }}
-                >
-                  Learn More <i className="fa-solid fa-arrow-right-long" />
-                </Link>
-              </div>
-            </div>
+        {/* ----- MOBILE VIEW (REPLACED) ----- */}
+        {isMobile && (
+          <div style={{ marginTop: 32 }}>
+            {products.map((p) => (
+              <MobileProductCard key={p.title} product={p} />
+            ))}
           </div>
-
-          {/* Card 2 (mobile with GSAP motion) */}
-          <div className="gp-wrap">
-            <div className="gp-card gp-mobile" ref={card2Ref}>
-              <div className="gp-top">
-                <span
-                  className="gp-chip"
-                  style={{
-                    background: products[1].chipBg,
-                    color: products[1].chipFg,
-                    borderColor: products[1].accent,
-                  }}
-                >
-                  {products[1].tag}
-                </span>
-                <a
-                  href={products[1].href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="gp-link"
-                >
-                  {products[1].domain}
-                </a>
-              </div>
-              <div className="gp-logo-container">
-                <div
-                  className="gp-logo"
-                  style={{
-                    background: `rgba(147,51,234,0.1)`,
-                    border: `1px solid rgba(147,51,234,0.3)`,
-                    boxShadow: `0 8px 32px rgba(147,51,234,0.1)`,
-                  }}
-                >
-                  <img
-                    src={products[1].src}
-                    alt={`${products[1].title} logo`}
-                    className="gp-logo-img"
-                  />
-                </div>
-              </div>
-              <h3 className="gp-title gp-title--center">Adpocket</h3>
-              <div className="gp-subtitle gp-subtitle--center">
-                In‑App Monetization SDK
-              </div>
-
-              <ul className="gp-points">
-                {products[1].points.map((pt) => (
-                  <li key={pt}>{pt}</li>
-                ))}
-              </ul>
-              <div className="gp-cta-row">
-                <span className="gp-dim">Monetize without compromise</span>
-                <Link
-                  href={products[1].href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="gp-btn"
-                  style={{
-                    color: products[1].chipFg,
-                    borderColor: products[1].accent,
-                  }}
-                >
-                  Learn More <i className="fa-solid fa-arrow-right-long" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
 
         {/* DESKTOP (2 gamified cards, animated glow on hover) */}
         <div className="d-none d-md-block" style={{ marginTop: 32 }}>
@@ -379,7 +254,7 @@ const HomeProducts = () => {
                           gap: 12,
                           margin: "0 auto",
                           justifyContent: "center",
-                          width:"fit-content"
+                          width: "fit-content",
                         }}
                       >
                         <div
@@ -387,7 +262,9 @@ const HomeProducts = () => {
                           style={{ flex: 1, lineHeight: "normal" }}
                         >
                           <div className="gp-metric__value">1.2B+</div>
-                          <div className="gp-metric__label">Monthly Active Users</div>
+                          <div className="gp-metric__label">
+                            Monthly Active Users
+                          </div>
                           <div className="gp-meter">
                             <div
                               className="gp-meter__fill"
@@ -495,7 +372,7 @@ const HomeProducts = () => {
                           gap: 12,
                           margin: "0 auto",
                           justifyContent: "center",
-                          width:"fit-content"
+                          width: "fit-content",
                         }}
                       >
                         <div
@@ -503,7 +380,9 @@ const HomeProducts = () => {
                           style={{ flex: 1, lineHeight: "normal" }}
                         >
                           <div className="gp-metric__value">10K+</div>
-                          <div className="gp-metric__label">Integrated Apps</div>
+                          <div className="gp-metric__label">
+                            Integrated Apps
+                          </div>
                           <div className="gp-meter">
                             <div
                               className="gp-meter__fill"
@@ -561,14 +440,14 @@ const HomeProducts = () => {
           width: 100% !important;
           margin: 0 auto !important;
         }
-        
+
         /* Cap width at 1200px on very large screens */
         @media (min-width: 1600px) {
           .container {
             max-width: 1200px !important;
           }
         }
-        
+
         .title.title-anim {
           transition: transform 200ms ease;
           will-change: transform;
@@ -581,33 +460,33 @@ const HomeProducts = () => {
           position: relative;
           overflow: visible;
         }
-        
+
         /* Static fade effect for background lines */
         .lines {
           opacity: 0.1;
           transition: opacity 0.3s ease;
         }
-        
+
         .lines .line {
           opacity: 0.1;
           transition: opacity 0.3s ease;
         }
-        
+
         /* When section is in view, lines become fully opaque */
         .section.fade-wrapper:in-view {
           --lines-opacity: 1;
         }
-        
+
         .section.fade-wrapper:in-view ~ .lines,
         .section.fade-wrapper:in-view + .lines {
           opacity: 1;
         }
-        
+
         .section.fade-wrapper:in-view ~ .lines .line,
         .section.fade-wrapper:in-view + .lines .line {
           opacity: 1;
         }
-        
+
         .gp-card {
           position: relative;
           display: block;
@@ -620,7 +499,8 @@ const HomeProducts = () => {
           box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.32) inset,
             0 0 36px rgba(255, 122, 0, 0.45);
           overflow: hidden; /* clip inner content only */
-          transition: box-shadow 220ms ease, border-color 220ms ease, transform 200ms ease;
+          transition: box-shadow 220ms ease, border-color 220ms ease,
+            transform 200ms ease;
           will-change: transform;
           transform-origin: center;
           z-index: 2; /* above halo */
@@ -731,10 +611,14 @@ const HomeProducts = () => {
           overflow: hidden;
         }
         .gp-logo::before {
-          content: '';
+          content: "";
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+          background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.05)
+          );
           border-radius: inherit;
         }
         .gp-logo-img {
@@ -881,7 +765,7 @@ const HomeProducts = () => {
             font-size: 2rem;
           }
         }
-        
+
         /* Responsive metric boxes for small screens */
         @media (max-width: 767px) {
           .gp-metric {
@@ -897,7 +781,7 @@ const HomeProducts = () => {
             line-height: 1.2;
           }
         }
-        
+
         /* Extra small screens */
         @media (max-width: 480px) {
           .gp-metric {

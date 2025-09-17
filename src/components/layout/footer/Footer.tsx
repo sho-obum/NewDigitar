@@ -6,8 +6,6 @@ import logo from "public/images/logo.png";
 
 const Footer: React.FC = () => {
   const year = new Date().getFullYear();
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   return (
     <footer
@@ -86,23 +84,13 @@ const Footer: React.FC = () => {
                 </a>
               </li>
             </ul>
-            <ul>
-              <button
-                onClick={() => setIsContactModalOpen(true)}
-                className="gp-btn"
-                style={{
-                  color: "white",
-                  borderColor: "#ff6600",
-                  backgroundColor:"#ff6600",
-                  padding:"10px 20px",
-                  borderRadius:"10px",
-                  border: "1px solid #ff6600",
-                  cursor: "pointer"
-                }}
-              >
-                Contact Us <i className="fa-solid fa-arrow-right-long" />
-              </button>
-            </ul>
+              <ul>
+                <li>
+                  <Link href="/contact-us" className="contact-btn-enhanced" aria-label="Go to contact page">
+                    Contact Us <i className="fa-solid fa-arrow-right-long" />
+                  </Link>
+                </li>
+              </ul>
           </div>
 
           {/* Link Columns */}
@@ -120,13 +108,13 @@ const Footer: React.FC = () => {
               <h6 className="heading">Resources</h6>
               <ul>
                 <li>
-                  <Link href="">Case Studies</Link>
+                  <Link href="/case-studies">Case Studies</Link>
                 </li>
                 <li>
-                  <Link href="">Blogs &amp; Insights</Link>
+                  <Link href="/blog">Blogs &amp; Insights</Link>
                 </li>
                 <li>
-                  <Link href="">Events</Link>
+                  <Link href="/events">Events</Link>
                 </li>
               
               </ul>
@@ -180,19 +168,19 @@ const Footer: React.FC = () => {
               <h6 className="heading">Services</h6>
               <ul>
                 <li>
-                  <Link href="">Performance </Link>
+                  <Link href="/about">Performance </Link>
                 </li>
                 <li>
-                  <Link href="">Social</Link>
+                  <Link href="/culture">Social</Link>
                 </li>
                 <li>
-                  <Link href="">Branding</Link>
+                  <Link href="/creative-hub">Branding</Link>
                 </li>
                 <li>
-                  <Link href="">Influencer</Link>
+                  <Link href="/careers">Influencer</Link>
                 </li>
                 <li>
-                  <Link href="">Creative</Link>
+                  <Link href="/careers">Creative</Link>
                 </li>
               </ul>
             </div>
@@ -217,74 +205,7 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Contact Modal */}
-      {isContactModalOpen && (
-        <div className="modal-overlay" onClick={() => setIsContactModalOpen(false)}>
-          <div className="modal-container" onClick={(e) => e.stopPropagation()}>
-            <button 
-              className="modal-close"
-              onClick={() => setIsContactModalOpen(false)}
-              aria-label="Close modal"
-            >
-              ✕
-            </button>
-            
-            <div className="modal-content">
-              {/* Left Side - Contact Info */}
-              <div className="contact-info">
-                <h2>Get in Touch</h2>
-                <div className="contact-details">
-                  <div className="contact-item">
-                    <i className="fa-solid fa-envelope"></i>
-                    <span>hello@digitarmedia.com</span>
-                  </div>
-                  <div className="contact-item">
-                    <i className="fa-solid fa-phone"></i>
-                    <span>+1 (555) 123-4567</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Side - Contact Form */}
-              <div className="contact-form">
-                {!isSubmitted ? (
-                  <form onSubmit={(e) => {
-                    e.preventDefault();
-                    setIsSubmitted(true);
-                    setTimeout(() => {
-                      setIsSubmitted(false);
-                      setIsContactModalOpen(false);
-                    }, 3000);
-                  }}>
-                    <div className="form-group">
-                      <input type="text" placeholder="Your Name" required />
-                    </div>
-                    <div className="form-group">
-                      <input type="email" placeholder="Your Email" required />
-                    </div>
-                    <div className="form-group">
-                      <input type="text" placeholder="Subject" required />
-                    </div>
-                    <div className="form-group">
-                      <textarea placeholder="Your Message" rows={5} required></textarea>
-                    </div>
-                    <button type="submit" className="submit-btn">
-                      Send Message <i className="fa-solid fa-paper-plane"></i>
-                    </button>
-                  </form>
-                ) : (
-                  <div className="success-message">
-                    <div className="success-icon">
-                      <i className="fa-solid fa-check"></i>
-                    </div>
-                    <h3>Message Sent Successfully!</h3>
-                    <p>Thank you for reaching out to us. Our team will get back to you soon.</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+  {/* Contact Modal removed. Redirects to /contact-us instead. */}
 
       {/* ===== CSS (plain, in-file) ===== */}
       <style jsx>{`
@@ -311,13 +232,6 @@ const Footer: React.FC = () => {
           padding: 64px 0 32px;
         }
 
-        @media (max-width: 768px) {
-          .footer {
-            padding: 40px 0 24px;
-            overflow-x: hidden;
-          }
-        }
-
         .bg-word {
           position: absolute;
           inset: 0;
@@ -340,15 +254,6 @@ const Footer: React.FC = () => {
           align-items: center;
           justify-content: center;
           user-select: none;
-          white-space: nowrap;
-          overflow: hidden;
-        }
-
-        @media (max-width: 768px) {
-          .bg-word {
-            font-size: 45vw;
-            opacity: 0.08;
-          }
         }
 
         .container {
@@ -359,13 +264,6 @@ const Footer: React.FC = () => {
           z-index: 1;
         }
 
-        @media (max-width: 768px) {
-          .container {
-            padding: 0 16px;
-            overflow-x: hidden;
-          }
-        }
-
         .top {
           display: grid;
           grid-template-columns: 1.1fr 2fr;
@@ -374,12 +272,6 @@ const Footer: React.FC = () => {
         @media (max-width: 1024px) {
           .top {
             grid-template-columns: 1fr;
-            gap: 32px;
-          }
-        }
-        @media (max-width: 768px) {
-          .top {
-            gap: 24px;
           }
         }
 
@@ -414,6 +306,110 @@ const Footer: React.FC = () => {
           font-weight: 900;
         }
 
+        /* Enhanced Contact Button */
+        .contact-btn-enhanced {
+          padding: 14px 24px;
+          border-radius: 12px;
+          border: 2px solid rgba(255, 122, 0, 0.6);
+          background: linear-gradient(
+            135deg,
+            rgba(255, 122, 0, 0.2),
+            rgba(255, 176, 102, 0.3),
+            rgba(255, 122, 0, 0.2)
+          );
+          background-size: 200% 100%;
+          color: #ffd7b0;
+          font-weight: 800;
+          font-size: 1rem;
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          overflow: hidden;
+          text-decoration: none;
+          box-shadow:
+            0 4px 15px rgba(255, 122, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-btn-enhanced::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+          );
+          transition: left 0.6s ease;
+        }
+
+        .contact-btn-enhanced:hover::before {
+          left: 100%;
+        }
+
+        .contact-btn-enhanced:hover {
+          background-position: 100% 0;
+          border-color: #ff7a00;
+          box-shadow:
+            0 8px 25px rgba(255, 122, 0, 0.4),
+            0 0 30px rgba(255, 176, 102, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+          transform: translateY(-2px);
+          color: #ffffff;
+        }
+
+        .contact-btn-enhanced:active {
+          transform: translateY(0);
+          box-shadow:
+            0 2px 10px rgba(255, 122, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-btn-enhanced i {
+          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          font-size: 1.1rem;
+        }
+
+        .contact-btn-enhanced:hover i {
+          transform: translateX(6px);
+        }
+
+        .contact-btn-enhanced:focus-visible {
+          outline: 2px solid #ff7a00;
+          outline-offset: 3px;
+          border-radius: 14px;
+        }
+
+        /* Pulse animation for attention */
+        @keyframes pulse-glow {
+          0%, 100% {
+            box-shadow:
+              0 4px 15px rgba(255, 122, 0, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+          }
+          50% {
+            box-shadow:
+              0 4px 20px rgba(255, 122, 0, 0.4),
+              0 0 20px rgba(255, 176, 102, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+          }
+        }
+
+        .contact-btn-enhanced {
+          animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        .contact-btn-enhanced:hover {
+          animation: none;
+        }
+
         /* Brand */
         .logo {
           display: inline-flex;
@@ -423,14 +419,6 @@ const Footer: React.FC = () => {
           margin: 16px 0 20px;
           color: var(--muted);
           max-width: 520px;
-        }
-
-        @media (max-width: 768px) {
-          .intro {
-            font-size: 14px;
-            margin: 12px 0 16px;
-            max-width: 100%;
-          }
         }
         .socials {
           display: flex;
@@ -463,15 +451,11 @@ const Footer: React.FC = () => {
         @media (max-width: 900px) {
           .cols {
             grid-template-columns: repeat(2, 1fr);
-            margin-left: 0 !important;
-            gap: 24px 32px;
           }
         }
         @media (max-width: 560px) {
           .cols {
             grid-template-columns: 1fr;
-            margin-left: 0 !important;
-            gap: 20px;
           }
         }
 
@@ -580,385 +564,6 @@ const Footer: React.FC = () => {
         @media (max-width: 560px) {
           .copy {
             white-space: normal;
-          }
-        }
-
-        /* Modal Styles */
-        .modal-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.8);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 9999;
-          padding: 20px;
-        }
-
-        .modal-container {
-          position: relative;
-          width: min(75vw, 900px);
-          height: 60vh;
-          min-height: 500px;
-          max-height: 700px;
-          border-radius: 20px;
-          background: linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.12),
-            rgba(255, 255, 255, 0.06)
-          );
-          border: 1px solid rgba(255, 122, 0, 0.3);
-          box-shadow: 
-            0 24px 60px rgba(0, 0, 0, 0.4),
-            0 0 40px rgba(255, 122, 0, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.25);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          overflow: hidden;
-        }
-
-        .modal-close {
-          position: absolute;
-          top: 20px;
-          right: 20px;
-          width: 40px;
-          height: 40px;
-          border: none;
-          background: linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.15),
-            rgba(255, 255, 255, 0.08)
-          );
-          border: 1px solid rgba(255, 122, 0, 0.4);
-          border-radius: 50%;
-          color: #fff;
-          font-size: 18px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 10;
-          transition: all 0.3s ease;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-        }
-
-        .modal-close:hover {
-          background: linear-gradient(
-            145deg,
-            rgba(255, 122, 0, 0.3),
-            rgba(255, 122, 0, 0.15)
-          );
-          transform: scale(1.1);
-          box-shadow: 0 0 20px rgba(255, 122, 0, 0.4);
-        }
-
-        .modal-content {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          height: 100%;
-          gap: 0;
-        }
-
-        .contact-info {
-          padding: 40px;
-          background: linear-gradient(
-            145deg,
-            rgba(59, 130, 246, 0.15),
-            rgba(37, 99, 235, 0.08),
-            rgba(29, 78, 216, 0.05)
-          );
-          border-right: 1px solid rgba(59, 130, 246, 0.3);
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          align-items: flex-start;
-        }
-
-        .contact-info h2 {
-          color: #fff;
-          font-size: 2.5rem;
-          font-weight: 700;
-          margin: 0 0 40px 0;
-          text-shadow: 0 0 20px rgba(255, 122, 0, 0.3);
-        }
-
-        .contact-details {
-          display: flex;
-          flex-direction: column;
-          gap: 24px;
-        }
-
-        .contact-item {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          color: #fff;
-          font-size: 1.1rem;
-        }
-
-        .contact-item i {
-          width: 24px;
-          height: 24px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: linear-gradient(
-            145deg,
-            rgba(255, 122, 0, 0.3),
-            rgba(255, 122, 0, 0.15)
-          );
-          border-radius: 50%;
-          color: #ff7a1a;
-          font-size: 14px;
-          border: 1px solid rgba(255, 122, 0, 0.4);
-        }
-
-        .contact-form {
-          padding: 100px 40px 40px 40px;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          overflow-y: auto;
-          max-height: 100%;
-        }
-
-        /* Custom Orange Scrollbar */
-        .contact-form::-webkit-scrollbar {
-          width: 8px;
-        }
-
-        .contact-form::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 50px;
-        }
-
-        .contact-form::-webkit-scrollbar-thumb {
-          background: linear-gradient(
-            180deg,
-            rgba(255, 122, 0, 0.8),
-            rgba(255, 122, 0, 0.6)
-          );
-          border-radius: 50px;
-          border: 1px solid rgba(255, 122, 0, 0.3);
-        }
-
-        .contact-form::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(
-            180deg,
-            rgba(255, 122, 0, 1),
-            rgba(255, 122, 0, 0.8)
-          );
-        }
-
-        /* Firefox scrollbar */
-        .contact-form {
-          scrollbar-width: thin;
-          scrollbar-color: rgba(255, 122, 0, 0.8) rgba(255, 255, 255, 0.1);
-        }
-
-        .form-group {
-          margin-bottom: 20px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-          width: 100%;
-          padding: 14px 18px;
-          border: 1px solid rgba(255, 122, 0, 0.3);
-          border-radius: 12px;
-          background: linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.08),
-            rgba(255, 255, 255, 0.04)
-          );
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          color: #fff;
-          font-size: 16px;
-          outline: none;
-          transition: all 0.3s ease;
-          box-sizing: border-box;
-          resize: vertical;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-          color: rgba(255, 255, 255, 0.6);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-          border-color: rgba(255, 122, 0, 0.6);
-          box-shadow: 
-            0 0 0 2px rgba(255, 122, 0, 0.2),
-            0 0 20px rgba(255, 122, 0, 0.1);
-          background: linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.12),
-            rgba(255, 255, 255, 0.06)
-          );
-        }
-
-        .submit-btn {
-          background: linear-gradient(
-            145deg,
-            rgba(255, 122, 0, 0.8),
-            rgba(255, 122, 0, 0.6)
-          );
-          border: 1px solid rgba(255, 122, 0, 0.8);
-          color: #fff;
-          padding: 14px 24px;
-          border-radius: 12px;
-          font-size: 16px;
-          font-weight: 600;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          transition: all 0.3s ease;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          box-shadow: 0 8px 24px rgba(255, 122, 0, 0.3);
-        }
-
-        .submit-btn:hover {
-          background: linear-gradient(
-            145deg,
-            rgba(255, 122, 0, 0.9),
-            rgba(255, 122, 0, 0.7)
-          );
-          transform: translateY(-2px);
-          box-shadow: 0 12px 32px rgba(255, 122, 0, 0.4);
-        }
-
-        .submit-btn:active {
-          transform: translateY(0);
-        }
-
-        /* Success Message */
-        .success-message {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          height: 100%;
-          animation: fadeInSuccess 0.5s ease-in;
-        }
-
-        .success-icon {
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          background: linear-gradient(
-            145deg,
-            rgba(34, 197, 94, 0.3),
-            rgba(34, 197, 94, 0.15)
-          );
-          border: 2px solid rgba(34, 197, 94, 0.6);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 24px;
-          animation: pulseSuccess 2s infinite;
-        }
-
-        .success-icon i {
-          font-size: 32px;
-          color: #22c55e;
-        }
-
-        .success-message h3 {
-          color: #fff;
-          font-size: 1.8rem;
-          font-weight: 700;
-          margin: 0 0 16px 0;
-          text-shadow: 0 0 15px rgba(255, 122, 0, 0.3);
-        }
-
-        .success-message p {
-          color: rgba(255, 255, 255, 0.8);
-          font-size: 1.1rem;
-          margin: 0;
-          line-height: 1.5;
-        }
-
-        @keyframes fadeInSuccess {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes pulseSuccess {
-          0%, 100% {
-            transform: scale(1);
-            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
-          }
-          50% {
-            transform: scale(1.05);
-            box-shadow: 0 0 0 20px rgba(34, 197, 94, 0);
-          }
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-          .modal-container {
-            width: 90vw;
-            height: 70vh;
-          }
-
-          .modal-content {
-            grid-template-columns: 1fr;
-          }
-
-          .contact-info {
-            display: none;
-          }
-
-          .contact-form {
-            padding: 80px 20px 30px 20px;
-          }
-
-          .modal-close {
-            top: 15px;
-            right: 15px;
-            width: 36px;
-            height: 36px;
-            font-size: 16px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .modal-container {
-            width: 95vw;
-            height: 75vh;
-          }
-
-          .contact-form {
-            padding: 60px 15px 20px 15px;
-          }
-
-          .form-group input,
-          .form-group textarea {
-            padding: 12px 16px;
-            font-size: 14px;
-          }
-
-          .submit-btn {
-            padding: 12px 20px;
-            font-size: 14px;
           }
         }
       `}</style>

@@ -163,7 +163,7 @@ const HomeProductsStacked = () => {
                     opacity: 0.95,
                   }}
                 >
-                  <li>Performance-first media buying across programmatic & social.</li>
+                  <li>Performance-second media buying across programmatic & social.</li>
                   <li>Real-time optimization with transparent reporting.</li>
                   <li>Audience, creative, and LTV insights for scale.</li>
                 </ul>
