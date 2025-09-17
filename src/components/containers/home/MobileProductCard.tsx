@@ -77,9 +77,11 @@ export function MobileProductCard({ product }: { product: Product }) {
           background: #0a0a0a;
           border: 1px solid rgba(255, 122, 0, 0.3);
           border-radius: 16px;
-          padding: 18px;
-          margin-bottom: 16px;
+          padding: 18px !important;
+          margin-bottom: 16px ;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          width: 100% !important; 
+          box-sizing: border-box; 
         }
         .gp-header-row {
           display: flex;
@@ -160,4 +162,3 @@ export function MobileProductCard({ product }: { product: Product }) {
     </div>
   );
 }
-

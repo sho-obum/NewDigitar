@@ -60,7 +60,7 @@ const HomeProducts = () => {
   const card2Ref = useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // ✅ Detect mobile viewport
+
   useEffect(() => {
     const checkViewport = () => setIsMobile(window.innerWidth < 768);
     checkViewport(); // run once on mount
@@ -181,9 +181,9 @@ const HomeProducts = () => {
           </div>
         </div>
 
-        {/* ----- MOBILE VIEW (REPLACED) ----- */}
+        {/* ----- MOBILE VIEW  ----- */}
         {isMobile && (
-          <div style={{ marginTop: 32 }}>
+          <div style={{ marginTop: 12, paddingLeft: 10, paddingRight: 10 }}>
             {products.map((p) => (
               <MobileProductCard key={p.title} product={p} />
             ))}

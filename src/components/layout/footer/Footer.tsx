@@ -1,34 +1,24 @@
 // components/Footer.tsx
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { FaArrowRight } from "react-icons/fa";
 import logo from "public/images/logo.png";
 
 const Footer: React.FC = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer
-      className="footer"
-      role="contentinfo"
-      style={{
-        backgroundColor: "black",
-        padding:"0px"
-      }}
-    >
-      <hr
-        style={{
-          paddingBottom: "30px",
-        }}
-      />
+    <footer className="footer" role="contentinfo">
+      <hr className="footer-divider" />
+
       <div className="bg-word" aria-hidden="true">
         Digitar
       </div>
 
       <div className="container">
-        {/* === Top Section === */}
         <div className="top">
-          {/* Brand + Intro + Socials */}
+          {/* === LEFT COLUMN (Brand + CTA + Newsletter) === */}
           <div className="brand">
             <Link href="/" aria-label="Go to home" className="logo">
               <Image src={logo} alt="Digitar Media" width={160} height={40} />
@@ -41,99 +31,63 @@ const Footer: React.FC = () => {
               growth.
             </p>
 
-            <ul className="socials" aria-label="Social media">
+            <ul className="socials">
               <li>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                >
-                  <i className="fa-brands fa-facebook-f" aria-hidden="true" />
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                >
-                  <i className="fa-brands fa-instagram" aria-hidden="true" />
+                <a href="https://facebook.com">
+                  <i className="fa-brands fa-facebook-f" />
                 </a>
               </li>
               <li>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <i className="fa-brands fa-linkedin-in" aria-hidden="true" />
+                <a href="https://instagram.com">
+                  <i className="fa-brands fa-instagram" />
                 </a>
               </li>
               <li>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                >
-                  <i className="fa-brands fa-youtube" aria-hidden="true" />
+                <a href="https://linkedin.com">
+                  <i className="fa-brands fa-linkedin-in" />
+                </a>
+              </li>
+              <li>
+                <a href="https://youtube.com">
+                  <i className="fa-brands fa-youtube" />
                 </a>
               </li>
             </ul>
-              <ul>
-                <li>
-                  <Link href="/contact-us" className="contact-btn-enhanced" aria-label="Go to contact page">
-                    Contact Us <i className="fa-solid fa-arrow-right-long" />
-                  </Link>
-                </li>
-              </ul>
+
+            {/* ✅ Contact Button */}
+            <Link href="/contact-us" className="contact-btn">
+              Contact Us <FaArrowRight />
+            </Link>
+
+            {/* ✅ Newsletter */}
+            <div className="newsletter">
+              <h4 className="newsletter-title">Subscribe to our Newsletter</h4>
+              <form
+                className="newsletter-form"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  alert("Thank you for subscribing!");
+                }}
+              >
+                <input type="email" placeholder="Enter your email" required />
+                <button type="submit">Subscribe</button>
+              </form>
+            </div>
           </div>
 
-          {/* Link Columns */}
-          <nav className="cols" aria-label="Footer"
-          style={{
-            marginLeft:"-70px"
-          }}
-          >
-            <div
-              className="col"
-              style={{
-                opacity: 0,
-              }}
-            >
-              <h6 className="heading">Resources</h6>
-              <ul>
-                <li>
-                  <Link href="/case-studies">Case Studies</Link>
-                </li>
-                <li>
-                  <Link href="/blog">Blogs &amp; Insights</Link>
-                </li>
-                <li>
-                  <Link href="/events">Events</Link>
-                </li>
-              
-              </ul>
-            </div>
+          {/* === RIGHT COLUMN (Links + Presence) === */}
+          <nav className="cols" aria-label="Footer">
             <div className="col">
-              <h6 className="heading" 
-              style={{
-                color:"#ff6600"
-              }}
-              >Company</h6>
+              <h6 className="heading">Company</h6>
               <ul>
                 <li>
-                  <Link href="">About Us </Link>
+                  <Link href="#">About Us</Link>
                 </li>
                 <li>
-                  <Link href="">Life @ Digitar </Link>
+                  <Link href="#">Life @ Digitar</Link>
                 </li>
                 <li>
-                  <Link href="">Career</Link>
+                  <Link href="#">Career</Link>
                 </li>
               </ul>
             </div>
@@ -142,24 +96,16 @@ const Footer: React.FC = () => {
               <h6 className="heading">Products</h6>
               <ul>
                 <li>
-                  <Link href="/services/programmatic">
-                    Adxity - DSP 
-                  </Link>
+                  <Link href="#">Adxity</Link>
                 </li>
                 <li>
-                  <Link href="/services/branding">
-                    Adpocket {" "}
-                  </Link>
+                  <Link href="#">Adpocket</Link>
                 </li>
                 <li>
-                  <Link href="/services/storytelling">
-                    Yogza {" "}
-                  </Link>
+                  <Link href="#">Yogza</Link>
                 </li>
                 <li>
-                  <Link href="/services/performance">
-                    Lending Leaf {" "}
-                  </Link>
+                  <Link href="#">Lending Leaf</Link>
                 </li>
               </ul>
             </div>
@@ -168,403 +114,244 @@ const Footer: React.FC = () => {
               <h6 className="heading">Services</h6>
               <ul>
                 <li>
-                  <Link href="/about">Performance </Link>
+                  <Link href="#">Performance</Link>
                 </li>
                 <li>
-                  <Link href="/culture">Social</Link>
+                  <Link href="#">Social</Link>
                 </li>
                 <li>
-                  <Link href="/creative-hub">Branding</Link>
+                  <Link href="#">Branding</Link>
                 </li>
                 <li>
-                  <Link href="/careers">Influencer</Link>
+                  <Link href="#">Influencer</Link>
                 </li>
                 <li>
-                  <Link href="/careers">Creative</Link>
+                  <Link href="#">Creative</Link>
                 </li>
               </ul>
+            </div>
+
+            {/* ✅ Presence Section (Always Glassmorphic) */}
+            <div className="presence">
+              <h6 className="heading presence-title">Presence</h6>
+              <div className="presence-grid">
+                <div className="presence-card">
+                  <strong>India Office</strong>
+                  <p>Ramesh Nagar</p> 
+                  <p>Delhi-110015, India</p>
+                  <p>info@digitarmedia.com</p>
+                </div>
+                <div className="presence-card">
+                  <strong>USA Office</strong>
+                  <p>Sheridan, Wyoming 82801, USA</p>
+                  <p>media@digitarmedia.com</p>
+                </div>
+              </div>
             </div>
           </nav>
         </div>
 
-        {/* === (Optional) Associations strip — replace src with your logos or remove === */}
-
         {/* === Bottom Bar === */}
-        <div
-          className="bottom"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div>
-            <p className="copy">© {year} Digitar Media. All Rights Reserved.</p>
-          </div>
+        <div className="bottom">
+          <p className="copy">© {year} Digitar Media. All Rights Reserved.</p>
+          <ul className="legal">
+            <li>
+              <Link href="#">Privacy Policy</Link>
+            </li>
+            <li>
+              <Link href="#">Terms of Service</Link>
+            </li>
+          </ul>
         </div>
       </div>
 
-      {/* Contact Modal */}
-  {/* Contact Modal removed. Redirects to /contact-us instead. */}
-
-      {/* ===== CSS (plain, in-file) ===== */}
+      {/* === Styles === */}
       <style jsx>{`
-        /* Theme */
-        :root {
-          --bg: #0b0c14; /* deep night */
-          --bg-2: #111224; /* subtle panel tint */
-          --text: #d5d7df; /* main text */
-          --muted: #9aa0a6; /* secondary text */
-          --orange: #ff7a1a; /* accent */
-          --link: #e6e8ef;
-        }
-
         .footer {
           position: relative;
-          overflow: hidden;
-          background: radial-gradient(
-              1200px 600px at 20% -10%,
-              #1a1b2a 0%,
-              transparent 60%
-            ),
-            var(--bg);
-          color: var(--text);
-          padding: 64px 0 32px;
+          background: #000;
+          color: #fff;
+          padding: 60px 0 30px;
         }
-
+        .footer-divider {
+          opacity: 0.1;
+          margin-bottom: 30px;
+        }
         .bg-word {
           position: absolute;
           inset: 0;
-          pointer-events: none;
+          font-size: 30vw;
           font-weight: 800;
-          letter-spacing: -0.04em;
-          font-size: 38vw;
-          line-height: 1;
-          text-transform: lowercase;
-          color: transparent;
-          background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.08),
-            rgba(0, 0, 0, 0.05)
-          );
-          -webkit-background-clip: text;
-          background-clip: text;
-          opacity: 0.14;
+
+          color: rgba(255, 255, 255, 0.06);
           display: flex;
-          align-items: center;
           justify-content: center;
+          align-items: center;
           user-select: none;
         }
-
         .container {
-          max-width: 1240px;
+          max-width: 1300px;
           margin: 0 auto;
           padding: 0 24px;
           position: relative;
-          z-index: 1;
+          z-index: 2;
         }
-
         .top {
           display: grid;
-          grid-template-columns: 1.1fr 2fr;
+          grid-template-columns: 1.2fr 2fr;
           gap: 48px;
         }
-        @media (max-width: 1024px) {
+        @media (max-width: 900px) {
           .top {
             grid-template-columns: 1fr;
           }
         }
 
-        .gp-btn {
-          padding: 10px 14px;
-          border-radius: 12px;
-          border: 1px solid;
-          font-weight: 800;
-          display: inline-flex;
-          gap: 8px;
-          align-items: center;
-          background: linear-gradient(
-            90deg,
-            rgba(255, 122, 0, 0.18),
-            rgba(255, 176, 102, 0.28),
-            rgba(255, 122, 0, 0.18)
-          );
-          background-size: 200% 100%;
-          color: #ffd7b0;
-          transition: background-position 400ms ease, transform 160ms ease;
-        }
-        .gp-btn:hover {
-          background-position: 100% 0;
-        }
-        .gp-btn:hover i {
-          transform: translateX(6px);
-        }
-        .gp-btn i {
-          transition: transform 200ms ease;
-        }
-        .gp-btn__label {
-          font-weight: 900;
-        }
-
-        /* Enhanced Contact Button */
-        .contact-btn-enhanced {
-          padding: 14px 24px;
-          border-radius: 12px;
-          border: 2px solid rgba(255, 122, 0, 0.6);
-          background: linear-gradient(
-            135deg,
-            rgba(255, 122, 0, 0.2),
-            rgba(255, 176, 102, 0.3),
-            rgba(255, 122, 0, 0.2)
-          );
-          background-size: 200% 100%;
-          color: #ffd7b0;
-          font-weight: 800;
-          font-size: 1rem;
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          cursor: pointer;
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          position: relative;
-          overflow: hidden;
-          text-decoration: none;
-          box-shadow:
-            0 4px 15px rgba(255, 122, 0, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .contact-btn-enhanced::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.2),
-            transparent
-          );
-          transition: left 0.6s ease;
-        }
-
-        .contact-btn-enhanced:hover::before {
-          left: 100%;
-        }
-
-        .contact-btn-enhanced:hover {
-          background-position: 100% 0;
-          border-color: #ff7a00;
-          box-shadow:
-            0 8px 25px rgba(255, 122, 0, 0.4),
-            0 0 30px rgba(255, 176, 102, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.2);
-          transform: translateY(-2px);
-          color: #ffffff;
-        }
-
-        .contact-btn-enhanced:active {
-          transform: translateY(0);
-          box-shadow:
-            0 2px 10px rgba(255, 122, 0, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .contact-btn-enhanced i {
-          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          font-size: 1.1rem;
-        }
-
-        .contact-btn-enhanced:hover i {
-          transform: translateX(6px);
-        }
-
-        .contact-btn-enhanced:focus-visible {
-          outline: 2px solid #ff7a00;
-          outline-offset: 3px;
-          border-radius: 14px;
-        }
-
-        /* Pulse animation for attention */
-        @keyframes pulse-glow {
-          0%, 100% {
-            box-shadow:
-              0 4px 15px rgba(255, 122, 0, 0.2),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
-          }
-          50% {
-            box-shadow:
-              0 4px 20px rgba(255, 122, 0, 0.4),
-              0 0 20px rgba(255, 176, 102, 0.2),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
-          }
-        }
-
-        .contact-btn-enhanced {
-          animation: pulse-glow 3s ease-in-out infinite;
-        }
-
-        .contact-btn-enhanced:hover {
-          animation: none;
-        }
-
-        /* Brand */
-        .logo {
-          display: inline-flex;
-          align-items: center;
-        }
-        .intro {
+        .brand .intro {
           margin: 16px 0 20px;
-          color: var(--muted);
-          max-width: 520px;
+          color: #aaa;
         }
         .socials {
           display: flex;
           gap: 16px;
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-        .socials a {
-          color: var(--muted);
-          font-size: 18px;
-          transition: color 0.2s ease, transform 0.2s ease;
-        }
-        .socials a:hover {
-          color: var(--orange);
-          transform: translateY(-1px);
-        }
-        .socials a:focus-visible {
-          outline: 2px solid var(--orange);
-          outline-offset: 3px;
-          border-radius: 8px;
+          margin-bottom: 20px;
         }
 
-        /* Columns */
-        .cols {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 32px 48px;
+        /* ✅ Contact Button */
+        .contact-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 20px;
+          border: 2px solid #ff7a00;
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(6px);
+          font-weight: 700;
+          color: #ff7a00;
+          transition: all 0.3s ease;
+          animation: glowPulse 3s infinite;
         }
-        @media (max-width: 900px) {
-          .cols {
-            grid-template-columns: repeat(2, 1fr);
+        .contact-btn:hover {
+          background: rgba(255, 122, 0, 0.2);
+          transform: translateY(-2px);
+        }
+        @keyframes glowPulse {
+          0%,
+          100% {
+            box-shadow: 0 0 8px rgba(255, 122, 0, 0.4);
+          }
+          50% {
+            box-shadow: 0 0 20px rgba(255, 122, 0, 0.8);
           }
         }
-        @media (max-width: 560px) {
+
+        /* ✅ Newsletter */
+        .newsletter {
+          margin-top: 24px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          border-radius: 12px;
+          padding: 16px;
+        }
+        .newsletter-title {
+          color: #ff7a00;
+          font-size: 1.5rem;
+          font-weight: 800;
+          margin-bottom: 12px;
+        }
+        .newsletter-form {
+          display: flex;
+          gap: 8px;
+        }
+        .newsletter-form input {
+          flex: 1;
+          padding: 10px 14px;
+          border-radius: 8px;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: white;
+        }
+        .newsletter-form button {
+          background: #ff7a00;
+          border: none;
+          color: white;
+          padding: 10px 16px;
+          border-radius: 8px;
+          font-weight: 700;
+          cursor: pointer;
+        }
+
+        /* ✅ Footer Columns */
+        .cols {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+        }
+        @media (max-width: 768px) {
           .cols {
             grid-template-columns: 1fr;
           }
         }
 
         .heading {
-          color: #ff6600 !important;
+          color: #ff7a00;
           font-weight: 700;
-          margin: 0 0 14px;
-          letter-spacing: 0.2px;
-        }
-        .col ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-        .col li + li {
-          margin-top: 10px;
-        }
-        .col a {
-          color: var(--text);
-          text-decoration: none;
-          transition: color 0.2s ease;
-        }
-        .col a:hover {
-          color: var(--orange);
-        }
-        .col a:focus-visible {
-          outline: 2px solid var(--orange);
-          outline-offset: 2px;
-          border-radius: 6px;
-        }
-        .ext {
-          font-size: 0.85em;
-          margin-left: 6px;
-          color: var(--muted);
+          margin-bottom: 12px;
         }
 
-        /* Associations */
-        .assoc {
-          display: grid;
-          grid-template-columns: 220px 1fr;
-          gap: 16px;
-          align-items: center;
-          margin-top: 56px;
+        /* ✅ Presence Section */
+        .presence {
+          grid-column: 1 / -1;
+          text-align: center;
+          margin-top: 20px;
         }
-        .assoc p {
-          margin: 0;
-          color: var(--muted);
-        }
-        .badges {
+        .presence-grid {
           display: flex;
-          gap: 28px;
-          align-items: center;
-          flex-wrap: wrap;
+          gap: 20px;
+          justify-content: center;
+          margin-top: 10px;
         }
-        .badges img {
-          height: 34px;
-          opacity: 0.9;
-          filter: grayscale(100%);
+        .presence-card {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(6px);
+          border-radius: 12px;
+          padding: 14px 18px;
+          max-width: 340px;
+          font-size: 0.9rem;
+          text-align: left;
+          line-height: normal;
+          transition: transform 250ms ease-in, box-shadow 250ms ease-in;
+          transform-origin: center center;
         }
-        .badges img:hover {
-          opacity: 1;
-          filter: none;
+        .presence-card strong {
+        text-align: center !important;
+        font-size: 1.1rem !important;
         }
-        @media (max-width: 640px) {
-          .assoc {
-            grid-template-columns: 1fr;
-          }
+
+        /* Hover: subtle orange glow and scale up */
+        .presence-card:hover {
+          transform: scale(1.05);
+          box-shadow: 0 8px 30px rgba(255, 122, 0, 0.25), 0 2px 8px rgba(255, 122, 0, 0.12) inset;
+          border-color: rgba(255, 122, 0, 0.35);
         }
 
         /* Bottom bar */
         .bottom {
           display: flex;
-          gap: 12px;
-          align-items: center;
           justify-content: space-between;
-          border-top: 1px solid rgba(255, 255, 255, 0.06);
-          margin-top: 28px;
-          padding-top: 18px;
-          color: var(--muted);
+          align-items: center;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          margin-top: 30px;
+          padding-top: 16px;
+          font-size: 0.85rem;
+          color: #aaa;
           flex-wrap: wrap;
         }
-
         .legal {
           display: flex;
           gap: 18px;
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-        .legal a {
-          color: var(--muted);
-        }
-        .legal a:hover {
-          color: var(--orange);
-        }
-        .legal a:focus-visible {
-          outline: 2px solid var(--orange);
-          outline-offset: 3px;
-          border-radius: 6px;
-        }
-
-        .copy {
-          margin: 0;
-          white-space: nowrap;
-        }
-        @media (max-width: 560px) {
-          .copy {
-            white-space: normal;
-          }
         }
       `}</style>
     </footer>
