@@ -9,6 +9,7 @@ import HomeBlog from "@/components/containers/home/HomeBlog";
 import HomeSponsor from "@/components/containers/home/HomeSponsor";
 import NextPage from "@/components/containers/home/NextPage";
 import Creative from "@/components/containers/home/Creative";
+import Presence from "@/components/layout/Presence";
 
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
       <HomeBlog />
       <Agency />
       <HomeSponsor />
+      <Presence/>
       {/* <NextPage /> */}
       {/* <HomeTestimonial /> */}
     </Layout>

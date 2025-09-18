@@ -4,6 +4,8 @@ import React from "react";
 import { WorldMap } from "../components/ui/world-map"; // adjust path if needed
 import { motion } from "framer-motion";
 import { FiTarget, FiActivity, FiUsers, FiShield } from "react-icons/fi";
+import CmnBanner from "@/components/layout/banner/CmnBanner";
+import Layout from "@/components/layout/Layout";
 
 const containerStyle: React.CSSProperties = {
   minHeight: "100vh",
@@ -100,107 +102,119 @@ export default function PerformancePage() {
   return (
     <div style={containerStyle}>
       {/* NAVBAR */}
-      <nav style={navbarStyle}>
+      {/* <nav style={navbarStyle}>
         <div style={logoStyle}>DIGITAR MEDIA</div>
         <div style={breadcrumbStyle}>
           Home &gt; <span style={{ color: "#f97316" }}>Performance</span>
         </div>
-      </nav>
+      </nav> */}
+      <Layout header={2} footer={5} video={0}>
+        <CmnBanner title="Performance" navigation="Performance" />
+        {/* <ContactMain /> */}
 
-      {/* MAIN SECTION */}
-      <main style={mainStyle}>
-        {/* HEADLINE */}
-        <div
-          style={{
-            position: "relative",
-            zIndex: 10,
-          }}
-        >
-          <motion.h1
-            style={headlineStyle}
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
+        {/* MAIN SECTION */}
+        <main style={mainStyle}>
+          {/* HEADLINE */}
+          <div
+            style={{
+              position: "relative",
+              zIndex: 10,
+            }}
           >
-            Drive Results with Precision Marketing
-          </motion.h1>
-          {/* INTRO */}
-          <motion.p
-            style={introStyle}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            At{" "}
-            <span style={{ color: "#f97316", fontWeight: 600 }}>
-              Digitar Media
-            </span>
-            , our performance marketing strategies are driven by measurable
-            results — every click, lead, and conversion is tracked for
-            ROI-focused growth. With campaigns tailored for global reach, the
-            map below showcases the worldwide impact of our data-driven
-            approach.
-          </motion.p>
-        </div>
-
-        {/* WORLD MAP */}
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "1100px",
-            marginBottom: "3rem",
-            position: "relative",
-            zIndex: 1,
-            bottom: "350px",
-            scale: "1.5",
-          }}
-        >
-          <WorldMap
-            dots={[
-              {
-                start: { lat: 28.61, lng: 77.2 }, // India
-                end: { lat: 28.61, lng: 77.2 }, // same as start (just a point)
-              },
-              {
-                start: { lat: 44.82, lng: -106.9 }, // Sheridan, Wyoming
-                end: { lat: 44.82, lng: -106.9 },
-              },
-              {
-                start: { lat: 19.43, lng: -99.13 }, // Mexico City
-                end: { lat: 19.43, lng: -99.13 },
-              },
-            ]}
-            lineColor="#f97316"
-          />
-        </div>
-
-        {/* 4 CARDS */}
-        <div className="cards-grid "
-        style={{
-            bottom: "400px",
-        }}
-        >
-          {cards.map((card, index) => (
-            <motion.div
-              key={index}
-              className="feature-card"
-              whileHover={{ scale: 1.05 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2 }}
+            <motion.h1
+              style={headlineStyle}
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6 }}
             >
-              <div className="icon">{card.icon}</div>
-              <h2>{card.title}</h2>
-              <ul>
-                {card.points.map((p, i) => (
-                  <li key={i}>{p}</li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-      </main>
+              Drive Results with Precision Marketing
+            </motion.h1>
+            {/* INTRO */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+              }}
+            >
+              <motion.p
+                style={introStyle}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+              >
+                At{" "}
+                <span style={{ color: "#f97316", fontWeight: 600 }}>
+                  Digitar Media
+                </span>
+                , our performance marketing strategies are driven by measurable
+                results — every click, lead, and conversion is tracked for
+                ROI-focused growth. With campaigns tailored for global reach,
+                the map below showcases the worldwide impact of our data-driven
+                approach.
+              </motion.p>
+            </div>
+          </div>
 
+          {/* WORLD MAP */}
+          <div
+            style={{
+              width: "100%",
+              maxWidth: "1100px",
+              marginBottom: "3rem",
+              position: "relative",
+              zIndex: 1,
+              bottom: "350px",
+              scale: "1.5",
+            }}
+          >
+            <WorldMap
+              dots={[
+                {
+                  start: { lat: 28.61, lng: 77.2 }, // India
+                  end: { lat: 28.61, lng: 77.2 }, // same as start (just a point)
+                },
+                {
+                  start: { lat: 44.82, lng: -106.9 }, // Sheridan, Wyoming
+                  end: { lat: 44.82, lng: -106.9 },
+                },
+                {
+                  start: { lat: 19.43, lng: -99.13 }, // Mexico City
+                  end: { lat: 19.43, lng: -99.13 },
+                },
+              ]}
+              lineColor="#f97316"
+            />
+          </div>
+
+          {/* 4 CARDS */}
+          <div
+            className="cards-grid "
+            style={{
+              bottom: "400px",
+            }}
+          >
+            {cards.map((card, index) => (
+              <motion.div
+                key={index}
+                className="feature-card"
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+              >
+                <div className="icon">{card.icon}</div>
+                <h2>{card.title}</h2>
+                <ul>
+                  {card.points.map((p, i) => (
+                    <li key={i}>{p}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </main>
+      </Layout>
       <style jsx>{`
         .cards-grid {
           display: grid;

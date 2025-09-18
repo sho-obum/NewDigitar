@@ -36,14 +36,14 @@ export function WorldMap({
     [map, background]
   );
 
-  // Projection function (cheap)
+  // Projection function
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);
     const y = (90 - lat) * (400 / 180);
     return { x, y };
   };
 
-  // Curved path generator (cheap)
+  // Curved path generator
   const createCurvedPath = (
     start: { x: number; y: number },
     end: { x: number; y: number }
@@ -52,6 +52,16 @@ export function WorldMap({
     const midY = Math.min(start.y, end.y) - 50;
     return `M ${start.x} ${start.y} Q ${midX} ${midY} ${end.x} ${end.y}`;
   };
+
+  // ✅ Added 6 standalone pulsing dots (centered within 30% Y threshold)
+  const extraDots = [
+    { lat: 10, lng: -100 }, // Pacific
+    { lat: 5, lng: -40 }, // Atlantic near Africa
+    { lat: -5, lng: 30 }, // Central Africa
+    { lat: -8, lng: 80 }, // Indian Ocean
+    { lat: 15, lng: 120 }, // SE Asia
+    { lat: -12, lng: 150 }, // Pacific near Australia
+  ];
 
   return (
     <div
@@ -94,7 +104,7 @@ export function WorldMap({
           zIndex: 10,
         }}
       >
-        {/* Curved paths */}
+        {/* Existing path animation */}
         {dots.map((dot, i) => {
           const startPoint = projectPoint(dot.start.lat, dot.start.lng);
           const endPoint = projectPoint(dot.end.lat, dot.end.lng);
@@ -107,7 +117,7 @@ export function WorldMap({
               strokeWidth="1"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 1, delay: 0.3 + i * 0.3, ease: "easeOut" }} // slight delay for smoothness
+              transition={{ duration: 1, delay: 0.3 + i * 0.3, ease: "easeOut" }}
             />
           );
         })}
@@ -122,7 +132,7 @@ export function WorldMap({
           </linearGradient>
         </defs>
 
-        {/* Pulsing points */}
+        {/* Pulsing points for provided dots */}
         {dots.map((dot, i) => {
           const start = projectPoint(dot.start.lat, dot.start.lng);
           const end = projectPoint(dot.end.lat, dot.end.lng);
@@ -132,25 +142,25 @@ export function WorldMap({
                 <g key={idx}>
                   <circle cx={p.x} cy={p.y} r="2" fill={lineColor} />
                   <circle cx={p.x} cy={p.y} r="2" fill={lineColor} opacity="0.5">
-                    <animate
-                      attributeName="r"
-                      from="2"
-                      to="8"
-                      dur="1.5s"
-                      begin="0s"
-                      repeatCount="indefinite"
-                    />
-                    <animate
-                      attributeName="opacity"
-                      from="0.5"
-                      to="0"
-                      dur="1.5s"
-                      begin="0s"
-                      repeatCount="indefinite"
-                    />
+                    <animate attributeName="r" from="2" to="8" dur="1.5s" begin="0s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" from="0.5" to="0" dur="1.5s" begin="0s" repeatCount="indefinite" />
                   </circle>
                 </g>
               ))}
+            </g>
+          );
+        })}
+
+        {/* ✅ Extra pulsing dots */}
+        {extraDots.map((p, i) => {
+          const point = projectPoint(p.lat, p.lng);
+          return (
+            <g key={`extra-${i}`}>
+              <circle cx={point.x} cy={point.y} r="2" fill={lineColor} />
+              <circle cx={point.x} cy={point.y} r="2" fill={lineColor} opacity="0.5">
+                <animate attributeName="r" from="2" to="8" dur="1.5s" begin="0s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="0.5" to="0" dur="1.5s" begin="0s" repeatCount="indefinite" />
+              </circle>
             </g>
           );
         })}

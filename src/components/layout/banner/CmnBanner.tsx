@@ -17,7 +17,7 @@ const CmnBanner = ({ title, navigation, parent, parentLink }: BannerProps) => {
         className="cmn-banner bg-img"
         style={{
           backgroundImage: "url('/images/banner/cmn-banner-bg.png')",
-          height: "400px",
+          height: "300px",
         }}
       >
         <div className="container position-relative h-100">
@@ -36,7 +36,7 @@ const CmnBanner = ({ title, navigation, parent, parentLink }: BannerProps) => {
             <div className="col-12 col-lg-5 col-xl-7">
               
               <div className="text-center text-lg-start">
-                <h2 className="title title-anim">{title}</h2>
+                {/* <h2 className="title title-anim">{title}</h2> */}
                 <nav aria-label="breadcrumb">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">
@@ -60,7 +60,7 @@ const CmnBanner = ({ title, navigation, parent, parentLink }: BannerProps) => {
             <div className="col-12 col-lg-7 col-xl-5">
               <div className="text-center text-lg-start">
                 <p className="primary-text">
-                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos magni consequuntur ipsa, pariatur illo saepe suscipit? Nemo numquam fuga corrupti blanditiis quaerat odit.
+                {/* {title} */}
                 </p>
               </div>
             </div>

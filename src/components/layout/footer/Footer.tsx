@@ -55,12 +55,14 @@ const Footer: React.FC = () => {
             </ul>
 
             {/* ✅ Contact Button */}
-            <Link href="/contact-us" className="contact-btn">
-              Contact Us <FaArrowRight />
+            <Link href="/contact-us">
+              <div className="contact-btn">
+                Contact Us <FaArrowRight />
+              </div>
             </Link>
 
             {/* ✅ Newsletter */}
-            <div className="newsletter">
+            {/* <div className="newsletter">
               <h4 className="newsletter-title">Subscribe to our Newsletter</h4>
               <form
                 className="newsletter-form"
@@ -72,7 +74,7 @@ const Footer: React.FC = () => {
                 <input type="email" placeholder="Enter your email" required />
                 <button type="submit">Subscribe</button>
               </form>
-            </div>
+            </div> */}
           </div>
 
           {/* === RIGHT COLUMN (Links + Presence) === */}
@@ -81,13 +83,19 @@ const Footer: React.FC = () => {
               <h6 className="heading">Company</h6>
               <ul>
                 <li>
-                  <Link href="#">About Us</Link>
+                  <Link href="#" className="footer__item">
+                    About Us
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">Life @ Digitar</Link>
+                  <Link href="#" className="footer__item">
+                    Life @ Digitar
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">Career</Link>
+                  <Link href="#" className="footer__item">
+                    Career
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -96,16 +104,24 @@ const Footer: React.FC = () => {
               <h6 className="heading">Products</h6>
               <ul>
                 <li>
-                  <Link href="#">Adxity</Link>
+                  <Link href="#" className="footer__item">
+                    Adxity
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">Adpocket</Link>
+                  <Link href="#" className="footer__item">
+                    Adpocket
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">Yogza</Link>
+                  <Link href="#" className="footer__item">
+                    Yogza
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">Lending Leaf</Link>
+                  <Link href="#" className="footer__item">
+                    Lending Leaf
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -114,25 +130,35 @@ const Footer: React.FC = () => {
               <h6 className="heading">Services</h6>
               <ul>
                 <li>
-                  <Link href="#">Performance</Link>
+                  <Link href="#" className="footer__item">
+                    Performance
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">Social</Link>
+                  <Link href="#" className="footer__item">
+                    Social
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">Branding</Link>
+                  <Link href="#" className="footer__item">
+                    Branding
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">Influencer</Link>
+                  <Link href="#" className="footer__item">
+                    Influencer
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">Creative</Link>
+                  <Link href="#" className="footer__item">
+                    Creative
+                  </Link>
                 </li>
               </ul>
             </div>
 
             {/* ✅ Presence Section (Always Glassmorphic) */}
-            <div className="presence">
+            {/* <div className="presence">
               <h6 className="heading presence-title">Presence</h6>
               <div className="presence-grid">
                 <div className="presence-card">
@@ -147,21 +173,23 @@ const Footer: React.FC = () => {
                   <p>media@digitarmedia.com</p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </nav>
         </div>
 
         {/* === Bottom Bar === */}
-        <div className="bottom">
+        <div className="bottom ">
           <p className="copy">© {year} Digitar Media. All Rights Reserved.</p>
-          <ul className="legal">
+          {/* <ul className="legal">
             <li>
-              <Link href="#">Privacy Policy</Link>
+              <Link href="#"  style={{
+              color:"grey"}} >Privacy Policy</Li className="footer__item" nk>
             </li>
             <li>
-              <Link href="#">Terms of Service</Link>
+              <Link href="#"  style={{
+              color:"grey"}} >Terms of Service</Link>
             </li>
-          </ul>
+   className="footer__item"         </ul> */}
         </div>
       </div>
 
@@ -171,11 +199,22 @@ const Footer: React.FC = () => {
           position: relative;
           background: #000;
           color: #fff;
-          padding: 60px 0 30px;
+          padding: 60px 0 0px;
         }
+        a.footer__item {
+          color: grey !important;
+        }
+
+        a.footer__item:hover {
+          color: white !important;
+          transition: color 0.2s ease !important;
+        }
+
         .footer-divider {
           opacity: 0.1;
-          margin-bottom: 30px;
+          // margin-bottom: 60px;
+          position: relative;
+          bottom: 60px;
         }
         .bg-word {
           position: absolute;
@@ -190,7 +229,7 @@ const Footer: React.FC = () => {
           user-select: none;
         }
         .container {
-          max-width: 1300px;
+          max-width: 1400px;
           margin: 0 auto;
           padding: 0 24px;
           position: relative;
@@ -295,7 +334,7 @@ const Footer: React.FC = () => {
         }
 
         .heading {
-          color: #ff7a00;
+          color: #ff7a00 !important;
           font-weight: 700;
           margin-bottom: 12px;
         }
@@ -326,21 +365,22 @@ const Footer: React.FC = () => {
           transform-origin: center center;
         }
         .presence-card strong {
-        text-align: center !important;
-        font-size: 1.1rem !important;
+          text-align: center !important;
+          font-size: 1.1rem !important;
         }
 
         /* Hover: subtle orange glow and scale up */
         .presence-card:hover {
           transform: scale(1.05);
-          box-shadow: 0 8px 30px rgba(255, 122, 0, 0.25), 0 2px 8px rgba(255, 122, 0, 0.12) inset;
+          box-shadow: 0 8px 30px rgba(255, 122, 0, 0.25),
+            0 2px 8px rgba(255, 122, 0, 0.12) inset;
           border-color: rgba(255, 122, 0, 0.35);
         }
 
         /* Bottom bar */
         .bottom {
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
           align-items: center;
           border-top: 1px solid rgba(255, 255, 255, 0.08);
           margin-top: 30px;

@@ -40,7 +40,7 @@ const HomeSponsorMarquee: React.FC<Props> = ({
   return (
     <section
       className="section sponsor"
-      style={{ paddingTop: 64, paddingBottom: 64 }}
+      style={{ paddingTop: 64, paddingBottom: 0 }}
     >
       <hr style={{ position: "relative", zIndex: 10,
         top: "-64px",
