@@ -150,7 +150,7 @@ const Footer: React.FC = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="footer__item">
+                  <Link href="https://creative.digitarmedia.com/" target="_blank" className="footer__item">
                     Creative
                   </Link>
                 </li>

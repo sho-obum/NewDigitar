@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import DottedMap from "dotted-map";
 import Image from "next/image";
@@ -17,14 +17,12 @@ interface MapProps {
 export function WorldMap({
   dots = [],
   lineColor = "#f97316",
-  background = "black", // always black by default
+  background = "black",
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
+  const [activeDot, setActiveDot] = useState<number | null>(null);
 
-  // ✅ Memoize map creation (runs once)
-  const map = useMemo(() => new DottedMap({ height: 80, grid: "diagonal" }), []);
-
-  // ✅ Memoize SVG output (runs once unless background changes)
+  const map = useMemo(() => new DottedMap({ height: 100, grid: "diagonal" }), []);
   const svgMap = useMemo(
     () =>
       map.getSVG({
@@ -36,31 +34,34 @@ export function WorldMap({
     [map, background]
   );
 
-  // Projection function
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);
     const y = (90 - lat) * (400 / 180);
     return { x, y };
   };
 
-  // Curved path generator
-  const createCurvedPath = (
-    start: { x: number; y: number },
-    end: { x: number; y: number }
-  ) => {
-    const midX = (start.x + end.x) / 2;
-    const midY = Math.min(start.y, end.y) - 50;
-    return `M ${start.x} ${start.y} Q ${midX} ${midY} ${end.x} ${end.y}`;
-  };
-
-  // ✅ Added 6 standalone pulsing dots (centered within 30% Y threshold)
-  const extraDots = [
-    { lat: 10, lng: -100 }, // Pacific
-    { lat: 5, lng: -40 }, // Atlantic near Africa
-    { lat: -5, lng: 30 }, // Central Africa
-    { lat: -8, lng: 80 }, // Indian Ocean
-    { lat: 15, lng: 120 }, // SE Asia
-    { lat: -12, lng: 150 }, // Pacific near Australia
+  const bigDots = [
+    {
+      lat: 40.5,
+      lng: -95,
+      label: "USA HQ",
+      address: "123 Silicon Ave, San Francisco, CA",
+      email: "usa@example.com",
+    },
+    {
+      lat: 18,
+      lng: -102,
+      label: "Mexico Office",
+      address: "Av. Reforma 250, CDMX",
+      email: "mexico@example.com",
+    },
+    {
+      lat: 16,
+      lng: 78,
+      label: "India Office",
+      address: "Plot 45, Bangalore, India",
+      email: "india@example.com",
+    },
   ];
 
   return (
@@ -72,9 +73,10 @@ export function WorldMap({
         borderRadius: "12px",
         overflow: "hidden",
         backgroundColor: background,
+        zIndex: 0, // ✅ map stays at the bottom
       }}
     >
-      {/* ✅ Precomputed SVG as background image */}
+      {/* Background Map */}
       <Image
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
         alt="world map"
@@ -90,81 +92,81 @@ export function WorldMap({
         }}
       />
 
-      {/* ✅ SVG overlay for paths + points */}
-      <svg
-        ref={svgRef}
-        viewBox="0 0 800 400"
-        preserveAspectRatio="xMidYMid meet"
+      {/* Your normal text layer (from parent or children) would go ABOVE this */}
+
+      {/* 🔥 TOP LAYER for dots + cards */}
+      <div
         style={{
           position: "absolute",
           inset: "0",
-          width: "100%",
-          height: "100%",
-          pointerEvents: "none",
-          zIndex: 10,
+          zIndex: 9999, // ✅ Topmost layer
+          pointerEvents: "none", // allow clicks only on SVG/dots
         }}
       >
-        {/* Existing path animation */}
-        {dots.map((dot, i) => {
-          const startPoint = projectPoint(dot.start.lat, dot.start.lng);
-          const endPoint = projectPoint(dot.end.lat, dot.end.lng);
+        <svg
+          ref={svgRef}
+          viewBox="0 0 800 400"
+          preserveAspectRatio="xMidYMid meet"
+          style={{
+            position: "absolute",
+            inset: "0",
+            width: "100%",
+            height: "100%",
+            pointerEvents: "auto", // ✅ clickable
+          }}
+        >
+          {bigDots.map((p, i) => {
+            const point = projectPoint(p.lat, p.lng);
+            return (
+              <g
+                key={`big-${i}`}
+                onClick={() => setActiveDot(activeDot === i ? null : i)}
+                style={{ cursor: "pointer" }}
+              >
+                <circle cx={point.x} cy={point.y} r="6" fill="#ff7a00" />
+                <circle cx={point.x} cy={point.y} r="6" fill="#ff7a00" opacity="0.5">
+                  <animate attributeName="r" from="6" to="20" dur="1.5s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" from="0.5" to="0" dur="1.5s" repeatCount="indefinite" />
+                </circle>
+              </g>
+            );
+          })}
+        </svg>
+
+        {/* Floating Cards */}
+        {bigDots.map((dot, i) => {
+          if (activeDot !== i) return null;
+          const point = projectPoint(dot.lat, dot.lng);
           return (
-            <motion.path
-              key={`path-${i}`}
-              d={createCurvedPath(startPoint, endPoint)}
-              fill="none"
-              stroke="url(#path-gradient)"
-              strokeWidth="1"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1, delay: 0.3 + i * 0.3, ease: "easeOut" }}
-            />
+            <div
+              key={`card-${i}`}
+              style={{
+                position: "absolute",
+                left: `${point.x}px`,
+                top: `${point.y - 80}px`,
+                transform: "translateX(-50%)",
+                background: "rgba(0,0,0,0.6)",
+                border: "1px solid #ff7a00",
+                boxShadow: "0 0 15px #ff7a00aa",
+                color: "white",
+                padding: "12px 16px",
+                borderRadius: "12px",
+                backdropFilter: "blur(10px)",
+                minWidth: "220px",
+                pointerEvents: "auto",
+              }}
+            >
+              <h4 style={{ color: "#ff7a00", margin: "0 0 6px", fontWeight: 600 }}>
+                {dot.label}
+              </h4>
+              <p style={{ margin: 0, fontSize: "0.85rem" }}>{dot.address}</p>
+              <p style={{ margin: "4px 0 0", fontSize: "0.85rem", opacity: 0.8 }}>
+                {dot.email}
+              </p>
+            </div>
           );
         })}
-
-        {/* Gradient for line stroke */}
-        <defs>
-          <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="white" stopOpacity="0" />
-            <stop offset="5%" stopColor={lineColor} stopOpacity="1" />
-            <stop offset="95%" stopColor={lineColor} stopOpacity="1" />
-            <stop offset="100%" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-
-        {/* Pulsing points for provided dots */}
-        {dots.map((dot, i) => {
-          const start = projectPoint(dot.start.lat, dot.start.lng);
-          const end = projectPoint(dot.end.lat, dot.end.lng);
-          return (
-            <g key={`points-${i}`}>
-              {[start, end].map((p, idx) => (
-                <g key={idx}>
-                  <circle cx={p.x} cy={p.y} r="2" fill={lineColor} />
-                  <circle cx={p.x} cy={p.y} r="2" fill={lineColor} opacity="0.5">
-                    <animate attributeName="r" from="2" to="8" dur="1.5s" begin="0s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" from="0.5" to="0" dur="1.5s" begin="0s" repeatCount="indefinite" />
-                  </circle>
-                </g>
-              ))}
-            </g>
-          );
-        })}
-
-        {/* ✅ Extra pulsing dots */}
-        {extraDots.map((p, i) => {
-          const point = projectPoint(p.lat, p.lng);
-          return (
-            <g key={`extra-${i}`}>
-              <circle cx={point.x} cy={point.y} r="2" fill={lineColor} />
-              <circle cx={point.x} cy={point.y} r="2" fill={lineColor} opacity="0.5">
-                <animate attributeName="r" from="2" to="8" dur="1.5s" begin="0s" repeatCount="indefinite" />
-                <animate attributeName="opacity" from="0.5" to="0" dur="1.5s" begin="0s" repeatCount="indefinite" />
-              </circle>
-            </g>
-          );
-        })}
-      </svg>
+      </div>
     </div>
   );
 }
