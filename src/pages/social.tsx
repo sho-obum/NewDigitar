@@ -262,7 +262,8 @@ const SocialPage = () => {
             />
             <img
               className="social-image"
-              src="https://media.canva.com/v2/image-resize/format:PNG/height:800/quality:100/uri:ifs%3A%2F%2FM%2Ffcce73cd-8ce8-47a0-afaa-91033869cf25/watermark:F/width:386?csig=AAAAAAAAAAAAAAAAAAAAAGazGlNdrPCUAG_H7EWRZaEayRWDKLQxfNF8147wNXFR&exp=1758193924&osig=AAAAAAAAAAAAAAAAAAAAAGmWg9Up_5CGhTFA12lrezLOBhYIq6eehGdJVwbPxuEi&signer=media-rpc&x-canva-quality=screens"
+              // src="https://media.canva.com/v2/image-resize/format:PNG/height:800/quality:100/uri:ifs%3A%2F%2FM%2Ffcce73cd-8ce8-47a0-afaa-91033869cf25/watermark:F/width:386?csig=AAAAAAAAAAAAAAAAAAAAAGazGlNdrPCUAG_H7EWRZaEayRWDKLQxfNF8147wNXFR&exp=1758193924&osig=AAAAAAAAAAAAAAAAAAAAAGmWg9Up_5CGhTFA12lrezLOBhYIq6eehGdJVwbPxuEi&signer=media-rpc&x-canva-quality=screens"
+            src="https://panel.digitarmedia.com/admin/uploads/Untitled design1758268767.png"
               alt="Social Media Phone"
             />
           </motion.div>
@@ -454,6 +455,8 @@ const SocialPage = () => {
               z-index: 1;
               bottom: -120px;
               transform: scaleX(-1);
+              object-fit: contain;
+              object-position: center;
             }
 
             .social-image-top {
@@ -464,6 +467,9 @@ const SocialPage = () => {
               left: 150px;
               transform: rotate(-20deg);
               bottom: 100px;
+              object-fit: contain;
+              object-position: center;
+              width: auto;
             }
 
             .social-lower {
