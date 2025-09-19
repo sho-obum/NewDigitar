@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
+import { useRouter } from "next/router";
 
 // bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,6 +19,21 @@ import "@/styles/main.scss";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    const handleRouteChange = () => {
+      window.scrollTo(0, 0);
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router]);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
