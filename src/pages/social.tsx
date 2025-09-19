@@ -15,9 +15,30 @@ const SocialPage = () => {
   ];
 
   return (
-    <Layout header={1} footer={1} video={true}
-    
-    >
+    <Layout header={1} footer={1} video={true}>
+      {/* Background Grid + Vignette */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+          backgroundAttachment: "fixed",
+          zIndex: -1,
+        }}
+      />
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          background:
+            "radial-gradient(circle at center, rgba(0,0,0,0) 70%, rgba(0,0,0,0.7) 100%)",
+          zIndex: -1,
+        }}
+      />
+      
       <div className="social-wrapper"
       style={{
         display: 'flex',
@@ -300,7 +321,7 @@ const SocialPage = () => {
               grid-template-columns: 1fr 1fr;
               align-items: center;
               padding: 4rem 8%;
-              background: black;
+              
               color: white;
               gap: 2rem;
               min-height: 100vh;
