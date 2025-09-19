@@ -126,22 +126,22 @@ const Footer: React.FC = () => {
               <h6 className="heading">Services</h6>
               <ul>
                 <li>
-                  <Link href="#" className="footer__item">
+                  <Link href="/performance" className="footer__item">
                     Performance
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="footer__item">
+                  <Link href="/social" className="footer__item">
                     Social
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="footer__item">
+                  <Link href="/branding" className="footer__item">
                     Branding
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="footer__item">
+                  <Link href="/influencer" className="footer__item">
                     Influencer
                   </Link>
                 </li>

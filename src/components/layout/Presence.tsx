@@ -58,75 +58,7 @@ const Presence = () => {
           }}
         />
 
-        {/* Orange Dots + Cards */}
-        <div className="dots-layer">
-          <svg
-            ref={svgRef}
-            viewBox="0 0 800 400"
-            preserveAspectRatio="xMidYMid meet"
-            className="dots-svg"
-          >
-            {bigDots.map((p, i) => {
-              const point = projectPoint(p.lat, p.lng);
-              return (
-                <g
-                  key={`dot-${i}`}
-                  // onClick={() => setActiveDot(activeDot === i ? null : i)}
-                  // style={{ cursor: "pointer" }}
-                >
-                  <circle cx={point.x} cy={point.y} r="6" fill="#ff7a00" />
-                  <circle
-                    cx={point.x}
-                    cy={point.y}
-                    r="6"
-                    fill="#ff7a00"
-                    opacity="0.5"
-                  >
-                    <animate
-                      attributeName="r"
-                      from="6"
-                      to="20"
-                      dur="1.5s"
-                      repeatCount="indefinite"
-                    />
-                    <animate
-                      attributeName="opacity"
-                      from="0.5"
-                      to="0"
-                      dur="1.5s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                </g>
-              );
-            })}
-          </svg>
-
-          {/* Floating Cards */}
-          {/* {bigDots.map((dot, i) => {
-            if (activeDot !== i) return null;
-            const point = projectPoint(dot.lat, dot.lng);
-            return (
-              <motion.div
-                key={`card-${i}`}
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: 20 }}
-                transition={{ duration: 0.25 }}
-                className="dot-card"
-                style={{
-                  left: `${point.x}px`,
-                  top: `${point.y - 80}px`,
-                  transform: "translateX(-50%)",
-                }}
-              >
-                <h4>{dot.label}</h4>
-                <p>{dot.address}</p>
-                <p>{dot.email}</p>
-              </motion.div>
-            );
-          })} */}
-        </div>
+       
       </div>
 
       {/* Text Overlay */}

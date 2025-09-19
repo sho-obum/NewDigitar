@@ -79,11 +79,29 @@ const CareerPage: React.FC = () => {
 		<Layout header={2} footer={5} video={0}>
 			<CmnBanner title="career" navigation="career" />
 
-			<div style={{ minHeight: '100vh', background: '#000', color: '#fff', position: 'relative', overflow: 'hidden' }}>
-				{/* Ambient glow and orangish accents (decorative divs, use inline styles) */}
-				<div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, #000, transparent 40%, #0b0710 100%)', pointerEvents: 'none' }} />
-				<div style={{ position: 'absolute', left: -128, top: -128, width: 384, height: 384, borderRadius: '9999px', background: 'rgba(249,115,22,0.08)', filter: 'blur(48px)' }} />
-				<div style={{ position: 'absolute', right: 0, top: 160, width: 320, height: 320, borderRadius: '9999px', background: 'rgba(250,204,21,0.06)', filter: 'blur(48px)' }} />
+			<div style={{ minHeight: '100vh', color: '#fff', position: 'relative', overflow: 'hidden' }}>
+				{/* BACKGROUND GRID + VIGNETTE */}
+				<div
+					style={{
+						position: "fixed",
+						inset: 0,
+						backgroundColor: "black",
+						backgroundImage:
+							"linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px)",
+						backgroundSize: "40px 40px",
+						backgroundAttachment: "fixed",
+						zIndex: -1,
+					}}
+				/>
+				<div
+					style={{
+						position: "fixed",
+						inset: 0,
+						background:
+							"radial-gradient(circle at center, rgba(0,0,0,0) 70%, rgba(0,0,0,0.7) 100%)",
+						zIndex: -1,
+					}}
+				/>
 
 				<div style={{ position: 'relative', zIndex: 10, maxWidth: 1200, margin: '0 auto', paddingLeft: 16, paddingRight: 16, paddingTop: 64, paddingBottom: 64 }}>
 					<motion.div
@@ -197,7 +215,7 @@ const CareerPage: React.FC = () => {
 					</div>
 				</div>
 
-				<CallToAction />
+				{/* <CallToAction /> */}
 			</div>
 		</Layout>
 	);

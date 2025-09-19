@@ -68,7 +68,7 @@ export default function PerformancePage() {
             {
               width: "380px",
               position: "absolute",
-              top: "320px",
+              top: "280px",
               right: "51%",
               transform: "rotate(-2deg)",
             }
@@ -81,7 +81,7 @@ export default function PerformancePage() {
             {
               width: "80px",
               position: "absolute",
-              top: "225px",
+              top: "200px",
               left: "56%",
               transform: "rotate(-2deg)",
             }
