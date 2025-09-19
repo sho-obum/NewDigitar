@@ -230,10 +230,12 @@ const HomeOffer = () => {
                     {...attach("performance")}
                   >
                     <h2>
-                      <span className="offer__cta-link">
-                        Performance Marketing{" "}
-                        <i className="fa-sharp fa-solid fa-arrow-up-right" />
-                      </span>
+                      <a href="/performance">
+                        <span className="offer__cta-link">
+                          Performance Marketing{" "}
+                          <i className="fa-sharp fa-solid fa-arrow-up-right" />
+                        </span>
+                      </a>
                     </h2>
                   </motion.div>
                   <motion.div
@@ -242,10 +244,12 @@ const HomeOffer = () => {
                     {...attach("social")}
                   >
                     <h2>
-                      <span className="offer__cta-link">
-                        Social Media Marketing{" "}
-                        <i className="fa-sharp fa-solid fa-arrow-up-right" />
-                      </span>
+                      <a href="/social">
+                        <span className="offer__cta-link">
+                          Social Media Marketing{" "}
+                          <i className="fa-sharp fa-solid fa-arrow-up-right" />
+                        </span>
+                      </a>
                     </h2>
                   </motion.div>
                   <motion.div
@@ -254,10 +258,12 @@ const HomeOffer = () => {
                     {...attach("branding")}
                   >
                     <h2>
-                      <span className="offer__cta-link">
-                        Branding & Creative{" "}
-                        <i className="fa-sharp fa-solid fa-arrow-up-right" />
-                      </span>
+                      <a href="/branding">
+                        <span className="offer__cta-link">
+                          Branding & Creative{" "}
+                          <i className="fa-sharp fa-solid fa-arrow-up-right" />
+                        </span>
+                      </a>
                     </h2>
                   </motion.div>
                   <motion.div
@@ -266,10 +272,12 @@ const HomeOffer = () => {
                     {...attach("influencer")}
                   >
                     <h2>
+                       <a href="/influencer">
                       <span className="offer__cta-link">
                         Influencer Marketing{" "}
                         <i className="fa-sharp fa-solid fa-arrow-up-right" />
                       </span>
+                      </a>
                     </h2>
                   </motion.div>
                 </motion.div>
@@ -362,13 +370,13 @@ const HomeOffer = () => {
         .offer__left {
           position: relative;
         }
-        
+
         @media (min-width: 992px) {
           .offer__left {
             min-height: 480px;
           }
         }
-        
+
         .offer__left .offer__content {
           transition: filter 160ms ease, opacity 160ms ease;
         }

@@ -285,7 +285,7 @@ const SocialPage = () => {
                   marginTop: "3rem",
                   fontSize: "1.5rem",
                   position: "relative",
-                  top: "-100px",
+                  top: "-40px",
                 }}
               >
                 WE HELP BRANDS STAY RELEVANT –{" "}
