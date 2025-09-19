@@ -736,7 +736,7 @@ function DesktopCreative({
               }}
             >
               {" "}
-              rich media creatives that <br />{" "}
+              Rich Media creatives that <br />{" "}
             </span>
 
             <span

@@ -3,6 +3,9 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { FaMapMarkerAlt, FaBuilding } from "react-icons/fa";
+import { GiIndiaGate } from "react-icons/gi";
+import { PiBuildingsFill } from "react-icons/pi";
 
 const Presence = () => {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -21,8 +24,8 @@ const Presence = () => {
       lat: 39.3,
       lng: -176,
       label: "USA HQ",
-      address: "123 Silicon Ave, San Francisco, CA",
-      email: "usa@example.com",
+      address: "",
+      email: "",
     },
     {
       lat: -15,
@@ -63,14 +66,15 @@ const Presence = () => {
 
       {/* Text Overlay */}
       <div className="content-overlay"
-      style={{position: 'relative', top: '-120px',}}
+      style={{position: 'relative', top: '0px',}}
       >
         <motion.h1
           className="headline"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          style={{ fontWeight: '900 !important',  }}
+          style={{ fontWeight: '900 !important', color: '#f97316 !important' }}
+
         >
           Our Presence
         </motion.h1>
@@ -82,6 +86,68 @@ const Presence = () => {
           style={{ fontWeight: '500', fontSize: '1.2rem',marginTop: '10px' }}
         >
           Connecting brands worldwide through strategic locations
+        </motion.div>
+
+        {/* Location Tiles */}
+        <motion.div
+          className="location-tiles"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          style={{
+            display: 'flex',
+            gap: '2rem',
+            marginTop: '3rem',
+            justifyContent: 'center'
+          }}
+        >
+          {/* USA Tile */}
+          <motion.div
+            className="location-tile"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            style={{
+              background: 'rgba(255, 115, 0, 0.1)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid #ff7300',
+              borderRadius: '15px',
+              padding: '2rem',
+              width: '250px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1rem',
+              boxShadow: '0 0 20px rgba(255, 115, 0, 0.2)'
+            }}
+          >
+            <PiBuildingsFill size={40} color="#ff7300" />
+            <h3 style={{ color: 'white', margin: 0 }}>USA</h3>
+           
+          </motion.div>
+
+          {/* India Tile */}
+          <motion.div
+            className="location-tile"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            style={{
+              background: 'rgba(255, 115, 0, 0.1)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid #ff7300',
+              borderRadius: '15px',
+              padding: '2rem',
+              width: '250px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1rem',
+              boxShadow: '0 0 20px rgba(255, 115, 0, 0.2)'
+            }}
+          >
+            <GiIndiaGate  size={40} color="#ff7300" />
+            <h3 style={{ color: 'white', margin: 0 }}>INDIA</h3>
+           
+          </motion.div>
         </motion.div>
       </div>
 

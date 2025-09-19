@@ -104,7 +104,7 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                       <Link href="/about-us">About Us</Link>
                     </li>
                     <li>
-                      <Link href="/life-at-digitar">Life @ Digitar</Link>
+                      <Link href="/lifeAtDigitar">Life @ Digitar</Link>
                     </li>
                     <li>
                       <Link href="/career">Career</Link>

@@ -37,7 +37,9 @@ export default function BrandingPage() {
       <CmnBanner title="Branding" navigation="Branding" />
 
       {/* PAGE CONTENT */}
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "1rem 1rem" }}>
+      <div
+        style={{ maxWidth: "1200px", margin: "0 auto", padding: "1rem 1rem" }}
+      >
         {/* HERO SECTION */}
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -55,13 +57,15 @@ export default function BrandingPage() {
         >
           Build a Brand That Sticks
         </motion.h1>
-        <div style={{
-          position: "relative",
-          marginTop: "-100px",  // Negative margin to pull it up
-          width: "100%",
-          height: 0,  // This prevents the div from taking up space
-        }}>
-          <motion.img 
+        <div
+          style={{
+            position: "relative",
+            marginTop: "-100px", // Negative margin to pull it up
+            width: "100%",
+            height: 0, // This prevents the div from taking up space
+          }}
+        >
+          <motion.img
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -69,26 +73,26 @@ export default function BrandingPage() {
             style={{
               position: "relative",
               width: "clamp(80px, 20vw, 300px)",
-              left:"766px",
+              left: "766px",
               top: "-167px",
               zIndex: -1,
             }}
-            src="https://media-public.canva.com/Xi0gw/MAFoKeXi0gw/1/tl.png" 
-            alt="" 
+            src="https://media-public.canva.com/Xi0gw/MAFoKeXi0gw/1/tl.png"
+            alt=""
           />
-            <img
-              src="http://media-public.canva.com/P5wOs/MAGGhGP5wOs/1/tl.png"
-              alt=""
-              className="social-arrow"
-              style={{
-                position: "relative",
-                width: "70px",
-                transform: " rotate(225deg)",
-                top: "10px",
-                left: "50px",
-              }}
-            />
-          <motion.img 
+          <img
+            src="http://media-public.canva.com/P5wOs/MAGGhGP5wOs/1/tl.png"
+            alt=""
+            className="social-arrow"
+            style={{
+              position: "relative",
+              width: "70px",
+              transform: " rotate(225deg)",
+              top: "10px",
+              left: "50px",
+            }}
+          />
+          <motion.img
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
@@ -99,8 +103,8 @@ export default function BrandingPage() {
               left: "15%",
               top: "100px",
             }}
-            src="https://media-public.canva.com/tfmcs/MAFCORtfmcs/1/tl.png" 
-            alt="" 
+            src="https://media-public.canva.com/tfmcs/MAFCORtfmcs/1/tl.png"
+            alt=""
           />
         </div>
 
@@ -135,11 +139,13 @@ export default function BrandingPage() {
                 borderRadius: "2px",
               }}
             />
-            <p style={{ fontSize: "1.2rem", lineHeight: 1.6, maxWidth: "500px" }}>
+            <p
+              style={{ fontSize: "1.2rem", lineHeight: 1.6, maxWidth: "500px" }}
+            >
               We design every touchpoint from{" "}
               <span style={{ fontWeight: 700, color: "#f97316" }}>logo</span> to{" "}
-              <span style={{ fontWeight: 700, color: "#f97316" }}>voice</span> to
-              make your brand unforgettable.
+              <span style={{ fontWeight: 700, color: "#f97316" }}>voice</span>{" "}
+              to make your brand unforgettable.
             </p>
           </div>
 
@@ -160,7 +166,8 @@ export default function BrandingPage() {
           >
             <div style={{ flex: 1 }}>
               <h3 style={{ fontSize: "1.8rem", fontWeight: 700 }}>
-                Digitar Moves for your <span style={{ fontWeight: 900 }}>Brand</span>
+                Digitar Moves for your{" "}
+                <span style={{ fontWeight: 900 }}>Brand</span>
               </h3>
             </div>
             <img
@@ -168,8 +175,8 @@ export default function BrandingPage() {
               alt="Growth Chart"
               style={{
                 width: "80px",
-                filter: "brightness(0) invert(1) drop-shadow(0 4px 6px rgba(0,0,0,0.3))",
-
+                filter:
+                  "brightness(0) invert(1) drop-shadow(0 4px 6px rgba(0,0,0,0.3))",
               }}
             />
           </motion.div>
@@ -219,6 +226,7 @@ export default function BrandingPage() {
                 boxShadow: "0 4px 14px rgba(0,0,0,0.4)",
                 textAlign: "center",
                 transition: "all 0.3s ease",
+                marginBottom: " 2px",
               }}
             >
               <h3
@@ -237,6 +245,11 @@ export default function BrandingPage() {
         {/* <CreativePage/> */}
         {/* <BrandingProcess/> */}
       </div>
+      <div
+      style={{
+        marginBottom:"100px"
+      }}
+      ></div>
     </Layout>
   );
 }

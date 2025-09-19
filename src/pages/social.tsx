@@ -532,8 +532,8 @@ const SocialPage = () => {
                 position: "relative",
                 width: "100px",
                 transform: " rotate(225deg)",
-                top: "-120px",
-                left: "550px",
+                top: "-127px",
+                left: "540px",
               }}
             />
           </div>
@@ -677,8 +677,33 @@ const SocialPage = () => {
                   height: "500px",
                   display: "flex",
                   flexDirection: "column",
+                  position: "relative",
                 }}
               >
+                {/* Left Y-axis label */}
+                <div style={{
+                  position: "absolute",
+                  left: "-40px",
+                  top: "50%",
+                  transform: "rotate(-90deg)",
+                  color: "#8884d8",
+                  fontSize: "14px",
+                  whiteSpace: "nowrap"
+                }}>
+                  ROAS (Return on Ad Spend)
+                </div>
+                {/* Right Y-axis label */}
+                <div style={{
+                  position: "absolute",
+                  right: "-40px",
+                  top: "50%",
+                  transform: "rotate(90deg)",
+                  color: "#ff9933",
+                  fontSize: "14px",
+                  whiteSpace: "nowrap"
+                }}>
+                  Conversions (Count)
+                </div>
                 <div
                   style={{
                     marginBottom: "2rem",
