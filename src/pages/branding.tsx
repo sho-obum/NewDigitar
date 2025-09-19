@@ -76,6 +76,18 @@ export default function BrandingPage() {
             src="https://media-public.canva.com/Xi0gw/MAFoKeXi0gw/1/tl.png" 
             alt="" 
           />
+            <img
+              src="http://media-public.canva.com/P5wOs/MAGGhGP5wOs/1/tl.png"
+              alt=""
+              className="social-arrow"
+              style={{
+                position: "relative",
+                width: "70px",
+                transform: " rotate(225deg)",
+                top: "10px",
+                left: "50px",
+              }}
+            />
           <motion.img 
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -85,7 +97,7 @@ export default function BrandingPage() {
               position: "absolute",
               width: "120px",
               left: "15%",
-              top: "85px",
+              top: "100px",
             }}
             src="https://media-public.canva.com/tfmcs/MAFCORtfmcs/1/tl.png" 
             alt="" 
@@ -147,16 +159,17 @@ export default function BrandingPage() {
             }}
           >
             <div style={{ flex: 1 }}>
-              <h3 style={{ fontSize: "1.4rem", fontWeight: 700 }}>
+              <h3 style={{ fontSize: "1.8rem", fontWeight: 700 }}>
                 Digitar Moves for your <span style={{ fontWeight: 900 }}>Brand</span>
               </h3>
             </div>
             <img
-              src="YOUR_GRAPH_IMAGE"
+              src="https://media-public.canva.com/QfqXI/MAFEJQQfqXI/1/tl.png"
               alt="Growth Chart"
               style={{
                 width: "80px",
-                filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.3))",
+                filter: "brightness(0) invert(1) drop-shadow(0 4px 6px rgba(0,0,0,0.3))",
+
               }}
             />
           </motion.div>
