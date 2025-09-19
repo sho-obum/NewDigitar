@@ -33,23 +33,19 @@ const Footer: React.FC = () => {
 
             <ul className="socials">
               <li>
-                <a href="https://facebook.com">
+                <a href="https://www.facebook.com/digitarmedia" target="_blank">
                   <i className="fa-brands fa-facebook-f" />
                 </a>
               </li>
+
               <li>
-                <a href="https://instagram.com">
-                  <i className="fa-brands fa-instagram" />
-                </a>
-              </li>
-              <li>
-                <a href="https://linkedin.com">
+                <a href="https://www.linkedin.com/company/digitarmedia" target="_blank">
                   <i className="fa-brands fa-linkedin-in" />
                 </a>
               </li>
               <li>
-                <a href="https://youtube.com">
-                  <i className="fa-brands fa-youtube" />
+                <a href="https://x.com/digitarmedia" target="_blank">
+                  <i className="fa-brands fa-twitter" />
                 </a>
               </li>
             </ul>
@@ -83,17 +79,17 @@ const Footer: React.FC = () => {
               <h6 className="heading">Company</h6>
               <ul>
                 <li>
-                  <Link href="#" className="footer__item">
+                  <Link href="/about-us" className="footer__item">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="footer__item">
+                  <Link href="/life-at-digitar" className="footer__item">
                     Life @ Digitar
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="footer__item">
+                  <Link href="/career" className="footer__item">
                     Career
                   </Link>
                 </li>
@@ -104,22 +100,22 @@ const Footer: React.FC = () => {
               <h6 className="heading">Products</h6>
               <ul>
                 <li>
-                  <Link href="#" className="footer__item">
+                  <Link href="https://adxity.com/" target="_blank" className="footer__item">
                     Adxity
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="footer__item">
+                  <Link href="https://adpocket.ai/" target="_blank"  className="footer__item">
                     Adpocket
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="footer__item">
+                  <Link href="https://yogza.fit/" target="_blank" className="footer__item">
                     Yogza
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="footer__item">
+                  <Link href="https://lendingleaf.in/" className="footer__item">
                     Lending Leaf
                   </Link>
                 </li>
@@ -150,7 +146,11 @@ const Footer: React.FC = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="https://creative.digitarmedia.com/" target="_blank" className="footer__item">
+                  <Link
+                    href="https://creative.digitarmedia.com/"
+                    target="_blank"
+                    className="footer__item"
+                  >
                     Creative
                   </Link>
                 </li>

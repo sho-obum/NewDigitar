@@ -17,7 +17,7 @@ const Agency = () => {
   const subOpacity = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
   return (
-    <section className="agency-video-section" ref={sectionRef}>
+    <section id="agency-video-section" className="agency-video-section" ref={sectionRef}>
       <motion.h2
         className="hero-heading"
         style={{ y, opacity, display: "flex" }}

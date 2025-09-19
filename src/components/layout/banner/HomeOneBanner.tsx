@@ -208,7 +208,7 @@ const HomeOneBanner = () => {
             alt="Image"
             className="banner-one-thumb d-none d-sm-block g-ban-one"
             style={{
-              zIndex: 1,
+              zIndex: -1,
               pointerEvents: "none",
               width: "100px",
               position: "absolute",
@@ -221,7 +221,7 @@ const HomeOneBanner = () => {
           className="star"
           style={{
            
-            zIndex: 20,
+            zIndex: 1,
           }}
         />
 
@@ -232,11 +232,11 @@ const HomeOneBanner = () => {
 
         <div className="banner-right-text banner-social-text d-none d-md-flex">
           <Link
-            href="https://www.instagram.com/"
+            href="https://x.com/digitarmedia"
             target="_blank"
             rel="noopener noreferrer"
           >
-            instagram
+            Twitter
           </Link>
           <Link
             href="https://www.linkedin.com/company/digitarmedia"
@@ -256,7 +256,14 @@ const HomeOneBanner = () => {
 
         <button
           className="video-frame video-btn"
-          onClick={() => setVideoActive(true)}
+          onClick={() => {
+            // scroll to agency video section and open video popup
+            const el = document.getElementById('agency-video-section');
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            // setVideoActive(true);
+          }}
         >
           <Image
             src={videoframe}
@@ -264,10 +271,17 @@ const HomeOneBanner = () => {
             priority
             style={{
               position: "relative",
-              zIndex: 20,
+              zIndex: 0,
             }}
           />
-          {/* <i className="fa-sharp fa-solid fa-play"></i> */}
+          <i className="fa-sharp fa-solid fa-play" 
+          style={
+            {
+              position: "absolute",
+              zIndex: 10,
+            }
+          }
+          ></i>
         </button>
 
         <div className="lines d-none d-lg-flex" style={{ zIndex: 0 }}>

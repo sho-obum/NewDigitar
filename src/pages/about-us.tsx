@@ -18,6 +18,8 @@ const AboutUs = () => {
    
     </Layout>
   );
+
 };
 
 export default AboutUs;
+

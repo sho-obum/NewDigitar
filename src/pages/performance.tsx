@@ -1,292 +1,374 @@
 "use client";
 
 import React from "react";
-import { WorldMap } from "../components/ui/world-map"; // adjust path if needed
-import { motion } from "framer-motion";
-import { FiTarget, FiActivity, FiUsers, FiShield } from "react-icons/fi";
-import CmnBanner from "@/components/layout/banner/CmnBanner";
 import Layout from "@/components/layout/Layout";
-
-const containerStyle: React.CSSProperties = {
-  minHeight: "100vh",
-  backgroundColor: "black",
-  color: "white",
-  display: "flex",
-  flexDirection: "column",
-  fontFamily: "sans-serif",
-};
-
-const navbarStyle: React.CSSProperties = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
-  padding: "1rem 2rem",
-  borderBottom: "1px solid #333",
-  position: "relative",
-  background: "black",
-  zIndex: 100,
-};
-
-const breadcrumbStyle: React.CSSProperties = {
-  fontSize: "0.9rem",
-  color: "#888",
-};
-
-const logoStyle: React.CSSProperties = {
-  fontWeight: "bold",
-  fontSize: "1.2rem",
-  color: "#f97316",
-};
-
-const mainStyle: React.CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  textAlign: "center",
-  padding: "4rem 1rem",
-};
-
-const headlineStyle: React.CSSProperties = {
-  fontSize: "5rem",
-  fontWeight: 800,
-  color: "#f97316",
-  marginBottom: "1.5rem",
-  lineHeight: 0.8,
-  maxWidth: "800px",
-};
-
-const introStyle: React.CSSProperties = {
-  fontSize: "1.1rem",
-  color: "#ccc",
-  maxWidth: "700px",
-  marginBottom: "3rem",
-};
+import CmnBanner from "@/components/layout/banner/CmnBanner";
 
 export default function PerformancePage() {
-  const cards = [
-    {
-      title: "User Retention",
-      points: [
-        "Dynamic Retargeting — Re-engage users with personalized ads based on behavior.",
-        "ROI & LTV — Boost ROI by retaining users and increasing lifetime value.",
-      ],
-      icon: <FiTarget size={42} />,
-    },
-    {
-      title: "Performance Optimization",
-      points: [
-        "Creative Optimisation — Deliver engaging personalized ads.",
-        "KPI — Align campaigns with measurable business goals.",
-      ],
-      icon: <FiActivity size={42} />,
-    },
-    {
-      title: "Audience Segmentation",
-      points: [
-        "Demographic Segmentation — Target users by behavior, demographics & interests.",
-        "Targeted Messaging — Deliver tailored messaging for higher engagement.",
-      ],
-      icon: <FiUsers size={42} />,
-    },
-    {
-      title: "Fraud Detection",
-      points: [
-        "IP Fraud Detection — Real-time AI tool blocking fake installs & bots.",
-        "Avg. Fraud Rate < 12% — Maintain quality with proactive fraud control.",
-      ],
-      icon: <FiShield size={42} />,
-    },
-  ];
-
   return (
-    <div style={containerStyle}>
-      {/* NAVBAR */}
-      {/* <nav style={navbarStyle}>
-        <div style={logoStyle}>DIGITAR MEDIA</div>
-        <div style={breadcrumbStyle}>
-          Home &gt; <span style={{ color: "#f97316" }}>Performance</span>
-        </div>
-      </nav> */}
-      <Layout header={2} footer={5} video={0}>
-        <CmnBanner title="Performance" navigation="Performance" />
-        {/* <ContactMain /> */}
+    <Layout header={2} footer={1} video={0}>
+      {/* Background Layer */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          backgroundColor: "black",
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+          backgroundAttachment: "fixed",
+          zIndex: -1,
+        }}
+      />
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          background:
+            "radial-gradient(circle at center, rgba(0,0,0,0) 70%, rgba(0,0,0,0.7) 100%)",
+          zIndex: -1,
+        }}
+      />
 
-        {/* MAIN SECTION */}
-        <main style={mainStyle}>
-          {/* HEADLINE */}
-          <div
-            style={{
-              position: "relative",
-              zIndex: 10,
-            }}
-          >
-            <motion.h1
-              style={headlineStyle}
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-            >
-              Drive Results with Precision Marketing
-            </motion.h1>
-            {/* INTRO */}
+      {/* Banner */}
+      <CmnBanner title="Performance" navigation="Performance" />
+
+      {/* Content */}
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          padding: "4rem 1rem",
+          color: "white",
+          fontFamily: "sans-serif",
+        }}
+      >
+        {/* Headline */}
+        <h1
+          style={{
+            fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+            fontWeight: 800,
+            color: "#f97316",
+            textAlign: "center",
+            marginBottom: "1rem",
+            lineHeight: 1.1,
+          }}
+        >
+          Drive Results with <br />
+          Precision Marketing
+        </h1>
+
+        <img
+          src="	https://media-public.canva.com/QKm3o/MAGI8SQKm3o/1/tl.png"
+          alt=""
+          style={
+            {
+              width: "380px",
+              position: "absolute",
+              top: "320px",
+              right: "51%",
+              transform: "rotate(-2deg)",
+            }
+          }
+        />
+        <img
+          src="	https://media-public.canva.com/hlUZY/MAFZIkhlUZY/1/tl.png"
+          alt=""
+          style={
+            {
+              width: "80px",
+              position: "absolute",
+              top: "225px",
+              left: "56%",
+              transform: "rotate(-2deg)",
+            }
+          }
+        />
+        <p
+          style={{
+            color: "#ddd",
+            fontSize: "1.2rem",
+            maxWidth: "650px",
+            textAlign: "center",
+            marginBottom: "2.5rem",
+            marginTop: "1.4rem",
+          }}
+        >
+          At{" "}
+          <span style={{ color: "#f97316", fontWeight: 600 }}>
+            Digitar Media
+          </span>
+          , our performance marketing strategies are driven by measurable
+          results every click, lead, and conversion is tracked for ROI-focused
+          growth.
+        </p>
+
+        {/* 4 Clash-Style Cards */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gridTemplateRows: "repeat(2, auto)",
+            gap: "24px",
+            width: "100%",
+            maxWidth: "900px",
+          }}
+        >
+          {[
+            {
+              title: "User Retention",
+              image:
+                "https://media-public.canva.com/6nliQ/MAGm6-6nliQ/1/tl.png",
+              items: [
+                {
+                  title: "Dynamic Retargeting",
+                  description:
+                    "Re-engage users with personalized ads based on behavior tracking and analysis.",
+                },
+                {
+                  title: "ROI & LTV",
+                  description:
+                    "Boost ROI by retaining users and increasing Lifetime Value through strategic engagement.",
+                },
+                {
+                  title: "Engagement Metrics",
+                  description:
+                    "Track user interactions, session duration, and app/site usage patterns.",
+                },
+                {
+                  title: "Churn Prevention",
+                  description:
+                    "Identify at-risk users and implement retention strategies proactively.",
+                },
+                {
+                  title: "Custom Audiences",
+                  description:
+                    "Create tailored audience segments for maximum retention impact.",
+                },
+              ],
+              footer: ["ROI+", "Retargeting", "Growth"],
+            },
+            {
+              title: "Performance Optimization",
+              image:
+                "http://media-public.canva.com/RrDpk/MAGwVmRrDpk/1/tl.png",
+              items: [
+                {
+                  title: "Creative Optimization",
+                  description:
+                    "A/B testing and data-driven improvements for ad creative performance.",
+                },
+                {
+                  title: "KPI Tracking",
+                  description:
+                    "Real-time monitoring of key performance indicators and business metrics.",
+                },
+                {
+                  title: "Budget Allocation",
+                  description:
+                    "Smart distribution of ad spend based on performance analytics.",
+                },
+                {
+                  title: "Conversion Rate",
+                  description:
+                    "Optimize user journey touchpoints to maximize conversion rates.",
+                },
+                {
+                  title: "Performance Analytics",
+                  description:
+                    "Deep dive into campaign metrics for continuous improvement.",
+                },
+              ],
+              footer: ["KPIs", "Creative", "Scale"],
+            },
+            {
+              title: "Audience Segmentation and Targeting",
+              image:
+                "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/giant.png",
+              items: [
+                {
+                  title: "Demographic Targeting",
+                  description:
+                    "Precise targeting based on age, location, interests, and behavior patterns.",
+                },
+                {
+                  title: "Behavioral Analysis",
+                  description:
+                    "Understanding user actions and preferences for better targeting.",
+                },
+                {
+                  title: "Custom Segments",
+                  description:
+                    "Create and manage specialized audience groups for targeted campaigns.",
+                },
+                {
+                  title: "Engagement Tracking",
+                  description:
+                    "Monitor how different segments interact with your content.",
+                },
+                {
+                  title: "Lookalike Audiences",
+                  description:
+                    "Expand reach by targeting users similar to your best customers.",
+                },
+              ],
+              footer: ["Demographics", "Messaging", "Engagement"],
+            },
+            {
+              title: "Fraud Detection and Prevention",
+              image:
+                "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard.png",
+              items: [
+                {
+                  title: "IP Fraud Detection",
+                  description:
+                    "Advanced AI system to identify and block suspicious IP addresses and activities.",
+                },
+                {
+                  title: "Click Fraud Prevention",
+                  description:
+                    "Real-time monitoring and prevention of fraudulent click activities.",
+                },
+                {
+                  title: "Bot Traffic Filtering",
+                  description:
+                    "Sophisticated algorithms to filter out non-human traffic and interactions.",
+                },
+                {
+                  title: "Fraud Analytics",
+                  description:
+                    "Detailed reporting on fraud patterns and prevention measures.",
+                },
+                {
+                  title: "Security Compliance",
+                  description:
+                    "Adherence to industry security standards and best practices.",
+                },
+              ],
+              footer: ["AI", "Security", "Trust"],
+            },
+          ].map((card, index) => (
             <div
+              key={index}
               style={{
+                background: "#fff",
+                borderRadius: "16px",
+                boxShadow: "-1px 15px 30px -12px rgba(0,0,0,0.7)",
+                color: "#333",
                 display: "flex",
-                justifyContent: "center",
-                alignContent: "center",
+                flexDirection: "column",
+                position: "relative",
+                minHeight: "600px",
               }}
             >
-              <motion.p
-                style={introStyle}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
+              <div
+                style={{
+                  background: "linear-gradient(135deg, #f97316, #ffb366)",
+                  height: "180px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  overflow: "visible",
+                  position: "relative",
+                  zIndex: 1,
+                  borderRadius: "16px 16px 0 0",
+                }}
               >
-                At{" "}
-                <span style={{ color: "#f97316", fontWeight: 600 }}>
-                  Digitar Media
-                </span>
-                , our performance marketing strategies are driven by measurable
-                results — every click, lead, and conversion is tracked for
-                ROI-focused growth. With campaigns tailored for global reach,
-                the map below showcases the worldwide impact of our data-driven
-                approach.
-              </motion.p>
-            </div>
-          </div>
-
-          {/* WORLD MAP */}
-          <div
-            style={{
-              width: "100%",
-              maxWidth: "1100px",
-              marginBottom: "3rem",
-              position: "relative",
-              zIndex: 1,
-              bottom: "350px",
-              scale: "1.5",
-            }}
-          >
-            <WorldMap
-              dots={[
-                {
-                  start: { lat: 28.61, lng: 77.2 }, // India
-                  end: { lat: 28.61, lng: 77.2 }, // same as start (just a point)
-                },
-                {
-                  start: { lat: 44.82, lng: -106.9 }, // Sheridan, Wyoming
-                  end: { lat: 44.82, lng: -106.9 },
-                },
-                {
-                  start: { lat: 19.43, lng: -99.13 }, // Mexico City
-                  end: { lat: 19.43, lng: -99.13 },
-                },
-              ]}
-              lineColor="#f97316"
-            />
-          </div>
-
-          {/* 4 CARDS */}
-          <div
-            className="cards-grid "
-            style={{
-              bottom: "400px",
-            }}
-          >
-            {cards.map((card, index) => (
-              <motion.div
-                key={index}
-                className="feature-card"
-                whileHover={{ scale: 1.05 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  style={{
+                    width: "220px",
+                    position: "absolute",
+                    filter: "drop-shadow(0 10px 12px rgba(0,0,0,0.4))",
+                    transition: "transform 0.3s ease",
+                    transform: "translateY(30px)",
+                    marginTop: "-40px",
+                    zIndex: 10,
+                  }}
+                />
+              </div>
+              <div
+                style={{
+                  padding: "36px 16px",
+                  textAlign: "center",
+                  flexGrow: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                }}
               >
-                <div className="icon">{card.icon}</div>
-                <h2>{card.title}</h2>
-                <ul>
-                  {card.points.map((p, i) => (
-                    <li key={i}>{p}</li>
+                <h3
+                  style={{
+                    fontSize: "2rem",
+                    fontWeight: 800,
+                    marginBottom: "8px",
+                    color: "darkorange !important",
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {card.title}
+                </h3>
+                <hr />
+                <ul
+                  style={{
+                    listStyleType: "disc",
+                    textAlign: "left",
+                    margin: 0,
+                    paddingLeft: "1.2em",
+                  }}
+                >
+                  {card.items.map((item, itemIndex) => (
+                    <li
+                      key={itemIndex}
+                      style={{
+                        fontSize: "1.1rem",
+                        color: "black !important",
+                        lineHeight: "normal",
+                        margin: "8px 0",
+                      }}
+                    >
+                      <strong>{item.title}</strong>
+                      {" : "}
+                      {item.description}
+                    </li>
                   ))}
                 </ul>
-              </motion.div>
-            ))}
-          </div>
-        </main>
-      </Layout>
-      <style jsx>{`
-        .cards-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 24px;
-          max-width: 1200px;
-          width: 100%;
-          position: relative;
-          bottom: "350px !important";
-          z-index: 20;
-        }
-        @media (max-width: 1024px) {
-          .cards-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-        @media (max-width: 640px) {
-          .cards-grid {
-            grid-template-columns: 1fr;
-          }
-        }
-        .feature-card {
-          background: rgba(255, 255, 255, 0.05);
-          backdrop-filter: blur(12px);
-          border: 1.5px solid rgba(255, 122, 0, 0.5);
-          border-radius: 16px;
-          padding: 1.5rem;
-          box-shadow: 0 0 18px rgba(255, 122, 0, 0.25);
-          animation: pulse-border 3s infinite;
-          display: flex;
-          flex-direction: column;
-          text-align: left;
-          transition: box-shadow 0.3s ease;
-        }
-        .feature-card:hover {
-          box-shadow: 0 0 32px rgba(255, 122, 0, 0.6);
-        }
-        .icon {
-          background: rgba(255, 122, 0, 0.1);
-          border: 1px solid rgba(255, 122, 0, 0.3);
-          backdrop-filter: blur(6px);
-          display: inline-flex;
-          padding: 10px;
-          border-radius: 50%;
-          margin-bottom: 12px;
-          color: #ff7a00;
-        }
-        h2 {
-          font-size: 1.4rem;
-          font-weight: 800;
-          color: #fff;
-          margin-bottom: 10px;
-        }
-        ul {
-          color: #ddd;
-          font-size: 0.95rem;
-          line-height: 1.5;
-          padding-left: 1rem;
-          list-style: disc;
-        }
-        @keyframes pulse-border {
-          0% {
-            box-shadow: 0 0 12px rgba(255, 122, 0, 0.25);
-          }
-          50% {
-            box-shadow: 0 0 26px rgba(255, 122, 0, 0.55);
-          }
-          100% {
-            box-shadow: 0 0 12px rgba(255, 122, 0, 0.25);
-          }
-        }
-      `}</style>
-    </div>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  background: "#f97316",
+                  color: "white",
+                  fontWeight: "bold",
+                  textTransform: "uppercase",
+                  borderRadius: "0 0 16px 16px",
+                }}
+              >
+                {card.footer.map((text, footerIndex) => (
+                  <div
+                    key={footerIndex}
+                    style={{
+                      flex: 1,
+                      padding: "12px",
+                      textAlign: "center",
+                      fontWeight: "bold",
+                      margin: "15px 0px !important",
+                      ...(footerIndex !== card.footer.length - 1 && {
+                        borderRight: "1px solid rgba(255,255,255,0.3)",
+                      }),
+                    }}
+                  >
+                    {text}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Layout>
   );
 }

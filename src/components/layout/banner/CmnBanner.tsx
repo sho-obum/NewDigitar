@@ -16,23 +16,54 @@ const CmnBanner = ({ title, navigation, parent, parentLink }: BannerProps) => {
       <section
         className="cmn-banner bg-img"
         style={{
-          backgroundImage: "url('/images/banner/cmn-banner-bg.png')",
-          height: "400px",
+          // backgroundImage: "url('/images/banner/cmn-banner-bg.png')",
+          background: "transparent",
+          height: "100px",
         }}
       >
         <div className="container position-relative h-100">
           {/* Logo Top Right */}
-            <Image
-              src={logo}
-              alt="Logo"
-              className="img-fluid service_logo"
-              width={220}
-              height={40}
-              priority
+          <div 
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingTop: "10px",
+            paddingBottom: "10px",
+          }}
+          >
 
-            />
+            <Link href="/" style={{ cursor: "pointer" }}>
+              <Image
+                src={logo}
+                alt="Logo"
+                className="img-fluid service_logo"
+                width={220}
+                height={40}
+                priority
+              />
+            </Link>
+             <nav aria-label="breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                      <Link href="/">
+                        <i className="fa-solid fa-house"></i>
+                        Home
+                      </Link>
+                    </li>
+                    {parent && (
+                      <li className="breadcrumb-item">
+                        <Link href={parentLink}>{parent}</Link>
+                      </li>
+                    )}
+                    <li className="breadcrumb-item active" aria-current="page">
+                      {navigation}
+                    </li>
+                  </ol>
+                </nav>
+          </div>
 
-          <div className="row gaper align-items-center h-100">
+          {/* <div className="row gaper align-items-center h-100">
             <div className="col-12 col-lg-5 col-xl-7">
               
               <div className="text-center text-lg-start">
@@ -64,7 +95,7 @@ const CmnBanner = ({ title, navigation, parent, parentLink }: BannerProps) => {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </>

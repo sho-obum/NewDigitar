@@ -1,5 +1,6 @@
 "use client";
 import Layout from "@/components/layout/Layout";
+import CmnBanner from "@/components/layout/banner/CmnBanner";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
@@ -36,7 +37,33 @@ const SocialPage = () => {
   ];
 
   return (
-    <Layout header={1} footer={1} video={true}>
+    <Layout header={2} footer={1} video={0}>
+      {/* Background Layer */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          backgroundColor: "black",
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+          backgroundAttachment: "fixed",
+          zIndex: -1,
+        }}
+      />
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          background:
+            "radial-gradient(circle at center, rgba(0,0,0,0) 70%, rgba(0,0,0,0.7) 100%)",
+          zIndex: -1,
+        }}
+      />
+
+      {/* Banner */}
+      <CmnBanner title="Social Media" navigation="Social Media" />
+
       <div className="social-container">
         {/* Left Side Content */}
         <motion.div
@@ -47,6 +74,7 @@ const SocialPage = () => {
         >
           <img
             src="https://media-public.canva.com/GWABw/MAFvAdGWABw/1/tl.png"
+            
             alt="element"
             className="social-exclam"
           />
@@ -307,7 +335,7 @@ const SocialPage = () => {
             grid-template-columns: 1fr 1fr;
             align-items: center;
             padding: 4rem 8%;
-            background: black;
+            
             color: white;
             gap: 2rem;
             min-height: 100vh;
