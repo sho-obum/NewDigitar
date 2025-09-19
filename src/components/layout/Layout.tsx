@@ -176,11 +176,11 @@ const Layout = ({
       <Head>
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        {/* <link
+        <link
           rel="shortcut icon"
           href="/images/favicon.png"
           type="image/x-icon"
-        /> */}
+        />
         <title>Digitar Media | 360 Performance Digital Marketing</title>
         <meta name="keywords" content="creative, agency, portfolio" />
         <meta
