@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import CmnBanner from "@/components/layout/banner/CmnBanner";
+import Link from "next/link";
 import CallToAction from "../components/CallToAction";
 
 const CareerPage: React.FC = () => {
@@ -11,66 +12,98 @@ const CareerPage: React.FC = () => {
 	const jobOpenings = [
 		{
 			id: 1,
-			title: "Graphic Designer",
-			department: "Design",
-			location: "Remote / India",
+			title: "Growth Manager",
+			department: "Marketing",
+			location: "Delhi",
 			type: "Full-time",
-			experience: "2-4 years",
-			salary: "₹40k - ₹70k",
+			experience: "3-5 years",
+			salary: "₹80k - ₹120k",
 			description:
-				"Design beautiful marketing assets, product UI elements and brand systems with an orangish, modern aesthetic.",
+				"Lead growth initiatives, develop strategies, and drive digital marketing campaigns to accelerate business expansion.",
 			requirements: [
-				"Strong portfolio in visual & brand design",
-				"Proficiency in Figma/Illustrator/Photoshop",
-				"Experience with motion or micro-interactions is a plus",
+				"Proven track record in digital marketing and growth",
+				"Experience with performance marketing and analytics",
+				"Strong understanding of marketing funnel optimization",
 			],
 		},
 		{
 			id: 2,
-			title: "Sales Executive",
-			department: "Sales",
-			location: "Hybrid / Bangalore",
+			title: "Performance Manager",
+			department: "Marketing",
+			location: "Delhi",
 			type: "Full-time",
-			experience: "1-3 years",
-			salary: "₹30k - ₹60k",
+			experience: "2-4 years",
+			salary: "₹60k - ₹90k",
 			description:
-				"Drive new business, manage pipelines, and build long-term client relationships.",
+				"Manage and optimize performance marketing campaigns across multiple channels to drive ROI and user acquisition.",
 			requirements: [
-				"Excellent communication & negotiation skills",
-				"Proven track record in B2B sales",
-				"Comfortable working with targets and CRM tools",
+				"Experience with Facebook Ads, Google Ads, and programmatic",
+				"Strong analytical and data-driven decision making",
+				"Knowledge of attribution modeling and analytics tools",
 			],
 		},
 		{
 			id: 3,
-			title: "Android Developer",
-			department: "Engineering",
-			location: "Remote / India",
+			title: "Delivery Executive",
+			department: "Affiliate",
+			location: "Delhi",
 			type: "Full-time",
-			experience: "2-5 years",
-			salary: "₹60k - ₹110k",
+			experience: "1-3 years",
+			salary: "₹40k - ₹60k",
 			description:
-				"Build performant Android applications using Kotlin, Jetpack Compose and modern architecture patterns.",
+				"Manage affiliate marketing campaigns, partner relationships, and campaign delivery to ensure optimal performance.",
 			requirements: [
-				"Kotlin + Jetpack Compose experience",
-				"Knowledge of clean architecture & testing",
-				"Familiarity with CI/CD for mobile apps",
+				"Understanding of affiliate marketing landscape",
+				"Experience with campaign management and optimization",
+				"Strong communication and relationship management skills",
 			],
 		},
 		{
 			id: 4,
-			title: "Business Development Manager",
-			department: "Business",
-			location: "Remote / US",
-			type: "Full-time",
-			experience: "3-6 years",
-			salary: "₹80k - ₹140k",
+			title: "Graphic Design Intern",
+			department: "Design",
+			location: "Delhi",
+			type: "Internship",
+			experience: "0-1 year",
+			salary: "₹15k - ₹25k",
 			description:
-				"Identify strategic partnerships, grow revenue streams and lead GTM initiatives.",
+				"Create engaging visual content for digital marketing campaigns, social media, and brand assets.",
 			requirements: [
-				"Strategic thinking and deal experience",
-				"Strong network in digital/tech industry",
-				"Experience with P&L or revenue forecasting",
+				"Basic knowledge of Adobe Creative Suite/Figma",
+				"Understanding of design principles",
+				"Creative mindset and attention to detail",
+			],
+		},
+		{
+			id: 5,
+			title: "Frontend Developer",
+			department: "Engineering",
+			location: "Delhi",
+			type: "Full-time",
+			experience: "2-4 years",
+			salary: "₹50k - ₹80k",
+			description:
+				"Build responsive and interactive web applications using modern frontend technologies.",
+			requirements: [
+				"Proficiency in React.js, Next.js, and TypeScript",
+				"Experience with modern CSS and responsive design",
+				"Understanding of web performance optimization",
+			],
+		},
+		{
+			id: 6,
+			title: "Mobile App Developer",
+			department: "Engineering",
+			location: "Delhi",
+			type: "Full-time",
+			experience: "2-4 years",
+			salary: "₹60k - ₹90k",
+			description:
+				"Develop cross-platform mobile applications using React Native and manage iOS/Android deployments.",
+			requirements: [
+				"Experience with React Native and mobile app development",
+				"Knowledge of iOS (Xcode) and Android development",
+				"Understanding of mobile app architecture and state management",
 			],
 		},
 	];
@@ -110,9 +143,21 @@ const CareerPage: React.FC = () => {
 						transition={{ duration: 0.7 }}
 						style={{ textAlign: 'center', marginBottom: 48 }}
 					>
-						<h1 style={{ fontSize: 36, lineHeight: 1.05, fontWeight: 700 }}>
+						<h1 style={{ 
+							fontSize: 36, 
+							lineHeight: 1.05, 
+							fontWeight: 700,
+							color: "#f97316",
+							textShadow: "0 0 15px rgba(249, 115, 22, 0.5)"
+						}}>
 							Join our
-							<span style={{ marginLeft: 8, background: 'linear-gradient(90deg,#fb923c,#f59e0b,#facc15)', WebkitBackgroundClip: 'text', color: 'transparent' }}>
+							<span style={{ 
+								marginLeft: 8, 
+								background: 'linear-gradient(90deg,#fb923c,#f59e0b,#facc15)', 
+								WebkitBackgroundClip: 'text', 
+								color: 'transparent',
+								textShadow: "0 0 20px rgba(249, 115, 22, 0.7)"
+							}}>
 								Team
 							</span>
 						</h1>
@@ -178,7 +223,7 @@ const CareerPage: React.FC = () => {
 													<span style={{ fontSize: 12, padding: '4px 8px', borderRadius: 9999, background: 'rgba(16,185,129,0.08)', color: '#34d399' }}>{job.type}</span>
 												</div>
 											</div>
-											<div style={{ textAlign: 'right' }}>
+											<div style={{ textAlign: 'right', lineHeight: 1.2 }}>
 												<div style={{ fontSize: 14, color: '#9ca3af' }}>{job.experience}</div>
 												<div style={{ fontWeight: 700, color: '#fff', marginTop: 6 }}>{job.salary}</div>
 											</div>
@@ -195,9 +240,9 @@ const CareerPage: React.FC = () => {
 													))}
 												</ul>
 
-												<button style={{ width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '12px 16px', borderRadius: 12, background: 'linear-gradient(90deg,#fb923c,#f59e0b)', color: '#000', fontWeight: 700, border: 'none' }}>
+												{/* <button style={{ width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '12px 16px', borderRadius: 12, background: 'linear-gradient(90deg,#fb923c,#f59e0b)', color: '#000', fontWeight: 700, border: 'none' }}>
 													Apply for this role
-												</button>
+												</button> */}
 											</motion.div>
 										)}
 									</motion.div>
@@ -207,7 +252,28 @@ const CareerPage: React.FC = () => {
 									<div style={{ background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 16, padding: 20, textAlign: 'center' }}>
 										<h4 style={{ color: '#fff', fontWeight: 600 }}>Don't see a role?</h4>
 										<p style={{ color: '#9ca3af', fontSize: 14, marginBottom: 12 }}>Send us your CV and we'll reach out when something fits.</p>
-										<button style={{ padding: '8px 20px', borderRadius: 8, background: 'linear-gradient(90deg,#fb923c,#f59e0b)', color: '#000', fontWeight: 700, border: 'none' }}>Submit General Application</button>
+										<Link href="/contact-us">
+											<button 
+												style={{ 
+													padding: '8px 20px', 
+													borderRadius: 8, 
+													background: 'linear-gradient(90deg,#fb923c,#f59e0b)', 
+													color: '#000', 
+													fontWeight: 700, 
+													border: 'none',
+													cursor: 'pointer',
+													transition: 'transform 0.2s ease-in-out',
+												}}
+												onMouseEnter={(e) => {
+													e.currentTarget.style.transform = 'translateY(-2px)';
+												}}
+												onMouseLeave={(e) => {
+													e.currentTarget.style.transform = 'translateY(0)';
+												}}
+											>
+												Submit General Application
+											</button>
+										</Link>
 									</div>
 								</div>
 							</div>
@@ -215,7 +281,7 @@ const CareerPage: React.FC = () => {
 					</div>
 				</div>
 
-				{/* <CallToAction /> */}
+				{/* <CallToAction />	 */}
 			</div>
 		</Layout>
 	);

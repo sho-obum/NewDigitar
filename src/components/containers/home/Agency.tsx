@@ -29,6 +29,7 @@ const Agency = () => {
             fontSize: "1.5em",
             marginTop: "-0.8em",
             marginBottom: "0.4em",
+            lineHeight: 1.0,
           }}
         >
           Shaping Tomorrow’s

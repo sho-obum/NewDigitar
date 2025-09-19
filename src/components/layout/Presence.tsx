@@ -79,7 +79,7 @@ const Presence = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          style={{ fontWeight: '500', fontSize: '1.2rem',  }}
+          style={{ fontWeight: '500', fontSize: '1.2rem',marginTop: '10px' }}
         >
           Connecting brands worldwide through strategic locations
         </motion.div>
