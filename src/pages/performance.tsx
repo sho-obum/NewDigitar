@@ -187,7 +187,7 @@ export default function PerformancePage() {
             {
               title: "Audience Segmentation and Targeting",
               image:
-                "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/giant.png",
+                "https://media-public.canva.com/-jUR0/MAGqxS-jUR0/1/tl.png",
               items: [
                 {
                   title: "Demographic Targeting",
@@ -220,7 +220,7 @@ export default function PerformancePage() {
             {
               title: "Fraud Detection and Prevention",
               image:
-                "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard.png",
+                "https://media-public.canva.com/ONiKM/MAGyT-ONiKM/1/tl.png",
               items: [
                 {
                   title: "IP Fraud Detection",
