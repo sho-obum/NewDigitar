@@ -92,7 +92,7 @@ export default function BrandingPage() {
               left: "50px",
             }}
           />
-          <motion.img
+          {/* <motion.img
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
@@ -101,11 +101,11 @@ export default function BrandingPage() {
               position: "absolute",
               width: "120px",
               left: "15%",
-              top: "100px",
+              top: "10px",
             }}
             src="https://media-public.canva.com/tfmcs/MAFCORtfmcs/1/tl.png"
             alt=""
-          />
+          /> */}
         </div>
 
         {/* INTRO ROW */}
