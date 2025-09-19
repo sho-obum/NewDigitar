@@ -1,26 +1,12 @@
 "use client";
 
-import React, { useMemo, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import DottedMap from "dotted-map";
 import Image from "next/image";
 
 const Presence = () => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [activeDot, setActiveDot] = useState<number | null>(null);
-
-  // --- generate dotted map ---
-  const map = useMemo(() => new DottedMap({ height: 100, grid: "diagonal" }), []);
-  const svgMap = useMemo(
-    () =>
-      map.getSVG({
-        radius: 0.22,
-        color: "#FFFFFF40",
-        shape: "circle",
-        backgroundColor: "black",
-      }),
-    [map]
-  );
 
   // --- helper to project lat/lng to x/y in 800x400 space ---
   const projectPoint = (lat: number, lng: number) => {
@@ -32,22 +18,22 @@ const Presence = () => {
   // --- dots data ---
   const bigDots = [
     {
-      lat: 40.5,
-      lng: -95,
+      lat: 39.3,
+      lng: -176,
       label: "USA HQ",
       address: "123 Silicon Ave, San Francisco, CA",
       email: "usa@example.com",
     },
     {
-      lat: 18,
-      lng: -102,
+      lat: -15,
+      lng: -183,
       label: "Mexico Office",
       address: "Av. Reforma 250, CDMX",
       email: "mexico@example.com",
     },
     {
-      lat: 16,
-      lng: 78,
+      lat: 4,
+      lng: 104,
       label: "India Office",
       address: "Plot 45, Bangalore, India",
       email: "india@example.com",
@@ -59,14 +45,16 @@ const Presence = () => {
       {/* Map Background */}
       <div className="map-container">
         <Image
-          src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
+          src="https://panel.digitarmedia.com/admin/uploads/world1758255760.png"
           alt="world map"
           fill
           priority
+          quality={100}
           draggable={false}
           style={{
-            objectFit: "contain",
+            objectFit: "cover",
             pointerEvents: "none",
+            opacity: 0.7,
           }}
         />
 
@@ -87,7 +75,13 @@ const Presence = () => {
                   // style={{ cursor: "pointer" }}
                 >
                   <circle cx={point.x} cy={point.y} r="6" fill="#ff7a00" />
-                  <circle cx={point.x} cy={point.y} r="6" fill="#ff7a00" opacity="0.5">
+                  <circle
+                    cx={point.x}
+                    cy={point.y}
+                    r="6"
+                    fill="#ff7a00"
+                    opacity="0.5"
+                  >
                     <animate
                       attributeName="r"
                       from="6"
@@ -136,20 +130,24 @@ const Presence = () => {
       </div>
 
       {/* Text Overlay */}
-      <div className="content-overlay">
+      <div className="content-overlay"
+      style={{position: 'relative', top: '-120px',}}
+      >
         <motion.h1
           className="headline"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
+          style={{ fontWeight: '900 !important',  }}
         >
-          Global Presence
+          Our Presence
         </motion.h1>
         <motion.div
           className="subheadline"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
+          style={{ fontWeight: '500', fontSize: '1.2rem',  }}
         >
           Connecting brands worldwide through strategic locations
         </motion.div>
@@ -217,7 +215,7 @@ const Presence = () => {
 
         .headline {
           font-size: 5rem;
-          font-weight: 900;
+          font-weight: 900 !important;
           color: #f97316;
           margin-bottom: 1rem;
           text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
