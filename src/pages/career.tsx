@@ -109,7 +109,7 @@ const CareerPage: React.FC = () => {
 	];
 
 	return (
-		<Layout header={2} footer={5} video={0}>
+		<Layout header={2} footer={1} video={0}>
 			<CmnBanner title="career" navigation="career" />
 
 			<div style={{ minHeight: '100vh', color: '#fff', position: 'relative', overflow: 'hidden' }}>

@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import CmnBanner from "@/components/layout/banner/CmnBanner";
+import { useRouter } from 'next/router';
 
 // ====== CONFIG ======
 const IMAGE_SOURCES = [
@@ -233,6 +234,20 @@ const Carousel: React.FC<CarouselProps> = ({
 
 // ====== PAGE ======
 export default function LifePage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Check if we've already reloaded
+    const hasReloaded = localStorage.getItem('lifePageReloaded');
+    
+    if (!hasReloaded) {
+      // Set the flag immediately
+      localStorage.setItem('lifePageReloaded', 'true');
+      // Reload the page
+      window.location.reload();
+    }
+  }, []); // Empty dependency array - only runs once on mount
+
   return (
     <Layout header={2} footer={1} video={0}>
       {/* Background */}

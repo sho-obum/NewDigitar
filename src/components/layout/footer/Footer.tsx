@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/life-at-digitar" className="footer__item">
+                  <Link href="/lifeAtDigitar" className="footer__item">
                     Life @ Digitar
                   </Link>
                 </li>
