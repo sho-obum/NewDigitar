@@ -69,7 +69,7 @@ export default function BrandingPage() {
             style={{
               position: "relative",
               width: "clamp(80px, 20vw, 300px)",
-              left:"760px",
+              left:"766px",
               top: "-167px",
               zIndex: -1,
             }}
