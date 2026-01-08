@@ -15,33 +15,74 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     subject: "",
     message: "",
   });
 
   const [showPopup, setShowPopup] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrorMessage(""); // Clear error on input change
   };
+  
   const labelStyle: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
-    gap: "0.3rem",
+    gap: "0.15rem",
     fontWeight: 600,
-    fontSize: "0.9rem",
+    fontSize: "0.75rem",
     color: "#f97316", // orange label text
     textShadow: "0 0 6px rgba(249,115,22,0.4)",
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you can integrate API call
-    setShowPopup(true);
-    setTimeout(() => setShowPopup(false), 3000);
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    // Phone validation - strict
+    const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/;
+    if (!formData.phone) {
+      setErrorMessage("Phone number is required");
+      setIsSubmitting(false);
+      return;
+    }
+    if (!phoneRegex.test(formData.phone.replace(/\s/g, ""))) {
+      setErrorMessage("Please enter a valid phone number");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setShowPopup(true);
+        setTimeout(() => setShowPopup(false), 3000);
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+      } else {
+        setErrorMessage(result.message || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setErrorMessage("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -75,7 +116,7 @@ export default function ContactPage() {
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          padding: "4rem 1rem",
+          padding: "1.5rem 0.75rem",
           color: "white",
         }}
       >
@@ -83,7 +124,7 @@ export default function ContactPage() {
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: "2rem",
+            gap: "1rem",
           }}
         >
           {/* LEFT: Contact Form */}
@@ -92,7 +133,7 @@ export default function ContactPage() {
               background: "rgba(255,255,255,0.03)",
               border: "1px solid rgba(255,255,255,0.08)",
               borderRadius: "12px",
-              padding: "2rem",
+              padding: "1rem",
               boxShadow: "0 6px 30px rgba(0,0,0,0.5)",
             }}
           >
@@ -100,7 +141,8 @@ export default function ContactPage() {
               style={{
                 textAlign: "center",
                 color: "#f97316",
-                marginBottom: "1rem",
+                marginBottom: "0.6rem",
+                fontSize: "1.3rem",
               }}
             >
               Get In Touch
@@ -108,7 +150,7 @@ export default function ContactPage() {
 
             <form
               onSubmit={handleSubmit}
-              style={{ display: "grid", gap: "1rem" }}
+              style={{ display: "grid", gap: "0.6rem" }}
             >
               <label style={labelStyle}>
                 Name
@@ -137,6 +179,19 @@ export default function ContactPage() {
               </label>
 
               <label style={labelStyle}>
+                Phone
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Your Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  style={inputStyle}
+                />
+              </label>
+
+              <label style={labelStyle}>
                 Subject
                 <input
                   type="text"
@@ -156,20 +211,44 @@ export default function ContactPage() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={4}
+                  rows={2}
                   style={{ ...inputStyle, resize: "vertical" }}
                 />
               </label>
+
+              {errorMessage && (
+                <div
+                  style={{
+                    padding: "8px",
+                    backgroundColor: "rgba(239, 68, 68, 0.1)",
+                    border: "1px solid rgba(239, 68, 68, 0.3)",
+                    borderRadius: "6px",
+                    color: "#ef4444",
+                    fontSize: "0.75rem",
+                    textAlign: "center",
+                  }}
+                >
+                  {errorMessage}
+                </div>
+              )}
 
               <div
                 style={{
                   display: "flex",
                   justifyContent: "center",
-                  marginTop: "0.5rem",
+                  marginTop: "0.3rem",
                 }}
               >
-                <button type="submit" style={neonButtonStyle}>
-                  Send Message
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  style={{
+                    ...neonButtonStyle,
+                    opacity: isSubmitting ? 0.7 : 1,
+                    cursor: isSubmitting ? "not-allowed" : "pointer",
+                  }}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </div>
             </form>
@@ -180,7 +259,7 @@ export default function ContactPage() {
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
-              gap: "1.5rem",
+              gap: "0.8rem",
             }}
           >
             {contactBoxes.map((box, i) => (
@@ -190,7 +269,7 @@ export default function ContactPage() {
                   background: "rgba(255,255,255,0.03)",
                   border: "1px solid rgba(249, 115, 22, 0.3)",
                   borderRadius: "12px",
-                  padding: "1.5rem",
+                  padding: "0.8rem",
                   backdropFilter: "blur(10px)",
                   boxShadow: "0 4px 20px rgba(249, 115, 22, 0.15)",
                   transition: "all 0.3s ease",
@@ -212,13 +291,13 @@ export default function ContactPage() {
                   style={{ 
                     display: "flex", 
                     alignItems: "center", 
-                    gap: "1rem",
-                    marginBottom: "1rem" 
+                    gap: "0.6rem",
+                    marginBottom: "0.6rem" 
                   }}
                 >
                   <div style={{
                     background: "rgba(249, 115, 22, 0.1)",
-                    padding: "0.5rem",
+                    padding: "0.35rem",
                     borderRadius: "8px",
                     display: "flex",
                     alignItems: "center",
@@ -236,15 +315,15 @@ export default function ContactPage() {
                   <h4 style={{ 
                     color: "#f97316", 
                     margin: 0,
+                    fontSize: "0.85rem",
                     textShadow: "0 0 10px rgba(249, 115, 22, 0.3)"
                   }}>
                     {box.title}
                   </h4>
                 </div>
                 <div style={{ 
-                  fontSize: "0.95rem", 
+                  fontSize: "0.8rem", 
                   color: "#ddd",
-                  // Align with the title
                 }}>
                   {box.content}
                 </div>

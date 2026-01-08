@@ -154,7 +154,7 @@ const HomeProducts = () => {
                   letterSpacing: "0.02em",
                 }}
               >
-                Our Products <i className="fa-solid fa-arrow-right"></i>
+                Our Products 
               </span>
               <h2
                 className="title"

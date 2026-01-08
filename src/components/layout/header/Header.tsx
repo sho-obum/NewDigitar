@@ -54,9 +54,9 @@ const Header = ({ openNav, handleNav, setOpenNav }: HeaderProps) => {
                         src={logoSrc}
                         alt="Logo"
                         priority
-                        className="img-fluid navLogo" 
+                        className="img-fluid navLogo"
                         style={{
-                          width: "clamp(120px, 20vw, 220px)", 
+                          width: "clamp(120px, 20vw, 220px)",
                           height: "auto",
                         }}
                       />
@@ -68,6 +68,11 @@ const Header = ({ openNav, handleNav, setOpenNav }: HeaderProps) => {
                       aria-label="toggle mobile menu"
                       title="open offcanvas menu"
                       onClick={handleNav}
+                      style={{
+                        scale: ".5",
+                        position: "relative",
+                        left: "20px",
+                      }}
                     ></button>
                   </div>
                 </nav>
