@@ -10,6 +10,9 @@ import { Fragment, useRef, useState, useEffect } from "react";
 import PepsiChallengeAd from "../../ads/Pepsigame";
 import Nikegame from "../../ads/Nikegame";
 import TinderMiniGameAd from "@/components/ads/Tindergame";
+import Footer from "@/components/layout/footer/Footer";
+import CmnBanner from "@/components/layout/banner/CmnBanner";
+import Layout from "@/components/layout/Layout";
 
 interface CardItem {
   src: string;
@@ -57,7 +60,6 @@ const items: CardItem[] = [
     tag: "Beverages",
   },
 ];
-
 
 //  New MobileLogoCol with Horizontal Scroll + Snap
 function MobileLogoCol({
@@ -222,8 +224,6 @@ function MobileLogoCol({
   );
 }
 
-
-
 // Desktop Logo Column Component (Original Design)
 function DesktopLogoCol({
   integration,
@@ -268,75 +268,76 @@ function DesktopLogoCol({
       >
         {Array.from({ length: 2 }).map((_, i) => (
           <Fragment key={i}>
-            {(reverse ? [...integration].reverse() : integration).map((item) => (
-              <div
-                key={`${item.alt}-${i}`}
-                style={{
-                  background: "rgba(255, 165, 0, 0.15)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  borderRadius: "20px",
-                  padding: "20px",
-                  boxShadow: "0 8px 25px rgba(0,0,0,0.5)",
-                  color: "white",
-                  textAlign: "center",
-                  position: "relative",
-                  cursor: "pointer",
-                  transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                  width: "300px",
-                }}
-                onClick={() => onTileClick(item)}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "scale(1.02)";
-                  e.currentTarget.style.boxShadow =
-                    "0 12px 35px rgba(0,0,0,0.7)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.boxShadow =
-                    "0 8px 25px rgba(0,0,0,0.5)";
-                }}
-              >
-                {/* Neon Tag */}
+            {(reverse ? [...integration].reverse() : integration).map(
+              (item) => (
                 <div
+                  key={`${item.alt}-${i}`}
                   style={{
-                    position: "absolute",
-                    top: "15px",
-                    left: "15px",
-                    zIndex: 10,
+                    background: "rgba(255, 165, 0, 0.15)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    borderRadius: "20px",
+                    padding: "20px",
+                    boxShadow: "0 8px 25px rgba(0,0,0,0.5)",
+                    color: "white",
+                    textAlign: "center",
+                    position: "relative",
+                    cursor: "pointer",
+                    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                    width: "300px",
+                  }}
+                  onClick={() => onTileClick(item)}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "scale(1.02)";
+                    e.currentTarget.style.boxShadow =
+                      "0 12px 35px rgba(0,0,0,0.7)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
+                    e.currentTarget.style.boxShadow =
+                      "0 8px 25px rgba(0,0,0,0.5)";
                   }}
                 >
-                  <span
+                  {/* Neon Tag */}
+                  <div
                     style={{
-                      background: "rgba(0, 0, 0, 0.8)",
-                      color: "#fe6601",
-                      padding: "4px 8px",
-                      borderRadius: "6px",
-                      fontSize: "10px",
-                      fontWeight: "600",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.5px",
-                      border: "1px solid #fe6601",
-                      boxShadow:
-                        "0 0 5px #fe6601, 0 0 10px #fe6601, 0 0 15px #fe6601",
-                      textShadow: "0 0 3px #fe6601",
-                      backdropFilter: "blur(5px)",
+                      position: "absolute",
+                      top: "15px",
+                      left: "15px",
+                      zIndex: 10,
                     }}
                   >
-                    {item.tag}
-                  </span>
-                </div>
+                    <span
+                      style={{
+                        background: "rgba(0, 0, 0, 0.8)",
+                        color: "#fe6601",
+                        padding: "4px 8px",
+                        borderRadius: "6px",
+                        fontSize: "10px",
+                        fontWeight: "600",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.5px",
+                        border: "1px solid #fe6601",
+                        boxShadow:
+                          "0 0 5px #fe6601, 0 0 10px #fe6601, 0 0 15px #fe6601",
+                        textShadow: "0 0 3px #fe6601",
+                        backdropFilter: "blur(5px)",
+                      }}
+                    >
+                      {item.tag}
+                    </span>
+                  </div>
 
-                {/* Logo in top right */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "15px",
-                    right: "15px",
-                    zIndex: 10,
-                  }}
-                >
-                  {/* <Image
+                  {/* Logo in top right */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "15px",
+                      right: "15px",
+                      zIndex: 10,
+                    }}
+                  >
+                    {/* <Image
                     src="/logo-placeholder.png"
                     alt="Brand Logo"
                     width={100}
@@ -351,50 +352,51 @@ function DesktopLogoCol({
                       left: "-20px",
                     }}
                   /> */}
-                </div>
+                  </div>
 
-                <div
-                  style={{
-                    position: "relative",
-                    width: "100%",
-                    aspectRatio:
-                      imageAspectRatios[item.src] &&
-                      isFinite(imageAspectRatios[item.src])
-                        ? String(imageAspectRatios[item.src])
-                        : "1 / 1",
-                    borderRadius: "16px",
-                    background: "rgba(255, 255, 255, 0.1)",
-                    backdropFilter: "blur(15px)",
-                    border: "1px solid rgba(255, 255, 255, 0.2)",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    overflow: "hidden",
-                    boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.1)",
-                  }}
-                >
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    sizes="(max-width: 1024px) 300px, 360px"
+                  <div
                     style={{
-                      objectFit: "contain",
-                      filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.4))",
+                      position: "relative",
+                      width: "100%",
+                      aspectRatio:
+                        imageAspectRatios[item.src] &&
+                        isFinite(imageAspectRatios[item.src])
+                          ? String(imageAspectRatios[item.src])
+                          : "1 / 1",
+                      borderRadius: "16px",
+                      background: "rgba(255, 255, 255, 0.1)",
+                      backdropFilter: "blur(15px)",
+                      border: "1px solid rgba(255, 255, 255, 0.2)",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      overflow: "hidden",
+                      boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.1)",
                     }}
-                    onLoadingComplete={(img) => {
-                      const ratio = img.naturalWidth / img.naturalHeight;
-                      if (isFinite(ratio) && ratio > 0) {
-                        setImageAspectRatios((prev) => ({
-                          ...prev,
-                          [item.src]: ratio,
-                        }));
-                      }
-                    }}
-                  />
+                  >
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      sizes="(max-width: 1024px) 300px, 360px"
+                      style={{
+                        objectFit: "contain",
+                        filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.4))",
+                      }}
+                      onLoadingComplete={(img) => {
+                        const ratio = img.naturalWidth / img.naturalHeight;
+                        if (isFinite(ratio) && ratio > 0) {
+                          setImageAspectRatios((prev) => ({
+                            ...prev,
+                            [item.src]: ratio,
+                          }));
+                        }
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </Fragment>
         ))}
       </motion.div>
@@ -565,10 +567,7 @@ function MobileCreative({
         background: "black",
         padding: "2rem 1rem",
         position: "relative",
-      
       }}
-
-  
     >
       <div
         style={{
@@ -630,7 +629,6 @@ function MobileCreative({
                 display: "block",
                 position: "relative",
               }}
-             
             >
               big!
               <i
@@ -748,13 +746,13 @@ function DesktopCreative({
             {""}
             <span
               style={{
-                color: "#261900",
+                color: "#ff6600",
                 fontSize: "100px",
                 position: "relative",
                 bottom: "-60px",
                 right: "430px",
               }}
-               className="bigtextclass"
+              className="bigtextclass"
             >
               {" "}
               big!
@@ -823,8 +821,12 @@ function useViewport() {
   return { isMobile };
 }
 
-// Main Component
-export default function OrangeTicker() {
+// Core Creative Component (For Homepage & Standalone Use)
+export function CreativeCore({
+  onTileClick: externalOnTileClick,
+}: {
+  onTileClick?: (item: CardItem) => void;
+} = {}) {
   const [selectedItem, setSelectedItem] = useState<CardItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { isMobile } = useViewport();
@@ -832,6 +834,7 @@ export default function OrangeTicker() {
   const handleTileClick = (item: CardItem) => {
     setSelectedItem(item);
     setIsModalOpen(true);
+    externalOnTileClick?.(item);
   };
 
   const closeModal = () => {
@@ -886,5 +889,15 @@ export default function OrangeTicker() {
         }
       `}</style>
     </>
+  );
+}
+
+// Standalone Page Component (With Layout, Banner, Footer)
+export function CreativePage() {
+  return (
+    <Layout header={2} footer={1} video={0}>
+      <CmnBanner title="Creative" navigation="Creative" />
+      <CreativeCore />
+    </Layout>
   );
 }

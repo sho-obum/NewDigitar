@@ -83,7 +83,7 @@ const Presence = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          style={{ fontWeight: '500', fontSize: '1.2rem',marginTop: '10px' }}
+          style={{ fontWeight: '500', marginTop: '10px' }}
         >
           Connecting brands worldwide through strategic locations
         </motion.div>
@@ -111,8 +111,8 @@ const Presence = () => {
               backdropFilter: 'blur(10px)',
               border: '1px solid #ff7300',
               borderRadius: '15px',
-              padding: '2rem',
-              width: '250px',
+              padding: '2rem 3rem',
+              width: '20vw',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -136,7 +136,7 @@ const Presence = () => {
               border: '1px solid #ff7300',
               borderRadius: '15px',
               padding: '2rem',
-              width: '250px',
+              width: '20vw',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',

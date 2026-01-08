@@ -12,7 +12,13 @@ export type Product = {
 };
 export function MobileProductCard({ product }: { product: Product }) {
   return (
-    <div className="gp-card gp-mobile">
+    <div
+      className="gp-card gp-mobile"
+      style={{
+        position: "relative",
+        zIndex: 100,
+      }}
+    >
       {/* Header Row: Logo + Name */}
       <div className="gp-header-row">
         <div className="gp-header-icon">
@@ -78,10 +84,10 @@ export function MobileProductCard({ product }: { product: Product }) {
           border: 1px solid rgba(255, 122, 0, 0.3);
           border-radius: 16px;
           padding: 18px !important;
-          margin-bottom: 16px ;
+          margin-bottom: 16px;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-          width: 100% !important; 
-          box-sizing: border-box; 
+          width: 100% !important;
+          box-sizing: border-box;
         }
         .gp-header-row {
           display: flex;

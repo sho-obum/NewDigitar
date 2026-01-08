@@ -329,11 +329,29 @@ const Agency = () => {
         }
 
         @media (max-width: 768px) {
+          .agency-video-section {
+            margin-top: 0;
+            min-height: auto;
+            padding: 0;
+            top: 50px;
+            margin-bottom: 50px;
+          }
+
+          .glass {
+            padding: 4px;
+            width: min(100vw, 1100px);
+          }
+
           .badges {
             display: none !important;
           }
           .badge {
             display: none !important;
+          }
+
+          .hero-heading {
+            font-size: clamp(18px, 5vw, 48px);
+            top: 5%;
           }
         }
 

@@ -637,7 +637,7 @@
   }
 
   .cmn-banner {
-    padding: 60px 0px 100px;
+    padding: 10px 0px 0px;
     .title {
       margin-top: -8px;
     }
@@ -811,6 +811,21 @@
     }
     .tertiary-cta {
       padding-left: 24px;
+    }
+  }
+
+  .breadcrumb {
+    padding: 8px 12px;
+    margin-top: 10px;
+    
+    .breadcrumb-item {
+      padding: 0px 0px 0px 16px;
+      padding-right: 10px;
+      font-size: 11px;
+      
+      a {
+        font-size: 11px;
+      }
     }
   }
 
@@ -1118,7 +1133,7 @@
   // banner
   .banner {
     padding: 180px 0px 10px;
-    margin-bottom: -110px;
+    margin-bottom: -190px;
     .video-frame img {
       display: none;
     }

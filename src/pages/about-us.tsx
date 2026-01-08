@@ -21,11 +21,7 @@ const team: TeamMember[] = [
     role: "AVP",
     bio: "Driving strategic initiatives and business excellence.",
   },
-  {
-    name: "Himanshu Sharma",
-    role: "Product Manager",
-    bio: "Crafting product strategies and user experiences.",
-  },
+
   {
     name: "Rahul Tiwari",
     role: "Tech Manager",
@@ -35,6 +31,11 @@ const team: TeamMember[] = [
     name: "Gayathri Nair",
     role: "Senior BD",
     bio: "Expanding business horizons and client relationships.",
+  },
+  {
+    name: "Rahul Sharma",
+    role: "Strategy and Partnerships ",
+    bio: "Crafting growth strategies and building key partnerships.",
   },
   {
     name: "Simran Chauhan",
@@ -48,7 +49,7 @@ const team: TeamMember[] = [
   },
   {
     name: "Shubham Kapoor",
-    role: "Full Stack Dev",
+    role: "Software Developer",
     bio: "Creating robust and scalable solutions.",
   },
   {
@@ -78,7 +79,10 @@ const styles: Record<string, React.CSSProperties> = {
     gap: "20px",
     alignItems: "start",
     marginBottom: "2rem",
-  },
+    "@media (max-width: 768px)": {
+      gridTemplateColumns: "1fr",
+    },
+  } as any,
   card: {
     borderRadius: 16,
     padding: 20,
@@ -107,7 +111,12 @@ const styles: Record<string, React.CSSProperties> = {
     gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
     gap: 14,
     marginTop: 14,
-  },
+  } as any,
+  teamGridMobile: {
+    "@media (max-width: 768px)": {
+      gridTemplateColumns: "1fr",
+    },
+  } as any,
   memberCard: {
     padding: 14,
     borderRadius: 12,
@@ -115,6 +124,10 @@ const styles: Record<string, React.CSSProperties> = {
     border: "1px solid rgba(255,255,255,0.04)",
     backdropFilter: "blur(8px)",
     transition: "transform 0.3s ease",
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    gap: 12,
   },
   avatar: {
     width: 64,
@@ -126,14 +139,64 @@ const styles: Record<string, React.CSSProperties> = {
     justifyContent: "center",
     fontWeight: 800,
     fontSize: 18,
-    marginRight: 12,
     color: "white",
+    flex: "0 0 auto",
   },
 };
 
 export default function AboutPage(): JSX.Element {
   return (
     <Layout header={2} footer={1} video={0}>
+      <style>{`
+        @media (max-width: 768px) {
+          .container-content {
+            padding: 0 !important;
+          }
+          .hero {
+            grid-template-columns: 1fr !important;
+          }
+          .team-grid-mobile {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 14px !important;
+            margin-top: 14px !important;
+          }
+          .by-numbers-card {
+            display: none !important;
+          }
+          .team-member-card {
+            display: flex !important;
+            flex-direction: column !important;
+            flex-wrap: nowrap !important;
+            align-items: center !important;
+            text-align: center !important;
+            padding: 12px !important;
+          }
+          .team-member-bio {
+            display: none !important;
+          }
+          .team-member-avatar {
+            margin-right: 0 !important;
+            margin-bottom: 12px !important;
+            width: 56px !important;
+            height: 56px !important;
+            font-size: 16px !important;
+            flex: 0 0 auto !important;
+          }
+          .team-member-info {
+            text-align: center !important;
+            width: 100%;
+            flex: 1 !important;
+          }
+            .team-section-heading{
+            text-align: center !important;
+            }
+          .values-list {
+          margin-top: 24px !important;
+          justify-content: center !important;
+          }
+        }
+      `}</style>
       {/* Background grid + vignette */}
       <div
         style={{
@@ -161,9 +224,9 @@ export default function AboutPage(): JSX.Element {
       <CmnBanner title="About Us" navigation="About Us" />
 
       {/* Content */}
-      <div style={styles.container}>
+      <div style={styles.container} className="container-content">
         {/* Hero Section */}
-        <div style={styles.hero}>
+        <div style={styles.hero} className="hero">
           {/* Left Content */}
           <div style={styles.card}>
             <h1
@@ -173,14 +236,15 @@ export default function AboutPage(): JSX.Element {
                 color: "#ff9f1c",
                 marginBottom: "1rem",
                 lineHeight: 1.3,
+                textAlign: "center",
               }}
             >
               Who We Are
             </h1>
-            <p style={{ lineHeight: 1.6 }}>
-              At <strong>Digitar Media</strong>, we are growth partners not
-              just another agency. Founded to bridge the gap between engineering
-              and storytelling, we blend ad-tech, creative strategy, and product
+            <p style={{ lineHeight: 1.6, textAlign: "left" }}>
+              At <strong>Digitar Media</strong>, we are growth partners not just
+              another agency. Founded to bridge the gap between engineering and
+              storytelling, we blend ad-tech, creative strategy, and product
               thinking to deliver measurable growth.
             </p>
             <p style={{ lineHeight: 1.6 }}>
@@ -235,7 +299,7 @@ export default function AboutPage(): JSX.Element {
               ))}
             </ul>
 
-            <div style={styles.valuesList}>
+            <div style={styles.valuesList} className="values-list">
               <div style={styles.valuePill}>People first</div>
               <div style={styles.valuePill}>Outcome driven</div>
               <div style={styles.valuePill}>Curious by default</div>
@@ -246,7 +310,7 @@ export default function AboutPage(): JSX.Element {
           </div>
 
           {/* Right Stats Card */}
-          <aside style={styles.card}>
+          <aside style={styles.card} className="by-numbers-card">
             <div
               style={{
                 fontWeight: 800,
@@ -257,8 +321,14 @@ export default function AboutPage(): JSX.Element {
             >
               By the Numbers
             </div>
-            <ul style={{ lineHeight: 1.6, marginTop: 8 }}>
-              <li>10+ years in ad-tech</li>
+            <ul style={{}}>
+              <li
+                style={{
+                  marginTop: "20px",
+                }}
+              >
+                10+ years in ad-tech
+              </li>
               <li>100+ successful campaigns launched</li>
               <li>Trusted by clients across USA, Canada, APAC & MENA</li>
               <li>Proprietary tools and platforms for smarter marketing</li>
@@ -268,28 +338,47 @@ export default function AboutPage(): JSX.Element {
 
         {/* Team Section */}
         <h2
+          className="team-section-heading"
           style={{ marginTop: "2rem", marginBottom: "1rem", color: "#ff9f1c" }}
         >
           Meet the Team
         </h2>
-        <div style={styles.teamGrid}>
+        <div style={styles.teamGrid} className="team-grid-mobile">
           {team.map((m) => (
-            <div key={m.name} style={styles.memberCard}>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <div style={styles.avatar}>
-                  {m.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </div>
-                <div style={{
-                  lineHeight: 1.2
-                }} >
-                  <div style={{ fontWeight: 800 }}>{m.name}</div>
-                  <div style={{ fontSize: 13, color: "#e6eef8" }}>{m.role}</div>
-                </div>
+            <div
+              key={m.name}
+              style={styles.memberCard}
+              className="team-member-card"
+            >
+              <div style={styles.avatar} className="team-member-avatar">
+                {m.name
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")}
               </div>
-              <p style={{ marginTop: 10, color: "#cbd5e1", lineHeight: 1.5 }}>
+              <div
+                style={{
+                  lineHeight: 1.2,
+                  display: "flex",
+                  flexDirection: "column",
+                  flex: 1,
+                  minWidth: 0,
+                }}
+                className="team-member-info"
+              >
+                <div style={{ fontWeight: 800 }}>{m.name}</div>
+                <div style={{ fontSize: 13, color: "#e6eef8" }}>{m.role}</div>
+              </div>
+              <p
+                style={{
+                  marginTop: 10,
+                  color: "#cbd5e1",
+                  lineHeight: 1.5,
+                  width: "100%",
+                  flex: "0 0 100%",
+                }}
+                className="team-member-bio"
+              >
                 {m.bio}
               </p>
             </div>

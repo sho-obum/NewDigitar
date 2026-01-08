@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
               <Image src={logo} alt="Digitar Media" width={160} height={40} />
             </Link>
 
-            <p className="intro">
+            <p className="intro intro-small">
               Digitar empowers brands and marketers to connect with their
               audiences through advanced targeting, data intelligence, and
               seamless experiences. Join us as we shape the future of digital
@@ -201,12 +201,35 @@ const Footer: React.FC = () => {
           color: #fff;
           padding: 60px 0 0px;
         }
-        a.footer__item {
-          color: grey !important;
+        /* ✅ Footer Links Override Global Styles */
+        .col li {
+          font-size: 0.75rem !important;
         }
 
-        a.footer__item:hover {
-          color: white !important;
+        .col a {
+          font-size: 0.75rem !important;
+        }
+
+        a.footer__item {
+          font-size: 0.75rem !important;
+          line-height: 1.4 !important;
+          color: #aaa !important;
+          text-decoration: none !important;
+          display: block !important;
+          font-weight: 400 !important;
+        }
+
+        .footer__item {
+          font-size: 0.75rem !important;
+          line-height: 1.4 !important;
+          color: #aaa !important;
+          text-decoration: none !important;
+          font-weight: 400 !important;
+        }
+
+        a.footer__item:hover,
+        .footer__item:hover {
+          color: #ff7a00 !important;
           transition: color 0.2s ease !important;
         }
 
@@ -249,6 +272,12 @@ const Footer: React.FC = () => {
         .brand .intro {
           margin: 16px 0 20px;
           color: #aaa;
+          font-size: 0.9rem;
+        }
+
+        .brand .intro-small {
+          font-size: 0.85rem !important;
+          line-height: 1.5 !important;
         }
         .socials {
           display: flex;
@@ -329,14 +358,25 @@ const Footer: React.FC = () => {
         }
         @media (max-width: 768px) {
           .cols {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(3, 1fr);
+            font-size: 0.2rem !important;
           }
+
+        }
+
+        .col ul {
+          font-size: 0.75rem;
+        }
+
+        .col ul li {
+          margin-bottom: 8px;
         }
 
         .heading {
           color: #ff7a00 !important;
           font-weight: 700;
           margin-bottom: 12px;
+          font-size: 0.8rem;
         }
 
         /* ✅ Presence Section */

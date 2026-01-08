@@ -33,8 +33,124 @@ export default function PerformancePage() {
       {/* Banner */}
       <CmnBanner title="Performance" navigation="Performance" />
 
+      <style jsx>{`
+        /* Desktop defaults */
+        .perf-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gridtemplaterows: repeat(2, auto);
+          gap: 24px;
+          width: 100%;
+          maxwidth: 900px;
+        }
+
+        .perf-card {
+          minheight: 600px;
+        }
+
+        .perf-card-header {
+          height: 180px;
+        }
+
+        .perf-card-header img {
+          width: 220px;
+          transform: translateY(30px);
+          margin-top: -40px;
+        }
+
+        .perf-card-content {
+          padding: 36px 16px;
+        }
+
+        .perf-card-title {
+          fontsize: 2rem;
+          color: darkorange !important;
+        }
+
+        .perf-card ul li {
+          fontsize: 1.1rem;
+        }
+
+        .perf-card-footer div {
+          padding: 12px;
+          fontsize: 1rem;
+          margin: 15px 0px;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 767px) {
+          .perf-content {
+            padding: 0 !important;
+          }
+          .perf-content h1 {
+            font-size: 1.5rem !important;
+            margin-bottom: 1.5rem !important;
+          }
+          .perf-grid {
+            display: block !important;
+            grid-template-columns: unset !important;
+            padding: 5px !important;
+            gap: unset !important;
+
+            // margin-bottom: -3rem !important;
+          }
+          .perf-card {
+            min-height: auto !important;
+            margin-bottom: 16px !important;
+          }
+          .perf-card-header {
+            height: 90px !important;
+          }
+          .perf-card-header img {
+            width: 70px !important;
+            transform: translateY(10px) !important;
+            margin-top: -10px !important;
+          }
+          .perf-card-content {
+            padding: 12px 6px !important;
+          }
+          .perf-card-content h3 {
+            font-size: 1rem !important;
+            margin-bottom: 4px !important;
+          }
+          .perf-card-content hr {
+            margin: 4px 0 !important;
+          }
+          .perf-deco-img {
+            display: none !important;
+          }
+          .perf-paragraph {
+            font-size: 0.75rem !important;
+            max-width: 90% !important;
+          }
+          .perf-card-title {
+            font-size: 1rem !important;
+            margin-bottom: 4px !important;
+          }
+          .perf-card ul {
+            padding-left: 0.6em !important;
+          }
+          .perf-card ul li {
+            font-size: 0.55rem !important;
+            margin: 3px 0 !important;
+          }
+          .perf-card ul li strong {
+            font-size: 0.55rem !important;
+          }
+          .perf-card-footer {
+            padding: 5px 0 !important;
+          }
+          .perf-card-footer div {
+            padding: 4px !important;
+            font-size: 0.425rem !important;
+            margin: 5px 0 !important;
+          }
+        }
+      `}</style>
+
       {/* Content */}
       <div
+        className="perf-content"
         style={{
           minHeight: "100vh",
           display: "flex",
@@ -61,40 +177,39 @@ export default function PerformancePage() {
           Precision Marketing
         </h1>
 
-        <img
+        {/* <img
+          className="perf-deco-img"
           src="	https://media-public.canva.com/QKm3o/MAGI8SQKm3o/1/tl.png"
           alt=""
-          style={
-            {
-              width: "380px",
-              position: "absolute",
-              top: "280px",
-              right: "51%",
-              transform: "rotate(-2deg)",
-            }
-          }
+          style={{
+            width: "380px",
+            position: "absolute",
+            top: "10%",
+            right: "50%",
+            transform: "rotate(-2deg)",
+          }}
         />
         <img
+          className="perf-deco-img"
           src="	https://media-public.canva.com/hlUZY/MAFZIkhlUZY/1/tl.png"
           alt=""
-          style={
-            {
-              width: "80px",
-              position: "absolute",
-              top: "200px",
-              left: "56%",
-              transform: "rotate(-2deg)",
-            }
-          }
-        />
+          style={{
+            width: "60px",
+            position: "relative",
+            top: "0%",
+            left: "10px",
+            transform: "rotate(-2deg)",
+          }}
+        /> */}
         <p
+          className="perf-paragraph"
           style={{
             color: "#ddd",
             fontSize: "1.2rem",
             maxWidth: "650px",
             textAlign: "center",
-            marginBottom: "2.5rem",
-            marginTop: "1.4rem",
+            marginBottom: "0",
+            marginTop: "0",
           }}
         >
           At{" "}
@@ -108,6 +223,7 @@ export default function PerformancePage() {
 
         {/* 4 Clash-Style Cards */}
         <div
+          className="perf-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
@@ -115,6 +231,7 @@ export default function PerformancePage() {
             gap: "24px",
             width: "100%",
             maxWidth: "900px",
+            marginTop: "3rem",
           }}
         >
           {[
@@ -153,8 +270,7 @@ export default function PerformancePage() {
             },
             {
               title: "Performance Optimization",
-              image:
-                "http://media-public.canva.com/RrDpk/MAGwVmRrDpk/1/tl.png",
+              image: "http://media-public.canva.com/RrDpk/MAGwVmRrDpk/1/tl.png",
               items: [
                 {
                   title: "Creative Optimization",
@@ -252,6 +368,7 @@ export default function PerformancePage() {
             },
           ].map((card, index) => (
             <div
+              className="perf-card"
               key={index}
               style={{
                 background: "#fff",
@@ -265,6 +382,7 @@ export default function PerformancePage() {
               }}
             >
               <div
+                className="perf-card-header"
                 style={{
                   background: "linear-gradient(135deg, #f97316, #ffb366)",
                   height: "180px",
@@ -292,20 +410,23 @@ export default function PerformancePage() {
                 />
               </div>
               <div
+                className="perf-card-content"
                 style={{
                   padding: "36px 16px",
                   textAlign: "center",
                   flexGrow: 1,
                   display: "flex",
                   flexDirection: "column",
+                  color: "#333",
                 }}
               >
                 <h3
+                  className="perf-card-title"
                   style={{
                     fontSize: "2rem",
                     fontWeight: 800,
                     marginBottom: "8px",
-                    color: "darkorange !important",
+                    color: "darkorange ",
                     lineHeight: 1.1,
                   }}
                 >
@@ -325,7 +446,7 @@ export default function PerformancePage() {
                       key={itemIndex}
                       style={{
                         fontSize: "1.1rem",
-                        color: "black !important",
+                        color: "black",
                         lineHeight: "normal",
                         margin: "8px 0",
                       }}
@@ -338,6 +459,7 @@ export default function PerformancePage() {
                 </ul>
               </div>
               <div
+                className="perf-card-footer"
                 style={{
                   display: "flex",
                   background: "#f97316",

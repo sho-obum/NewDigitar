@@ -72,7 +72,12 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
           <div className="offcanvas-menu__header nav-fade">
             <div className="logo">
               <Link href="/">
-                <Image src={logo} alt="Digitar Media" title="Digitar Media" priority />
+                <Image
+                  src={logo}
+                  alt="Digitar Media"
+                  title="Digitar Media"
+                  priority
+                />
               </Link>
             </div>
             <button
@@ -80,7 +85,12 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
               className="close-offcanvas-menu"
               onClick={closeNav}
             >
-              <i className="fa-light fa-xmark-large"></i>
+              <i
+                className="fa-light fa-xmark-large"
+                style={{
+                  scale: "50%",
+                }}
+              ></i>
             </button>
           </div>
           <div className="offcanvas-menu__list">
@@ -99,7 +109,9 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                   >
                     Company
                   </button>
-                  <ul className={`navbar__sub-menu ${isSubMenuOpen("company")}`}>
+                  <ul
+                    className={`navbar__sub-menu ${isSubMenuOpen("company")}`}
+                  >
                     <li>
                       <Link href="/about-us">About Us</Link>
                     </li>
@@ -121,18 +133,28 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                   >
                     Products
                   </button>
-                  <ul className={`navbar__sub-menu ${isSubMenuOpen("products")}`}>
+                  <ul
+                    className={`navbar__sub-menu ${isSubMenuOpen("products")}`}
+                  >
                     <li>
-                      <Link href="https://adxity.com/" target="_blank">Adxity - DSP</Link>
+                      <Link href="https://adxity.com/" target="_blank">
+                        Adxity - DSP
+                      </Link>
                     </li>
                     <li>
-                      <Link href="https://adpocket.ai/" target="_blank">Adpocket</Link>
+                      <Link href="https://adpocket.ai/" target="_blank">
+                        Adpocket
+                      </Link>
                     </li>
                     <li>
-                      <Link href="https://yogza.fit/" target="_blank">Yogza</Link>
+                      <Link href="https://yogza.fit/" target="_blank">
+                        Yogza
+                      </Link>
                     </li>
                     <li>
-                      <Link href="https://lendingleaf.in/" target="_blank">Lending Leaf</Link>
+                      <Link href="https://lendingleaf.in/" target="_blank">
+                        Lending Leaf
+                      </Link>
                     </li>
                   </ul>
                 </li>
@@ -162,7 +184,12 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                       <Link href="/influencer">Influencer</Link>
                     </li>
                     <li>
-                      <Link href="https://creative.digitarmedia.com/" target="_blank">Creative</Link>
+                      <Link
+                        href="https://creative.digitarmedia.com/"
+                        target="_blank"
+                      >
+                        Creative
+                      </Link>
                     </li>
                   </ul>
                 </li>

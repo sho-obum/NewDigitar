@@ -436,7 +436,7 @@ const HomeProducts = () => {
       <style jsx>{`
         /* Responsive container width */
         .container {
-          max-width: 75vw !important;
+          max-width: 90vw !important;
           width: 100% !important;
           margin: 0 auto !important;
         }

@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import CmnBanner from "@/components/layout/banner/CmnBanner";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 // ====== CONFIG ======
 const IMAGE_SOURCES = [
@@ -238,11 +238,11 @@ export default function LifePage() {
 
   useEffect(() => {
     // Check if we've already reloaded
-    const hasReloaded = localStorage.getItem('lifePageReloaded');
-    
+    const hasReloaded = localStorage.getItem("lifePageReloaded");
+
     if (!hasReloaded) {
       // Set the flag immediately
-      localStorage.setItem('lifePageReloaded', 'true');
+      localStorage.setItem("lifePageReloaded", "true");
       // Reload the page
       window.location.reload();
     }
@@ -279,7 +279,7 @@ export default function LifePage() {
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          padding: "4rem 1rem",
+          padding: "1rem 1rem",
           color: "white",
           fontFamily: "sans-serif",
         }}
@@ -287,22 +287,24 @@ export default function LifePage() {
         {/* Hero */}
         <h1
           style={{
-            fontSize: "clamp(2rem, 5vw, 3rem)",
+            fontSize: "clamp(1.5rem, 4vw, 2.2rem)",
             fontWeight: 800,
             color: "#f97316",
             textAlign: "center",
-            marginBottom: "1rem",
+            marginBottom: "0.8rem",
           }}
         >
           Life @ Digitar
         </h1>
         <p
+          className="lifesubtext"
           style={{
             textAlign: "center",
             color: "#ddd",
             maxWidth: "780px",
-            margin: "0 auto 2rem auto",
-            lineHeight: 1.6,
+            margin: "-30px auto 2rem auto",
+            lineHeight: 1.5,
+            fontSize: "0.95rem",
           }}
         >
           We believe great work comes from a happy and curious team. Here are a
@@ -318,10 +320,10 @@ export default function LifePage() {
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: "20px",
-            marginTop: "3rem",
-          
+            gap: "18px",
+            marginTop: "2.5rem",
           }}
+          className="life-cards-grid"
         >
           {[
             {
@@ -332,30 +334,31 @@ export default function LifePage() {
             },
             {
               badge: "Games & Play",
-              badgeColor: "linear-gradient(90deg,#16a34a,#22c55e)",
+              badgeColor: "linear-gradient(90deg,#ff7b00,#ff9f1c)",
               title: "Play games",
               text: "From quick brain teasers to team quiz nights and friendly tabletop matches  we play to build bonds and reset our focus.",
             },
             {
               badge: "Share & Grow",
-              badgeColor: "linear-gradient(90deg,#dc2626,#ef4444)",
+              badgeColor: "linear-gradient(90deg,#ff7b00,#ff9f1c)",
               title: "Share knowledge",
               text: "Weekly knowledge sessions where teammates present learnings  campaign deep-dives, new tools and experiments. Everyone teaches and learns.",
             },
             {
               badge: "Wellness",
-              badgeColor: "linear-gradient(90deg,#0284c7,#38bdf8)",
+              badgeColor: "linear-gradient(90deg,#ff7b00,#ff9f1c)",
               title: "Small perks that matter",
               text: "Healthy snacks, flexible hours, mental health check-ins and occasional offsites  we try to make the workplace comfortable and humane.",
             },
           ].map((card, idx) => (
             <div
               key={idx}
+              className="life-card"
               style={{
                 background: "rgba(255,255,255,0.03)",
                 border: "1px solid rgba(255,255,255,0.06)",
                 borderRadius: "12px",
-                padding: "1.5rem ",
+                padding: "1.3rem",
                 boxShadow: "0 6px 25px rgba(0,0,0,0.4)",
                 backdropFilter: "blur(10px)",
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
@@ -371,24 +374,33 @@ export default function LifePage() {
               }}
             >
               <div
+                className="life-badge"
                 style={{
                   background: card.badgeColor,
                   display: "inline-block",
-                  padding: "12px 14px !important",
+                  padding: "10px 12px !important",
                   borderRadius: 999,
                   fontWeight: 700,
-                  fontSize: "0.85rem",
+                  fontSize: "0.75rem",
                   color: "white",
                   boxShadow: "0 6px 16px rgba(0,0,0,0.3)",
                 }}
               >
                 {card.badge}
               </div>
-              <h3 style={{ marginTop: "0.8rem", color: "#fff" }}>
+              <h3
+                className="life-card-title"
+                style={{
+                  marginTop: "0.7rem",
+                  color: "#fff",
+                  fontSize: "1.1rem",
+                }}
+              >
                 {card.title}
               </h3>
               <p
-                style={{ color: "#ddd", fontSize: "0.95rem", lineHeight: 1.55 }}
+                className="life-card-text"
+                style={{ color: "#ddd", fontSize: "0.85rem", lineHeight: 1.5 }}
               >
                 {card.text}
               </p>
@@ -396,14 +408,45 @@ export default function LifePage() {
           ))}
         </div>
 
+        <style>{`
+          @media (max-width: 768px) {
+          .lifesubtext{
+            margin-top: 20px !important;}
+            
+            .life-cards-grid {
+              grid-template-columns: 1fr !important;
+            }
+            .life-badge {
+              font-size: 0.7rem !important;
+              padding: 8px 10px !important;
+            }
+            .life-card-title {
+              font-size: 1rem !important;
+              margin-top: 0.6rem !important;
+            }
+            .life-card-text {
+              font-size: 0.8rem !important;
+              line-height: 1.4 !important;
+            }
+          }
+        `}</style>
+
         {/* CTA */}
-        <div style={{ textAlign: "center", marginTop: "3rem" }}>
-          <h3 style={{ color: "#f97316", marginBottom: "0.5rem" }}>
+        <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
+          <h3
+            style={{
+              color: "#f97316",
+              marginBottom: "0.5rem",
+              fontSize: "1.2rem",
+            }}
+          >
             Want to join the fun?
           </h3>
-          <p style={{ color: "#ddd", marginBottom: "1rem" }}>
+          <p
+            style={{ color: "#ddd", marginBottom: "1rem", fontSize: "0.9rem" }}
+          >
             We're hiring! If you're excited about growth, tech, and making work
-            playful  check our careers page.
+            playful check our careers page.
           </p>
           <a
             href="/career"

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "public/images/logo.png"; // 👈 make sure this exists in your public/images
+import logo from "public/images/logo.png"; 
 
 interface BannerProps {
   title?: any;
@@ -18,33 +18,27 @@ const CmnBanner = ({ title, navigation, parent, parentLink }: BannerProps) => {
         style={{
           // backgroundImage: "url('/images/banner/cmn-banner-bg.png')",
           background: "transparent",
-          height: "100px",
+          height: "auto",
+          minHeight: "80px",
         }}
       >
-        <div className="container position-relative h-100">
+        <div className="container position-relative">
           {/* Logo Top Right */}
           <div 
           style={{
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "flex-start",
             paddingTop: "10px",
             paddingBottom: "10px",
+            flexDirection: "column",
+            gap: "10px",
           }}
           >
 
-            <Link href="/" style={{ cursor: "pointer" }}>
-              <Image
-                src={logo}
-                alt="Logo"
-                className="img-fluid service_logo"
-                width={220}
-                height={40}
-                priority
-              />
-            </Link>
+          
              <nav aria-label="breadcrumb">
-                  <ol className="breadcrumb">
+                  <ol className="breadcrumb" style={{ margin: 0 }}>
                     <li className="breadcrumb-item">
                       <Link href="/">
                         <i className="fa-solid fa-house"></i>

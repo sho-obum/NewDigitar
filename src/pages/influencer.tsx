@@ -52,6 +52,7 @@ export default function InfluencerLandingPage() {
         }}
       >
         <h1
+          className="influencer-hero-heading"
           style={{
             fontSize: "clamp(2.8rem, 5vw, 3.5rem)",
             fontWeight: "800 !important",
@@ -63,9 +64,13 @@ export default function InfluencerLandingPage() {
           }}
         >
           Influencer Marketing{" "}
+          <span className="brheading">
+            <br />
+          </span>
           <span style={{ color: "#f97316" }}>That Delivers</span>
         </h1>
         <p
+          className="influencer-hero-subheading"
           style={{
             fontSize: "1.2rem",
             color: "#dddddd !important",
@@ -82,6 +87,7 @@ export default function InfluencerLandingPage() {
         </p>
       </div>
       <div
+        className="influencer-features-section"
         style={{
           display: "flex",
           flexDirection: "row",
@@ -96,6 +102,7 @@ export default function InfluencerLandingPage() {
       >
         {/* LEFT SECTION */}
         <div
+          className="influencer-features-grid"
           style={{
             flex: 1,
             minWidth: "320px",
@@ -106,6 +113,7 @@ export default function InfluencerLandingPage() {
         >
           {/* FEATURE CARDS */}
           <div
+            className="influencer-feature-cards"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2, 1fr)",
@@ -188,6 +196,7 @@ export default function InfluencerLandingPage() {
                       {box.icon}
                     </div>
                     <h3
+                      className="influencer-feature-title"
                       style={{
                         fontSize: "1.3rem",
                         fontWeight: "bold",
@@ -220,6 +229,7 @@ export default function InfluencerLandingPage() {
                   </div>
                 </div>
                 <p
+                  className="influencer-feature-desc"
                   style={{
                     color: "#ccc",
                     margin: 0,
@@ -235,7 +245,10 @@ export default function InfluencerLandingPage() {
         </div>
 
         {/* RIGHT SECTION */}
-        <div style={{ flex: 1, minWidth: "300px", textAlign: "center" }}>
+        <div
+          className="influencer-right-image"
+          style={{ flex: 1, minWidth: "300px", textAlign: "center" }}
+        >
           <img
             src="https://media-public.canva.com/DrYgk/MAFNoHDrYgk/1/tl.png"
             alt="Influencer Marketing Illustration"
@@ -251,6 +264,7 @@ export default function InfluencerLandingPage() {
 
       {/* --- INFLUENCER TIERS SECTION --- */}
       <div
+        className="influencer-tiers-section"
         style={{
           padding: "4rem 2rem",
           maxWidth: "1200px",
@@ -259,6 +273,7 @@ export default function InfluencerLandingPage() {
         }}
       >
         <h2
+          className="influencer-tiers-heading"
           style={{
             fontSize: "2.5rem",
             fontWeight: 800,
@@ -266,20 +281,25 @@ export default function InfluencerLandingPage() {
             marginBottom: "0.5rem",
           }}
         >
-          — Understanding Influencer Tiers —
+          <span className="influencer-tier-dash">— </span>Understanding
+          Influencer Tiers<span className="influencer-tier-dash"> —</span>
         </h2>
-        <p style={{ color: "#ddd", marginBottom: "3rem" }}>
+        <p
+          className="influencer-tiers-subtext"
+          style={{ color: "#ddd", marginBottom: "3rem" }}
+        >
           From hyper-local communities to nationwide audiences – we activate
           creators across every tier of influence.
         </p>
 
         {/* 4-COLUMN GRID */}
         <div
+          className="influencer-tiers-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
             gap: "20px",
-            alignItems: "stretch", // ✅ forces all cards to be same height
+            alignItems: "stretch",
           }}
         >
           {[
@@ -314,6 +334,7 @@ export default function InfluencerLandingPage() {
           ].map((tier, index) => (
             <div
               key={index}
+              className="influencer-tier-card"
               style={{
                 background: tier.bg,
                 borderRadius: "16px",
@@ -322,10 +343,10 @@ export default function InfluencerLandingPage() {
                 transition: "all 0.3s ease",
                 transform: "translateZ(0)",
                 cursor: "pointer",
-                minHeight: "320px", // ✅ ensures same height across all
+                minHeight: "320px",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-between", // ✅ keeps spacing even
+                justifyContent: "space-between",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "scale(1.05)";
@@ -339,6 +360,7 @@ export default function InfluencerLandingPage() {
             >
               <div>
                 <h3
+                  className="influencer-tier-title"
                   style={{
                     fontSize: "1.6rem",
                     fontWeight: 700,
@@ -355,6 +377,7 @@ export default function InfluencerLandingPage() {
                   }}
                 />
                 <p
+                  className="influencer-tier-text"
                   style={{
                     color: tier.textColor,
                     fontSize: "0.95rem",
@@ -375,6 +398,7 @@ export default function InfluencerLandingPage() {
 
               <div style={{ textAlign: "center" }}>
                 <p
+                  className="influencer-tier-range"
                   style={{
                     fontWeight: 700,
                     fontSize: "2rem",
@@ -386,7 +410,7 @@ export default function InfluencerLandingPage() {
                     gap: "0.5rem",
                   }}
                 >
-                  <FaEye style={{ fontSize: "1.8rem" }} /> {tier.range}
+                  <FaEye className="faeyeicon" /> {tier.range}
                 </p>
                 <span style={{ fontSize: "0.85rem", color: tier.textColor }}>
                   Influencer Reach Bracket
@@ -396,6 +420,121 @@ export default function InfluencerLandingPage() {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        .faeyeicon {
+          font-size: 1.7rem;
+        }
+        .brheading {
+          display: none;
+        }
+        @media (max-width: 768px) {
+          .faeyeicon {
+            font-size: 1.2rem;
+          }
+          .brheading {
+            display: inline;
+          }
+
+          /* Hero heading */
+          :global(.influencer-hero-heading) {
+            font-size: clamp(1.5rem, 4vw, 2rem) !important;
+            white-space: normal !important;
+          }
+
+          /* Hero subheading */
+          :global(.influencer-hero-subheading) {
+            font-size: 0.95rem !important;
+            margin-bottom: 1.5rem !important;
+            line-height: 1.4 !important;
+          }
+
+          /* Features section */
+          :global(.influencer-features-section) {
+            flex-direction: column !important;
+            padding: 2rem 1rem !important;
+            gap: 1.5rem !important;
+          }
+
+          :global(.influencer-features-grid) {
+            min-width: 100% !important;
+          }
+
+          /* Feature cards - 1 column */
+          :global(.influencer-feature-cards) {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
+            width: 100% !important;
+          }
+
+          :global(.influencer-feature-card) {
+            padding: 1.2rem !important;
+          }
+
+          :global(.influencer-feature-title) {
+            font-size: 1.1rem !important;
+          }
+
+          :global(.influencer-feature-desc) {
+            font-size: 0.85rem !important;
+            line-height: 1.3 !important;
+          }
+
+          /* Hide right image */
+          :global(.influencer-right-image) {
+            display: none !important;
+          }
+
+          /* Tiers section */
+          :global(.influencer-tiers-section) {
+            padding: 2rem 1rem !important;
+          }
+
+          :global(.influencer-tiers-heading) {
+            font-size: 1.8rem !important;
+            margin-bottom: 0.5rem !important;
+          }
+
+          :global(.influencer-tier-dash) {
+            display: none !important;
+          }
+
+          :global(.influencer-tiers-subtext) {
+            font-size: 0.9rem !important;
+            margin-bottom: 2rem !important;
+            line-height: 1.4 !important;
+          }
+
+          /* Tiers grid - 2x2 */
+          :global(.influencer-tiers-grid) {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 1rem !important;
+          }
+
+          :global(.influencer-tier-card) {
+            padding: 1.2rem !important;
+            min-height: auto !important;
+          }
+
+          :global(.influencer-tier-title) {
+            font-size: 1.2rem !important;
+            margin-bottom: 0.8rem !important;
+          }
+
+          :global(.influencer-tier-text) {
+            margin-top: 0.5rem !important;
+            font-size: 0.6rem !important;
+            line-height: 1.3 !important;
+            min-height: auto !important;
+            margin-bottom: 0.8rem !important;
+          }
+
+          :global(.influencer-tier-range) {
+            margin-top: -0.6 qrem !important;
+            font-size: 0.8rem !important;
+          }
+        }
+      `}</style>
     </Layout>
   );
 }

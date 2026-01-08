@@ -93,6 +93,11 @@ const HomeOneBanner = () => {
                 style={{ position: "relative", zIndex: 2 }}
               >
                 <style jsx global>{`
+                  .heading-nowrap {
+                    display: inline-block;
+                    white-space: nowrap;
+                  }
+
                   .banner-social-text {
                     position: fixed;
                     z-index: 999;
@@ -133,8 +138,10 @@ const HomeOneBanner = () => {
                   }
                 `}</style>
                 <h1 className="text-uppercase text-start fw-9 mb-0 title-anim">
-                  Powering
-                  <span className="text-stroke"> Brands </span>
+                  <span className="heading-nowrap">
+                    Powering {" "}
+                    <span className="text-stroke">{" "} Brands</span>
+                  </span>
                   <span className="interval">
                     <i className="icon-arrow-top-right"></i> in{" "}
                     <span className="text-stroke"> digitar </span> era

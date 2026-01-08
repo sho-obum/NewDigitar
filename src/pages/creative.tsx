@@ -1,8 +1,8 @@
 import React from "react";
-import CreativeShowcase from "@/components/containers/home/Creative";
+import Creative from "@/components/containers/home/Creative";
 
 const CreativePage = () => {
-  return <CreativeShowcase />;
+  return <Creative />;
 };
 
 export default CreativePage;
