@@ -41,20 +41,21 @@ const Agency = () => {
           >
             Digital Success {" "}
           </span>
-           Stories
+          Stories
         </span>
       </motion.h2>
       <div
         className="glass"
         style={{
           maxWidth: "1000px",
+
         }}
       >
         <div className="video-frame">
           <video
             ref={videoRef}
             className="video"
-            src="https://dzw12ymyjpbqd.cloudfront.net/videos/digitarmedia-video1.mp4"
+            src="https://dpnqslqxlsaov.cloudfront.net/Digitar%20Website%20video.mp4"
             autoPlay
             muted={isMuted}
             playsInline
@@ -72,7 +73,7 @@ const Agency = () => {
                   const el = videoRef.current;
                   if (!el) return;
                   if (el.paused) {
-                    el.play().catch(() => {});
+                    el.play().catch(() => { });
                     setIsPlaying(true);
                   } else {
                     el.pause();
@@ -269,6 +270,7 @@ const Agency = () => {
         }
 
         .glass {
+        scale:0.75;
           position: relative;
           z-index: 1;
           width: min(95vw, 1100px);

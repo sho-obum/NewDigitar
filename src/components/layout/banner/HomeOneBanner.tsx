@@ -150,11 +150,7 @@ const HomeOneBanner = () => {
 
                 <div
                   className="banner__content-inner"
-                  style={
-                    {
-                      // width:"1000px"
-                    }
-                  }
+                
                 >
                   <p>
                     We’re a digital growth engine driving ROI with performance
@@ -202,7 +198,7 @@ const HomeOneBanner = () => {
                       </div>
                     </div>
                   </div>
-                  {/* /CTA */}
+                 
                 </div>
               </div>
             </div>
