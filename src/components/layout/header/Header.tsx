@@ -34,9 +34,8 @@ const Header = ({ openNav, handleNav, setOpenNav }: HeaderProps) => {
 
   const defaultClasses = "primary-navbar secondary--navbar";
 
-  const combinedClasses = `${
-    scrolled ? " navbar-active" : " "
-  } ${defaultClasses}`;
+  const combinedClasses = `${scrolled ? " navbar-active" : " "
+    } ${defaultClasses}`;
 
   let logoSrc = logo;
 
@@ -58,6 +57,7 @@ const Header = ({ openNav, handleNav, setOpenNav }: HeaderProps) => {
                         style={{
                           width: "clamp(120px, 20vw, 220px)",
                           height: "auto",
+                          scale: "0.75"
                         }}
                       />
                     </Link>
