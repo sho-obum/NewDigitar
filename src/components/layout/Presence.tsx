@@ -131,17 +131,16 @@ const Presence = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
             style={{
-              background: 'rgba(255, 115, 0, 0.1)',
+           background: 'rgba(255, 115, 0, 0.1)',
               backdropFilter: 'blur(10px)',
               border: '1px solid #ff7300',
               borderRadius: '15px',
-              padding: '2rem',
+              padding: '2rem 3rem',
               width: '20vw',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               gap: '1rem',
-              boxShadow: '0 0 20px rgba(255, 115, 0, 0.2)'
             }}
           >
             <GiIndiaGate  size={40} color="#ff7300" />

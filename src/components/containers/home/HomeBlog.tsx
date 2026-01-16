@@ -192,7 +192,7 @@ const HomeProducts = () => {
 
         {/* DESKTOP (2 gamified cards, animated glow on hover) */}
         <div className="d-none d-md-block" style={{ marginTop: 32 }}>
-          <div className="row g-4">
+          <div className="row g-1 ">
             {/* Card 1 */}
             <div className="col-12 col-md-6">
               <div className="gp-wrap">
@@ -547,12 +547,14 @@ const HomeProducts = () => {
           box-shadow: 0 0 42px rgba(255, 122, 0, 0.6),
             0 0 88px rgba(255, 176, 102, 0.35);
           outline: none;
-          transform: scale(1.05);
+          transform: scale(0.7875);
         }
         /* Removed rotating halo */
 
         .gp-desktop {
           height: 100%;
+          transform: scale(0.75);
+          transform-origin: top center;
         }
 
         .gp-mobile {
